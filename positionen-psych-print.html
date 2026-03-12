@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Positionen · Tarif-Kompass 2026 · Psychologinnen</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a3560;--ind:#3730a3;--ind-l:#eef2ff;--ind-m:#a5b4fc;
+  --teal:#0a7c71;--teal-l:#e6f4f2;--teal-m:#a7d9d5;
+  --purple:#7c3aed;--purple-l:#f5f3ff;--purple-m:#c4b5fd;
+  --amber:#b85c00;--amber-l:#fef3e2;--amber-m:#e8c68a;
+  --rose:#c0103a;--rose-l:#fdf0f3;--rose-m:#f0b8c5;
+  --green:#1a6b3a;--green-l:#ebf6ef;
+  --mid:#4a5568;--soft:#718096;--line:#dde3eb;--bg:#edf0f4;--paper:#fff;
+}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 16px}
+.printbar{width:210mm;max-width:100%;background:white;border-radius:10px;padding:11px 20px;display:flex;align-items:center;gap:12px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.printbar-label{flex:1;font-size:12.5px;color:var(--soft)}
+.printbar-label strong{color:var(--ink)}
+.pbtn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:7px;border:none;font-family:'Source Sans 3',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:none}
+.pbtn-ghost{background:var(--bg);color:var(--mid);border:1px solid var(--line)}
+.pbtn-dark{background:var(--ink);color:white}
+.sheet{width:210mm;min-height:297mm;background:var(--paper);box-shadow:0 6px 32px rgba(0,0,0,.13);display:flex;flex-direction:column}
+
+.mast{background:var(--ink);padding:10mm 14mm 8mm;position:relative;overflow:hidden}
+.mast::after{content:'';position:absolute;right:0;top:0;bottom:0;width:45mm;background:linear-gradient(90deg,transparent,rgba(99,102,241,.2))}
+.mast-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4mm}
+.mast h1{font-family:'Playfair Display',serif;font-size:23pt;color:white;line-height:1.1}
+.mast h1 em{color:#a5b4fc;font-style:normal}
+.mast-sub{font-size:8.5pt;color:rgba(255,255,255,.5);font-weight:300;margin-top:2px}
+.mast-meta{text-align:right;font-size:7.5pt;color:rgba(255,255,255,.4);line-height:1.6;z-index:1;position:relative}
+.mast-meta strong{color:#a5b4fc;font-size:8.5pt;display:block;margin-bottom:1px}
+
+/* legend pills */
+.legend{display:flex;gap:3mm;flex-wrap:wrap}
+.lp{border-radius:4px;padding:3px 9px;font-size:7pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.lp-anw{background:rgba(52,211,153,.15);color:#10b981;border:1px solid rgba(52,211,153,.3)}
+.lp-diag{background:rgba(165,180,252,.15);color:#a5b4fc;border:1px solid rgba(165,180,252,.3)}
+.lp-expo{background:rgba(196,181,253,.15);color:#c4b5fd;border:1px solid rgba(196,181,253,.3)}
+.lp-lap{background:rgba(94,234,212,.15);color:#2dd4bf;border:1px solid rgba(94,234,212,.3)}
+.lp-kris{background:rgba(251,113,133,.15);color:#fb7185;border:1px solid rgba(251,113,133,.3)}
+.lp-tel{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+.lp-weg{background:rgba(253,186,116,.15);color:#fdba74;border:1px solid rgba(253,186,116,.3)}
+.lp-no{background:rgba(248,113,113,.12);color:#fca5a5;border:1px solid rgba(248,113,113,.25)}
+
+.body{flex:1;padding:5mm 14mm 6mm;display:flex;flex-direction:column;gap:3.5mm}
+
+.sec{display:flex;align-items:center;gap:7px;margin-bottom:2.5mm}
+.sec-bar{width:3px;height:14px;border-radius:2px;flex-shrink:0}
+.sec-bar.i{background:var(--ind)} .sec-bar.t{background:var(--teal)}
+.sec-bar.p{background:var(--purple)} .sec-bar.r{background:var(--rose)}
+.sec-bar.k{background:var(--ink)} .sec-bar.a{background:var(--amber)}
+.sec h2{font-size:6.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.sec-rule{flex:1;height:1px;background:var(--line)}
+
+/* main position table */
+.pos-table{background:white;border:1.5px solid var(--line);border-radius:7px;overflow:hidden}
+.pt-head{display:grid;grid-template-columns:76px 1fr 90px 100px;background:var(--ink);color:white;padding:5px 10px;font-size:6.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;gap:8px}
+.pt-row{display:grid;grid-template-columns:76px 1fr 90px 100px;padding:5px 10px;border-bottom:1px solid var(--line);align-items:start;gap:8px;font-size:7.5pt}
+.pt-row:last-child{border-bottom:none}
+.pt-row:nth-child(even){background:#fafbfc}
+.pt-row.grp{background:#f0f2f5;padding:3px 10px}
+.pt-row.grp span{font-size:6.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.pt-code{font-weight:700;color:var(--ind);font-size:7pt;line-height:1.3}
+.pt-code.t{color:var(--teal)} .pt-code.p{color:var(--purple)} .pt-code.a{color:var(--amber)}
+.pt-code sub{font-size:6pt;font-weight:400;color:var(--soft);display:block}
+.pt-name{font-weight:600;color:var(--ink);line-height:1.3}
+.pt-name small{font-size:6.5pt;font-weight:400;color:var(--soft);display:block;margin-top:0px}
+.pt-limit{font-size:7pt;color:var(--mid);line-height:1.4}
+.pt-limit strong{color:var(--ink)}
+.pt-badge{}
+
+.badge{font-size:6pt;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:10px;white-space:nowrap;display:inline-block}
+.b-anw{background:#dcfce7;color:#15803d}
+.b-diag{background:var(--ind-l);color:var(--ind)}
+.b-expo{background:var(--purple-l);color:var(--purple)}
+.b-lap{background:var(--teal-l);color:var(--teal)}
+.b-kris{background:var(--rose-l);color:var(--rose)}
+.b-tel{background:var(--teal-l);color:var(--teal)}
+.b-weg{background:var(--amber-l);color:var(--amber)}
+.b-no{background:#fee2e2;color:#dc2626}
+.b-int{background:#fef3c7;color:#b45309}
+
+/* bottom section */
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+
+/* LAP age table */
+.lap-tbl{background:white;border:1.5px solid var(--line);border-radius:7px;overflow:hidden}
+.lap-head{display:grid;grid-template-columns:55px 1fr 1fr;background:var(--ink);color:white;padding:5px 9px;font-size:6.5pt;font-weight:700;letter-spacing:.07em;text-transform:uppercase;gap:6px}
+.lap-row{display:grid;grid-template-columns:55px 1fr 1fr;padding:4px 9px;border-bottom:1px solid var(--line);font-size:7.5pt;gap:6px}
+.lap-row:last-child{border-bottom:none}
+.lap-code{font-weight:700;color:var(--teal);font-size:7pt}
+.lap-u{color:var(--teal);font-weight:600}
+.lap-o{color:#1d4ed8;font-weight:600}
+.lap-total-row{display:grid;grid-template-columns:55px 1fr 1fr;padding:5px 9px;background:#f0f9f7;border-top:2px solid var(--teal-m);font-size:7.5pt;gap:6px;font-weight:700}
+
+.notbox{background:var(--amber-l);border:1.5px solid var(--amber-m);border-radius:7px;padding:6px 10px}
+.notbox h4{font-size:7.5pt;font-weight:700;color:var(--amber);margin-bottom:3px}
+.notbox-items{display:flex;flex-direction:column;gap:2px}
+.ni{font-size:7.5pt;color:#7a3a00;display:flex;gap:5px;line-height:1.35}
+.ni::before{content:'✕';color:var(--rose);font-weight:700;flex-shrink:0}
+
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm}
+.dg{border-radius:6px;padding:6px 9px}
+.dg.a{background:var(--ind-l);border:1.5px solid var(--ind-m)}
+.dg.b{background:var(--purple-l);border:1.5px solid var(--purple-m)}
+.dg h4{font-size:7pt;font-weight:700;margin-bottom:3px}
+.dg.a h4{color:var(--ind)} .dg.b h4{color:var(--purple)}
+.ds{display:flex;justify-content:space-between;font-size:7pt;padding:2px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.ds:last-child{border-bottom:none}
+.ds-v{font-weight:700;color:var(--ink);font-size:9pt;font-family:'Playfair Display',serif}
+
+.wb{background:var(--rose-l);border:1.5px solid var(--rose-m);border-radius:7px;padding:6px 10px}
+.wb h4{font-size:7.5pt;font-weight:700;color:var(--rose);margin-bottom:3px}
+.wb-items{display:flex;flex-direction:column;gap:2px}
+.wi{font-size:7.5pt;color:#7a0020;display:flex;gap:5px;line-height:1.35}
+.wi::before{content:'→';color:var(--rose);font-weight:700;flex-shrink:0}
+
+.ft{border-top:1px solid var(--line);padding:3mm 14mm;display:flex;justify-content:space-between}
+.ft span{font-size:7pt;color:var(--soft)}
+
+@media print{
+  body{background:white;padding:0}
+  .printbar{display:none}
+  .sheet{box-shadow:none;min-height:auto}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{size:A4;margin:0}
+}
+</style>
+</head>
+<body>
+
+<div class="printbar">
+  <div class="printbar-label"><strong>Positionenübersicht Psychologinnen</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
+  <a class="pbtn pbtn-ghost" href="../index-psych.html">← Zurück</a>
+  <button class="pbtn pbtn-dark" onclick="window.print()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Als PDF drucken
+  </button>
+</div>
+
+<div class="sheet">
+  <div class="mast">
+    <div class="mast-top">
+      <div>
+        <h1>Positionen <em>EA.05</em></h1>
+        <div class="mast-sub">Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</div>
+      </div>
+      <div class="mast-meta">
+        <strong>TARDOC · EA.05</strong>
+        Gültig ab 01.01.2026<br>tardoc.netlify.app
+      </div>
+    </div>
+    <div class="legend">
+      <span class="lp lp-anw">Anwesenheit</span>
+      <span class="lp lp-diag">Diagnostik</span>
+      <span class="lp lp-expo">Exposition</span>
+      <span class="lp lp-lap">LAP-Topf</span>
+      <span class="lp lp-kris">Krise</span>
+      <span class="lp lp-tel">Telemedizin</span>
+      <span class="lp lp-weg">Wegzeit</span>
+      <span class="lp lp-no">Nicht verrechenbar</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- HAUPTTABELLE -->
+    <div>
+      <div class="sec"><div class="sec-bar i"></div><h2>Alle verrechenbaren Positionen</h2><div class="sec-rule"></div></div>
+      <div class="pos-table">
+        <div class="pt-head">
+          <div>EA.05 / Code</div>
+          <div>Bezeichnung</div>
+          <div>Limite</div>
+          <div>Typ</div>
+        </div>
+
+        <!-- Anwesenheit -->
+        <div class="pt-row grp"><span>Anwesenheitsleistungen</span></div>
+        <div class="pt-row">
+          <div class="pt-code">EA.05.0010<sub>intern: PA010</sub></div>
+          <div><div class="pt-name">Einzelsetting</div><small>Patient anwesend · inkl. unmittelb. Akteneinsicht/-einträge</small></div>
+          <div class="pt-limit"><strong>75 Min</strong> max.</div>
+          <div><span class="badge b-anw">Anwesenheit</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-code">PE010<sub>interne Psych.-Logik</sub></div>
+          <div><div class="pt-name">Vor-/Nachbereitung (75+15)</div><small>Zu PA010 / PA030 · nur interne Psychologenlogik!</small></div>
+          <div class="pt-limit"><strong>15 Min</strong> max.</div>
+          <div><span class="badge b-int">Psych.-intern</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-code">EA.05.0030<sub>intern: PA030</sub></div>
+          <div><div class="pt-name">Familiensetting</div><small>Patient + Eltern/Bezugspersonen · gleiche Logik wie 0010</small></div>
+          <div class="pt-limit"><strong>75 Min</strong> max.<br>+ PE010</div>
+          <div><span class="badge b-anw">Anwesenheit</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-code">PA011 / PA031<sub>fernmündlich</sub></div>
+          <div><div class="pt-name">Fernmündliche Sitzung</div><small>Telefon/Video synchron mit Patient — Anwesenheitsleistung! + PE010</small></div>
+          <div class="pt-limit"><strong>75 Min</strong> max.</div>
+          <div><span class="badge b-anw">Anwesenheit</span></div>
+        </div>
+
+        <!-- Krise -->
+        <div class="pt-row grp"><span>Krisenintervention</span></div>
+        <div class="pt-row">
+          <div class="pt-code">EA.05.0050<sub>PA110 / PA111</sub></div>
+          <div><div class="pt-name">Krise unter laufender PT — Anordnung A</div><small>Unvorhersehbar · bedrohlich · inkl. krisenbezogene Akteneinsicht</small></div>
+          <div class="pt-limit"><strong>180 Min</strong>/Sitzung</div>
+          <div><span class="badge b-kris">Krise A</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-code">EA00.0090<sub>Anordnung B</sub></div>
+          <div><div class="pt-name">Krise im KANT / Nacht- / Wochenenddienst</div><small>Effektiv aufgewendete Zeit · nicht kombin. mit Konsult. am selben Tag</small></div>
+          <div class="pt-limit"><strong>Unbegrenzt</strong></div>
+          <div><span class="badge b-kris">Krise B</span></div>
+        </div>
+
+        <!-- Diagnostik -->
+        <div class="pt-row grp"><span>Diagnostik und Testabklärung</span></div>
+        <div class="pt-row">
+          <div class="pt-code">EA.05.0150<sub>PA220</sub></div>
+          <div><div class="pt-name">Testdurchführung</div><small>Nicht kumulierbar mit EA.05.0010/0030 · Richtwert 80 Min</small></div>
+          <div class="pt-limit"><strong>180 Min</strong>/90 Tage</div>
+          <div><span class="badge b-diag">Diagnostik</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-code">PE020<sub>Auswertung</sub></div>
+          <div><div class="pt-name">Test-Auswertung / Interpretation / Bericht</div><small>In Abwesenheit Patient · andere Tage möglich · kein freies Zusatzbudget</small></div>
+          <div class="pt-limit"><strong>240 Min</strong>/90 Tage</div>
+          <div><span class="badge b-diag">Diagnostik</span></div>
+        </div>
+
+        <!-- Exposition -->
+        <div class="pt-row grp"><span>Expositionstherapie</span></div>
+        <div class="pt-row">
+          <div class="pt-code p">PA230<sub>Exposition</sub></div>
+          <div><div class="pt-name">Expositionstherapie</div><small>Wegzeit intern inkludiert — nicht doppelt als EA.05.0060 buchen! + PE010</small></div>
+          <div class="pt-limit"><strong>360 Min</strong>/180 Tage</div>
+          <div><span class="badge b-expo">Exposition</span></div>
+        </div>
+
+        <!-- Telemedizin -->
+        <div class="pt-row grp"><span>Telemedizin und Kommunikation</span></div>
+        <div class="pt-row">
+          <div class="pt-code">EA.05.0080<sub>zeitversetzt</sub></div>
+          <div><div class="pt-name">Zeitversetzte Telemedizin / E-Mail</div><small>Asynchron · 6er-Regel veraltet! Aktuelle Regel: 1×/Tag, 4×/30 Tage</small></div>
+          <div class="pt-limit"><strong>1×/Tag</strong><br><strong>4×/30 Tage</strong></div>
+          <div><span class="badge b-tel">Telemedizin</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-code">EA.00.0110<sub>Verlaufskonsult.</sub></div>
+          <div><div class="pt-name">Telefonische Verlaufskonsultation</div><small>Kurze Rückmeldung / Instruktion — nicht volle Sitzung</small></div>
+          <div class="pt-limit"><strong>20 Min</strong> max.</div>
+          <div><span class="badge b-tel">Telefon</span></div>
+        </div>
+
+        <!-- Wegzeit -->
+        <div class="pt-row grp"><span>Wegzeit</span></div>
+        <div class="pt-row">
+          <div class="pt-code a">EA.05.0060<sub>Wegzeit</sub></div>
+          <div><div class="pt-name">Wegzeit</div><small>Hin + zurück · nicht Teil 4h-Regel · bei PA230 bereits inkludiert!</small></div>
+          <div class="pt-limit"><strong>60 Min</strong>/Sitzung</div>
+          <div><span class="badge b-weg">Wegzeit</span></div>
+        </div>
+
+        <!-- LAP -->
+        <div class="pt-row grp"><span>Leistungen in Abwesenheit (LAP-Topf)</span></div>
+        <div class="pt-row">
+          <div class="pt-code t">EA.05.0100<sub>PE045 / PE040</sub></div>
+          <div><div class="pt-name">Fremdaktenstudium</div><small>Nur externe Akten · PE045 &lt;18 J. / PE040 ≥18 J.</small></div>
+          <div class="pt-limit">LAP-Limit</div>
+          <div><span class="badge b-lap">LAP-Topf</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-code t">EA.05.0110<sub>PK025 / PK020</sub></div>
+          <div><div class="pt-name">Auskünfte Dritte (Schule, Beistand)</div><small>PK025 &lt;18 J. / PK020 ≥18 J.</small></div>
+          <div class="pt-limit">LAP-Limit</div>
+          <div><span class="badge b-lap">LAP-Topf</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-code t">EA.05.0120</div>
+          <div><div class="pt-name">Auskünfte Angehörige (ohne Patient)</div><small>Fachlicher Inhalt · nicht Organisation</small></div>
+          <div class="pt-limit">LAP-Limit</div>
+          <div><span class="badge b-lap">LAP-Topf</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-code t">EA.05.0130<sub>PK015 / PK010</sub></div>
+          <div><div class="pt-name">Besprechung ext. Behandler / Ärzte</div><small>PK015 &lt;18 J. / PK010 ≥18 J. · ausserhalb regulärer Rapporte</small></div>
+          <div class="pt-limit">LAP-Limit</div>
+          <div><span class="badge b-lap">LAP-Topf</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-code t">EA.05.0140<sub>PE030</sub></div>
+          <div><div class="pt-name">Diagnostik-/Therapieplanung</div><small>Schriftliches Ergebnis zwingend in Akte</small></div>
+          <div class="pt-limit"><strong>15 Min</strong><br>1×/90 Tage</div>
+          <div><span class="badge b-lap">LAP-Topf</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UNTERER BEREICH -->
+    <div class="cols2">
+      <div style="display:flex;flex-direction:column;gap:3mm">
+
+        <!-- LAP Alterssteuerung -->
+        <div>
+          <div class="sec"><div class="sec-bar t"></div><h2>LAP-Topf altersgesteuert</h2><div class="sec-rule"></div></div>
+          <div class="lap-tbl">
+            <div class="lap-head">
+              <div>Code</div>
+              <div class="lap-u">&lt;18 Jahre</div>
+              <div class="lap-o">≥18 Jahre</div>
+            </div>
+            <div class="lap-row">
+              <div class="lap-code">Fremdakten</div>
+              <div class="lap-u">PE045</div>
+              <div class="lap-o">PE040</div>
+            </div>
+            <div class="lap-row">
+              <div class="lap-code">Koord. Dritte</div>
+              <div class="lap-u">PK025</div>
+              <div class="lap-o">PK020</div>
+            </div>
+            <div class="lap-row">
+              <div class="lap-code">Ext. Behandler</div>
+              <div class="lap-u">PK015</div>
+              <div class="lap-o">PK010</div>
+            </div>
+            <div class="lap-total-row">
+              <div style="color:var(--soft);font-size:6.5pt;text-transform:uppercase;letter-spacing:.05em">Gemeinsam</div>
+              <div class="lap-u">240 Min/90T</div>
+              <div class="lap-o">180 Min/90T</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagnostik Limits -->
+        <div>
+          <div class="sec"><div class="sec-bar i"></div><h2>Diagnostikblock</h2><div class="sec-rule"></div></div>
+          <div class="diag-grid">
+            <div class="dg a">
+              <h4>🔬 Durchführung PA220</h4>
+              <div class="ds"><span>Limit</span><span class="ds-v">180'</span></div>
+              <div class="ds"><span>Zeitraum</span><span class="ds-v">90T</span></div>
+              <div class="ds"><span>Richtwert</span><span class="ds-v">80'</span></div>
+            </div>
+            <div class="dg b">
+              <h4>📊 Auswertung PE020</h4>
+              <div class="ds"><span>Limit</span><span class="ds-v">240'</span></div>
+              <div class="ds"><span>Zeitraum</span><span class="ds-v">90T</span></div>
+              <div class="ds"><span>Andere Tage OK</span><span style="font-weight:700;color:var(--green);font-size:8pt">Ja</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:3mm">
+
+        <!-- Nicht verrechenbar -->
+        <div>
+          <div class="sec"><div class="sec-bar r"></div><h2>Nicht verrechenbar</h2><div class="sec-rule"></div></div>
+          <div class="notbox">
+            <h4>✕ Kein Patientenbudget</h4>
+            <div class="notbox-items">
+              <div class="ni">Interne Rapporte, Teamgespräche → LUF</div>
+              <div class="ni">Supervision und Intervision → LUF</div>
+              <div class="ni">Psy/Psy-Doppelkonsultationen (Regelbetrieb) → regressgefährdet</div>
+              <div class="ni">Reine Terminvereinbarungen</div>
+              <div class="ni">Leistungserfassung am PC (KISIM)</div>
+              <div class="ni">Eigene Verlaufsnotizen lesen (ohne begründete Ausnahme)</div>
+              <div class="ni">PE010 bei der Sozialarbeit → dort nicht anwendbar</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fehlerquellen -->
+        <div>
+          <div class="sec"><div class="sec-bar p"></div><h2>Häufige Fehlerquellen</h2><div class="sec-rule"></div></div>
+          <div class="wb">
+            <h4>⚠ Regressrisiko / Falscherfassung</h4>
+            <div class="wb-items">
+              <div class="wi">E-Mail-6er-Regel: veraltet — aktuell 4×/30 Tage</div>
+              <div class="wi">Wegzeit bei PA230 doppelt als EA.05.0060 buchen</div>
+              <div class="wi">EA.05.0150 + EA.05.0010 am selben Tag kombinieren</div>
+              <div class="wi">Psy/Psy-DK im Regelbetrieb ohne spez. Begründung</div>
+              <div class="wi">PE010 bei Sozialarbeit anwenden (dort nicht gültig)</div>
+              <div class="wi">LAP-Topf: falsche Altersgruppe verwenden</div>
+              <div class="wi">Krise A und B verwechseln (180 Min vs. unbegrenzt)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <span>Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</span>
+    <span>TARDOC Kapitel EA.05 · Gültig ab 01.01.2026</span>
+  </div>
+</div>
+</body>
+</html>

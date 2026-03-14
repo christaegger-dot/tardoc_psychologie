@@ -152,6 +152,53 @@
     transition: all .2s;
   }
   .nav-link:hover { color: var(--indigo-light); border-bottom-color: var(--indigo-light); }
+  .nav-link.active { color: var(--indigo); border-bottom-color: var(--indigo); font-weight: 600; }
+
+  /* ── SEARCH ── */
+  .search-wrap {
+    position: relative; display: flex; align-items: center;
+    margin-left: auto; flex-shrink: 0;
+  }
+  .search-input {
+    width: 0; opacity: 0; padding: 0; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    background: var(--bg); border-radius: 8px;
+    transition: width .3s, opacity .3s, padding .3s;
+    outline: none; color: var(--text);
+  }
+  .search-input.open {
+    width: 200px; opacity: 1; padding: 7px 12px 7px 32px;
+    border: 1.5px solid var(--border);
+  }
+  .search-input.open:focus { border-color: var(--indigo-light); }
+  .search-btn {
+    position: absolute; left: 6px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; color: var(--slate);
+    display: flex; align-items: center; z-index: 2; padding: 4px;
+  }
+  .search-btn:hover { color: var(--indigo); }
+  .search-results {
+    display: none; position: absolute; top: 100%; right: 0;
+    background: white; border: 1.5px solid var(--border);
+    border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,.12);
+    width: 320px; max-height: 360px; overflow-y: auto;
+    margin-top: 6px; z-index: 200;
+  }
+  .search-results.visible { display: block; }
+  .sr-item {
+    padding: 10px 14px; border-bottom: 1px solid #f1f5f9;
+    cursor: pointer; transition: background .15s;
+  }
+  .sr-item:last-child { border-bottom: none; }
+  .sr-item:hover { background: var(--bg); }
+  .sr-title { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .sr-context { font-size: 12px; color: var(--slate-light); margin-top: 2px; }
+  .sr-empty { padding: 16px; text-align: center; font-size: 13px; color: var(--slate-light); }
+  mark { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 1px; }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .section { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .section.visible { opacity: 1; transform: translateY(0); }
 
   /* ── SECTION ── */
   .section { margin-bottom: 52px; }
@@ -565,6 +612,7 @@
     .header { padding: 20px 24px; }
     .header h1 { font-size: 28px; }
     .main { padding: 20px 16px; }
+    .section { opacity: 1; transform: none; }
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     @page { size: A4; margin: 15mm; }
   }
@@ -578,6 +626,8 @@
     .idt-fork, .idt-sub-fork { flex-direction: column; }
     .expo-stats { grid-template-columns: 1fr 1fr; }
     .btn-bar { bottom: 12px; right: 12px; }
+    .search-input.open { width: 150px; }
+    .search-results { width: 280px; }
     .tel-row { grid-template-columns: 1fr 1fr; }
   }
 </style>
@@ -627,6 +677,13 @@
     <a href="#lap-topf" class="nav-link">LAP-Topf</a>
     <a href="#szenarien" class="nav-link">Szenarien</a>
     <a href="#kurzfassung" class="nav-link">10-Punkte</a>
+    <div class="search-wrap">
+      <button class="search-btn" aria-label="Suche öffnen" onclick="toggleSearch()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <input type="text" class="search-input" id="searchInput" placeholder="Code oder Begriff suchen…" aria-label="Suchbegriff eingeben">
+      <div class="search-results" id="searchResults"></div>
+    </div>
   </div>
 </nav>
 
@@ -1560,12 +1617,124 @@
 </div>
 
 <script>
+  // ── Smooth scroll navigation ──
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  });
+
+  // ── Scroll-spy: highlight active nav link ──
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const navBar = document.querySelector('.nav-bar');
+  const navOffset = navBar ? navBar.offsetHeight + 20 : 60;
+
+  function updateScrollSpy() {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - navOffset - 40;
+      if (window.scrollY >= top) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateScrollSpy, { passive: true });
+  updateScrollSpy();
+
+  // ── Scroll animations: fade-in sections ──
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(sec => fadeObserver.observe(sec));
+
+  // ── Live search ──
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  let searchOpen = false;
+
+  function toggleSearch() {
+    searchOpen = !searchOpen;
+    searchInput.classList.toggle('open', searchOpen);
+    if (searchOpen) {
+      searchInput.focus();
+    } else {
+      searchInput.value = '';
+      searchResults.classList.remove('visible');
+      clearHighlights();
+    }
+  }
+
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Escape') toggleSearch();
+  });
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    clearHighlights();
+    if (q.length < 2) {
+      searchResults.classList.remove('visible');
+      return;
+    }
+
+    const results = [];
+    sections.forEach(sec => {
+      const title = sec.querySelector('.section-title');
+      const titleText = title ? title.textContent : '';
+      const content = sec.textContent;
+      const idx = content.toLowerCase().indexOf(q);
+      if (idx !== -1) {
+        const start = Math.max(0, idx - 30);
+        const end = Math.min(content.length, idx + q.length + 50);
+        let snippet = (start > 0 ? '…' : '') +
+          content.substring(start, idx) +
+          '<mark>' + content.substring(idx, idx + q.length) + '</mark>' +
+          content.substring(idx + q.length, end) +
+          (end < content.length ? '…' : '');
+        results.push({ id: sec.id, title: titleText.trim(), snippet });
+      }
+    });
+
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="sr-empty">Keine Treffer</div>';
+    } else {
+      searchResults.innerHTML = results.map(r =>
+        '<div class="sr-item" data-target="' + r.id + '">' +
+        '<div class="sr-title">' + r.title + '</div>' +
+        '<div class="sr-context">' + r.snippet + '</div></div>'
+      ).join('');
+      searchResults.querySelectorAll('.sr-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const target = document.getElementById(item.dataset.target);
+          if (target) {
+            target.classList.add('visible');
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          searchResults.classList.remove('visible');
+        });
+      });
+    }
+    searchResults.classList.add('visible');
+  });
+
+  function clearHighlights() {
+    document.querySelectorAll('.section mark').forEach(m => {
+      m.replaceWith(m.textContent);
+    });
+  }
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.search-wrap')) {
+      if (searchOpen) toggleSearch();
+    }
   });
 </script>
 </body>

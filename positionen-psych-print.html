@@ -3,37 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Positionenübersicht TARDOC EA.05 für Psychologinnen mit PT-Ausbildung in der KJPP-Tagesklinik. Alle verrechenbaren Positionen auf einen Blick.">
 <title>Positionen · Tarif-Kompass 2026 · Psychologinnen</title>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" as="style">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared-print.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#1a3560;--ind:#3730a3;--ind-l:#eef2ff;--ind-m:#a5b4fc;
-  --teal:#0a7c71;--teal-l:#e6f4f2;--teal-m:#a7d9d5;
-  --purple:#7c3aed;--purple-l:#f5f3ff;--purple-m:#c4b5fd;
-  --amber:#b85c00;--amber-l:#fef3e2;--amber-m:#e8c68a;
-  --rose:#c0103a;--rose-l:#fdf0f3;--rose-m:#f0b8c5;
-  --green:#1a6b3a;--green-l:#ebf6ef;
-  --mid:#4a5568;--soft:#718096;--line:#dde3eb;--bg:#edf0f4;--paper:#fff;
-}
-body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 16px}
-.printbar{width:210mm;max-width:100%;background:white;border-radius:10px;padding:11px 20px;display:flex;align-items:center;gap:12px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
-.printbar-label{flex:1;font-size:12.5px;color:var(--soft)}
-.printbar-label strong{color:var(--ink)}
-.pbtn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:7px;border:none;font-family:'Source Sans 3',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:none}
-.pbtn-ghost{background:var(--bg);color:var(--mid);border:1px solid var(--line)}
-.pbtn-dark{background:var(--ink);color:white}
-.sheet{width:210mm;min-height:297mm;background:var(--paper);box-shadow:0 6px 32px rgba(0,0,0,.13);display:flex;flex-direction:column}
-
-.mast{background:var(--ink);padding:10mm 14mm 8mm;position:relative;overflow:hidden}
-.mast::after{content:'';position:absolute;right:0;top:0;bottom:0;width:45mm;background:linear-gradient(90deg,transparent,rgba(99,102,241,.2))}
-.mast-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4mm}
-.mast h1{font-family:'Playfair Display',serif;font-size:23pt;color:white;line-height:1.1}
-.mast h1 em{color:#a5b4fc;font-style:normal}
-.mast-sub{font-size:8.5pt;color:rgba(255,255,255,.5);font-weight:300;margin-top:2px}
-.mast-meta{text-align:right;font-size:7.5pt;color:rgba(255,255,255,.4);line-height:1.6;z-index:1;position:relative}
-.mast-meta strong{color:#a5b4fc;font-size:8.5pt;display:block;margin-bottom:1px}
-
 /* legend pills */
 .legend{display:flex;gap:3mm;flex-wrap:wrap}
 .lp{border-radius:4px;padding:3px 9px;font-size:7pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
@@ -47,14 +22,6 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 .lp-no{background:rgba(248,113,113,.12);color:#fca5a5;border:1px solid rgba(248,113,113,.25)}
 
 .body{flex:1;padding:5mm 14mm 6mm;display:flex;flex-direction:column;gap:3.5mm}
-
-.sec{display:flex;align-items:center;gap:7px;margin-bottom:2.5mm}
-.sec-bar{width:3px;height:14px;border-radius:2px;flex-shrink:0}
-.sec-bar.i{background:var(--ind)} .sec-bar.t{background:var(--teal)}
-.sec-bar.p{background:var(--purple)} .sec-bar.r{background:var(--rose)}
-.sec-bar.k{background:var(--ink)} .sec-bar.a{background:var(--amber)}
-.sec h2{font-size:6.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
-.sec-rule{flex:1;height:1px;background:var(--line)}
 
 /* main position table */
 .pos-table{background:white;border:1.5px solid var(--line);border-radius:7px;overflow:hidden}
@@ -118,32 +85,21 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 .wb-items{display:flex;flex-direction:column;gap:2px}
 .wi{font-size:7.5pt;color:#7a0020;display:flex;gap:5px;line-height:1.35}
 .wi::before{content:'→';color:var(--rose);font-weight:700;flex-shrink:0}
-
-.ft{border-top:1px solid var(--line);padding:3mm 14mm;display:flex;justify-content:space-between}
-.ft span{font-size:7pt;color:var(--soft)}
-
-@media print{
-  body{background:white;padding:0}
-  .printbar{display:none}
-  .sheet{box-shadow:none;min-height:auto}
-  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  @page{size:A4;margin:0}
-}
 </style>
 </head>
 <body>
 
-<div class="printbar">
+<nav class="printbar" aria-label="Seitennavigation">
   <div class="printbar-label"><strong>Positionenübersicht Psychologinnen</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
   <a class="pbtn pbtn-ghost" href="index-psych.html">← Zurück</a>
-  <button class="pbtn pbtn-dark" onclick="window.print()">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+  <button class="pbtn pbtn-dark" onclick="window.print()" aria-label="Seite als PDF drucken">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     Als PDF drucken
   </button>
-</div>
+</nav>
 
-<div class="sheet">
-  <div class="mast">
+<main class="sheet">
+  <header class="mast">
     <div class="mast-top">
       <div>
         <h1>Positionen <em>EA.05</em></h1>
@@ -164,7 +120,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
       <span class="lp lp-weg">Wegzeit</span>
       <span class="lp lp-no">Nicht verrechenbar</span>
     </div>
-  </div>
+  </header>
 
   <div class="body">
 
@@ -401,10 +357,10 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
     </div>
   </div>
 
-  <div class="ft">
+  <footer class="ft">
     <span>Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</span>
     <span>TARDOC Kapitel EA.05 · Gültig ab 01.01.2026</span>
-  </div>
-</div>
+  </footer>
+</main>
 </body>
 </html>

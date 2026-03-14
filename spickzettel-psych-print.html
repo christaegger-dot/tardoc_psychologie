@@ -3,37 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="10-Punkte-Spickzettel TARDOC EA.05 für Psychologinnen mit PT-Ausbildung. Entscheidungsbaum, Mengengrenzen und Krisenlogik auf einen Blick.">
 <title>Spickzettel · Tarif-Kompass 2026 · Psychologinnen</title>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" as="style">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared-print.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#1a3560;--ind:#3730a3;--ind-l:#eef2ff;--ind-m:#a5b4fc;
-  --teal:#0a7c71;--teal-l:#e6f4f2;--teal-m:#a7d9d5;
-  --purple:#7c3aed;--purple-l:#f5f3ff;--purple-m:#c4b5fd;
-  --amber:#b85c00;--amber-l:#fef3e2;--amber-m:#e8c68a;
-  --rose:#c0103a;--rose-l:#fdf0f3;--rose-m:#f0b8c5;
-  --green:#1a6b3a;--green-l:#ebf6ef;
-  --mid:#4a5568;--soft:#718096;--line:#dde3eb;--bg:#edf0f4;--paper:#fff;
-}
-body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 16px}
-.printbar{width:210mm;max-width:100%;background:white;border-radius:10px;padding:11px 20px;display:flex;align-items:center;gap:12px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
-.printbar-label{flex:1;font-size:12.5px;color:var(--soft)}
-.printbar-label strong{color:var(--ink)}
-.pbtn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:7px;border:none;font-family:'Source Sans 3',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:none}
-.pbtn-ghost{background:var(--bg);color:var(--mid);border:1px solid var(--line)}
-.pbtn-dark{background:var(--ink);color:white}
-.sheet{width:210mm;min-height:297mm;background:var(--paper);box-shadow:0 6px 32px rgba(0,0,0,.13);display:flex;flex-direction:column}
-
-/* masthead */
-.mast{background:var(--ink);padding:11mm 14mm 9mm;position:relative;overflow:hidden}
-.mast::after{content:'';position:absolute;right:0;top:0;bottom:0;width:45mm;background:linear-gradient(90deg,transparent,rgba(99,102,241,.2))}
-.mast-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5mm}
-.mast h1{font-family:'Playfair Display',serif;font-size:25pt;color:white;line-height:1.1;letter-spacing:-.3px}
-.mast h1 em{color:#a5b4fc;font-style:normal}
-.mast-sub{font-size:9pt;color:rgba(255,255,255,.5);font-weight:300;margin-top:3px}
-.mast-meta{text-align:right;font-size:8pt;color:rgba(255,255,255,.4);line-height:1.6;z-index:1;position:relative}
-.mast-meta strong{color:#a5b4fc;font-size:9pt;display:block;margin-bottom:2px}
+/* masthead overrides for spickzettel */
+.mast{padding:11mm 14mm 9mm}
+.mast-top{margin-bottom:5mm}
+.mast h1{font-size:25pt;letter-spacing:-.3px}
+.mast-sub{font-size:9pt;margin-top:3px}
+.mast-meta{font-size:8pt}
+.mast-meta strong{font-size:9pt;margin-bottom:2px}
 .pills{display:flex;gap:3.5mm;flex-wrap:wrap}
 .pill{border-radius:20px;padding:4px 11px;display:flex;align-items:center;gap:7px}
 .pill-i{background:rgba(165,180,252,.12);border:1px solid rgba(165,180,252,.3)}
@@ -48,13 +30,10 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 .body{flex:1;padding:6mm 14mm 7mm;display:flex;flex-direction:column;gap:4.5mm}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:5.5mm}
 
-/* section label */
-.sec{display:flex;align-items:center;gap:8px;margin-bottom:3mm}
-.sec-bar{width:3px;height:15px;border-radius:2px;flex-shrink:0}
-.sec-bar.i{background:var(--ind)} .sec-bar.t{background:var(--teal)}
-.sec-bar.p{background:var(--purple)} .sec-bar.k{background:var(--ink)}
-.sec h2{font-size:7pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
-.sec-rule{flex:1;height:1px;background:var(--line)}
+/* section overrides */
+.sec{gap:8px;margin-bottom:3mm}
+.sec-bar{height:15px}
+.sec h2{font-size:7pt}
 
 /* decision tree */
 .dt{display:flex;flex-direction:column}
@@ -135,32 +114,23 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 .wb h4{font-size:8pt;font-weight:700;color:var(--amber);margin-bottom:2px}
 .wb p{font-size:7.5pt;color:#6b3700;line-height:1.4}
 
-/* footer */
-.ft{border-top:1px solid var(--line);padding:3.5mm 14mm;display:flex;justify-content:space-between}
-.ft span{font-size:7pt;color:var(--soft)}
-
-@media print{
-  body{background:white;padding:0}
-  .printbar{display:none}
-  .sheet{box-shadow:none;min-height:auto}
-  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  @page{size:A4;margin:0}
-}
+/* footer override */
+.ft{padding:3.5mm 14mm}
 </style>
 </head>
 <body>
 
-<div class="printbar">
+<nav class="printbar" aria-label="Seitennavigation">
   <div class="printbar-label"><strong>Spickzettel Psychologinnen</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
   <a class="pbtn pbtn-ghost" href="index-psych.html">← Zurück</a>
-  <button class="pbtn pbtn-dark" onclick="window.print()">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+  <button class="pbtn pbtn-dark" onclick="window.print()" aria-label="Seite als PDF drucken">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     Als PDF drucken
   </button>
-</div>
+</nav>
 
-<div class="sheet">
-  <div class="mast">
+<main class="sheet">
+  <header class="mast">
     <div class="mast-top">
       <div>
         <h1>Tarif-Kompass <em>2026</em></h1>
@@ -179,7 +149,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
       <div class="pill pill-p"><div class="pill-num">360'</div><div class="pill-lbl"><strong>Exposition</strong>/ 180 Tage</div></div>
       <div class="pill pill-a"><div class="pill-num">4×</div><div class="pill-lbl"><strong>E-Mail max.</strong>/ 30 Tage</div></div>
     </div>
-  </div>
+  </header>
 
   <div class="body">
     <div class="cols">
@@ -355,10 +325,10 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
     </div>
   </div>
 
-  <div class="ft">
+  <footer class="ft">
     <span>Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</span>
     <span>TARDOC Kapitel EA.05 · tardoc.netlify.app</span>
-  </div>
-</div>
+  </footer>
+</main>
 </body>
 </html>

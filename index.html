@@ -9,6 +9,9 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tardoc-psychologiekjpp.netlify.app/">
 <meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tarif-Kompass 2026 · Psychologinnen KJPP">
+<meta name="twitter:description" content="TARDOC EA.05 Referenz: 75+15-Logik, Diagnostik, Exposition, Krise A/B, LAP-Topf.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%234338ca'/><text x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'>T</text></svg>">
@@ -674,6 +677,18 @@
     .section-accordion > .section-content { display: block !important; }
     .accordion-icon { display: none !important; }
     .tip-box { display: none !important; }
+    /* Alle <details>-Akkordeons im Druck aufklappen */
+    details { display: block !important; }
+    details > summary { display: block !important; pointer-events: none; }
+    details > summary ~ * { display: block !important; }
+    .section-content {
+      display: block !important;
+      max-height: none !important;
+      overflow: visible !important;
+      opacity: 1 !important;
+    }
+    /* Seitenumbrüche vor grossen Abschnitten */
+    .section { page-break-inside: avoid; }
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     @page { size: A4; margin: 15mm; }
   }
@@ -1764,6 +1779,9 @@
 <div class="footer">
   <span>Tarif-Kompass 2026 · Psychologinnen mit Psychotherapieausbildung · KJPP-Tagesklinik</span>
   <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026</span>
+  <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:12px;color:var(--slate-light)">
+    Sozialarbeiter-Version: <a href="https://tardoc.netlify.app/" style="color:var(--slate-light);text-decoration:underline">tardoc.netlify.app</a>
+  </div>
 </div>
 
 <!-- BUTTON BAR -->
@@ -1780,7 +1798,7 @@
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
     Verlaufseintrag
   </a>
-  <button class="dl-btn" style="background:#3730a3;color:white;" onclick="window.print()">
+  <button class="dl-btn" style="background:#3730a3;color:white;" onclick="window.print()" aria-label="Seite drucken">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     Drucken
   </button>

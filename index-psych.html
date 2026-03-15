@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tarif-Kompass 2026 für Psychologinnen mit PT-Ausbildung in der KJPP-Tagesklinik. TARDOC EA.05 Regeln, Positionen, Limiten und Dokumentationsvorlagen.">
 <title>Tarif-Kompass 2026 · Psychologinnen KJPP</title>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" as="style">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -150,9 +152,105 @@
     transition: all .2s;
   }
   .nav-link:hover { color: var(--indigo-light); border-bottom-color: var(--indigo-light); }
+  .nav-link.active { color: var(--indigo); border-bottom-color: var(--indigo); font-weight: 600; }
+
+  /* ── SEARCH ── */
+  .search-wrap {
+    position: relative; display: flex; align-items: center;
+    margin-left: auto; flex-shrink: 0;
+  }
+  .search-input {
+    width: 0; opacity: 0; padding: 0; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 13px;
+    background: var(--bg); border-radius: 8px;
+    transition: width .3s, opacity .3s, padding .3s;
+    outline: none; color: var(--text);
+  }
+  .search-input.open {
+    width: 200px; opacity: 1; padding: 7px 12px 7px 32px;
+    border: 1.5px solid var(--border);
+  }
+  .search-input.open:focus { border-color: var(--indigo-light); }
+  .search-btn {
+    position: absolute; left: 6px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; color: var(--slate);
+    display: flex; align-items: center; z-index: 2; padding: 4px;
+  }
+  .search-btn:hover { color: var(--indigo); }
+  .search-results {
+    display: none; position: absolute; top: 100%; right: 0;
+    background: white; border: 1.5px solid var(--border);
+    border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,.12);
+    width: 320px; max-height: 360px; overflow-y: auto;
+    margin-top: 6px; z-index: 200;
+  }
+  .search-results.visible { display: block; }
+  .sr-item {
+    padding: 10px 14px; border-bottom: 1px solid #f1f5f9;
+    cursor: pointer; transition: background .15s;
+  }
+  .sr-item:last-child { border-bottom: none; }
+  .sr-item:hover { background: var(--bg); }
+  .sr-title { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .sr-context { font-size: 12px; color: var(--slate-light); margin-top: 2px; }
+  .sr-empty { padding: 16px; text-align: center; font-size: 13px; color: var(--slate-light); }
+  mark { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 1px; }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .section { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .section.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── ACCORDION (mobile) ── */
+  .section-accordion { border: none; margin-bottom: 52px; }
+  .section-accordion > summary { list-style: none; cursor: pointer; }
+  .section-accordion > summary::-webkit-details-marker { display: none; }
+  .section-accordion > summary::marker { display: none; content: ''; }
+  .section-accordion > summary .section-title { position: relative; }
+  .section-accordion > summary .accordion-icon {
+    display: none; width: 24px; height: 24px; border-radius: 50%;
+    background: var(--bg); color: var(--slate);
+    align-items: center; justify-content: center; flex-shrink: 0;
+    transition: transform .3s; font-size: 14px; font-weight: 700;
+  }
+  .section-accordion[open] > summary .accordion-icon { transform: rotate(180deg); }
+
+  @media (max-width: 600px) {
+    .section-accordion > summary .accordion-icon { display: flex; }
+    .section-accordion:not([open]) > .section-content { display: none; }
+    .section-accordion > .section-content {
+      animation: accordionOpen .3s ease;
+    }
+  }
+  @keyframes accordionOpen {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── TOOLTIPS ── */
+  .code-tip {
+    position: relative; cursor: help;
+    border-bottom: 1px dashed var(--indigo-light);
+  }
+  .code-tip .tip-box {
+    display: none; position: absolute; bottom: calc(100% + 8px); left: 50%;
+    transform: translateX(-50%); z-index: 150;
+    background: var(--navy); color: white;
+    padding: 10px 14px; border-radius: 8px;
+    font-size: 12.5px; line-height: 1.5; width: 260px;
+    box-shadow: 0 6px 24px rgba(0,0,0,.2);
+    pointer-events: none;
+  }
+  .code-tip .tip-box::after {
+    content: ''; position: absolute; top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent; border-top-color: var(--navy);
+  }
+  .code-tip:hover .tip-box, .code-tip:focus .tip-box { display: block; }
+  .tip-title { font-weight: 700; margin-bottom: 3px; color: #c7d2fe; }
+  .tip-limit { font-weight: 600; color: #fbbf24; }
 
   /* ── SECTION ── */
-  .section { margin-bottom: 52px; }
+  .section, .section-accordion { margin-bottom: 52px; }
   .section-title {
     font-family: 'DM Serif Display', serif;
     font-size: 26px; color: var(--navy);
@@ -563,6 +661,11 @@
     .header { padding: 20px 24px; }
     .header h1 { font-size: 28px; }
     .main { padding: 20px 16px; }
+    .section { opacity: 1; transform: none; }
+    .section-accordion { display: block; }
+    .section-accordion > .section-content { display: block !important; }
+    .accordion-icon { display: none !important; }
+    .tip-box { display: none !important; }
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     @page { size: A4; margin: 15mm; }
   }
@@ -576,6 +679,8 @@
     .idt-fork, .idt-sub-fork { flex-direction: column; }
     .expo-stats { grid-template-columns: 1fr 1fr; }
     .btn-bar { bottom: 12px; right: 12px; }
+    .search-input.open { width: 150px; }
+    .search-results { width: 280px; }
     .tel-row { grid-template-columns: 1fr 1fr; }
   }
 </style>
@@ -625,19 +730,28 @@
     <a href="#lap-topf" class="nav-link">LAP-Topf</a>
     <a href="#szenarien" class="nav-link">Szenarien</a>
     <a href="#kurzfassung" class="nav-link">10-Punkte</a>
+    <div class="search-wrap">
+      <button class="search-btn" aria-label="Suche öffnen" onclick="toggleSearch()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <input type="text" class="search-input" id="searchInput" placeholder="Code oder Begriff suchen…" aria-label="Suchbegriff eingeben">
+      <div class="search-results" id="searchResults"></div>
+    </div>
   </div>
 </nav>
 
 <div class="main">
 
   <!-- ─── ZWEI EBENEN ─── -->
-  <section class="section" id="zweischicht">
-    <div class="section-title">
+  <details open class="section section-accordion" id="zweischicht">
+    <summary>
+      <div class="section-title">
       <span class="num">1</span>
       Das hybride Zwei-Ebenen-System
-    </div>
-    <p class="section-lead">Psychologinnen in der KJPP arbeiten gleichzeitig in zwei Logiken.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Psychologinnen in der KJPP arbeiten gleichzeitig in zwei Logiken.</p>
+    </summary>
+    <div class="section-content">
     <div class="card-grid card-grid-2" style="margin-bottom:20px">
       <div style="background:var(--indigo-soft);border:1.5px solid #a5b4fc;border-radius:12px;padding:24px">
         <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:12px">Aussen · Tariflogisch</div>
@@ -655,16 +769,19 @@
       <span class="note-icon">ℹ️</span>
       <div><strong>Wichtigste Regel:</strong> Wenn sich ältere interne Psychologen-Folien und die aktuelle KJPP-Übersicht vom 01.01.2026 widersprechen, hat die <strong>neuere Übersicht + offizielle EA.05-Logik Vorrang</strong>. Das betrifft besonders die E-Mail-/Telemedizin-Limite.</div>
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── GRUNDREGELN ─── -->
-  <section class="section" id="grundregeln">
-    <div class="section-title">
+  <details open class="section section-accordion" id="grundregeln">
+    <summary>
+      <div class="section-title">
       <span class="num">2</span>
       Die 5 Grundregeln
-    </div>
-    <p class="section-lead">Was immer gilt — unabhängig von der spezifischen Situation.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Was immer gilt — unabhängig von der spezifischen Situation.</p>
+    </summary>
+    <div class="section-content">
     <div class="rule-cards">
       <div class="rule-card">
         <div class="rule-icon">📋</div>
@@ -702,16 +819,19 @@
         </div>
       </div>
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── LIMITS ─── -->
-  <section class="section" id="limits">
-    <div class="section-title">
+  <details open class="section section-accordion" id="limits">
+    <summary>
+      <div class="section-title">
       <span class="num">3</span>
       Mengengrenzen und interne Ziele
-    </div>
-    <p class="section-lead">Die 4h-Regel als oberstes Limit — plus interne Produktivitätsziele, die parallel laufen.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Die 4h-Regel als oberstes Limit — plus interne Produktivitätsziele, die parallel laufen.</p>
+    </summary>
+    <div class="section-content">
     <div class="card-grid card-grid-2" style="margin-bottom:20px">
       <div class="limit-box">
         <div class="limit-title">⏱ 4-Stunden-Regel (oberstes Limit)</div>
@@ -769,16 +889,19 @@
       <span class="note-icon">⚠️</span>
       <div>Tariflich korrekt heisst nicht automatisch produktivitätszieladäquat. Beide Logiken müssen gleichzeitig im Blick behalten werden.</div>
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── ENTSCHEIDUNGSBAUM ─── -->
-  <section class="section" id="entscheidung">
-    <div class="section-title">
+  <details open class="section section-accordion" id="entscheidung">
+    <summary>
+      <div class="section-title">
       <span class="num teal">4</span>
       Entscheidungsbaum: Welche Ziffer passt?
-    </div>
-    <p class="section-lead">Von oben nach unten — psychologenspezifische Leistungsblöcke separat beachten.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Von oben nach unten — psychologenspezifische Leistungsblöcke separat beachten.</p>
+    </summary>
+    <div class="section-content">
     <div class="idt">
       <div class="idt-title">Schritt für Schritt zur richtigen Ziffer</div>
       <div class="idt-sub">Drei Hauptfragen — dann spezifische Sublogik pro Leistungsblock.</div>
@@ -904,21 +1027,24 @@
         </div>
       </div>
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── POSITIONEN ─── -->
-  <section class="section" id="positionen">
-    <div class="section-title">
+  <details open class="section section-accordion" id="positionen">
+    <summary>
+      <div class="section-title">
       <span class="num">5</span>
       Alle relevanten EA.05-Positionen
-    </div>
-    <p class="section-lead">Öffentliche Tarifziffern und interne KJPP-Psychologen-Codes im Überblick.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Öffentliche Tarifziffern und interne KJPP-Psychologen-Codes im Überblick.</p>
+    </summary>
+    <div class="section-content">
     <div class="pos-grid">
 
       <div class="pos-item">
         <div>
-          <span class="pos-code">EA.05.0010</span>
+          <span class="pos-code code-tip" tabindex="0">EA.05.0010<span class="tip-box"><span class="tip-title">Einzelsetting</span>Patient anwesend · inkl. Akteneinsicht<br><span class="tip-limit">Max. 75 Min</span> + PE010 15 Min</span></span>
           <span class="pos-code-sub">intern: PA010</span>
         </div>
         <div>
@@ -930,7 +1056,7 @@
 
       <div class="pos-item" style="border-left:3px solid var(--indigo-light)">
         <div>
-          <span class="pos-code">PE010</span>
+          <span class="pos-code code-tip" tabindex="0">PE010<span class="tip-box"><span class="tip-title">Vor-/Nachbereitung</span>Zu PA010/PA030 · nur Psychologen-intern<br><span class="tip-limit">Max. 15 Min</span></span></span>
           <span class="pos-code-sub">interne Psychologenlogik</span>
         </div>
         <div>
@@ -942,7 +1068,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code">EA.05.0030</span>
+          <span class="pos-code code-tip" tabindex="0">EA.05.0030<span class="tip-box"><span class="tip-title">Familiensetting</span>Patient + Eltern/Bezugspersonen<br><span class="tip-limit">Max. 75 Min</span> + PE010 15 Min</span></span>
           <span class="pos-code-sub">intern: PA030</span>
         </div>
         <div>
@@ -954,7 +1080,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code">PA011 / PA031</span>
+          <span class="pos-code code-tip" tabindex="0">PA011 / PA031<span class="tip-box"><span class="tip-title">Fernmündliche Sitzung</span>Telefon/Video synchron mit Patient<br><span class="tip-limit">Max. 75 Min</span> · Anwesenheitsleistung</span></span>
           <span class="pos-code-sub">fernmündlich</span>
         </div>
         <div>
@@ -966,7 +1092,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code">EA.05.0050</span>
+          <span class="pos-code code-tip" tabindex="0">EA.05.0050<span class="tip-box"><span class="tip-title">Krisenintervention</span>Unter laufender PT · Anordnung A<br><span class="tip-limit">Max. 180 Min/Sitzung</span></span></span>
           <span class="pos-code-sub">intern: PA110 / PA111</span>
         </div>
         <div>
@@ -978,7 +1104,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code">EA.05.0150</span>
+          <span class="pos-code code-tip" tabindex="0">EA.05.0150<span class="tip-box"><span class="tip-title">Testdurchführung</span>Richtwert 80 Min · nicht mit 0010/0030 kombinieren<br><span class="tip-limit">Max. 180 Min / 90 Tage</span></span></span>
           <span class="pos-code-sub">intern: PA220</span>
         </div>
         <div>
@@ -990,7 +1116,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code">PE020</span>
+          <span class="pos-code code-tip" tabindex="0">PE020<span class="tip-box"><span class="tip-title">Test-Auswertung / Bericht</span>In Abwesenheit Patient · andere Tage möglich<br><span class="tip-limit">Max. 240 Min / 90 Tage</span></span></span>
           <span class="pos-code-sub">Auswertung</span>
         </div>
         <div>
@@ -1002,7 +1128,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code">PA230</span>
+          <span class="pos-code code-tip" tabindex="0">PA230<span class="tip-box"><span class="tip-title">Expositionstherapie</span>Wegzeit intern inkludiert · + PE010<br><span class="tip-limit">Max. 360 Min / 180 Tage</span></span></span>
           <span class="pos-code-sub">Exposition</span>
         </div>
         <div>
@@ -1014,7 +1140,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code">EA.05.0080</span>
+          <span class="pos-code code-tip" tabindex="0">EA.05.0080<span class="tip-box"><span class="tip-title">Telemedizin zeitversetzt</span>E-Mail / asynchron · 6er-Regel veraltet!<br><span class="tip-limit">1×/Tag · 4×/30 Tage</span></span></span>
           <span class="pos-code-sub">zeitversetzt</span>
         </div>
         <div>
@@ -1026,7 +1152,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code">EA.05.0060</span>
+          <span class="pos-code code-tip" tabindex="0">EA.05.0060<span class="tip-box"><span class="tip-title">Wegzeit</span>Hin + zurück · nicht Teil 4h-Regel<br><span class="tip-limit">Max. 60 Min/Sitzung</span><br>Bei PA230 bereits inkludiert!</span></span>
           <span class="pos-code-sub">Wegzeit</span>
         </div>
         <div>
@@ -1038,7 +1164,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code teal">EA.05.0100</span>
+          <span class="pos-code teal code-tip" tabindex="0">EA.05.0100<span class="tip-box"><span class="tip-title">Fremdaktenstudium</span>Nur externe Akten · altersgesteuert<br><span class="tip-limit">LAP-Topf: &lt;18 J. 240'/90T · ≥18 J. 180'/90T</span></span></span>
           <span class="pos-code-sub">PE045 / PE040</span>
         </div>
         <div>
@@ -1050,7 +1176,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code teal">EA.05.0110</span>
+          <span class="pos-code teal code-tip" tabindex="0">EA.05.0110<span class="tip-box"><span class="tip-title">Auskünfte Dritte</span>Schule, Beistand, Behörde · fachlich<br><span class="tip-limit">LAP-Topf altersgesteuert</span></span></span>
           <span class="pos-code-sub">PK025 / PK020</span>
         </div>
         <div>
@@ -1062,7 +1188,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code teal">EA.05.0130</span>
+          <span class="pos-code teal code-tip" tabindex="0">EA.05.0130<span class="tip-box"><span class="tip-title">Ext. Behandler-Besprechung</span>Ausserhalb regulärer Rapporte<br><span class="tip-limit">LAP-Topf altersgesteuert</span></span></span>
           <span class="pos-code-sub">PK015 / PK010</span>
         </div>
         <div>
@@ -1074,7 +1200,7 @@
 
       <div class="pos-item">
         <div>
-          <span class="pos-code teal">EA.05.0140</span>
+          <span class="pos-code teal code-tip" tabindex="0">EA.05.0140<span class="tip-box"><span class="tip-title">Diagnostik-/Therapieplanung</span>Schriftliches Ergebnis in Akte zwingend<br><span class="tip-limit">15 Min · 1×/90 Tage</span></span></span>
           <span class="pos-code-sub">PE030</span>
         </div>
         <div>
@@ -1085,16 +1211,19 @@
       </div>
 
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── DIAGNOSTIK ─── -->
-  <section class="section" id="diagnostik">
-    <div class="section-title">
+  <details open class="section section-accordion" id="diagnostik">
+    <summary>
+      <div class="section-title">
       <span class="num">6</span>
       Diagnostik und Testabklärung
-    </div>
-    <p class="section-lead">Eigener Leistungsblock mit zwei getrennten Limiten — kein Nebenthema.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Eigener Leistungsblock mit zwei getrennten Limiten — kein Nebenthema.</p>
+    </summary>
+    <div class="section-content">
     <div class="diag-grid" style="margin-bottom:20px">
       <div class="diag-box a">
         <h4>🔬 Durchführung · PA220 / EA.05.0150</h4>
@@ -1164,16 +1293,19 @@
         </ul>
       </div>
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── TELEFON/TELEMEDIZIN ─── -->
-  <section class="section" id="telefon">
-    <div class="section-title">
+  <details open class="section section-accordion" id="telefon">
+    <summary>
+      <div class="section-title">
       <span class="num">7</span>
       Telefon, E-Mail und Telemedizin
-    </div>
-    <p class="section-lead">Die häufigste Fehlerquelle — vier Kontakttypen mit vier verschiedenen Tariflogiken.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Die häufigste Fehlerquelle — vier Kontakttypen mit vier verschiedenen Tariflogiken.</p>
+    </summary>
+    <div class="section-content">
     <div class="tel-table" style="margin-bottom:20px">
       <div class="tel-row head">
         <div>Kontakttyp</div>
@@ -1226,16 +1358,19 @@
         Diese Unterscheidung ist wichtiger als die einzelne Codebezeichnung.
       </div>
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── KRISE A/B ─── -->
-  <section class="section" id="krise">
-    <div class="section-title">
+  <details open class="section section-accordion" id="krise">
+    <summary>
+      <div class="section-title">
       <span class="num">8</span>
       Krisenintervention: A-/B-Logik
-    </div>
-    <p class="section-lead">Psychologinnenspezifisch: nicht ein Krisencode, sondern ein zweistufiges System.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Psychologinnenspezifisch: nicht ein Krisencode, sondern ein zweistufiges System.</p>
+    </summary>
+    <div class="section-content">
     <div class="krise-grid">
       <div class="krise-box a">
         <div class="krise-sub">Anordnung A</div>
@@ -1271,16 +1406,19 @@
         <strong>Psy/Psy-Doppelkonsultationen:</strong> Im Regelbetrieb regressgefährdet — besonders Familiensettings. Berufsgruppenübergreifend in begründbaren Fällen möglich. Dokumentation zwingend.
       </div>
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── EXPOSITION ─── -->
-  <section class="section" id="exposition">
-    <div class="section-title">
+  <details open class="section section-accordion" id="exposition">
+    <summary>
+      <div class="section-title">
       <span class="num">9</span>
       Expositionstherapie
-    </div>
-    <p class="section-lead">Eigener psychologischer Leistungsblock — sprengt die normale Sitzungslogik.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Eigener psychologischer Leistungsblock — sprengt die normale Sitzungslogik.</p>
+    </summary>
+    <div class="section-content">
     <div class="expo-box">
       <div class="expo-title">PA230 · Expositionstherapie</div>
       <div class="expo-sub">Psychologinnenspezifisch · separates 180-Tage-Fenster</div>
@@ -1307,16 +1445,19 @@
         <span><strong>Häufige Fehlerquelle:</strong> Bei PA230-Logik die Wegzeit nicht nochmals separat als EA.05.0060 erfassen — sie ist intern bereits inkludiert!</span>
       </div>
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── LAP-TOPF ─── -->
-  <section class="section" id="lap-topf">
-    <div class="section-title">
+  <details open class="section section-accordion" id="lap-topf">
+    <summary>
+      <div class="section-title">
       <span class="num teal">10</span>
       LAP-Topf: Altersgesteuerte Substruktur
-    </div>
-    <p class="section-lead">Für Psychologinnen existiert intern nicht nur ein LAP-Topf — sondern eine alters- und funktionsbezogene Feinsteuerung.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Für Psychologinnen existiert intern nicht nur ein LAP-Topf — sondern eine alters- und funktionsbezogene Feinsteuerung.</p>
+    </summary>
+    <div class="section-content">
     <div class="lap-age-grid" style="margin-bottom:20px">
       <div class="lap-age-box u18">
         <h4>👶 Unter 18 Jahre</h4>
@@ -1378,16 +1519,19 @@
         </ul>
       </div>
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── SZENARIEN ─── -->
-  <section class="section" id="szenarien">
-    <div class="section-title">
+  <details open class="section section-accordion" id="szenarien">
+    <summary>
+      <div class="section-title">
       <span class="num">11</span>
       Alltagsszenarien
-    </div>
-    <p class="section-lead">Typische Situationen aus dem Tagesklinik-Alltag für Psychologinnen.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Typische Situationen aus dem Tagesklinik-Alltag für Psychologinnen.</p>
+    </summary>
+    <div class="section-content">
     <div class="scenario-grid">
 
       <div class="scenario-card">
@@ -1481,16 +1625,19 @@
       </div>
 
     </div>
-  </section>
+    </div>
+  </details>
 
   <!-- ─── KURZFASSUNG ─── -->
-  <section class="section" id="kurzfassung">
-    <div class="section-title">
+  <details open class="section section-accordion" id="kurzfassung">
+    <summary>
+      <div class="section-title">
       <span class="num">12</span>
       10 wichtigste Praxisregeln
-    </div>
-    <p class="section-lead">Die Kurzfassung für den Tagesklinik-Alltag.</p>
-
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Die Kurzfassung für den Tagesklinik-Alltag.</p>
+    </summary>
+    <div class="section-content">
     <div class="cheat-sheet">
       <div class="cheat-title">10-Punkte Spickzettel für Psychologinnen</div>
       <div class="cheat-sub">Aussen EA.05 · Innen PA-/PE-/PK-Logik · KJPP Tagesklinik</div>
@@ -1527,7 +1674,8 @@
         </div>
       </div>
     </div>
-  </section>
+    </div>
+  </details>
 
 </div>
 
@@ -1558,12 +1706,128 @@
 </div>
 
 <script>
+  // ── Smooth scroll navigation ──
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (target) {
+        if (target.tagName === 'DETAILS') target.open = true;
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
+  });
+
+  // ── Scroll-spy: highlight active nav link ──
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const navBar = document.querySelector('.nav-bar');
+  const navOffset = navBar ? navBar.offsetHeight + 20 : 60;
+
+  function updateScrollSpy() {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - navOffset - 40;
+      if (window.scrollY >= top) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateScrollSpy, { passive: true });
+  updateScrollSpy();
+
+  // ── Scroll animations: fade-in sections ──
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(sec => fadeObserver.observe(sec));
+
+  // ── Live search ──
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  let searchOpen = false;
+
+  function toggleSearch() {
+    searchOpen = !searchOpen;
+    searchInput.classList.toggle('open', searchOpen);
+    if (searchOpen) {
+      searchInput.focus();
+    } else {
+      searchInput.value = '';
+      searchResults.classList.remove('visible');
+      clearHighlights();
+    }
+  }
+
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Escape') toggleSearch();
+  });
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    clearHighlights();
+    if (q.length < 2) {
+      searchResults.classList.remove('visible');
+      return;
+    }
+
+    const results = [];
+    sections.forEach(sec => {
+      const title = sec.querySelector('.section-title');
+      const titleText = title ? title.textContent : '';
+      const content = sec.textContent;
+      const idx = content.toLowerCase().indexOf(q);
+      if (idx !== -1) {
+        const start = Math.max(0, idx - 30);
+        const end = Math.min(content.length, idx + q.length + 50);
+        let snippet = (start > 0 ? '…' : '') +
+          content.substring(start, idx) +
+          '<mark>' + content.substring(idx, idx + q.length) + '</mark>' +
+          content.substring(idx + q.length, end) +
+          (end < content.length ? '…' : '');
+        results.push({ id: sec.id, title: titleText.trim(), snippet });
+      }
+    });
+
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="sr-empty">Keine Treffer</div>';
+    } else {
+      searchResults.innerHTML = results.map(r =>
+        '<div class="sr-item" data-target="' + r.id + '">' +
+        '<div class="sr-title">' + r.title + '</div>' +
+        '<div class="sr-context">' + r.snippet + '</div></div>'
+      ).join('');
+      searchResults.querySelectorAll('.sr-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const target = document.getElementById(item.dataset.target);
+          if (target) {
+            if (target.tagName === 'DETAILS') target.open = true;
+            target.classList.add('visible');
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          searchResults.classList.remove('visible');
+        });
+      });
+    }
+    searchResults.classList.add('visible');
+  });
+
+  function clearHighlights() {
+    document.querySelectorAll('.section mark').forEach(m => {
+      m.replaceWith(m.textContent);
+    });
+  }
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.search-wrap')) {
+      if (searchOpen) toggleSearch();
+    }
   });
 </script>
 </body>

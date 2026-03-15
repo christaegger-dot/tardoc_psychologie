@@ -2,10 +2,11 @@
 
 Alle relevanten Änderungen an diesem Projekt werden in dieser Datei dokumentiert.
 
-## [Unreleased]
-- **Fix:** Quick-Card "Therapie-/Diagnostikplanung" navigiert zu Abschnitt 10 (LAP-Topf) statt 5 (Positionen).
-- **Fix:** Quick-Card "Patient-E-Mail" navigiert zu Abschnitt 7 (Telefon) statt 5 (Positionen).
-- **Fix:** EA00-Schreibweise in Quick-Cards korrigiert (`EA.00.0110`, `EA.00.0090`).
+## [1.1.1] - 2026-03-15
+### Geändert
+- **Fix:** Druckdatei-Links auf relative Pfade mit `.html`-Extension umgestellt (funktioniert nun auch in Deploy Previews und lokal).
+- **Inhalt:** EA.05.0070-Beschreibung in der Positionstabelle um Angehörigen-Hinweis ergänzt (KG-Führung S.1).
+- **Dokumentation:** CHANGELOG bereinigt, `[Unreleased]`-Block geleert.
 
 ## [1.1.0] - 2026-03-15
 ### Hinzugefügt
@@ -16,6 +17,11 @@ Alle relevanten Änderungen an diesem Projekt werden in dieser Datei dokumentier
 - **Code-Bereinigung:** CSS-Variablen korrigiert (En-Dash zu `--`), Markdown-Artefakte entfernt.
 - **Darstellung:** Doppeltes "240 Min" in der 4h-Box entfernt.
 - **Konsistenz:** `EA.05.`-Präfix in der Telefon-Tabelle ergänzt.
+- **Fix:** Quick-Card "Therapie-/Diagnostikplanung" navigiert zu Abschnitt 10 (LAP-Topf) statt 5 (Positionen).
+- **Fix:** Quick-Card "Patient-E-Mail" navigiert zu Abschnitt 7 (Telefon) statt 5 (Positionen).
+- **Fix:** EA00-Schreibweise in Quick-Cards korrigiert (`EA.00.0110`, `EA.00.0090`).
+- **Druckdateien:** Explizite Seitenumbrüche in Verlaufseintrag und Positionen gesetzt.
+- **Druckdateien:** Badge-Texte im Verlaufseintrag gekürzt und font-size reduziert.
 
 ## [1.0.0] - 2026-03-15
 ### Hinzugefügt

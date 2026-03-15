@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- ============================================================
      Tarif-Kompass 2026 · Psychologinnen KJPP
-     Version: 1.1.1 · Stand: 15.03.2026
+     Version: 1.2.0 · Stand: 16.03.2026
      Gültig ab: 01.01.2026 (TARDOC EA.05)
      Repository: https://github.com/christaegger-dot/tardoc_psychologie
      Live: https://tardoc-psychologiekjpp.netlify.app/
@@ -88,7 +88,7 @@ width: 200px; height: 200px;
 border-radius: 50%;
 background: rgba(99,102,241,0.12);
 }
-.header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+.header-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
 .header-badge {
 display: inline-block;
 background: rgba(255,255,255,0.22);
@@ -148,7 +148,14 @@ color: #e0e7ff;
 .layer-pill strong { font-weight: 700; }
 
 /* ── LAYOUT ── */
-.main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+.main { max-width: 1100px; margin: 0 auto; padding: 40px 40px 80px; }
+
+/* ── LESEBREITE: Inhalte auf Laptop auf optimale Zeilenlänge begrenzen ── */
+.section-content {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* ── NAV ── */
 .nav-bar {
@@ -158,7 +165,7 @@ position: sticky; top: 0; z-index: 100;
 box-shadow: 0 2px 12px rgba(55,48,163,0.10);
 }
 .nav-inner {
-max-width: 900px; margin: 0 auto;
+max-width: 1100px; margin: 0 auto;
 padding: 0 24px;
 display: flex; gap: 2px; overflow-x: auto;
 -webkit-overflow-scrolling: touch;
@@ -733,7 +740,7 @@ position: sticky; top: 50px; z-index: 99;
 box-shadow: 0 1px 6px rgba(55,48,163,0.06);
 }
 .quick-tools-inner {
-max-width: 900px; margin: 0 auto;
+max-width: 1100px; margin: 0 auto;
 padding: 8px 24px;
 display: flex; align-items: center; gap: 12px;
 }
@@ -803,7 +810,7 @@ transition: transform .15s, box-shadow .15s;
 
 /* ── FOOTER ── */
 .footer {
-max-width: 900px; margin: 0 auto;
+max-width: 1100px; margin: 0 auto;
 padding: 24px 24px 40px;
 border-top: 1px solid var(--border);
 display: flex; justify-content: space-between;
@@ -833,6 +840,9 @@ display: block !important;
 max-height: none !important;
 overflow: visible !important;
 opacity: 1 !important;
+max-width: none !important;
+margin-left: 0 !important;
+margin-right: 0 !important;
 }
 /* Seitenumbrüche vor grossen Abschnitten */
 .section { page-break-inside: avoid; }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tardoc-psychologiekjpp.netlify.app/sitemap.xml

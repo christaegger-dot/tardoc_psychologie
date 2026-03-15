@@ -984,7 +984,7 @@
                     360 Min / 180 Tage · Wegzeit inkl.
                   </div>
                   <div class="idt-res amber">
-                    <small>PA110/111 oder EA00.0090 · Krise</small>
+                    <small>PA110/111 oder EA.00.0090 · Krise</small>
                     <strong>Krisenintervention</strong>
                     → A- oder B-Logik prüfen!
                   </div>
@@ -1019,11 +1019,11 @@
                       <div style="border:1.5px dashed var(--teal);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--text);background:#f0fdfa;margin:2px 0">
                         <div style="font-weight:700;color:var(--teal);margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.06em">↕ Abgrenzung beachten!</div>
                         Vollständiges therapeutisches Telefongespräch → <strong>PA011</strong> (75 Min).<br>
-                        Kurze Rückmeldung / Instruktion → <strong>EA00.0110</strong> (20 Min).<br>
+                        Kurze Rückmeldung / Instruktion → <strong>EA.00.0110</strong> (20 Min).<br>
                         <span style="color:var(--slate-light);font-style:italic">Im Zweifel: War es eine echte Sitzung oder nur ein kurzer Check-in?</span>
                       </div>
                       <div class="idt-res" style="background:#f0fdfa;border:1.5px solid #99f6e4;color:var(--navy)">
-                        <small style="color:var(--teal)">EA00.0110 · Nicht-EA.05</small>
+                        <small style="color:var(--teal)">EA.00.0110 · Nicht-EA.05</small>
                         <strong>Telefonische Verlaufskonsultation</strong>
                         max. 20 Min · KEINE volle Sitzung
                       </div>
@@ -1035,8 +1035,15 @@
                     </div>
                   </div>
                   <div class="idt-sub-branch">
-                    <div class="idt-branch-label n" style="font-size:10px">NEIN → LAP-Topf</div>
+                    <div class="idt-branch-label n" style="font-size:10px">NEIN → Patient nicht anwesend</div>
                     <div style="display:grid;gap:5px;width:100%">
+                      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);padding:6px 0 2px;border-bottom:1.5px dashed var(--teal);margin-bottom:2px">Direkte Patientenkommunikation (zeitversetzt)</div>
+                      <div class="idt-res" style="background:#f0fdfa;border:1.5px solid #99f6e4;color:var(--navy)">
+                        <small style="color:var(--teal)">EA.05.0080 · zeitversetzt</small>
+                        <strong>E-Mail / asynchron</strong>
+                        max. 1×/Tag · 4×/30 Tage
+                      </div>
+                      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);padding:8px 0 2px;border-bottom:1.5px dashed var(--blue);margin-bottom:2px">LAP-Topf (Kontakte über Patient, ohne Patient)</div>
                       <div class="idt-res blue">
                         <small>PE045/PE040 · EA.05.0100</small>
                         <strong>Fremdaktenstudium</strong>
@@ -1057,11 +1064,6 @@
                         <small>PE030 · EA.05.0140</small>
                         <strong>Hilfe-/Therapieplanung</strong>
                         1× / 90 Tage · schriftl. Ergebnis!
-                      </div>
-                      <div class="idt-res amber">
-                        <small>EA.05.0080 · zeitversetzt</small>
-                        <strong>E-Mail / asynchron</strong>
-                        max. 1×/Tag · 4×/30 Tage
                       </div>
                     </div>
                   </div>
@@ -1148,7 +1150,7 @@
 
       <div class="pos-item" style="border-left:3px solid var(--teal)">
         <div>
-          <span class="pos-code code-tip" tabindex="0">EA00.0110<span class="tip-box"><span class="tip-title">Telefonische Verlaufskonsultation</span>Kurze Rückmeldung / Instruktion · kein volles Therapiegespräch<br><span class="tip-limit">Max. 20 Min</span> · Nicht-EA.05-Ziffer (EA00)</span></span>
+          <span class="pos-code code-tip" tabindex="0">EA.00.0110<span class="tip-box"><span class="tip-title">Telefonische Verlaufskonsultation</span>Kurze Rückmeldung / Instruktion · kein volles Therapiegespräch<br><span class="tip-limit">Max. 20 Min</span> · Nicht-EA.05-Ziffer (EA00)</span></span>
           <span class="pos-code-sub">Nicht-EA.05 · Verlauf</span>
         </div>
         <div>
@@ -1457,7 +1459,7 @@
         <div class="krise-sub">Anordnung B</div>
         <h3>Krise im KANT / Spät-, Nacht-, Wochenenddienst</h3>
         <ul class="krise-list" style="margin-top:16px">
-          <li><strong>EA00.0090</strong> Psychiatrische Krisenintervention</li>
+          <li><strong>EA.00.0090</strong> Psychiatrische Krisenintervention</li>
           <li>oder <strong>EA.00.0130</strong> Telemedizinische Krisenintervention</li>
           <li>Effektiv aufgewendete Zeit, <strong>unbegrenzt</strong></li>
           <li>Nicht kumulierbar mit Konsultationen am selben Tag</li>
@@ -1662,7 +1664,7 @@
         <div class="scenario-body">
           <div class="scenario-q">⚡ Jugendlicher erscheint unangemeldet nachts im KANT — akute Krise</div>
           <div class="scenario-think">KANT / Nachtdienst · Anordnung B · unbegrenzt · nicht kumulierbar mit regulären Konsultationen</div>
-          <span class="scenario-answer orange">→ EA00.0090 Anordnung B (unbegrenzt)</span>
+          <span class="scenario-answer orange">→ EA.00.0090 Anordnung B (unbegrenzt)</span>
         </div>
       </div>
 
@@ -1690,6 +1692,16 @@
           <div class="scenario-q">👥 Zwei Psychologinnen leiten gemeinsam Familiensitzung (Supervision)</div>
           <div class="scenario-think">Psy/Psy-Doppelkonsultation · Regelbetrieb regressgefährdet · zweite Person als LUF</div>
           <span class="scenario-answer no">→ Regressrisiko! Fallführende rechnet ab, 2. Person LUF</span>
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-num">11</div>
+        <div class="scenario-body">
+          <div class="scenario-q">💬 Mutter schickt abends SMS über Verschlechterung — Psychologin antwortet nächsten Morgen per E-Mail (klinisch relevant, 10 Min)</div>
+          <div class="scenario-think">Zeitversetzt · asynchron · nicht synchron am Telefon · Antwort am Folgetag</div>
+          <span class="scenario-answer">→ EA.05.0080 (zeitversetzt, 1×/Tag, max. 4×/30 Tage)</span>
+          <p style="font-size:12px;color:var(--slate-light);margin:6px 0 0;line-height:1.5">Hätte die Psychologin stattdessen direkt telefoniert (synchron, 20 Min Rückmeldung): → <strong>EA.00.0110</strong> (Verlaufskonsultation). Hätte es ein volles therapeutisches Gespräch am Telefon gegeben (45 Min): → <strong>PA011</strong> (fernmündliche Sitzung).</p>
         </div>
       </div>
 
@@ -1724,7 +1736,7 @@
           <p><strong>E-Mail / zeitversetzte Telemedizin:</strong> Aktuell nur <strong>1×/Tag und 4×/30 Tage</strong>. Ältere 6er-Regel ist überholt — nicht mehr verwenden!</p>
         </div>
         <div class="cheat-item">
-          <p><strong>Telefonkontakt richtig einordnen:</strong> Fernmündliche Sitzung (PA011) ≠ Verlaufskonsultation (EA00.0110) ≠ E-Mail (EA.05.0080) ≠ LAP-Kontakt Dritte (PK025/020).</p>
+          <p><strong>Telefonkontakt richtig einordnen:</strong> Fernmündliche Sitzung (PA011) ≠ Verlaufskonsultation (EA.00.0110) ≠ E-Mail (EA.05.0080) ≠ LAP-Kontakt Dritte (PK025/020).</p>
         </div>
         <div class="cheat-item">
           <p><strong>Diagnostik:</strong> Eigener Block — Durchführung 180 Min / 90 Tage (PA220) + Auswertung 240 Min / 90 Tage (PE020). Nicht mit 0010/0030 am selben Tag kombinieren.</p>
@@ -1733,7 +1745,7 @@
           <p><strong>Exposition PA230:</strong> 360 Min / 180 Tage. Wegzeit ist intern inkludiert — nicht doppelt buchen als EA.05.0060!</p>
         </div>
         <div class="cheat-item">
-          <p><strong>Krise A oder B?</strong> Laufende PT → Anordnung A (PA110, max. 180 Min). KANT / Nacht- / Wochenenddienst → Anordnung B (EA00.0090, unbegrenzt).</p>
+          <p><strong>Krise A oder B?</strong> Laufende PT → Anordnung A (PA110, max. 180 Min). KANT / Nacht- / Wochenenddienst → Anordnung B (EA.00.0090, unbegrenzt).</p>
         </div>
         <div class="cheat-item">
           <p><strong>Psy/Psy-Doppelkonsultationen:</strong> Im Regelbetrieb regressgefährdet. Fallführende rechnet ab, zweite Person LUF. Dokumentation bei Ausnahmen zwingend.</p>

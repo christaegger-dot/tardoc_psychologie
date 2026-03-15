@@ -18,9 +18,9 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);min-height:100v
 .pbtn-dark{background:var(--ink);color:white}
 .sheet{width:210mm;max-width:100%;min-height:297mm;background:var(--paper);box-shadow:0 6px 32px rgba(0,0,0,.13);display:flex;flex-direction:column}
 
-.mast{background:var(--ink);padding:10mm 14mm 8mm;position:relative;overflow:hidden}
+.mast{background:var(--ink);padding:7mm 14mm 6mm;position:relative;overflow:hidden}
 .mast::after{content:'';position:absolute;right:0;top:0;bottom:0;width:45mm;background:linear-gradient(90deg,transparent,rgba(99,102,241,.2))}
-.mast-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4mm}
+.mast-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3mm}
 .mast h1{font-family:'Playfair Display',serif;font-size:23pt;color:white;line-height:1.1}
 .mast h1 em{color:#a5b4fc;font-style:normal}
 .mast-sub{font-size:8.5pt;color:rgba(255,255,255,.5);font-weight:300;margin-top:2px}

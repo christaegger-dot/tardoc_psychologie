@@ -691,6 +691,32 @@
     .search-results { width: 280px; }
     .tel-row { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ── BACK TO TOP ── */
+  .back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 900;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(67, 56, 202, 0.75);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .back-to-top.visible { opacity: 1; visibility: visible; }
+  .back-to-top:hover { transform: scale(1.1); background: rgba(67, 56, 202, 0.95); }
+  @media print { .back-to-top { display: none; } }
 </style>
 </head>
 <body>
@@ -990,6 +1016,17 @@
                         <strong>Fernmündlich (Telefon/Video)</strong>
                         max. 75 Min
                       </div>
+                      <div style="border:1.5px dashed var(--teal);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--text);background:#f0fdfa;margin:2px 0">
+                        <div style="font-weight:700;color:var(--teal);margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.06em">↕ Abgrenzung beachten!</div>
+                        Vollständiges therapeutisches Telefongespräch → <strong>PA011</strong> (75 Min).<br>
+                        Kurze Rückmeldung / Instruktion → <strong>EA00.0110</strong> (20 Min).<br>
+                        <span style="color:var(--slate-light);font-style:italic">Im Zweifel: War es eine echte Sitzung oder nur ein kurzer Check-in?</span>
+                      </div>
+                      <div class="idt-res" style="background:#f0fdfa;border:1.5px solid #99f6e4;color:var(--navy)">
+                        <small style="color:var(--teal)">EA00.0110 · Nicht-EA.05</small>
+                        <strong>Telefonische Verlaufskonsultation</strong>
+                        max. 20 Min · KEINE volle Sitzung
+                      </div>
                       <div class="idt-res amber">
                         <small>EA.05.0050 / PA110</small>
                         <strong>Krise (unter lfd. PT)</strong>
@@ -1048,6 +1085,17 @@
       <p class="section-lead">Öffentliche Tarifziffern und interne KJPP-Psychologen-Codes im Überblick.</p>
     </summary>
     <div class="section-content">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px;padding:10px 16px;background:#f8fafc;border-radius:10px;font-size:12px;color:var(--slate)">
+      <span style="font-weight:600;color:var(--text);margin-right:4px">Legende:</span>
+      <span class="pos-badge badge-anw" style="font-size:11px">Anwesenheit</span>
+      <span class="pos-badge badge-kris" style="font-size:11px">Krise</span>
+      <span class="pos-badge badge-diag" style="font-size:11px">Diagnostik</span>
+      <span class="pos-badge badge-lap" style="font-size:11px">LAP-Topf</span>
+      <span class="pos-badge badge-expo" style="font-size:11px">Exposition</span>
+      <span class="pos-badge badge-tel" style="font-size:11px">Telemedizin</span>
+      <span class="pos-badge badge-weg" style="font-size:11px">Wegzeit</span>
+      <span class="pos-badge badge-diag" style="font-size:11px">+15 Min VN</span>
+    </div>
     <div class="pos-grid">
 
       <div class="pos-item">
@@ -1096,6 +1144,18 @@
           <div class="pos-desc">Telefonat oder Video <strong>mit Patient/Familie in Echtzeit</strong> = Anwesenheitsleistung. Intern als eine Sitzung in der Anordnung. Max. <strong>75 Min.</strong> Unterscheiden von zeitversetzter Telemedizin!</div>
         </div>
         <span class="pos-badge badge-anw">Anwesenheit</span>
+      </div>
+
+      <div class="pos-item" style="border-left:3px solid var(--teal)">
+        <div>
+          <span class="pos-code code-tip" tabindex="0">EA00.0110<span class="tip-box"><span class="tip-title">Telefonische Verlaufskonsultation</span>Kurze Rückmeldung / Instruktion · kein volles Therapiegespräch<br><span class="tip-limit">Max. 20 Min</span> · Nicht-EA.05-Ziffer (EA00)</span></span>
+          <span class="pos-code-sub">Nicht-EA.05 · Verlauf</span>
+        </div>
+        <div>
+          <div class="pos-name">Telefonische Verlaufskonsultation</div>
+          <div class="pos-desc">Kurze telefonische Verlaufskonsultation oder Instruktion — <strong>nicht</strong> mit fernmündlicher Sitzung (PA011, max. 75 Min) verwechseln. Max. <strong>20 Min.</strong> Keine Anwesenheitsleistung. Andere Tariflogik als EA.05-Kapitel. <span style="color:var(--amber);font-weight:600">⚠ Ziffer aus EA00, nicht EA.05 — für Abgrenzung im Alltag unverzichtbar.</span></div>
+        </div>
+        <span class="pos-badge badge-tel">Telefon / Verlauf</span>
       </div>
 
       <div class="pos-item">
@@ -1497,10 +1557,11 @@
           <span style="color:var(--navy)">Diagnostik-/Therapieplanung</span>
           <span style="color:var(--rose);font-weight:600;margin-left:auto">15 Min · max. 1× / 90 Tage</span>
         </div>
-        <div style="display:flex;gap:12px;align-items:center;font-size:13.5px">
+        <div style="display:flex;gap:12px;align-items:center;font-size:13.5px;flex-wrap:wrap">
           <span style="font-weight:700;color:var(--teal);min-width:80px">EA.05.0120</span>
           <span style="color:var(--navy)">Auskünfte Angehörige (ohne Patient)</span>
           <span style="color:var(--slate);margin-left:auto">Fachlicher Austausch</span>
+          <span style="width:100%;font-size:12px;color:var(--amber);font-weight:600;margin-top:2px">⚠️ Zuordnung zum LAP-Topf-Limit klinikintern bestätigen — unklar, ob im altersgestuften Pool (240/180 Min) enthalten oder separates Budget.</span>
         </div>
       </div>
     </div>
@@ -1837,6 +1898,24 @@
       if (searchOpen) toggleSearch();
     }
   });
+</script>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" aria-label="Nach oben scrollen">&#9650;</button>
+<script>
+(function() {
+  var btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 600) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
 </script>
 </body>
 </html>

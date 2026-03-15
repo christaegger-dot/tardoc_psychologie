@@ -35,7 +35,7 @@
 
 /* body */
 .body{flex:1;padding:6mm 14mm 7mm;display:flex;flex-direction:column;gap:4.5mm}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:5.5mm}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:5.5mm;break-inside:avoid;page-break-inside:avoid}
 
 /* section overrides */
 .sec{gap:8px;margin-bottom:3mm}
@@ -73,7 +73,7 @@
 .co.i{background:var(--ind-l);color:#1e1b6b;border:1px solid var(--ind-m)}
 
 /* cheat */
-.cheat{background:linear-gradient(135deg,#1e3a6e 0%,#2d1b69 100%);border-radius:7px;overflow:hidden;border:1px solid rgba(165,180,252,0.2)}
+.cheat{background:linear-gradient(135deg,#1e3a6e 0%,#2d1b69 100%);border-radius:7px;overflow:hidden;border:1px solid rgba(165,180,252,0.2);break-inside:avoid;page-break-inside:avoid}
 .ci{display:grid;grid-template-columns:24px 1fr;border-bottom:1px solid rgba(255,255,255,.10)}
 .ci:last-child{border-bottom:none}
 .cin{background:rgba(165,180,252,.25);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:10pt;color:white;border-right:1px solid rgba(165,180,252,.2)}
@@ -82,7 +82,7 @@
 .cc span{font-size:7pt;color:rgba(255,255,255,.72);line-height:1.3}
 
 /* tel-type table */
-.tel{background:white;border:1.5px solid var(--line);border-radius:7px;overflow:hidden}
+.tel{background:white;border:1.5px solid var(--line);border-radius:7px;overflow:hidden;break-inside:avoid;page-break-inside:avoid}
 .tel-row{display:grid;grid-template-columns:1fr 42px 1fr;gap:0;border-bottom:1px solid var(--line);padding:5px 9px;font-size:7.5pt;align-items:start}
 .tel-row:last-child{border-bottom:none}
 .tel-row.hd{background:var(--ink);color:white;font-size:6.5pt;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 9px}
@@ -105,7 +105,7 @@
 .lim.p .lim-n{color:var(--purple)} .lim.a .lim-n{color:var(--amber)}
 
 /* krise A/B */
-.krise-row{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.krise-row{display:grid;grid-template-columns:1fr 1fr;gap:3mm;break-inside:avoid;page-break-inside:avoid}
 .kb{border-radius:6px;padding:6px 9px}
 .kb.a{background:#fff7ed;border:1.5px solid #fdba74}
 .kb.b{background:var(--rose-l);border:1.5px solid var(--rose-m)}

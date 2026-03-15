@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!-- ============================================================
+     Tarif-Kompass 2026 · Psychologinnen KJPP
+     Version: 1.1.1 · Stand: 15.03.2026
+     Gültig ab: 01.01.2026 (TARDOC EA.05)
+     Repository: https://github.com/christaegger-dot/tardoc_psychologie
+     Live: https://tardoc-psychologiekjpp.netlify.app/
+     ============================================================ -->
+
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -25,8 +33,8 @@
     --indigo: #4338ca;
     --indigo-light: #6366f1;
     --indigo-soft: #eef2ff;
-    --teal: #0d9488;
-    --teal-light: #14b8a6;
+    --teal: #4f46e5;  /* → indigo (vereinfacht) */
+    --teal-light: #6366f1;  /* → indigo-light (vereinfacht) */
     --amber: #d97706;
     --amber-light: #fbbf24;
     --rose: #e11d48;
@@ -42,701 +50,841 @@
     --green-bg: #ecfdf5;
     --red-bg: #fff1f2;
     --amber-bg: #fffbeb;
-    --purple: #7c3aed;
-    --purple-bg: #f5f3ff;
+    --purple: #4338ca;  /* → indigo (vereinfacht) */
+    --purple-bg: #eef2ff;  /* → indigo-soft (vereinfacht) */
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.65;
-  }
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(--bg);
+color: var(--text);
+font-size: 15px;
+line-height: 1.65;
+}
 
-  /* ── HEADER ── */
-  .header {
-    background: linear-gradient(135deg, #4338ca 0%, #6366f1 60%, #818cf8 100%);
-    color: white;
-    padding: 48px 40px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-  }
-  .header::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; left: 30%;
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    background: rgba(20,184,166,0.15);
-  }
-  .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
-  .header-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.22);
-    color: white;
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 4px 12px; border-radius: 20px;
-    margin-bottom: 16px;
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-  .header-badge-sub {
-    display: inline-block;
-    background: rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.85);
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.08em;
-    padding: 4px 12px; border-radius: 20px;
-    margin-bottom: 16px; margin-left: 8px;
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-  .header h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 42px; line-height: 1.15;
-    letter-spacing: -0.5px; margin-bottom: 8px;
-  }
-  .header h1 span { color: #c7d2fe; }
-  .header-sub {
-    font-size: 16px; color: rgba(255,255,255,0.82);
-    margin-bottom: 28px; font-weight: 300;
-  }
-  .header-meta { display: flex; gap: 24px; flex-wrap: wrap; }
-  .header-meta-item {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 13px; color: rgba(255,255,255,0.75);
-  }
-  .header-meta-item svg { color: #c7d2fe; }
+/* ── HEADER ── */
+.header {
+background: linear-gradient(135deg, #4338ca 0%, #6366f1 60%, #818cf8 100%);
+color: white;
+padding: 48px 40px 40px;
+position: relative;
+overflow: hidden;
+}
+.header::before {
+content: ‘’;
+position: absolute;
+top: -60px; right: -60px;
+width: 300px; height: 300px;
+border-radius: 50%;
+background: rgba(255,255,255,0.08);
+}
+.header::after {
+content: ‘’;
+position: absolute;
+bottom: -40px; left: 30%;
+width: 200px; height: 200px;
+border-radius: 50%;
+background: rgba(99,102,241,0.12);
+}
+.header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+.header-badge {
+display: inline-block;
+background: rgba(255,255,255,0.22);
+color: white;
+font-size: 11px; font-weight: 600;
+letter-spacing: 0.12em; text-transform: uppercase;
+padding: 4px 12px; border-radius: 20px;
+margin-bottom: 16px;
+border: 1px solid rgba(255,255,255,0.3);
+}
+.header-badge-sub {
+display: inline-block;
+background: rgba(255,255,255,0.12);
+color: rgba(255,255,255,0.85);
+font-size: 11px; font-weight: 500;
+letter-spacing: 0.08em;
+padding: 4px 12px; border-radius: 20px;
+margin-bottom: 16px; margin-left: 8px;
+border: 1px solid rgba(255,255,255,0.2);
+}
+.header h1 {
+font-family: ‘DM Serif Display’, serif;
+font-size: 42px; line-height: 1.15;
+letter-spacing: -0.5px; margin-bottom: 8px;
+}
+.header h1 span { color: #c7d2fe; }
+.header-sub {
+font-size: 16px; color: rgba(255,255,255,0.82);
+margin-bottom: 28px; font-weight: 300;
+}
+.header-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+.header-meta-item {
+display: flex; align-items: center; gap: 8px;
+font-size: 13px; color: rgba(255,255,255,0.75);
+}
+.header-meta-item svg { color: #c7d2fe; }
 
-  /* Two-layer badge in header */
-  .dual-layer {
-    display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;
-  }
-  .layer-pill {
-    display: flex; align-items: center; gap: 8px;
-    padding: 7px 14px; border-radius: 8px;
-    font-size: 12.5px; font-weight: 500;
-  }
-  .layer-pill.ext {
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.35);
-    color: rgba(255,255,255,0.95);
-  }
-  .layer-pill.int {
-    background: rgba(20,184,166,0.25);
-    border: 1px solid rgba(20,184,166,0.5);
-    color: #ccfbf1;
-  }
-  .layer-pill strong { font-weight: 700; }
+/* Two-layer badge in header */
+.dual-layer {
+display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;
+}
+.layer-pill {
+display: flex; align-items: center; gap: 8px;
+padding: 7px 14px; border-radius: 8px;
+font-size: 12.5px; font-weight: 500;
+}
+.layer-pill.ext {
+background: rgba(255,255,255,0.18);
+border: 1px solid rgba(255,255,255,0.35);
+color: rgba(255,255,255,0.95);
+}
+.layer-pill.int {
+background: rgba(165,180,252,0.3);
+border: 1px solid rgba(165,180,252,0.6);
+color: #e0e7ff;
+}
+.layer-pill strong { font-weight: 700; }
 
-  /* ── LAYOUT ── */
-  .main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+/* ── LAYOUT ── */
+.main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
 
-  /* ── NAV ── */
-  .nav-bar {
-    background: white;
-    border-bottom: 2px solid #c7d2fe;
-    position: sticky; top: 0; z-index: 100;
-    box-shadow: 0 2px 12px rgba(55,48,163,0.10);
-  }
-  .nav-inner {
-    max-width: 900px; margin: 0 auto;
-    padding: 0 24px;
-    display: flex; gap: 2px; overflow-x: auto;
-  }
-  .nav-link {
-    display: block; padding: 14px 12px;
-    font-size: 12px; font-weight: 500;
-    color: var(--slate);
-    text-decoration: none; white-space: nowrap;
-    border-bottom: 2px solid transparent;
-    transition: all .2s;
-  }
-  .nav-link:hover { color: var(--indigo-light); border-bottom-color: var(--indigo-light); }
-  .nav-link.active { color: var(--indigo); border-bottom-color: var(--indigo); font-weight: 600; }
+/* ── NAV ── */
+.nav-bar {
+background: white;
+border-bottom: 2px solid #c7d2fe;
+position: sticky; top: 0; z-index: 100;
+box-shadow: 0 2px 12px rgba(55,48,163,0.10);
+}
+.nav-inner {
+max-width: 900px; margin: 0 auto;
+padding: 0 24px;
+display: flex; gap: 2px; overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-bar::after {
+content: ‘’; position: absolute; right: 0; top: 0; bottom: 0;
+width: 40px; pointer-events: none;
+background: linear-gradient(to right, transparent, white);
+display: none;
+}
+@media (max-width: 600px) {
+.nav-bar::after { display: block; }
+}
+.nav-link {
+display: block; padding: 14px 12px;
+font-size: 12px; font-weight: 500;
+color: var(--slate);
+text-decoration: none; white-space: nowrap;
+border-bottom: 2px solid transparent;
+transition: all .2s;
+}
+.nav-link:hover { color: var(--indigo-light); border-bottom-color: var(--indigo-light); }
+.nav-link.active { color: var(--indigo); border-bottom-color: var(--indigo); font-weight: 600; }
 
-  /* ── SEARCH ── */
-  .search-wrap {
-    position: relative; display: flex; align-items: center;
-    margin-left: auto; flex-shrink: 0;
-  }
-  .search-input {
-    width: 0; opacity: 0; padding: 0; border: none;
-    font-family: 'DM Sans', sans-serif; font-size: 13px;
-    background: var(--bg); border-radius: 8px;
-    transition: width .3s, opacity .3s, padding .3s;
-    outline: none; color: var(--text);
-  }
-  .search-input.open {
-    width: 200px; opacity: 1; padding: 7px 12px 7px 32px;
-    border: 1.5px solid var(--border);
-  }
-  .search-input.open:focus { border-color: var(--indigo-light); }
-  .search-btn {
-    position: absolute; left: 6px; top: 50%; transform: translateY(-50%);
-    background: none; border: none; cursor: pointer; color: var(--slate);
-    display: flex; align-items: center; z-index: 2; padding: 4px;
-  }
-  .search-btn:hover { color: var(--indigo); }
-  .search-results {
-    display: none; position: absolute; top: 100%; right: 0;
-    background: white; border: 1.5px solid var(--border);
-    border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,.12);
-    width: 320px; max-height: 360px; overflow-y: auto;
-    margin-top: 6px; z-index: 200;
-  }
-  .search-results.visible { display: block; }
-  .sr-item {
-    padding: 10px 14px; border-bottom: 1px solid #f1f5f9;
-    cursor: pointer; transition: background .15s;
-  }
-  .sr-item:last-child { border-bottom: none; }
-  .sr-item:hover { background: var(--bg); }
-  .sr-title { font-size: 13px; font-weight: 600; color: var(--navy); }
-  .sr-context { font-size: 12px; color: var(--slate-light); margin-top: 2px; }
-  .sr-empty { padding: 16px; text-align: center; font-size: 13px; color: var(--slate-light); }
-  mark { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 1px; }
+/* Old search styles removed — now in quick-tools bar */
+.sr-item {
+padding: 10px 14px; border-bottom: 1px solid #f1f5f9;
+cursor: pointer; transition: background .15s;
+}
+.sr-item:last-child { border-bottom: none; }
+.sr-item:hover { background: var(--bg); }
+.sr-title { font-size: 13px; font-weight: 600; color: var(--navy); }
+.sr-context { font-size: 12px; color: var(--slate-light); margin-top: 2px; }
+.sr-empty { padding: 16px; text-align: center; font-size: 13px; color: var(--slate-light); }
+mark { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 1px; }
 
-  /* ── SCROLL ANIMATIONS ── */
-  .section { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-  .section.visible { opacity: 1; transform: translateY(0); }
+/* ── SCROLL ANIMATIONS ── */
+.section { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.section.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── ACCORDION (mobile) ── */
-  .section-accordion { border: none; margin-bottom: 52px; }
-  .section-accordion > summary { list-style: none; cursor: pointer; }
-  .section-accordion > summary::-webkit-details-marker { display: none; }
-  .section-accordion > summary::marker { display: none; content: ''; }
-  .section-accordion > summary .section-title { position: relative; }
-  .section-accordion > summary .accordion-icon {
-    display: none; width: 24px; height: 24px; border-radius: 50%;
-    background: var(--bg); color: var(--slate);
-    align-items: center; justify-content: center; flex-shrink: 0;
-    transition: transform .3s; font-size: 14px; font-weight: 700;
-  }
-  .section-accordion[open] > summary .accordion-icon { transform: rotate(180deg); }
+/* ── ACCORDION (mobile) ── */
+.section-accordion { border: none; margin-bottom: 52px; }
+.section-accordion > summary { list-style: none; cursor: pointer; }
+.section-accordion > summary::-webkit-details-marker { display: none; }
+.section-accordion > summary::marker { display: none; content: ‘’; }
+.section-accordion > summary .section-title { position: relative; }
+.section-accordion > summary .accordion-icon {
+display: none; width: 24px; height: 24px; border-radius: 50%;
+background: var(--bg); color: var(--slate);
+align-items: center; justify-content: center; flex-shrink: 0;
+transition: transform .3s; font-size: 14px; font-weight: 700;
+}
+.section-accordion[open] > summary .accordion-icon { transform: rotate(180deg); }
 
-  @media (max-width: 600px) {
-    .section-accordion > summary .accordion-icon { display: flex; }
-    .section-accordion:not([open]) > .section-content { display: none; }
-    .section-accordion > .section-content {
-      animation: accordionOpen .3s ease;
-    }
-  }
-  @keyframes accordionOpen {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+@media (max-width: 600px) {
+.section-accordion > summary .accordion-icon { display: flex; }
+.section-accordion:not([open]) > .section-content { display: none; }
+.section-accordion > .section-content {
+animation: accordionOpen .3s ease;
+}
+}
+@keyframes accordionOpen {
+from { opacity: 0; transform: translateY(-8px); }
+to { opacity: 1; transform: translateY(0); }
+}
 
-  /* ── TOOLTIPS ── */
-  .code-tip {
-    position: relative; cursor: help;
-    border-bottom: 1px dashed var(--indigo-light);
-  }
-  .code-tip .tip-box {
-    display: none; position: absolute; bottom: calc(100% + 8px); left: 50%;
-    transform: translateX(-50%); z-index: 150;
-    background: var(--navy); color: white;
-    padding: 10px 14px; border-radius: 8px;
-    font-size: 12.5px; line-height: 1.5; width: 260px;
-    box-shadow: 0 6px 24px rgba(0,0,0,.2);
-    pointer-events: none;
-  }
-  .code-tip .tip-box::after {
-    content: ''; position: absolute; top: 100%; left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent; border-top-color: var(--navy);
-  }
-  .code-tip:hover .tip-box, .code-tip:focus .tip-box { display: block; }
-  .tip-title { font-weight: 700; margin-bottom: 3px; color: #c7d2fe; }
-  .tip-limit { font-weight: 600; color: #fbbf24; }
+/* ── TOOLTIPS ── */
+.code-tip {
+position: relative; cursor: help;
+border-bottom: 1px dashed var(--indigo-light);
+}
+.code-tip .tip-box {
+display: none; position: absolute; bottom: calc(100% + 8px); left: 50%;
+transform: translateX(-50%); z-index: 150;
+background: var(--navy); color: white;
+padding: 10px 14px; border-radius: 8px;
+font-size: 12.5px; line-height: 1.5; width: 260px;
+box-shadow: 0 6px 24px rgba(0,0,0,.2);
+pointer-events: none;
+}
+.code-tip .tip-box::after {
+content: ‘’; position: absolute; top: 100%; left: 50%;
+transform: translateX(-50%);
+border: 6px solid transparent; border-top-color: var(--navy);
+}
+.code-tip:hover .tip-box, .code-tip:focus .tip-box { display: block; }
+.tip-title { font-weight: 700; margin-bottom: 3px; color: #c7d2fe; }
+.tip-limit { font-weight: 600; color: #fbbf24; }
 
-  /* ── SECTION ── */
-  .section, .section-accordion { margin-bottom: 52px; }
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 26px; color: var(--navy);
-    margin-bottom: 6px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-title .num {
-    background: var(--indigo-light);
-    color: white;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px; font-weight: 700;
-    width: 28px; height: 28px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .section-title .num.teal { background: var(--teal); }
-  .section-lead {
-    color: var(--text-soft); margin-bottom: 24px;
-    padding-left: 40px; font-size: 14.5px;
-  }
+/* ── SECTION ── */
+.section, .section-accordion { margin-bottom: 52px; scroll-margin-top: 100px; }
 
-  /* ── CARDS ── */
-  .card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 24px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-  .card-grid { display: grid; gap: 16px; }
-  .card-grid-2 { grid-template-columns: 1fr 1fr; }
-  .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+/* ── “WAS WILL ICH TUN?” PANEL ── */
+.scenario-panel {
+margin-bottom: 40px;
+}
+.scenario-panel-title {
+font-family: ‘DM Serif Display’, serif;
+font-size: 22px; color: var(--navy);
+margin-bottom: 6px;
+}
+.scenario-panel-lead {
+font-size: 14px; color: var(--text-soft);
+margin-bottom: 16px;
+}
+.sp-grid {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+}
+.sp-card {
+background: white; border: 1.5px solid var(--border);
+border-radius: 10px; padding: 14px 16px;
+cursor: pointer; transition: all .2s;
+text-decoration: none; display: block;
+}
+.sp-card:hover {
+border-color: var(--indigo-light);
+box-shadow: 0 2px 12px rgba(99,102,241,0.12);
+transform: translateY(-1px);
+}
+.sp-card-icon {
+font-size: 20px; margin-bottom: 6px;
+}
+.sp-card-label {
+font-size: 13px; font-weight: 600;
+color: var(--navy); margin-bottom: 4px;
+}
+.sp-card-codes {
+font-size: 11.5px; color: var(--indigo-light);
+font-weight: 600;
+}
+.sp-card-hint {
+font-size: 11.5px; color: var(--text-soft);
+margin-top: 3px;
+}
+@media (max-width: 600px) {
+.sp-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 380px) {
+.sp-grid { grid-template-columns: 1fr; }
+}
 
-  /* ── RULE CARDS ── */
-  .rule-cards { display: grid; gap: 12px; }
-  .rule-card {
-    display: flex; gap: 16px; align-items: flex-start;
-    background: white; border: 1px solid var(--border);
-    border-radius: 10px; padding: 18px 20px;
-    border-left: 4px solid var(--indigo-light);
-  }
-  .rule-card.amber { border-left-color: var(--amber); }
-  .rule-card.rose  { border-left-color: var(--rose); }
-  .rule-card.teal  { border-left-color: var(--teal); }
-  .rule-icon {
-    width: 36px; height: 36px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; font-size: 18px;
-    background: var(--indigo-soft);
-  }
-  .rule-card.amber .rule-icon { background: #fffbeb; }
-  .rule-card.rose  .rule-icon { background: #fff1f2; }
-  .rule-card.teal  .rule-icon { background: #f0fdfa; }
-  .rule-card h4 { font-weight: 600; font-size: 14px; margin-bottom: 4px; color: var(--navy); }
-  .rule-card p  { font-size: 13.5px; color: var(--slate); }
+/* ── CODE SEARCH: instant result card ── */
+.code-result {
+background: linear-gradient(135deg, var(--indigo-soft), #e0e7ff);
+border: 1.5px solid #a5b4fc;
+border-radius: 10px; padding: 14px 16px;
+margin-bottom: 6px;
+}
+.code-result-header {
+display: flex; align-items: center; gap: 10px;
+margin-bottom: 6px;
+}
+.code-result-code {
+font-weight: 700; font-size: 14px; color: var(--indigo);
+background: white; padding: 3px 10px; border-radius: 6px;
+border: 1px solid #c7d2fe;
+}
+.code-result-name {
+font-weight: 600; font-size: 13.5px; color: var(--navy);
+}
+.code-result-details {
+font-size: 12.5px; color: var(--slate);
+display: flex; flex-wrap: wrap; gap: 8px 16px;
+}
+.code-result-detail {
+display: flex; gap: 4px; align-items: baseline;
+}
+.code-result-detail strong {
+color: var(--indigo); font-size: 11px; text-transform: uppercase;
+letter-spacing: .04em;
+}
+.code-result-jump {
+display: inline-flex; align-items: center; gap: 4px;
+margin-top: 8px; font-size: 12px; font-weight: 600;
+color: var(--indigo-light); cursor: pointer;
+text-decoration: none;
+}
+.code-result-jump:hover { color: var(--indigo); }
 
-  /* ── HIGHLIGHT BOX ── */
-  .highlight {
-    background: var(--indigo-soft);
-    border: 1.5px solid #c7d2fe;
-    border-radius: 12px; padding: 22px 24px;
-    margin-bottom: 16px;
-  }
-  .highlight h4 { font-weight: 700; font-size: 14px; color: var(--indigo); margin-bottom: 8px; }
-  .highlight p  { font-size: 13.5px; color: var(--slate); }
+/* Highlight a pos-item when jumped to */
+.pos-item.highlight-pulse {
+animation: posHighlight 2s ease;
+}
+@keyframes posHighlight {
+0%   { box-shadow: 0 0 0 3px rgba(99,102,241,0.5); }
+100% { box-shadow: none; }
+}
+.section-title {
+font-family: ‘DM Serif Display’, serif;
+font-size: 26px; color: var(--navy);
+margin-bottom: 6px;
+display: flex; align-items: center; gap: 12px;
+}
+.section-title .num {
+background: var(--indigo-light);
+color: white;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 12px; font-weight: 700;
+width: 28px; height: 28px; border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0;
+}
+.section-title .num.teal { background: var(--indigo-light); }
+.section-lead {
+color: var(--text-soft); margin-bottom: 24px;
+padding-left: 40px; font-size: 14.5px;
+}
 
-  /* ── LIMIT BOX ── */
-  .limit-box {
-    background: white; border: 1px solid var(--border);
-    border-radius: 12px; padding: 24px;
-  }
-  .limit-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 16px; }
-  .limit-visual { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-  .limit-bar-track {
-    flex: 1; height: 20px; background: #f1f5f9;
-    border-radius: 10px; overflow: hidden;
-  }
-  .limit-bar-fill {
-    height: 100%; border-radius: 10px;
-    background: linear-gradient(90deg, var(--indigo), var(--indigo-light));
-    display: flex; align-items: center; justify-content: flex-end;
-    padding-right: 10px; font-size: 11px; font-weight: 700; color: white;
-    transition: width 1.2s ease;
-  }
-  .limit-bar-fill.teal { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
-  .limit-bar-fill.amber { background: linear-gradient(90deg, #d97706, #fbbf24); }
-  .limit-num { font-size: 22px; font-weight: 700; font-family: 'DM Serif Display', serif; color: var(--navy); }
-  .limit-note { font-size: 12.5px; color: var(--text-soft); }
-  .limit-exception {
-    margin-top: 14px; padding: 12px 16px;
-    background: var(--amber-bg); border: 1px solid #fcd34d;
-    border-radius: 8px; font-size: 13px; color: #92400e;
-    display: flex; gap: 10px; align-items: flex-start;
-  }
+/* ── CARDS ── */
+.card {
+background: var(--card); border: 1px solid var(--border);
+border-radius: 12px; padding: 24px;
+box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.card-grid { display: grid; gap: 16px; }
+.card-grid-2 { grid-template-columns: 1fr 1fr; }
+.card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
 
-  /* ── PRODUCTIVITY TABLE ── */
-  .prod-table {
-    background: white; border: 1px solid var(--border);
-    border-radius: 12px; overflow: hidden;
-  }
-  .prod-row {
-    display: grid; grid-template-columns: 1fr 80px 80px;
-    padding: 12px 20px; border-bottom: 1px solid var(--border);
-    align-items: center;
-    font-size: 13.5px;
-  }
-  .prod-row:last-child { border-bottom: none; }
-  .prod-row.header {
-    background: linear-gradient(135deg, #4338ca, #6366f1); color: white;
-    font-size: 11px; font-weight: 700;
-    letter-spacing: .08em; text-transform: uppercase;
-    padding: 10px 20px;
-  }
-  .prod-role { color: var(--text); font-weight: 500; }
-  .prod-num { text-align: center; font-weight: 700; }
-  .prod-num.y { color: var(--indigo-light); }
-  .prod-num.m { color: var(--teal); }
+/* ── RULE CARDS ── */
+.rule-cards { display: grid; gap: 12px; }
+.rule-card {
+display: flex; gap: 16px; align-items: flex-start;
+background: white; border: 1px solid var(--border);
+border-radius: 10px; padding: 18px 20px;
+border-left: 4px solid var(--indigo-light);
+}
+.rule-card.amber { border-left-color: var(--amber); }
+.rule-card.rose  { border-left-color: var(--rose); }
+.rule-card.teal  { border-left-color: var(--indigo-light); }
+.rule-icon {
+width: 36px; height: 36px; border-radius: 8px;
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0; font-size: 18px;
+background: var(--indigo-soft);
+}
+.rule-card.amber .rule-icon { background: #fffbeb; }
+.rule-card.rose  .rule-icon { background: #fff1f2; }
+.rule-card.teal  .rule-icon { background: var(--indigo-soft); }
+.rule-card h4 { font-weight: 600; font-size: 14px; margin-bottom: 4px; color: var(--navy); }
+.rule-card p  { font-size: 13.5px; color: var(--slate); }
 
-  /* ── DECISION TREE ── */
-  .idt { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
-  .idt-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 4px; }
-  .idt-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 28px; }
-  .idt-node { display: flex; flex-direction: column; align-items: center; gap: 0; }
-  .idt-q {
-    background: linear-gradient(135deg, #4338ca, #6366f1); color: white;
-    border-radius: 12px; padding: 16px 24px;
-    font-size: 14.5px; font-weight: 500; text-align: center;
-    width: 100%; max-width: 500px;
-  }
-  .idt-q small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #c7d2fe; margin-bottom: 4px; }
-  .idt-down { height: 24px; display: flex; align-items: center; justify-content: center; color: var(--slate-light); font-size: 20px; }
-  .idt-fork { display: flex; gap: 16px; width: 100%; }
-  .idt-branch { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0; }
-  .idt-branch-label {
-    font-size: 11px; font-weight: 700; letter-spacing: .1em;
-    text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px;
-  }
-  .idt-branch-label.y { background: #dcfce7; color: #16a34a; }
-  .idt-branch-label.n { background: #fee2e2; color: #dc2626; }
-  .idt-res {
-    border-radius: 10px; padding: 14px 16px;
-    text-align: center; width: 100%; font-size: 13px;
-  }
-  .idt-res small { display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
-  .idt-res.indigo { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; color: var(--navy); }
-  .idt-res.indigo small { color: var(--indigo-light); }
-  .idt-res.teal { background: #f0fdfa; border: 1.5px solid var(--teal); color: var(--navy); }
-  .idt-res.teal small { color: var(--teal); }
-  .idt-res.blue { background: #eff6ff; border: 1.5px solid #60a5fa; color: var(--navy); }
-  .idt-res.blue small { color: #1d4ed8; }
-  .idt-res.amber { background: #fffbeb; border: 1.5px solid var(--amber); color: var(--navy); }
-  .idt-res.amber small { color: var(--amber); }
-  .idt-res.rose  { background: #fff1f2; border: 1.5px solid var(--rose); color: var(--navy); }
-  .idt-res.rose small { color: var(--rose); }
-  .idt-res.purple { background: var(--purple-bg); border: 1.5px solid #c4b5fd; color: var(--navy); }
-  .idt-res.purple small { color: var(--purple); }
-  .idt-line { width: 1px; height: 20px; background: var(--border); }
-  .idt-sub-fork { display: flex; gap: 16px; width: 100%; }
-  .idt-sub-branch { flex: 1; display: flex; flex-direction: column; align-items: center; }
+/* ── HIGHLIGHT BOX ── */
+.highlight {
+background: var(--indigo-soft);
+border: 1.5px solid #c7d2fe;
+border-radius: 12px; padding: 22px 24px;
+margin-bottom: 16px;
+}
+.highlight h4 { font-weight: 700; font-size: 14px; color: var(--indigo); margin-bottom: 8px; }
+.highlight p  { font-size: 13.5px; color: var(--slate); }
 
-  /* ── POSITION TABLE ── */
-  .pos-grid { display: grid; gap: 10px; }
-  .pos-item {
-    display: grid; grid-template-columns: 130px 1fr auto;
-    gap: 16px; align-items: start;
-    background: white; border: 1px solid var(--border);
-    border-radius: 10px; padding: 16px 20px;
-  }
-  .pos-code {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11.5px; font-weight: 700;
-    color: var(--indigo-light); background: var(--indigo-soft);
-    padding: 4px 8px; border-radius: 6px;
-    display: inline-block; white-space: nowrap;
-  }
-  .pos-code.teal  { color: var(--teal); background: #f0fdfa; }
-  .pos-code.amber { color: var(--amber); background: #fffbeb; }
-  .pos-code.purple { color: var(--purple); background: var(--purple-bg); }
-  .pos-code-sub {
-    font-size: 10px; color: var(--slate-light); margin-top: 3px; display: block;
-    font-style: italic;
-  }
-  .pos-name { font-weight: 500; font-size: 14px; color: var(--navy); margin-bottom: 4px; }
-  .pos-desc { font-size: 13px; color: var(--slate); }
-  .pos-badge {
-    font-size: 11px; font-weight: 600;
-    padding: 3px 10px; border-radius: 20px; white-space: nowrap;
-  }
-  .badge-anw   { background: #dcfce7; color: #16a34a; }
-  .badge-lap   { background: #dbeafe; color: #1d4ed8; }
-  .badge-diag  { background: var(--indigo-soft); color: var(--indigo-light); }
-  .badge-expo  { background: var(--purple-bg); color: var(--purple); }
-  .badge-weg   { background: #fef3c7; color: #b45309; }
-  .badge-kris  { background: #fee2e2; color: #dc2626; }
-  .badge-tel   { background: #f0fdfa; color: var(--teal); }
+/* ── LIMIT BOX ── */
+.limit-box {
+background: white; border: 1px solid var(--border);
+border-radius: 12px; padding: 24px;
+}
+.limit-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 16px; }
+.limit-visual { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.limit-bar-track {
+flex: 1; height: 20px; background: #f1f5f9;
+border-radius: 10px; overflow: hidden;
+}
+.limit-bar-fill {
+height: 100%; border-radius: 10px;
+background: linear-gradient(90deg, var(--indigo), var(--indigo-light));
+display: flex; align-items: center; justify-content: flex-end;
+padding-right: 10px; font-size: 11px; font-weight: 700; color: white;
+transition: width 1.2s ease;
+}
+.limit-bar-fill.teal { background: linear-gradient(90deg, var(--indigo), var(--indigo-light)); }
+.limit-bar-fill.amber { background: linear-gradient(90deg, #d97706, #fbbf24); }
+.limit-num { font-size: 22px; font-weight: 700; font-family: ‘DM Serif Display’, serif; color: var(--navy); }
+.limit-note { font-size: 12.5px; color: var(--text-soft); }
+.limit-exception {
+margin-top: 14px; padding: 12px 16px;
+background: var(--amber-bg); border: 1px solid #fcd34d;
+border-radius: 8px; font-size: 13px; color: #92400e;
+display: flex; gap: 10px; align-items: flex-start;
+}
 
-  /* ── DIAGNOSTIK BLOCK ── */
-  .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .diag-box {
-    border-radius: 12px; padding: 22px;
-  }
-  .diag-box.a { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; }
-  .diag-box.b { background: var(--purple-bg); border: 1.5px solid #c4b5fd; }
-  .diag-box h4 { font-weight: 700; font-size: 14px; margin-bottom: 12px; }
-  .diag-box.a h4 { color: var(--indigo); }
-  .diag-box.b h4 { color: var(--purple); }
-  .diag-stat {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
-    font-size: 13.5px;
-  }
-  .diag-stat:last-child { border-bottom: none; }
-  .diag-stat-lbl { color: var(--slate); }
-  .diag-stat-val { font-weight: 700; color: var(--navy); font-family: 'DM Serif Display', serif; font-size: 17px; }
+/* ── PRODUCTIVITY TABLE ── */
+.prod-table {
+background: white; border: 1px solid var(--border);
+border-radius: 12px; overflow: hidden;
+}
+.prod-row {
+display: grid; grid-template-columns: 1fr 80px 80px;
+padding: 12px 20px; border-bottom: 1px solid var(--border);
+align-items: center;
+font-size: 13.5px;
+}
+.prod-row:last-child { border-bottom: none; }
+.prod-row.header {
+background: linear-gradient(135deg, #4338ca, #6366f1); color: white;
+font-size: 11px; font-weight: 700;
+letter-spacing: .08em; text-transform: uppercase;
+padding: 10px 20px;
+}
+.prod-role { color: var(--text); font-weight: 500; }
+.prod-num { text-align: center; font-weight: 700; }
+.prod-num.y { color: var(--indigo-light); }
+.prod-num.m { color: var(--indigo); }
 
-  /* ── KRISE A/B ── */
-  .krise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .krise-box { border-radius: 12px; padding: 22px; }
-  .krise-box.a { background: #fff7ed; border: 2px solid #fdba74; }
-  .krise-box.b { background: #fff1f2; border: 2px solid #fca5a5; }
-  .krise-box h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 17px; margin-bottom: 4px;
-  }
-  .krise-box.a h3 { color: #c2410c; }
-  .krise-box.b h3 { color: var(--rose); }
-  .krise-sub { font-size: 12px; font-weight: 600; letter-spacing:.06em; text-transform:uppercase; margin-bottom:14px; }
-  .krise-box.a .krise-sub { color: #ea580c; }
-  .krise-box.b .krise-sub { color: var(--rose); }
-  .krise-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .krise-list li { font-size: 13.5px; display: flex; gap: 8px; }
-  .krise-list li::before { content: '→'; flex-shrink: 0; font-weight: 700; }
-  .krise-box.a .krise-list li::before { color: #ea580c; }
-  .krise-box.b .krise-list li::before { color: var(--rose); }
+/* ── DECISION TREE ── */
+.idt { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
+.idt-title { font-family: ‘DM Serif Display’, serif; font-size: 20px; color: var(--navy); margin-bottom: 4px; }
+.idt-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 28px; }
+.idt-node { display: flex; flex-direction: column; align-items: center; gap: 0; }
+.idt-q {
+background: linear-gradient(135deg, #4338ca, #6366f1); color: white;
+border-radius: 12px; padding: 16px 24px;
+font-size: 14.5px; font-weight: 500; text-align: center;
+width: 100%; max-width: 500px;
+}
+.idt-q small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #c7d2fe; margin-bottom: 4px; }
+.idt-down { height: 24px; display: flex; align-items: center; justify-content: center; color: var(--slate-light); font-size: 20px; }
+.idt-fork { display: flex; gap: 16px; width: 100%; }
+.idt-branch { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0; }
+.idt-branch-label {
+font-size: 11px; font-weight: 700; letter-spacing: .1em;
+text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px;
+}
+.idt-branch-label.y { background: #dcfce7; color: #16a34a; }
+.idt-branch-label.n { background: #fee2e2; color: #dc2626; }
+.idt-res {
+border-radius: 10px; padding: 14px 16px;
+text-align: center; width: 100%; font-size: 13px;
+}
+.idt-res small { display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+.idt-res.indigo { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; color: var(--navy); }
+.idt-res.indigo small { color: var(--indigo-light); }
+.idt-res.teal { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; color: var(--navy); }
+.idt-res.teal small { color: var(--indigo-light); }
+.idt-res.blue { background: #eff6ff; border: 1.5px solid #60a5fa; color: var(--navy); }
+.idt-res.blue small { color: #1d4ed8; }
+.idt-res.amber { background: #fffbeb; border: 1.5px solid var(--amber); color: var(--navy); }
+.idt-res.amber small { color: var(--amber); }
+.idt-res.rose  { background: #fff1f2; border: 1.5px solid var(--rose); color: var(--navy); }
+.idt-res.rose small { color: var(--rose); }
+.idt-res.purple { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; color: var(--navy); }
+.idt-res.purple small { color: var(--indigo); }
+.idt-line { width: 1px; height: 20px; background: var(--border); }
+.idt-sub-fork { display: flex; gap: 16px; width: 100%; }
+.idt-sub-branch { flex: 1; display: flex; flex-direction: column; align-items: center; }
 
-  /* ── LAP ALTERS GRID ── */
-  .lap-age-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .lap-age-box { border-radius: 12px; padding: 22px; }
-  .lap-age-box.u18 { background: #f0fdfa; border: 1.5px solid #99f6e4; }
-  .lap-age-box.o18 { background: #eff6ff; border: 1.5px solid #bfdbfe; }
-  .lap-age-box h4 { font-weight: 700; font-size: 14px; margin-bottom: 14px; }
-  .lap-age-box.u18 h4 { color: var(--teal); }
-  .lap-age-box.o18 h4 { color: #1d4ed8; }
-  .lap-entry {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
-    font-size: 13px;
-  }
-  .lap-entry:last-child { border-bottom: none; }
-  .lap-code { font-weight: 700; font-size: 12px; }
-  .lap-age-box.u18 .lap-code { color: var(--teal); }
-  .lap-age-box.o18 .lap-code { color: #1d4ed8; }
-  .lap-total {
-    margin-top: 14px; padding-top: 12px;
-    border-top: 2px solid rgba(0,0,0,0.08);
-    display: flex; justify-content: space-between;
-    font-weight: 700; font-size: 15px;
-  }
+/* ── POSITION TABLE ── */
+.pos-grid { display: grid; gap: 10px; }
+.pos-item {
+display: grid; grid-template-columns: 130px 1fr auto;
+gap: 16px; align-items: start;
+background: white; border: 1px solid var(--border);
+border-radius: 10px; padding: 16px 20px;
+}
+.pos-code {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 11.5px; font-weight: 700;
+color: var(--indigo-light); background: var(--indigo-soft);
+padding: 4px 8px; border-radius: 6px;
+display: inline-block; white-space: nowrap;
+}
+.pos-code.teal  { color: var(--indigo); background: var(--indigo-soft); }
+.pos-code.amber { color: var(--amber); background: #fffbeb; }
+.pos-code.purple { color: var(--indigo); background: var(--indigo-soft); }
+.pos-code-sub {
+font-size: 10px; color: var(--slate-light); margin-top: 3px; display: block;
+font-style: italic;
+}
+.pos-name { font-weight: 500; font-size: 14px; color: var(--navy); margin-bottom: 4px; }
+.pos-desc { font-size: 13px; color: var(--slate); }
+.pos-badge {
+font-size: 11px; font-weight: 600;
+padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+}
+.badge-anw   { background: var(--indigo-soft); color: var(--indigo); }
+.badge-lap   { background: var(--indigo-soft); color: var(--indigo); }
+.badge-diag  { background: var(--indigo-soft); color: var(--indigo-light); }
+.badge-expo  { background: var(--indigo-soft); color: var(--indigo); }
+.badge-weg   { background: #fef3c7; color: #b45309; }
+.badge-kris  { background: #fee2e2; color: #dc2626; }
+.badge-tel   { background: var(--indigo-soft); color: var(--indigo); }
 
-  /* ── EXPO BOX ── */
-  .expo-box {
-    background: var(--purple-bg); border: 1.5px solid #c4b5fd;
-    border-radius: 14px; padding: 28px;
-  }
-  .expo-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--purple); margin-bottom: 6px; }
-  .expo-sub   { font-size: 13px; color: var(--text-soft); margin-bottom: 20px; }
-  .expo-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .expo-stat  { background: white; border: 1px solid #ddd6fe; border-radius: 10px; padding: 14px 16px; text-align: center; }
-  .expo-stat-num { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--purple); font-weight: 700; line-height: 1; margin-bottom: 3px; }
-  .expo-stat-lbl { font-size: 11px; color: var(--text-soft); }
-  .expo-note { margin-top: 16px; background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #6b21a8; display: flex; gap: 8px; }
+/* ── DIAGNOSTIK BLOCK ── */
+.diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.diag-box {
+border-radius: 12px; padding: 22px;
+}
+.diag-box.a { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; }
+.diag-box.b { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; }
+.diag-box h4 { font-weight: 700; font-size: 14px; margin-bottom: 12px; }
+.diag-box.a h4 { color: var(--indigo); }
+.diag-box.b h4 { color: var(--indigo); }
+.diag-stat {
+display: flex; justify-content: space-between; align-items: baseline;
+padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+font-size: 13.5px;
+}
+.diag-stat:last-child { border-bottom: none; }
+.diag-stat-lbl { color: var(--slate); }
+.diag-stat-val { font-weight: 700; color: var(--navy); font-family: ‘DM Serif Display’, serif; font-size: 17px; }
 
-  /* ── TELEMEDIZIN ── */
-  .tel-table {
-    background: white; border: 1px solid var(--border);
-    border-radius: 12px; overflow: hidden;
-  }
-  .tel-row {
-    display: grid; grid-template-columns: 1fr 100px 1fr;
-    padding: 14px 20px; border-bottom: 1px solid var(--border);
-    align-items: start; font-size: 13.5px; gap: 16px;
-  }
-  .tel-row:last-child { border-bottom: none; }
-  .tel-row.head {
-    background: linear-gradient(135deg, #4338ca, #6366f1); color: white;
-    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
-    padding: 10px 20px; align-items: center;
-  }
-  .tel-type { font-weight: 600; color: var(--navy); }
-  .tel-code { font-weight: 700; color: var(--indigo-light); font-size: 12px; text-align: center; }
-  .tel-limit { color: var(--slate); }
-  .tel-warn { color: var(--rose); font-size: 12px; font-weight: 700; }
+/* ── KRISE A/B ── */
+.krise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.krise-box { border-radius: 12px; padding: 22px; }
+.krise-box.a { background: #fff7ed; border: 2px solid #fdba74; }
+.krise-box.b { background: #fff1f2; border: 2px solid #fca5a5; }
+.krise-box h3 {
+font-family: ‘DM Serif Display’, serif;
+font-size: 17px; margin-bottom: 4px;
+}
+.krise-box.a h3 { color: #c2410c; }
+.krise-box.b h3 { color: var(--rose); }
+.krise-sub { font-size: 12px; font-weight: 600; letter-spacing:.06em; text-transform:uppercase; margin-bottom:14px; }
+.krise-box.a .krise-sub { color: #ea580c; }
+.krise-box.b .krise-sub { color: var(--rose); }
+.krise-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.krise-list li { font-size: 13.5px; display: flex; gap: 8px; }
+.krise-list li::before { content: ‘→’; flex-shrink: 0; font-weight: 700; }
+.krise-box.a .krise-list li::before { color: #ea580c; }
+.krise-box.b .krise-list li::before { color: var(--rose); }
 
-  /* ── DO/DONT ── */
-  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .do-box { background: var(--green-bg); border: 1px solid #a7f3d0; border-radius: 10px; padding: 20px; }
-  .dont-box { background: var(--red-bg); border: 1px solid #fecdd3; border-radius: 10px; padding: 20px; }
-  .do-box h4 { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-  .dont-box h4 { color: var(--rose); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-  .do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }
-  .do-box li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .dont-box li::before { content: '✕'; color: var(--rose); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+/* ── LAP ALTERS GRID ── */
+.lap-age-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.lap-age-box { border-radius: 12px; padding: 22px; }
+.lap-age-box.u18 { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; }
+.lap-age-box.o18 { background: #f0f0ff; border: 1.5px solid #c7d2fe; }
+.lap-age-box h4 { font-weight: 700; font-size: 14px; margin-bottom: 14px; }
+.lap-age-box.u18 h4 { color: var(--indigo); }
+.lap-age-box.o18 h4 { color: var(--indigo); }
+.lap-entry {
+display: flex; justify-content: space-between; align-items: center;
+padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+font-size: 13px;
+}
+.lap-entry:last-child { border-bottom: none; }
+.lap-code { font-weight: 700; font-size: 12px; }
+.lap-age-box.u18 .lap-code { color: var(--indigo); }
+.lap-age-box.o18 .lap-code { color: var(--indigo); }
+.lap-total {
+margin-top: 14px; padding-top: 12px;
+border-top: 2px solid rgba(0,0,0,0.08);
+display: flex; justify-content: space-between;
+font-weight: 700; font-size: 15px;
+}
 
-  /* ── SCENARIO CARDS ── */
-  .scenario-grid { display: grid; gap: 14px; }
-  .scenario-card {
-    background: white; border: 1px solid var(--border);
-    border-radius: 12px; overflow: hidden;
-    display: grid; grid-template-columns: 56px 1fr;
-  }
-  .scenario-num {
-    background: var(--navy-mid); color: white;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'DM Serif Display', serif; font-size: 22px;
-    writing-mode: vertical-lr;
-  }
-  .scenario-body { padding: 18px 20px; }
-  .scenario-q { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
-  .scenario-think { font-size: 13px; color: var(--slate); margin-bottom: 10px; font-style: italic; }
-  .scenario-answer {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--indigo-soft); border: 1px solid #c7d2fe;
-    border-radius: 20px; padding: 5px 14px;
-    font-size: 12.5px; font-weight: 600; color: var(--indigo);
-  }
-  .scenario-answer.no {
-    background: #fff1f2; border-color: #fecdd3; color: var(--rose);
-  }
-  .scenario-answer.teal {
-    background: #f0fdfa; border-color: #99f6e4; color: var(--teal);
-  }
-  .scenario-answer.purple {
-    background: var(--purple-bg); border-color: #c4b5fd; color: var(--purple);
-  }
-  .scenario-answer.orange {
-    background: #fff7ed; border-color: #fed7aa; color: #c2410c;
-  }
+/* ── EXPO BOX ── */
+.expo-box {
+background: var(--indigo-soft); border: 1.5px solid #a5b4fc;
+border-radius: 14px; padding: 28px;
+}
+.expo-title { font-family: ‘DM Serif Display’, serif; font-size: 20px; color: var(--indigo); margin-bottom: 6px; }
+.expo-sub   { font-size: 13px; color: var(--text-soft); margin-bottom: 20px; }
+.expo-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.expo-stat  { background: white; border: 1px solid #c7d2fe; border-radius: 10px; padding: 14px 16px; text-align: center; }
+.expo-stat-num { font-family: ‘DM Serif Display’, serif; font-size: 22px; color: var(--indigo); font-weight: 700; line-height: 1; margin-bottom: 3px; }
+.expo-stat-lbl { font-size: 11px; color: var(--text-soft); }
+.expo-note { margin-top: 16px; background: var(--indigo-soft); border: 1px solid #c7d2fe; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: var(--indigo); display: flex; gap: 8px; }
 
-  /* ── CHEAT SHEET ── */
-  .cheat-sheet {
-    background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
-    border-radius: 14px; padding: 32px;
-    border: 2px solid #c7d2fe;
-  }
-  .cheat-title { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 6px; color: #3730a3; }
-  .cheat-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 24px; }
-  .cheat-items { display: grid; gap: 10px; counter-reset: cheat; }
-  .cheat-item {
-    display: flex; gap: 14px; align-items: flex-start;
-    background: white; border-radius: 10px;
-    padding: 13px 18px; counter-increment: cheat;
-    border: 1px solid #e0e7ff;
-    box-shadow: 0 1px 3px rgba(99,102,241,0.07);
-  }
-  .cheat-item::before {
-    content: counter(cheat);
-    min-width: 28px; height: 28px; border-radius: 50%;
-    background: #6366f1; color: white;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
-  }
-  .cheat-item p { font-size: 14px; color: var(--text); line-height: 1.6; }
-  .cheat-item strong { color: #4338ca; }
+/* ── TELEMEDIZIN ── */
+.tel-table {
+background: white; border: 1px solid var(--border);
+border-radius: 12px; overflow: hidden;
+}
+.tel-row {
+display: grid; grid-template-columns: 1fr 100px 1fr;
+padding: 14px 20px; border-bottom: 1px solid var(--border);
+align-items: start; font-size: 13.5px; gap: 16px;
+}
+.tel-row:last-child { border-bottom: none; }
+.tel-row.head {
+background: linear-gradient(135deg, #4338ca, #6366f1); color: white;
+font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+padding: 10px 20px; align-items: center;
+}
+.tel-type { font-weight: 600; color: var(--navy); }
+.tel-code { font-weight: 700; color: var(--indigo); font-size: 12px; text-align: center; }
+.tel-limit { color: var(--slate); }
+.tel-warn { color: var(--rose); font-size: 12px; font-weight: 700; }
 
-  /* ── NOTE ── */
-  .note {
-    background: #fffbeb; border: 1px solid #fcd34d;
-    border-radius: 8px; padding: 12px 16px;
-    font-size: 13px; color: #78350f;
-    display: flex; gap: 10px; align-items: flex-start;
-    margin-top: 16px;
-  }
-  .note.indigo {
-    background: var(--indigo-soft); border-color: #c7d2fe; color: var(--indigo);
-  }
-  .note-icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
+/* ── DO/DONT ── */
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.do-box { background: var(--green-bg); border: 1px solid #a7f3d0; border-radius: 10px; padding: 20px; }
+.dont-box { background: var(--red-bg); border: 1px solid #fecdd3; border-radius: 10px; padding: 20px; }
+.do-box h4 { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.dont-box h4 { color: var(--rose); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }
+.do-box li::before { content: ‘✓’; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.dont-box li::before { content: ‘✕’; color: var(--rose); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
-  /* ── BUTTON BAR ── */
-  .btn-bar {
-    position: fixed; bottom: 24px; right: 24px;
-    display: flex; flex-direction: column; gap: 8px;
-    z-index: 200;
-  }
-  .dl-btn {
-    display: flex; align-items: center; gap: 9px;
-    padding: 11px 18px; border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px; font-weight: 600;
-    text-decoration: none; border: none; cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    transition: transform .15s, box-shadow .15s;
-  }
-  .dl-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+/* ── SCENARIO CARDS ── */
+.scenario-grid { display: grid; gap: 14px; }
+.scenario-card {
+background: white; border: 1px solid var(--border);
+border-radius: 12px; overflow: hidden;
+display: grid; grid-template-columns: 56px 1fr;
+}
+.scenario-num {
+background: var(--navy-mid); color: white;
+display: flex; align-items: center; justify-content: center;
+font-family: ‘DM Serif Display’, serif; font-size: 22px;
+writing-mode: vertical-lr;
+}
+.scenario-body { padding: 18px 20px; }
+.scenario-q { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+.scenario-think { font-size: 13px; color: var(--slate); margin-bottom: 10px; font-style: italic; }
+.scenario-answer {
+display: inline-flex; align-items: center; gap: 8px;
+background: var(--indigo-soft); border: 1px solid #c7d2fe;
+border-radius: 20px; padding: 5px 14px;
+font-size: 12.5px; font-weight: 600; color: var(--indigo);
+}
+.scenario-answer.no {
+background: #fff1f2; border-color: #fecdd3; color: var(--rose);
+}
+.scenario-answer.teal {
+background: var(--indigo-soft); border-color: #c7d2fe; color: var(--indigo);
+}
+.scenario-answer.purple {
+background: var(--indigo-soft); border-color: #c7d2fe; color: var(--indigo);
+}
+.scenario-answer.orange {
+background: #fff7ed; border-color: #fed7aa; color: #c2410c;
+}
 
-  /* ── FOOTER ── */
-  .footer {
-    max-width: 900px; margin: 0 auto;
-    padding: 24px 24px 40px;
-    border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between;
-    font-size: 12px; color: var(--slate-light);
-    flex-wrap: wrap; gap: 8px;
-  }
+/* ── CHEAT SHEET ── */
+.cheat-sheet {
+background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+border-radius: 14px; padding: 32px;
+border: 2px solid #c7d2fe;
+}
+.cheat-title { font-family: ‘DM Serif Display’, serif; font-size: 22px; margin-bottom: 6px; color: #3730a3; }
+.cheat-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 24px; }
+.cheat-items { display: grid; gap: 10px; counter-reset: cheat; }
+.cheat-item {
+display: flex; gap: 14px; align-items: flex-start;
+background: white; border-radius: 10px;
+padding: 13px 18px; counter-increment: cheat;
+border: 1px solid #e0e7ff;
+box-shadow: 0 1px 3px rgba(99,102,241,0.07);
+}
+.cheat-item::before {
+content: counter(cheat);
+min-width: 28px; height: 28px; border-radius: 50%;
+background: #6366f1; color: white;
+display: flex; align-items: center; justify-content: center;
+font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+}
+.cheat-item p { font-size: 14px; color: var(--text); line-height: 1.6; }
+.cheat-item strong { color: #4338ca; }
 
-  @media print {
-    .nav-bar { display: none; }
-    .btn-bar { display: none; }
-    .footer { display: none; }
-    .header { padding: 20px 24px; }
-    .header h1 { font-size: 28px; }
-    .main { padding: 20px 16px; }
-    .section { opacity: 1; transform: none; }
-    .section-accordion { display: block; }
-    .section-accordion > .section-content { display: block !important; }
-    .accordion-icon { display: none !important; }
-    .tip-box { display: none !important; }
-    /* Alle <details>-Akkordeons im Druck aufklappen */
-    details { display: block !important; }
-    details > summary { display: block !important; pointer-events: none; }
-    details > summary ~ * { display: block !important; }
-    .section-content {
-      display: block !important;
-      max-height: none !important;
-      overflow: visible !important;
-      opacity: 1 !important;
-    }
-    /* Seitenumbrüche vor grossen Abschnitten */
-    .section { page-break-inside: avoid; }
-    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    @page { size: A4; margin: 15mm; }
-  }
+/* ── NOTE ── */
+.note {
+background: #fffbeb; border: 1px solid #fcd34d;
+border-radius: 8px; padding: 12px 16px;
+font-size: 13px; color: #78350f;
+display: flex; gap: 10px; align-items: flex-start;
+margin-top: 16px;
+}
+.note.indigo {
+background: var(--indigo-soft); border-color: #c7d2fe; color: var(--indigo);
+}
+.note-icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
 
-  @media (max-width: 600px) {
-    .header h1 { font-size: 28px; }
-    .card-grid-2, .card-grid-3, .do-dont, .diag-grid, .krise-grid, .lap-age-grid { grid-template-columns: 1fr; }
-    .pos-item { grid-template-columns: 1fr; }
-    .scenario-card { grid-template-columns: 1fr; }
-    .scenario-num { writing-mode: horizontal-tb; padding: 12px; font-size: 14px; height: auto; }
-    .idt-fork, .idt-sub-fork { flex-direction: column; }
-    .expo-stats { grid-template-columns: 1fr 1fr; }
-    .btn-bar { bottom: 12px; right: 12px; }
-    .search-input.open { width: 150px; }
-    .search-results { width: 280px; }
-    .tel-row { grid-template-columns: 1fr 1fr; }
-  }
+/* ── QUICK-TOOLS BAR ── */
+.quick-tools {
+background: white;
+border-bottom: 1px solid var(--border);
+position: sticky; top: 50px; z-index: 99;
+box-shadow: 0 1px 6px rgba(55,48,163,0.06);
+}
+.quick-tools-inner {
+max-width: 900px; margin: 0 auto;
+padding: 8px 24px;
+display: flex; align-items: center; gap: 12px;
+}
+.qt-links {
+display: flex; gap: 6px; flex-shrink: 0;
+}
+.qt-link {
+display: inline-flex; align-items: center; gap: 5px;
+padding: 5px 12px; border-radius: 6px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 11.5px; font-weight: 600;
+text-decoration: none; border: none; cursor: pointer;
+transition: opacity .15s;
+white-space: nowrap;
+}
+.qt-link:hover { opacity: .8; }
+.qt-search {
+position: relative; display: flex; align-items: center;
+margin-left: auto; flex: 1; max-width: 280px;
+}
+.qt-search-input {
+width: 100%; padding: 7px 12px 7px 32px;
+border: 1.5px solid var(--border);
+font-family: ‘DM Sans’, sans-serif; font-size: 13px;
+background: var(--bg); border-radius: 8px;
+outline: none; color: var(--text);
+transition: border-color .2s;
+}
+.qt-search-input:focus { border-color: var(--indigo-light); }
+.qt-search-input::placeholder { color: var(--slate-light); }
+.qt-search-icon {
+position: absolute; left: 9px; top: 50%; transform: translateY(-50%);
+color: var(--slate-light); pointer-events: none;
+display: flex; align-items: center;
+}
+.qt-search-results {
+display: none; position: absolute; top: 100%; right: 0; left: 0;
+background: white; border: 1.5px solid var(--border);
+border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,.12);
+max-height: 360px; overflow-y: auto;
+margin-top: 6px; z-index: 200;
+}
+.qt-search-results.visible { display: block; }
+@media (max-width: 600px) {
+.quick-tools-inner { padding: 6px 14px; gap: 8px; flex-wrap: wrap; }
+.qt-links { order: 2; width: 100%; justify-content: space-between; }
+.qt-link { font-size: 11px; padding: 4px 8px; flex: 1; justify-content: center; }
+.qt-link svg { display: none; }
+.qt-search { order: 1; max-width: none; flex: 1 1 100%; }
+.quick-tools { top: 46px; }
+}
 
-  /* ── BACK TO TOP ── */
-  .back-to-top {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 900;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(67, 56, 202, 0.75);
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.18);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .back-to-top.visible { opacity: 1; visibility: visible; }
-  .back-to-top:hover { transform: scale(1.1); background: rgba(67, 56, 202, 0.95); }
-  @media print { .back-to-top { display: none; } }
+/* ── BUTTON BAR (now hidden — moved to quick-tools) ── */
+.btn-bar {
+display: none;
+}
+.dl-btn {
+display: flex; align-items: center; gap: 9px;
+padding: 11px 18px; border-radius: 10px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 13px; font-weight: 600;
+text-decoration: none; border: none; cursor: pointer;
+box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+transition: transform .15s, box-shadow .15s;
+}
+.dl-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+
+/* ── FOOTER ── */
+.footer {
+max-width: 900px; margin: 0 auto;
+padding: 24px 24px 40px;
+border-top: 1px solid var(--border);
+display: flex; justify-content: space-between;
+font-size: 12px; color: var(--slate-light);
+flex-wrap: wrap; gap: 8px;
+}
+
+@media print {
+.nav-bar { display: none; }
+.quick-tools { display: none; }
+.btn-bar { display: none; }
+.footer { display: none; }
+.header { padding: 20px 24px; }
+.header h1 { font-size: 28px; }
+.main { padding: 20px 16px; }
+.section { opacity: 1; transform: none; }
+.section-accordion { display: block; }
+.section-accordion > .section-content { display: block !important; }
+.accordion-icon { display: none !important; }
+.tip-box { display: none !important; }
+/* Alle <details>-Akkordeons im Druck aufklappen */
+details { display: block !important; }
+details > summary { display: block !important; pointer-events: none; }
+details > summary ~ * { display: block !important; }
+.section-content {
+display: block !important;
+max-height: none !important;
+overflow: visible !important;
+opacity: 1 !important;
+}
+/* Seitenumbrüche vor grossen Abschnitten */
+.section { page-break-inside: avoid; }
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+@page { size: A4; margin: 15mm; }
+}
+
+@media (max-width: 600px) {
+.header h1 { font-size: 28px; }
+.section, .section-accordion { scroll-margin-top: 130px; }
+.card-grid-2, .card-grid-3, .do-dont, .diag-grid, .krise-grid, .lap-age-grid { grid-template-columns: 1fr; }
+.pos-item { grid-template-columns: 1fr; }
+.scenario-card { grid-template-columns: 1fr; }
+.scenario-num { writing-mode: horizontal-tb; padding: 12px; font-size: 14px; height: auto; }
+.idt-fork, .idt-sub-fork { flex-direction: column; }
+.expo-stats { grid-template-columns: 1fr 1fr; }
+.btn-bar { bottom: 12px; right: 12px; }
+.tel-row { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── BACK TO TOP ── */
+.back-to-top {
+position: fixed;
+bottom: 28px;
+right: 28px;
+z-index: 900;
+width: 44px;
+height: 44px;
+border-radius: 50%;
+border: none;
+background: rgba(67, 56, 202, 0.75);
+color: white;
+font-size: 20px;
+cursor: pointer;
+box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { transform: scale(1.1); background: rgba(67, 56, 202, 0.95); }
+@media print { .back-to-top { display: none; } }
 </style>
+
 </head>
 <body>
 
 <!-- HEADER -->
+
 <div class="header">
   <div class="header-inner">
     <span class="header-badge">TARDOC · EA.05 · ab 01.01.2026</span>
@@ -765,6 +913,7 @@
 </div>
 
 <!-- NAV -->
+
 <nav class="nav-bar">
   <div class="nav-inner">
     <a href="#zweischicht" class="nav-link">Zwei Ebenen</a>
@@ -781,19 +930,119 @@
     <a href="#ueberbrueckung" class="nav-link">Überbrückung</a>
     <a href="#szenarien" class="nav-link">Szenarien</a>
     <a href="#kurzfassung" class="nav-link">11-Punkte</a>
-    <div class="search-wrap">
-      <button class="search-btn" aria-label="Suche öffnen" onclick="toggleSearch()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </button>
-      <input type="text" class="search-input" id="searchInput" placeholder="Code oder Begriff suchen…" aria-label="Suchbegriff eingeben">
-      <div class="search-results" id="searchResults"></div>
-    </div>
   </div>
 </nav>
 
+<!-- QUICK-TOOLS BAR -->
+
+<div class="quick-tools">
+  <div class="quick-tools-inner">
+    <div class="qt-search">
+      <span class="qt-search-icon">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <input type="text" class="qt-search-input" id="searchInput" placeholder="Code oder Begriff suchen …" aria-label="Suchbegriff eingeben">
+      <div class="qt-search-results" id="searchResults"></div>
+    </div>
+    <div class="qt-links">
+      <a class="qt-link" href="files/spickzettel-psych-print.html" target="_blank" style="background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Spickzettel
+      </a>
+      <a class="qt-link" href="files/positionen-psych-print.html" target="_blank" style="background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Positionen
+      </a>
+      <a class="qt-link" href="files/verlaufseintrag-psych-print.html" target="_blank" style="background:#e8eaff;color:#3730a3;border:1px solid #a5b4fc;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Verlaufseintrag
+      </a>
+      <button class="qt-link" style="background:#f8fafc;color:#475569;border:1px solid #e2e8f0;" onclick="window.print()" aria-label="Seite drucken">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Drucken
+      </button>
+    </div>
+  </div>
+</div>
+
 <div class="main">
 
+  <!-- ─── WAS WILL ICH TUN? ─── -->
+
+  <div class="scenario-panel" id="quickstart">
+    <div class="scenario-panel-title">Was will ich tun?</div>
+    <p class="scenario-panel-lead">Klicke auf deine Situation — du landest direkt bei der richtigen Ziffer.</p>
+    <div class="sp-grid">
+
+  <a class="sp-card" data-sp-target="positionen" data-sp-code="PA010">
+    <div class="sp-card-icon">🧠</div>
+    <div class="sp-card-label">Therapiesitzung erfassen</div>
+    <div class="sp-card-codes">PA010 + PE010</div>
+    <div class="sp-card-hint">Einzel oder Familie, 75+15 Min</div>
+  </a>
+
+  <a class="sp-card" data-sp-target="telefon" data-sp-code="PA011">
+    <div class="sp-card-icon">📱</div>
+    <div class="sp-card-label">Telefonat / E-Mail abrechnen</div>
+    <div class="sp-card-codes">PA011 · EA.00.0110 · EA.05.0080</div>
+    <div class="sp-card-hint">Vier verschiedene Kontakttypen</div>
+  </a>
+
+  <a class="sp-card" data-sp-target="diagnostik" data-sp-code="PA220">
+    <div class="sp-card-icon">🔬</div>
+    <div class="sp-card-label">Test durchgeführt / ausgewertet</div>
+    <div class="sp-card-codes">PA220 + PE020</div>
+    <div class="sp-card-hint">Eigener Block, 180+240 Min / 90 T</div>
+  </a>
+
+  <a class="sp-card" data-sp-target="krise" data-sp-code="PA110">
+    <div class="sp-card-icon">⚡</div>
+    <div class="sp-card-label">Krise — A oder B?</div>
+    <div class="sp-card-codes">PA110 · EA.00.0090</div>
+    <div class="sp-card-hint">Laufende PT vs. KANT/Nachtdienst</div>
+  </a>
+
+  <a class="sp-card" data-sp-target="exposition" data-sp-code="PA230">
+    <div class="sp-card-icon">🚶</div>
+    <div class="sp-card-label">Exposition ausserhalb Klinik</div>
+    <div class="sp-card-codes">PA230</div>
+    <div class="sp-card-hint">360 Min / 180 T, Wegzeit inkl.</div>
+  </a>
+
+  <a class="sp-card" data-sp-target="lap-topf" data-sp-code="PE045">
+    <div class="sp-card-icon">📋</div>
+    <div class="sp-card-label">Akten, Schule, Dritte kontaktiert</div>
+    <div class="sp-card-codes">PE045 · PK025 · PK015</div>
+    <div class="sp-card-hint">LAP-Topf, altersgesteuert</div>
+  </a>
+
+  <a class="sp-card" data-sp-target="telefon" data-sp-code="EA.05.0080">
+    <div class="sp-card-icon">✉️</div>
+    <div class="sp-card-label">Patient-E-Mail beantwortet</div>
+    <div class="sp-card-codes">EA.05.0080</div>
+    <div class="sp-card-hint">Max. 1×/Tag, 4×/30 Tage</div>
+  </a>
+
+  <a class="sp-card" data-sp-target="lap-topf" data-sp-code="PE030">
+    <div class="sp-card-icon">📝</div>
+    <div class="sp-card-label">Therapie-/Diagnostikplanung</div>
+    <div class="sp-card-codes">PE030</div>
+    <div class="sp-card-hint">15 Min, 1×/90 T, schriftlich!</div>
+  </a>
+
+  <a class="sp-card" data-sp-target="entscheidung">
+    <div class="sp-card-icon">🌳</div>
+    <div class="sp-card-label">Ich bin unsicher — Entscheidungsbaum</div>
+    <div class="sp-card-codes"></div>
+    <div class="sp-card-hint">Schritt für Schritt zur Ziffer</div>
+  </a>
+
+</div>
+
+  </div>
+
   <!-- ─── ZWEI EBENEN ─── -->
+
   <details open class="section section-accordion" id="zweischicht">
     <summary>
       <div class="section-title">
@@ -809,21 +1058,23 @@
         <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px">EA.05</div>
         <p style="font-size:13.5px;color:var(--slate)">Ambulante Leistungen durch nichtärztliche Fachpersonen in der Psychiatrie. Öffentlich sichtbar, gilt für alle nichtärztlichen Berufsgruppen inkl. Psychologinnen/Psychologen unter Aufsicht eines Facharztes.</p>
       </div>
-      <div style="background:#f0fdfa;border:1.5px solid #99f6e4;border-radius:12px;padding:24px">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:12px">Innen · Operativ</div>
+      <div style="background:#e8eaff;border:1.5px solid #a5b4fc;border-radius:12px;padding:24px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:12px">Innen · Operativ</div>
         <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px">PA- / PE- / PK-Codes</div>
         <p style="font-size:13.5px;color:var(--slate)">KJPP-interne KISIM-Logik: Leistungen werden im Hintergrund umgewandelt. Interne Ziffern wie PA010, PE010, PA220, PE020, PA230, PK015 erscheinen nicht im öffentlichen EA.05-Browser.</p>
       </div>
     </div>
 
-    <div class="note indigo">
-      <span class="note-icon">ℹ️</span>
-      <div><strong>Wichtigste Regel:</strong> Wenn sich ältere interne Psychologen-Folien und die aktuelle KJPP-Übersicht vom 01.01.2026 widersprechen, hat die <strong>neuere Übersicht + offizielle EA.05-Logik Vorrang</strong>. Das betrifft besonders die E-Mail-/Telemedizin-Limite.</div>
-    </div>
-    </div>
+<div class="note indigo">
+  <span class="note-icon">ℹ️</span>
+  <div><strong>Wichtigste Regel:</strong> Wenn sich ältere interne Psychologen-Folien und die aktuelle KJPP-Übersicht vom 01.01.2026 widersprechen, hat die <strong>neuere Übersicht + offizielle EA.05-Logik Vorrang</strong>. Das betrifft besonders die E-Mail-/Telemedizin-Limite.</div>
+</div>
+</div>
+
   </details>
 
   <!-- ─── GRUNDREGELN ─── -->
+
   <details open class="section section-accordion" id="grundregeln">
     <summary>
       <div class="section-title">
@@ -874,6 +1125,7 @@
   </details>
 
   <!-- ─── LIMITS ─── -->
+
   <details open class="section section-accordion" id="limits">
     <summary>
       <div class="section-title">
@@ -888,7 +1140,7 @@
         <div class="limit-title">⏱ 4-Stunden-Regel (oberstes Limit)</div>
         <div class="limit-visual">
           <div class="limit-bar-track">
-            <div class="limit-bar-fill" style="width:100%">240 Min</div>
+            <div class="limit-bar-fill" style="width:100%">4h</div>
           </div>
           <div class="limit-num">240<span style="font-size:14px;font-weight:400;color:#64748b"> Min / Woche</span></div>
         </div>
@@ -900,50 +1152,52 @@
         </div>
       </div>
 
-      <div class="limit-box">
-        <div class="limit-title">🎯 Interne Jahresziele (100%-Pensum)</div>
-        <div class="prod-table">
-          <div class="prod-row header">
-            <div>Stufe</div>
-            <div style="text-align:center">Jahr</div>
-            <div style="text-align:center">Monat</div>
-          </div>
-          <div class="prod-row">
-            <div class="prod-role">Ober-/Leitende Psych.</div>
-            <div class="prod-num y">890 h</div>
-            <div class="prod-num m">75 h</div>
-          </div>
-          <div class="prod-row">
-            <div class="prod-role">Psychologen/innen</div>
-            <div class="prod-num y">1050 h</div>
-            <div class="prod-num m">88 h</div>
-          </div>
-          <div class="prod-row">
-            <div class="prod-role">Psych. mbA</div>
-            <div class="prod-num y">970 h</div>
-            <div class="prod-num m">81 h</div>
-          </div>
-          <div class="prod-row">
-            <div class="prod-role">PG Psychologen/innen</div>
-            <div class="prod-num y">840 h</div>
-            <div class="prod-num m">70 h</div>
-          </div>
-        </div>
-        <div class="limit-exception" style="margin-top:12px">
-          <span>📅</span>
-          <span><strong>Richtwert:</strong> 5 Konsultationen/Tag — relevant für die Agendaplanung.</span>
-        </div>
+  <div class="limit-box">
+    <div class="limit-title">🎯 Interne Jahresziele (100%-Pensum)</div>
+    <div class="prod-table">
+      <div class="prod-row header">
+        <div>Stufe</div>
+        <div style="text-align:center">Jahr</div>
+        <div style="text-align:center">Monat</div>
+      </div>
+      <div class="prod-row">
+        <div class="prod-role">Ober-/Leitende Psych.</div>
+        <div class="prod-num y">890 h</div>
+        <div class="prod-num m">75 h</div>
+      </div>
+      <div class="prod-row">
+        <div class="prod-role">Psychologen/innen</div>
+        <div class="prod-num y">1050 h</div>
+        <div class="prod-num m">88 h</div>
+      </div>
+      <div class="prod-row">
+        <div class="prod-role">Psych. mbA</div>
+        <div class="prod-num y">970 h</div>
+        <div class="prod-num m">81 h</div>
+      </div>
+      <div class="prod-row">
+        <div class="prod-role">PG Psychologen/innen</div>
+        <div class="prod-num y">840 h</div>
+        <div class="prod-num m">70 h</div>
       </div>
     </div>
+    <div class="limit-exception" style="margin-top:12px">
+      <span>📅</span>
+      <span><strong>Richtwert:</strong> 5 Konsultationen/Tag — relevant für die Agendaplanung.</span>
+    </div>
+  </div>
+</div>
 
-    <div class="note">
-      <span class="note-icon">⚠️</span>
-      <div>Tariflich korrekt heisst nicht automatisch produktivitätszieladäquat. Beide Logiken müssen gleichzeitig im Blick behalten werden.</div>
-    </div>
-    </div>
+<div class="note">
+  <span class="note-icon">⚠️</span>
+  <div>Tariflich korrekt heisst nicht automatisch produktivitätszieladäquat. Beide Logiken müssen gleichzeitig im Blick behalten werden.</div>
+</div>
+</div>
+
   </details>
 
   <!-- ─── ENTSCHEIDUNGSBAUM ─── -->
+
   <details open class="section section-accordion" id="entscheidung">
     <summary>
       <div class="section-title">
@@ -957,138 +1211,136 @@
       <div class="idt-title">Schritt für Schritt zur richtigen Ziffer</div>
       <div class="idt-sub">Drei Hauptfragen — dann spezifische Sublogik pro Leistungsblock.</div>
 
-      <div class="idt-node">
-        <div class="idt-q">
-          <small>Frage 1</small>
-          Ist es eine <strong>interne Tätigkeit</strong>?<br>
-          <span style="font-size:12px;color:rgba(255,255,255,0.55)">(Rapport · Supervision · Intervision · Terminvereinbarung · Leistungserfassung · LUF)</span>
+  <div class="idt-node">
+    <div class="idt-q">
+      <small>Frage 1</small>
+      Ist es eine <strong>interne Tätigkeit</strong>?<br>
+      <span style="font-size:12px;color:rgba(255,255,255,0.55)">(Rapport · Supervision · Intervision · Terminvereinbarung · Leistungserfassung · LUF)</span>
+    </div>
+    <div class="idt-down">↓</div>
+    <div class="idt-fork">
+      <div class="idt-branch">
+        <div class="idt-branch-label y">JA</div>
+        <div class="idt-res rose">
+          <small>Resultat</small>
+          <strong>Nicht verrechenbar — LUF</strong>
+          Intern erfassen, kein Patientenbudget
         </div>
-        <div class="idt-down">↓</div>
-        <div class="idt-fork">
-          <div class="idt-branch">
-            <div class="idt-branch-label y">JA</div>
-            <div class="idt-res rose">
-              <small>Resultat</small>
-              <strong>Nicht verrechenbar — LUF</strong>
-              Intern erfassen, kein Patientenbudget
+      </div>
+      <div class="idt-branch">
+        <div class="idt-branch-label n">NEIN → Frage 2</div>
+        <div class="idt-q" style="max-width:none">
+          <small>Frage 2</small>
+          <strong>Spezifischer Leistungsblock?</strong><br>
+          <span style="font-size:12px;color:rgba(255,255,255,0.55)">Diagnostik · Exposition · Krise → eigene Logik</span>
+        </div>
+        <div class="idt-line"></div>
+        <div class="idt-sub-fork">
+          <div class="idt-sub-branch">
+            <div class="idt-branch-label" style="background:var(--indigo-soft);color:var(--indigo);font-size:10px;padding:3px 10px;border-radius:20px;margin-bottom:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Spezialblock</div>
+            <div style="display:grid;gap:6px;width:100%">
+              <div class="idt-res purple">
+                <small>PA220 · EA.05.0150 · Diagnostik</small>
+                <strong>Testdurchführung</strong>
+                180 Min / 90 Tage Limit
+              </div>
+              <div class="idt-res purple">
+                <small>PE020 · Auswertung</small>
+                <strong>Test-Auswertung / Bericht</strong>
+                240 Min / 90 Tage Limit
+              </div>
+              <div class="idt-res" style="background:#faf5ff;border:1.5px solid #e9d5ff;color:var(--navy)">
+                <small style="color:#6b21a8">PA230 · Exposition</small>
+                <strong>Expositionstherapie</strong>
+                360 Min / 180 Tage · Wegzeit inkl.
+              </div>
+              <div class="idt-res amber">
+                <small>PA110/111 oder EA.00.0090 · Krise</small>
+                <strong>Krisenintervention</strong>
+                → A- oder B-Logik prüfen!
+              </div>
             </div>
           </div>
-          <div class="idt-branch">
-            <div class="idt-branch-label n">NEIN → Frage 2</div>
-            <div class="idt-q" style="max-width:none">
-              <small>Frage 2</small>
-              <strong>Spezifischer Leistungsblock?</strong><br>
-              <span style="font-size:12px;color:rgba(255,255,255,0.55)">Diagnostik · Exposition · Krise → eigene Logik</span>
+          <div class="idt-sub-branch">
+            <div class="idt-branch-label n" style="font-size:10px">Normaler Kontakt → Frage 3</div>
+            <div class="idt-q" style="font-size:13px;max-width:none">
+              <small>Frage 3</small>
+              Patient / Familie <strong>anwesend</strong>?
             </div>
             <div class="idt-line"></div>
             <div class="idt-sub-fork">
               <div class="idt-sub-branch">
-                <div class="idt-branch-label" style="background:#f5f3ff;color:#7c3aed;font-size:10px;padding:3px 10px;border-radius:20px;margin-bottom:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Spezialblock</div>
-                <div style="display:grid;gap:6px;width:100%">
-                  <div class="idt-res purple">
-                    <small>PA220 · EA.05.0150 · Diagnostik</small>
-                    <strong>Testdurchführung</strong>
-                    180 Min / 90 Tage Limit
+                <div class="idt-branch-label y" style="font-size:10px">JA</div>
+                <div style="display:grid;gap:5px;width:100%">
+                  <div class="idt-res indigo">
+                    <small>PA010 / EA.05.0010</small>
+                    <strong>Einzelsetting</strong>
+                    + PE010 (15 Min VN)
                   </div>
-                  <div class="idt-res purple">
-                    <small>PE020 · Auswertung</small>
-                    <strong>Test-Auswertung / Bericht</strong>
-                    240 Min / 90 Tage Limit
+                  <div class="idt-res indigo">
+                    <small>PA030 / EA.05.0030</small>
+                    <strong>Familiensetting</strong>
+                    max. 90 Min + PE010 (15 Min VN)
                   </div>
-                  <div class="idt-res" style="background:#faf5ff;border:1.5px solid #e9d5ff;color:var(--navy)">
-                    <small style="color:#6b21a8">PA230 · Exposition</small>
-                    <strong>Expositionstherapie</strong>
-                    360 Min / 180 Tage · Wegzeit inkl.
+                  <div class="idt-res teal">
+                    <small>PA011 / PA031 · intern Psy</small>
+                    <strong>Fernmündlich (Telefon/Video)</strong>
+                    max. 75 Min
+                  </div>
+                  <div class="idt-res" style="background:var(--indigo-soft);border:1.5px solid #a5b4fc;color:var(--navy)">
+                    <small style="color:var(--indigo-light)">EA.05.0070 · öffentlich</small>
+                    <strong>Telemedizin synchron</strong>
+                    Video/Telefon Echtzeit · auch für Angehörige
+                  </div>
+                  <div style="border:1.5px dashed var(--indigo-light);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--text);background:var(--indigo-soft);margin:2px 0">
+                    <div style="font-weight:700;color:var(--indigo);margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.06em">↕ Abgrenzung beachten!</div>
+                    Vollständiges therapeutisches Telefongespräch → <strong>PA011</strong> (75 Min).<br>
+                    Kurze Rückmeldung / Instruktion → <strong>EA.00.0110</strong> (20 Min).<br>
+                    <span style="color:var(--slate-light);font-style:italic">Im Zweifel: War es eine echte Sitzung oder nur ein kurzer Check-in?</span>
+                  </div>
+                  <div class="idt-res" style="background:var(--indigo-soft);border:1.5px solid #a5b4fc;color:var(--navy)">
+                    <small style="color:var(--indigo-light)">EA.00.0110 · Nicht-EA.05</small>
+                    <strong>Telefonische Verlaufskonsultation</strong>
+                    max. 20 Min · KEINE volle Sitzung
                   </div>
                   <div class="idt-res amber">
-                    <small>PA110/111 oder EA.00.0090 · Krise</small>
-                    <strong>Krisenintervention</strong>
-                    → A- oder B-Logik prüfen!
+                    <small>EA.05.0050 / PA110</small>
+                    <strong>Krise (unter lfd. PT)</strong>
+                    max. 180 Min
+                    <a href="#krise" style="display:block;font-size:11px;color:#94a3b8;margin-top:3px;text-decoration:none">→ Details s. Abschnitt 8</a>
                   </div>
                 </div>
               </div>
               <div class="idt-sub-branch">
-                <div class="idt-branch-label n" style="font-size:10px">Normaler Kontakt → Frage 3</div>
-                <div class="idt-q" style="font-size:13px;max-width:none">
-                  <small>Frage 3</small>
-                  Patient / Familie <strong>anwesend</strong>?
-                </div>
-                <div class="idt-line"></div>
-                <div class="idt-sub-fork">
-                  <div class="idt-sub-branch">
-                    <div class="idt-branch-label y" style="font-size:10px">JA</div>
-                    <div style="display:grid;gap:5px;width:100%">
-                      <div class="idt-res indigo">
-                        <small>PA010 / EA.05.0010</small>
-                        <strong>Einzelsetting</strong>
-                        + PE010 (15 Min VN)
-                      </div>
-                      <div class="idt-res indigo">
-                        <small>PA030 / EA.05.0030</small>
-                        <strong>Familiensetting</strong>
-                        max. 90 Min + PE010 (15 Min VN)
-                      </div>
-                      <div class="idt-res teal">
-                        <small>PA011 / PA031 · intern Psy</small>
-                        <strong>Fernmündlich (Telefon/Video)</strong>
-                        max. 75 Min
-                      </div>
-                      <div class="idt-res" style="background:#f0fdfa;border:1.5px solid #99f6e4;color:var(--navy)">
-                        <small style="color:var(--teal)">EA.05.0070 · öffentlich</small>
-                        <strong>Telemedizin synchron</strong>
-                        Video/Telefon Echtzeit · auch für Angehörige
-                      </div>
-                      <div style="border:1.5px dashed var(--teal);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--text);background:#f0fdfa;margin:2px 0">
-                        <div style="font-weight:700;color:var(--teal);margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.06em">↕ Abgrenzung beachten!</div>
-                        Vollständiges therapeutisches Telefongespräch → <strong>PA011</strong> (75 Min).<br>
-                        Kurze Rückmeldung / Instruktion → <strong>EA.00.0110</strong> (20 Min).<br>
-                        <span style="color:var(--slate-light);font-style:italic">Im Zweifel: War es eine echte Sitzung oder nur ein kurzer Check-in?</span>
-                      </div>
-                      <div class="idt-res" style="background:#f0fdfa;border:1.5px solid #99f6e4;color:var(--navy)">
-                        <small style="color:var(--teal)">EA.00.0110 · Nicht-EA.05</small>
-                        <strong>Telefonische Verlaufskonsultation</strong>
-                        max. 20 Min · KEINE volle Sitzung
-                      </div>
-                      <div class="idt-res amber">
-                        <small>EA.05.0050 / PA110</small>
-                        <strong>Krise (unter lfd. PT)</strong>
-                        max. 180 Min
-                        <a href="#krise" style="display:block;font-size:11px;color:#94a3b8;margin-top:3px;text-decoration:none">→ Details s. Abschnitt 8</a>
-                      </div>
-                    </div>
+                <div class="idt-branch-label n" style="font-size:10px">NEIN → Patient nicht anwesend</div>
+                <div style="display:grid;gap:5px;width:100%">
+                  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);padding:6px 0 2px;border-bottom:1.5px dashed var(--indigo-light);margin-bottom:2px">Direkte Patientenkommunikation (zeitversetzt)</div>
+                  <div class="idt-res" style="background:var(--indigo-soft);border:1.5px solid #a5b4fc;color:var(--navy)">
+                    <small style="color:var(--indigo-light)">EA.05.0080 · zeitversetzt</small>
+                    <strong>E-Mail / asynchron</strong>
+                    max. 1×/Tag · 4×/30 Tage
                   </div>
-                  <div class="idt-sub-branch">
-                    <div class="idt-branch-label n" style="font-size:10px">NEIN → Patient nicht anwesend</div>
-                    <div style="display:grid;gap:5px;width:100%">
-                      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);padding:6px 0 2px;border-bottom:1.5px dashed var(--teal);margin-bottom:2px">Direkte Patientenkommunikation (zeitversetzt)</div>
-                      <div class="idt-res" style="background:#f0fdfa;border:1.5px solid #99f6e4;color:var(--navy)">
-                        <small style="color:var(--teal)">EA.05.0080 · zeitversetzt</small>
-                        <strong>E-Mail / asynchron</strong>
-                        max. 1×/Tag · 4×/30 Tage
-                      </div>
-                      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);padding:8px 0 2px;border-bottom:1.5px dashed var(--blue);margin-bottom:2px">LAP-Topf (Kontakte über Patient, ohne Patient)</div>
-                      <div class="idt-res blue">
-                        <small>PE045/PE040 · EA.05.0100</small>
-                        <strong>Fremdaktenstudium</strong>
-                      </div>
-                      <div class="idt-res blue">
-                        <small>PK025/PK020 · EA.05.0110</small>
-                        <strong>Auskünfte Dritte</strong>
-                      </div>
-                      <div class="idt-res blue">
-                        <small>EA.05.0120</small>
-                        <strong>Auskünfte Angehörige</strong>
-                      </div>
-                      <div class="idt-res blue">
-                        <small>PK015/PK010 · EA.05.0130</small>
-                        <strong>Ext. Behandler</strong>
-                      </div>
-                      <div class="idt-res blue">
-                        <small>PE030 · EA.05.0140</small>
-                        <strong>Hilfe-/Therapieplanung</strong>
-                        1× / 90 Tage · schriftl. Ergebnis!
-                      </div>
-                    </div>
+                  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);padding:8px 0 2px;border-bottom:1.5px dashed var(--blue);margin-bottom:2px">LAP-Topf (Kontakte über Patient, ohne Patient)</div>
+                  <div class="idt-res blue">
+                    <small>PE045/PE040 · EA.05.0100</small>
+                    <strong>Fremdaktenstudium</strong>
+                  </div>
+                  <div class="idt-res blue">
+                    <small>PK025/PK020 · EA.05.0110</small>
+                    <strong>Auskünfte Dritte</strong>
+                  </div>
+                  <div class="idt-res blue">
+                    <small>EA.05.0120</small>
+                    <strong>Auskünfte Angehörige</strong>
+                  </div>
+                  <div class="idt-res blue">
+                    <small>PK015/PK010 · EA.05.0130</small>
+                    <strong>Ext. Behandler</strong>
+                  </div>
+                  <div class="idt-res blue">
+                    <small>PE030 · EA.05.0140</small>
+                    <strong>Hilfe-/Therapieplanung</strong>
+                    1× / 90 Tage · schriftl. Ergebnis!
                   </div>
                 </div>
               </div>
@@ -1097,15 +1349,19 @@
         </div>
       </div>
     </div>
-    </div>
-    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#64748b;line-height:1.5">
-      📝 Zusätzlich bei Auswärtsterminen: <strong>EA.05.0060 Wegzeit</strong> (max. 60 Min hin+zurück).<br>
-      Bei PA230 Exposition: Wegzeit bereits inkludiert — nicht doppelt buchen.
-    </div>
-    </div>
+  </div>
+</div>
+</div>
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#64748b;line-height:1.5">
+  📝 Zusätzlich bei Auswärtsterminen: <strong>EA.05.0060 Wegzeit</strong> (max. 60 Min hin+zurück).<br>
+  Bei PA230 Exposition: Wegzeit bereits inkludiert — nicht doppelt buchen.
+</div>
+</div>
+
   </details>
 
   <!-- ─── POSITIONEN ─── -->
+
   <details open class="section section-accordion" id="positionen">
     <summary>
       <div class="section-title">
@@ -1128,203 +1384,205 @@
     </div>
     <div class="pos-grid">
 
-      <div class="pos-item">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">EA.05.0010<span class="tip-box"><span class="tip-title">Einzelsetting</span>Patient anwesend · inkl. Akteneinsicht<br><span class="tip-limit">Max. 75 Min</span> + PE010 15 Min</span></span>
-          <span class="pos-code-sub">intern: PA010</span>
-        </div>
-        <div>
-          <div class="pos-name">Ambulante Behandlung · Einzelsetting</div>
-          <div class="pos-desc">Patient anwesend. <strong>75 Min max.</strong> Inkl. Begrüssung/Verabschiedung und unmittelbare Akteneinsicht/-einträge.</div>
-        </div>
-        <span class="pos-badge badge-anw">Anwesenheit</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">EA.05.0070<span class="tip-box"><span class="tip-title">Telemedizinische Behandlung (synchron)</span>Video/Telefon in Echtzeit · Einzelsetting<br><span class="tip-limit">Wie EA.05.0010</span></span></span>
-          <span class="pos-code-sub">telemedizinisch synchron</span>
-        </div>
-        <div>
-          <div class="pos-name">Telemedizinische Behandlung (synchron)</div>
-          <div class="pos-desc">Video/Telefon in Echtzeit mit Patient · Einzelsetting. Auch für Angehörige von Kindern und nicht gesprächsfähigen Patienten. (KG-Führung S.1 + öffentlicher TARDOC)</div>
-        </div>
-        <span class="pos-badge badge-anw">Anwesenheit</span>
-      </div>
-
-      <div class="pos-item" style="border-left:3px solid var(--indigo-light)">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">PE010<span class="tip-box"><span class="tip-title">Vor-/Nachbereitung</span>Zu PA010/PA030 · nur Psychologen-intern<br><span class="tip-limit">Max. 15 Min</span></span></span>
-          <span class="pos-code-sub">interne Psychologenlogik</span>
-        </div>
-        <div>
-          <div class="pos-name">Vor- und Nachbereitung (75+15-Logik)</div>
-          <div class="pos-desc">Zusätzlich zu PA010 / PA030: <strong>max. 15 Minuten</strong> Vor-/Nachbereitung. Gilt für Einzel- und Familiengespräche. Interne KJPP-Psychologenregel — nicht allgemeine EA.05-Standardregel für alle Berufsgruppen!</div>
-        </div>
-        <span class="pos-badge badge-diag">+15 Min</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">EA.05.0030<span class="tip-box"><span class="tip-title">Familiensetting</span>Patient + Eltern/Bezugspersonen<br><span class="tip-limit">Max. 90 Min</span> + PE010 15 Min</span></span>
-          <span class="pos-code-sub">intern: PA030</span>
-        </div>
-        <div>
-          <div class="pos-name">Ambulante Behandlung · Familiensetting</div>
-          <div class="pos-desc">Patient + Eltern/Bezugspersonen anwesend. 90 Min max. + PE010 15 Min. (TtT S.7)</div>
-        </div>
-        <span class="pos-badge badge-anw">Anwesenheit</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">PA011 / PA031<span class="tip-box"><span class="tip-title">Fernmündliche Sitzung</span>Telefon/Video synchron mit Patient<br><span class="tip-limit">Max. 75 Min</span> · Anwesenheitsleistung</span></span>
-          <span class="pos-code-sub">fernmündlich</span>
-        </div>
-        <div>
-          <div class="pos-name">Fernmündliche Sitzung (Telefon/Video synchron)</div>
-          <div class="pos-desc">Telefonat oder Video <strong>mit Patient/Familie in Echtzeit</strong> = Anwesenheitsleistung. Intern als eine Sitzung in der Anordnung. Max. <strong>75 Min.</strong> Unterscheiden von zeitversetzter Telemedizin!</div>
-        </div>
-        <span class="pos-badge badge-anw">Anwesenheit</span>
-      </div>
-
-      <div class="pos-item" style="border-left:3px solid var(--teal)">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">EA.00.0110<span class="tip-box"><span class="tip-title">Telefonische Verlaufskonsultation</span>Kurze Rückmeldung / Instruktion · kein volles Therapiegespräch<br><span class="tip-limit">Max. 20 Min</span> · Nicht-EA.05-Ziffer (EA00)</span></span>
-          <span class="pos-code-sub">Nicht-EA.05 · Verlauf</span>
-        </div>
-        <div>
-          <div class="pos-name">Telefonische Verlaufskonsultation</div>
-          <div class="pos-desc">Kurze telefonische Verlaufskonsultation oder Instruktion — <strong>nicht</strong> mit fernmündlicher Sitzung (PA011, max. 75 Min) verwechseln. Max. <strong>20 Min.</strong> Keine Anwesenheitsleistung. Andere Tariflogik als EA.05-Kapitel. <span style="color:var(--amber);font-weight:600">⚠ Ziffer aus EA00, nicht EA.05 — für Abgrenzung im Alltag unverzichtbar.</span></div>
-        </div>
-        <span class="pos-badge badge-tel">Telefon / Verlauf</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">EA.05.0050<span class="tip-box"><span class="tip-title">Krisenintervention</span>Unter laufender PT · Anordnung A<br><span class="tip-limit">Max. 180 Min/Sitzung</span></span></span>
-          <span class="pos-code-sub">intern: PA110 / PA111</span>
-        </div>
-        <div>
-          <div class="pos-name">Krisenintervention (unter lfd. Psychotherapie)</div>
-          <div class="pos-desc">Unvorhersehbarer, überwältigender Krisenzustand. Unter laufender Anordnung A: max. <strong>180 Min/Sitzung.</strong> Im KANT/Dienst → andere Logik (Anordnung B, s. Abschnitt 8).</div>
-        </div>
-        <span class="pos-badge badge-kris">Krise A</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">EA.05.0150<span class="tip-box"><span class="tip-title">Testdurchführung</span>Richtwert 60 Min (TtT S.10) · nicht mit 0010/0030 kombinieren<br><span class="tip-limit">Max. 180 Min / 90 Tage</span></span></span>
-          <span class="pos-code-sub">intern: PA220</span>
-        </div>
-        <div>
-          <div class="pos-name">Testdiagnostik / Testdurchführung</div>
-          <div class="pos-desc">Durchführung von Tests. Max. <strong>180 Min / 90 Tage.</strong> Richtwert 60 Min (TtT S.10). Nicht kumulierbar mit EA.05.0010/0030. Interpretation nur durch Fachärzte oder psych. Psychotherapeuten.</div>
-        </div>
-        <span class="pos-badge badge-diag">Diagnostik</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">PE020<span class="tip-box"><span class="tip-title">Test-Auswertung / Bericht</span>In Abwesenheit Patient · andere Tage möglich<br><span class="tip-limit">Max. 240 Min / 90 Tage</span></span></span>
-          <span class="pos-code-sub">Auswertung</span>
-        </div>
-        <div>
-          <div class="pos-name">Test-Auswertung, Interpretation und Bericht</div>
-          <div class="pos-desc">Auswertung in Abwesenheit des Patienten. Max. <strong>240 Min / 90 Tage.</strong> Richtwert 80 Min (TtT S.10). An anderen Tagen als Durchführung möglich. Kein freies Zusatzbudget!</div>
-        </div>
-        <span class="pos-badge badge-diag">Diagnostik</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">PA230<span class="tip-box"><span class="tip-title">Expositionstherapie</span>Wegzeit intern inkludiert · + PE010<br><span class="tip-limit">Max. 360 Min / 180 Tage</span></span></span>
-          <span class="pos-code-sub">Exposition</span>
-        </div>
-        <div>
-          <div class="pos-name">Expositionstherapie</div>
-          <div class="pos-desc">Eigene psychologenspezifische Ziffer. Max. <strong>360 Min / 180 Tage.</strong> <strong>Wegzeit ist intern inkludiert</strong> — nicht nochmals separat als EA.05.0060 buchen. + PE010 15 Min VN.</div>
-        </div>
-        <span class="pos-badge badge-expo">Exposition</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">EA.05.0080<span class="tip-box"><span class="tip-title">Telemedizin zeitversetzt</span>E-Mail / asynchron · 6er-Regel veraltet!<br><span class="tip-limit">1×/Tag · 4×/30 Tage</span></span></span>
-          <span class="pos-code-sub">zeitversetzt</span>
-        </div>
-        <div>
-          <div class="pos-name">Telemedizin zeitversetzt / E-Mail</div>
-          <div class="pos-desc">Asynchrone Kommunikation mit Patient. <strong>Max. 1× pro Tag, max. 4× pro 30 Tage.</strong> Gilt auch für E-Mail. Ältere 6er-Regel nicht mehr verwenden!</div>
-        </div>
-        <span class="pos-badge badge-tel">Telemedizin</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code code-tip" tabindex="0">EA.05.0060<span class="tip-box"><span class="tip-title">Wegzeit</span>Hin + zurück · nicht Teil 4h-Regel<br><span class="tip-limit">Max. 60 Min/Sitzung</span><br>Bei PA230 bereits inkludiert!</span></span>
-          <span class="pos-code-sub">Wegzeit</span>
-        </div>
-        <div>
-          <div class="pos-name">Wegzeit</div>
-          <div class="pos-desc">Reine effektive Wegzeit hin + zurück. Max. <strong>60 Min / Sitzung.</strong> Nicht Teil der 4h-Regel. <strong>Bei PA230 Exposition: Wegzeit bereits inkludiert — nicht doppelt buchen!</strong></div>
-        </div>
-        <span class="pos-badge badge-weg">Wegzeit</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code teal code-tip" tabindex="0">EA.05.0100<span class="tip-box"><span class="tip-title">Fremdaktenstudium</span>Nur externe Akten · altersgesteuert<br><span class="tip-limit">LAP-Topf: &lt;18 J. 240'/90T · ≥18 J. 180'/90T</span></span></span>
-          <span class="pos-code-sub">PE045 / PE040</span>
-        </div>
-        <div>
-          <div class="pos-name">Fremdaktenstudium</div>
-          <div class="pos-desc">Nur externe Akten. Intern: PE045 (unter 18 J.) / PE040 (ab 18 J.). Eigene Verlaufsnotizen regulär nicht abrechenbar.</div>
-        </div>
-        <span class="pos-badge badge-lap">LAP-Topf</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code teal code-tip" tabindex="0">EA.05.0110<span class="tip-box"><span class="tip-title">Auskünfte Dritte</span>Schule, Beistand, Behörde · fachlich<br><span class="tip-limit">LAP-Topf altersgesteuert</span></span></span>
-          <span class="pos-code-sub">PK025 / PK020</span>
-        </div>
-        <div>
-          <div class="pos-name">Auskünfte an/von Dritten (Schule, Beistand, Behörde)</div>
-          <div class="pos-desc">Intern: PK025 (unter 18 J.) / PK020 (ab 18 J.). Nur fachlicher Inhalt, nicht Terminvereinbarungen.</div>
-        </div>
-        <span class="pos-badge badge-lap">LAP-Topf</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code teal code-tip" tabindex="0">EA.05.0130<span class="tip-box"><span class="tip-title">Ext. Behandler-Besprechung</span>Ausserhalb regulärer Rapporte<br><span class="tip-limit">LAP-Topf altersgesteuert</span></span></span>
-          <span class="pos-code-sub">PK015 / PK010</span>
-        </div>
-        <div>
-          <div class="pos-name">Besprechungen mit externen Behandlern / Ärzten</div>
-          <div class="pos-desc">Intern: PK015 (unter 18 J.) / PK010 (ab 18 J.). Ausserhalb regulärer Rapporte. Keine internen Besprechungen.</div>
-        </div>
-        <span class="pos-badge badge-lap">LAP-Topf</span>
-      </div>
-
-      <div class="pos-item">
-        <div>
-          <span class="pos-code teal code-tip" tabindex="0">EA.05.0140<span class="tip-box"><span class="tip-title">Diagnostik-/Therapieplanung</span>Schriftliches Ergebnis in Akte zwingend<br><span class="tip-limit">15 Min · 1×/90 Tage</span></span></span>
-          <span class="pos-code-sub">PE030</span>
-        </div>
-        <div>
-          <div class="pos-name">Diagnostik-/Therapieplanung</div>
-          <div class="pos-desc">Intern PE030: <strong>15 Min, max. 1× pro 90 Tage.</strong> Schriftliches Ergebnis muss in der Akte vorliegen.</div>
-        </div>
-        <span class="pos-badge badge-lap">LAP-Topf</span>
-      </div>
-
+  <div class="pos-item">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">EA.05.0010<span class="tip-box"><span class="tip-title">Einzelsetting</span>Patient anwesend · inkl. Akteneinsicht<br><span class="tip-limit">Max. 75 Min</span> + PE010 15 Min</span></span>
+      <span class="pos-code-sub">intern: PA010</span>
     </div>
+    <div>
+      <div class="pos-name">Ambulante Behandlung · Einzelsetting</div>
+      <div class="pos-desc">Patient anwesend. <strong>75 Min max.</strong> Inkl. Begrüssung/Verabschiedung und unmittelbare Akteneinsicht/-einträge.</div>
     </div>
+    <span class="pos-badge badge-anw">Anwesenheit</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">EA.05.0070<span class="tip-box"><span class="tip-title">Telemedizinische Behandlung (synchron)</span>Video/Telefon in Echtzeit · Einzelsetting<br><span class="tip-limit">Wie EA.05.0010</span></span></span>
+      <span class="pos-code-sub">telemedizinisch synchron</span>
+    </div>
+    <div>
+      <div class="pos-name">Telemedizinische Behandlung (synchron)</div>
+      <div class="pos-desc">Video/Telefon in Echtzeit mit Patient · Einzelsetting. Auch für Angehörige von Kindern und nicht gesprächsfähigen Patienten. (KG-Führung S.1 + öffentlicher TARDOC)</div>
+    </div>
+    <span class="pos-badge badge-anw">Anwesenheit</span>
+  </div>
+
+  <div class="pos-item" style="border-left:3px solid var(--indigo-light)">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">PE010<span class="tip-box"><span class="tip-title">Vor-/Nachbereitung</span>Zu PA010/PA030 · nur Psychologen-intern<br><span class="tip-limit">Max. 15 Min</span></span></span>
+      <span class="pos-code-sub">interne Psychologenlogik</span>
+    </div>
+    <div>
+      <div class="pos-name">Vor- und Nachbereitung (75+15-Logik)</div>
+      <div class="pos-desc">Zusätzlich zu PA010 / PA030: <strong>max. 15 Minuten</strong> Vor-/Nachbereitung. Gilt für Einzel- und Familiengespräche. Interne KJPP-Psychologenregel — nicht allgemeine EA.05-Standardregel für alle Berufsgruppen!</div>
+    </div>
+    <span class="pos-badge badge-diag">+15 Min</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">EA.05.0030<span class="tip-box"><span class="tip-title">Familiensetting</span>Patient + Eltern/Bezugspersonen<br><span class="tip-limit">Max. 90 Min</span> + PE010 15 Min</span></span>
+      <span class="pos-code-sub">intern: PA030</span>
+    </div>
+    <div>
+      <div class="pos-name">Ambulante Behandlung · Familiensetting</div>
+      <div class="pos-desc">Patient + Eltern/Bezugspersonen anwesend. 90 Min max. + PE010 15 Min. (TtT S.7)</div>
+    </div>
+    <span class="pos-badge badge-anw">Anwesenheit</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">PA011 / PA031<span class="tip-box"><span class="tip-title">Fernmündliche Sitzung</span>Telefon/Video synchron mit Patient<br><span class="tip-limit">Max. 75 Min</span> · Anwesenheitsleistung</span></span>
+      <span class="pos-code-sub">fernmündlich</span>
+    </div>
+    <div>
+      <div class="pos-name">Fernmündliche Sitzung (Telefon/Video synchron)</div>
+      <div class="pos-desc">Telefonat oder Video <strong>mit Patient/Familie in Echtzeit</strong> = Anwesenheitsleistung. Intern als eine Sitzung in der Anordnung. Max. <strong>75 Min.</strong> Unterscheiden von zeitversetzter Telemedizin!</div>
+    </div>
+    <span class="pos-badge badge-anw">Anwesenheit</span>
+  </div>
+
+  <div class="pos-item" style="border-left:3px solid var(--indigo-light)">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">EA.00.0110<span class="tip-box"><span class="tip-title">Telefonische Verlaufskonsultation</span>Kurze Rückmeldung / Instruktion · kein volles Therapiegespräch<br><span class="tip-limit">Max. 20 Min</span> · Nicht-EA.05-Ziffer (EA00)</span></span>
+      <span class="pos-code-sub">Nicht-EA.05 · Verlauf</span>
+    </div>
+    <div>
+      <div class="pos-name">Telefonische Verlaufskonsultation</div>
+      <div class="pos-desc">Kurze telefonische Verlaufskonsultation oder Instruktion — <strong>nicht</strong> mit fernmündlicher Sitzung (PA011, max. 75 Min) verwechseln. Max. <strong>20 Min.</strong> Keine Anwesenheitsleistung. Andere Tariflogik als EA.05-Kapitel. <span style="color:var(--amber);font-weight:600">⚠ Ziffer aus EA00, nicht EA.05 — für Abgrenzung im Alltag unverzichtbar.</span></div>
+    </div>
+    <span class="pos-badge badge-tel">Telefon / Verlauf</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">EA.05.0050<span class="tip-box"><span class="tip-title">Krisenintervention</span>Unter laufender PT · Anordnung A<br><span class="tip-limit">Max. 180 Min/Sitzung</span></span></span>
+      <span class="pos-code-sub">intern: PA110 / PA111</span>
+    </div>
+    <div>
+      <div class="pos-name">Krisenintervention (unter lfd. Psychotherapie)</div>
+      <div class="pos-desc">Unvorhersehbarer, überwältigender Krisenzustand. Unter laufender Anordnung A: max. <strong>180 Min/Sitzung.</strong> Im KANT/Dienst → andere Logik (Anordnung B, s. Abschnitt 8).</div>
+    </div>
+    <span class="pos-badge badge-kris">Krise A</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">EA.05.0150<span class="tip-box"><span class="tip-title">Testdurchführung</span>Richtwert 60 Min (TtT S.10) · nicht mit 0010/0030 kombinieren<br><span class="tip-limit">Max. 180 Min / 90 Tage</span></span></span>
+      <span class="pos-code-sub">intern: PA220</span>
+    </div>
+    <div>
+      <div class="pos-name">Testdiagnostik / Testdurchführung</div>
+      <div class="pos-desc">Durchführung von Tests. Max. <strong>180 Min / 90 Tage.</strong> Richtwert 60 Min (TtT S.10). Nicht kumulierbar mit EA.05.0010/0030. Interpretation nur durch Fachärzte oder psych. Psychotherapeuten.</div>
+    </div>
+    <span class="pos-badge badge-diag">Diagnostik</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">PE020<span class="tip-box"><span class="tip-title">Test-Auswertung / Bericht</span>In Abwesenheit Patient · andere Tage möglich<br><span class="tip-limit">Max. 240 Min / 90 Tage</span></span></span>
+      <span class="pos-code-sub">Auswertung</span>
+    </div>
+    <div>
+      <div class="pos-name">Test-Auswertung, Interpretation und Bericht</div>
+      <div class="pos-desc">Auswertung in Abwesenheit des Patienten. Max. <strong>240 Min / 90 Tage.</strong> Richtwert 80 Min (TtT S.10). An anderen Tagen als Durchführung möglich. Kein freies Zusatzbudget!</div>
+    </div>
+    <span class="pos-badge badge-diag">Diagnostik</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">PA230<span class="tip-box"><span class="tip-title">Expositionstherapie</span>Wegzeit intern inkludiert · + PE010<br><span class="tip-limit">Max. 360 Min / 180 Tage</span></span></span>
+      <span class="pos-code-sub">Exposition</span>
+    </div>
+    <div>
+      <div class="pos-name">Expositionstherapie</div>
+      <div class="pos-desc">Eigene psychologenspezifische Ziffer. Max. <strong>360 Min / 180 Tage.</strong> <strong>Wegzeit ist intern inkludiert</strong> — nicht nochmals separat als EA.05.0060 buchen. + PE010 15 Min VN.</div>
+    </div>
+    <span class="pos-badge badge-expo">Exposition</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">EA.05.0080<span class="tip-box"><span class="tip-title">Telemedizin zeitversetzt</span>E-Mail / asynchron · 6er-Regel veraltet!<br><span class="tip-limit">1×/Tag · 4×/30 Tage</span></span></span>
+      <span class="pos-code-sub">zeitversetzt</span>
+    </div>
+    <div>
+      <div class="pos-name">Telemedizin zeitversetzt / E-Mail</div>
+      <div class="pos-desc">Asynchrone Kommunikation mit Patient. <strong>Max. 1× pro Tag, max. 4× pro 30 Tage.</strong> Gilt auch für E-Mail. Ältere 6er-Regel nicht mehr verwenden!</div>
+    </div>
+    <span class="pos-badge badge-tel">Telemedizin</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code code-tip" tabindex="0">EA.05.0060<span class="tip-box"><span class="tip-title">Wegzeit</span>Hin + zurück · nicht Teil 4h-Regel<br><span class="tip-limit">Max. 60 Min/Sitzung</span><br>Bei PA230 bereits inkludiert!</span></span>
+      <span class="pos-code-sub">Wegzeit</span>
+    </div>
+    <div>
+      <div class="pos-name">Wegzeit</div>
+      <div class="pos-desc">Reine effektive Wegzeit hin + zurück. Max. <strong>60 Min / Sitzung.</strong> Nicht Teil der 4h-Regel. <strong>Bei PA230 Exposition: Wegzeit bereits inkludiert — nicht doppelt buchen!</strong></div>
+    </div>
+    <span class="pos-badge badge-weg">Wegzeit</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code teal code-tip" tabindex="0">EA.05.0100<span class="tip-box"><span class="tip-title">Fremdaktenstudium</span>Nur externe Akten · altersgesteuert<br><span class="tip-limit">LAP-Topf: &lt;18 J. 240'/90T · ≥18 J. 180'/90T</span></span></span>
+      <span class="pos-code-sub">PE045 / PE040</span>
+    </div>
+    <div>
+      <div class="pos-name">Fremdaktenstudium</div>
+      <div class="pos-desc">Nur externe Akten. Intern: PE045 (unter 18 J.) / PE040 (ab 18 J.). Eigene Verlaufsnotizen regulär nicht abrechenbar.</div>
+    </div>
+    <span class="pos-badge badge-lap">LAP-Topf</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code teal code-tip" tabindex="0">EA.05.0110<span class="tip-box"><span class="tip-title">Auskünfte Dritte</span>Schule, Beistand, Behörde · fachlich<br><span class="tip-limit">LAP-Topf altersgesteuert</span></span></span>
+      <span class="pos-code-sub">PK025 / PK020</span>
+    </div>
+    <div>
+      <div class="pos-name">Auskünfte an/von Dritten (Schule, Beistand, Behörde)</div>
+      <div class="pos-desc">Intern: PK025 (unter 18 J.) / PK020 (ab 18 J.). Nur fachlicher Inhalt, nicht Terminvereinbarungen.</div>
+    </div>
+    <span class="pos-badge badge-lap">LAP-Topf</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code teal code-tip" tabindex="0">EA.05.0130<span class="tip-box"><span class="tip-title">Ext. Behandler-Besprechung</span>Ausserhalb regulärer Rapporte<br><span class="tip-limit">LAP-Topf altersgesteuert</span></span></span>
+      <span class="pos-code-sub">PK015 / PK010</span>
+    </div>
+    <div>
+      <div class="pos-name">Besprechungen mit externen Behandlern / Ärzten</div>
+      <div class="pos-desc">Intern: PK015 (unter 18 J.) / PK010 (ab 18 J.). Ausserhalb regulärer Rapporte. Keine internen Besprechungen.</div>
+    </div>
+    <span class="pos-badge badge-lap">LAP-Topf</span>
+  </div>
+
+  <div class="pos-item">
+    <div>
+      <span class="pos-code teal code-tip" tabindex="0">EA.05.0140<span class="tip-box"><span class="tip-title">Diagnostik-/Therapieplanung</span>Schriftliches Ergebnis in Akte zwingend<br><span class="tip-limit">15 Min · 1×/90 Tage</span></span></span>
+      <span class="pos-code-sub">PE030</span>
+    </div>
+    <div>
+      <div class="pos-name">Diagnostik-/Therapieplanung</div>
+      <div class="pos-desc">Intern PE030: <strong>15 Min, max. 1× pro 90 Tage.</strong> Schriftliches Ergebnis muss in der Akte vorliegen.</div>
+    </div>
+    <span class="pos-badge badge-lap">LAP-Topf</span>
+  </div>
+
+</div>
+</div>
+
   </details>
 
   <!-- ─── DIAGNOSTIK ─── -->
+
   <details open class="section section-accordion" id="diagnostik">
     <summary>
       <div class="section-title">
@@ -1387,30 +1645,32 @@
       </div>
     </div>
 
-    <div class="do-dont">
-      <div class="do-box">
-        <h4>✓ So funktioniert Diagnostik korrekt</h4>
-        <ul>
-          <li>Durchführung und Auswertung an verschiedenen Tagen möglich</li>
-          <li>Bei typisch 3 Abklärungssitzungen: Durchführung nach 60-Min-Richtwert, Auswertung nach 80-Min-Richtwert (TtT S.10)</li>
-          <li>Kleindiagnostik unter 20 Min: intern über PA010 + PE010 statt grossen Diagnostikblock</li>
-          <li>Zeit sauber erfassen, Doppelverrechnung vermeiden</li>
-        </ul>
-      </div>
-      <div class="dont-box">
-        <h4>✕ Häufige Fehler</h4>
-        <ul>
-          <li>Grosse Testabklärung einfach «in eine normale Sitzung hineinrechnen»</li>
-          <li>EA.05.0150 zusammen mit EA.05.0010/0030 am selben Tag buchen</li>
-          <li>Auswertungszeit als freies Zusatzbudget betrachten</li>
-          <li>Interpretation selbst vornehmen statt Psychiater/psych. Psychotherapeut</li>
-        </ul>
-      </div>
-    </div>
-    </div>
+<div class="do-dont">
+  <div class="do-box">
+    <h4>✓ So funktioniert Diagnostik korrekt</h4>
+    <ul>
+      <li>Durchführung und Auswertung an verschiedenen Tagen möglich</li>
+      <li>Bei typisch 3 Abklärungssitzungen: Durchführung nach 60-Min-Richtwert, Auswertung nach 80-Min-Richtwert (TtT S.10)</li>
+      <li>Kleindiagnostik unter 20 Min: intern über PA010 + PE010 statt grossen Diagnostikblock</li>
+      <li>Zeit sauber erfassen, Doppelverrechnung vermeiden</li>
+    </ul>
+  </div>
+  <div class="dont-box">
+    <h4>✕ Häufige Fehler</h4>
+    <ul>
+      <li>Grosse Testabklärung einfach «in eine normale Sitzung hineinrechnen»</li>
+      <li>EA.05.0150 zusammen mit EA.05.0010/0030 am selben Tag buchen</li>
+      <li>Auswertungszeit als freies Zusatzbudget betrachten</li>
+      <li>Interpretation selbst vornehmen statt Psychiater/psych. Psychotherapeut</li>
+    </ul>
+  </div>
+</div>
+</div>
+
   </details>
 
   <!-- ─── TELEFON/TELEMEDIZIN ─── -->
+
   <details open class="section section-accordion" id="telefon">
     <summary>
       <div class="section-title">
@@ -1459,23 +1719,25 @@
           <div class="tel-type">LAP-Kontakt mit Dritten/Angehörigen</div>
           <div style="font-size:12px;color:var(--slate)">Telefonat über Patient, ohne Patient, mit Schule/Beistand/Eltern</div>
         </div>
-        <div class="tel-code" style="color:#1d4ed8">PK025/PK020<br>0110/0120</div>
+        <div class="tel-code" style="color:#1d4ed8">PK025/PK020<br>EA.05.0110/0120</div>
         <div class="tel-limit">LAP-Topf · altersgestufte Limits · fachlicher Inhalt</div>
       </div>
     </div>
 
-    <div class="note">
-      <span class="note-icon">🔑</span>
-      <div>
-        <strong>Vor jedem Telefonkontakt gedanklich klären:</strong>
-        War es eine echte fernmündliche Sitzung? — Eine kurze Verlaufskonsultation? — Eine zeitversetzte E-Mail-Kommunikation? — Ein LAP-Kontakt mit Dritten/Angehörigen (ohne Patient)?
-        Diese Unterscheidung ist wichtiger als die einzelne Codebezeichnung.
-      </div>
-    </div>
-    </div>
+<div class="note">
+  <span class="note-icon">🔑</span>
+  <div>
+    <strong>Vor jedem Telefonkontakt gedanklich klären:</strong>
+    War es eine echte fernmündliche Sitzung? — Eine kurze Verlaufskonsultation? — Eine zeitversetzte E-Mail-Kommunikation? — Ein LAP-Kontakt mit Dritten/Angehörigen (ohne Patient)?
+    Diese Unterscheidung ist wichtiger als die einzelne Codebezeichnung.
+  </div>
+</div>
+</div>
+
   </details>
 
   <!-- ─── KRISE A/B ─── -->
+
   <details open class="section section-accordion" id="krise">
     <summary>
       <div class="section-title">
@@ -1514,16 +1776,18 @@
       </div>
     </div>
 
-    <div class="note" style="margin-top:16px">
-      <span class="note-icon">⚠️</span>
-      <div>
-        <strong>Psy/Psy-Doppelkonsultationen:</strong> Im Regelbetrieb regressgefährdet — besonders Familiensettings. Ausnahme Einarbeitung: Fallführende rechnet ab, zweite Person als LUF. Berufsgruppenübergreifend in begründbaren Fällen möglich. Dokumentation zwingend.
-      </div>
-    </div>
-    </div>
+<div class="note" style="margin-top:16px">
+  <span class="note-icon">⚠️</span>
+  <div>
+    <strong>Psy/Psy-Doppelkonsultationen:</strong> Im Regelbetrieb regressgefährdet — besonders Familiensettings. Ausnahme Einarbeitung: Fallführende rechnet ab, zweite Person als LUF. Berufsgruppenübergreifend in begründbaren Fällen möglich. Dokumentation zwingend.
+  </div>
+</div>
+</div>
+
   </details>
 
   <!-- ─── EXPOSITION ─── -->
+
   <details open class="section section-accordion" id="exposition">
     <summary>
       <div class="section-title">
@@ -1563,6 +1827,7 @@
   </details>
 
   <!-- ─── LAP-TOPF ─── -->
+
   <details open class="section section-accordion" id="lap-topf">
     <summary>
       <div class="section-title">
@@ -1599,50 +1864,52 @@
       </div>
     </div>
 
-    <div class="card" style="margin-bottom:16px">
-      <div style="font-weight:700;font-size:13px;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Zusätzlich in beiden Altersgruppen</div>
-      <div style="display:grid;gap:8px">
-        <div style="display:flex;gap:12px;align-items:center;font-size:13.5px">
-          <span style="font-weight:700;color:var(--indigo);min-width:80px">PE030</span>
-          <span style="color:var(--navy)">Diagnostik-/Therapieplanung</span>
-          <span style="color:var(--rose);font-weight:600;margin-left:auto">15 Min · max. 1× / 90 Tage</span>
-        </div>
-        <div style="display:flex;gap:12px;align-items:center;font-size:13.5px;flex-wrap:wrap">
-          <span style="font-weight:700;color:var(--teal);min-width:80px">EA.05.0120</span>
-          <span style="color:var(--navy)">Auskünfte Angehörige (ohne Patient)</span>
-          <span style="color:var(--slate);margin-left:auto">Fachlicher Austausch</span>
-          <span style="width:100%;font-size:12px;color:var(--amber);font-weight:600;margin-top:2px">⚠️ Zuordnung zum LAP-Topf-Limit klinikintern bestätigen — unklar, ob im altersgestuften Pool (240/180 Min) enthalten oder separates Budget.</span>
-        </div>
-      </div>
+<div class="card" style="margin-bottom:16px">
+  <div style="font-weight:700;font-size:13px;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Zusätzlich in beiden Altersgruppen</div>
+  <div style="display:grid;gap:8px">
+    <div style="display:flex;gap:12px;align-items:center;font-size:13.5px">
+      <span style="font-weight:700;color:var(--indigo);min-width:80px">PE030</span>
+      <span style="color:var(--navy)">Diagnostik-/Therapieplanung</span>
+      <span style="color:var(--rose);font-weight:600;margin-left:auto">15 Min · max. 1× / 90 Tage</span>
     </div>
+    <div style="display:flex;gap:12px;align-items:center;font-size:13.5px;flex-wrap:wrap">
+      <span style="font-weight:700;color:var(--teal);min-width:80px">EA.05.0120</span>
+      <span style="color:var(--navy)">Auskünfte Angehörige (ohne Patient)</span>
+      <span style="color:var(--slate);margin-left:auto">Fachlicher Austausch</span>
+      <span style="width:100%;font-size:12px;color:var(--amber);font-weight:600;margin-top:2px">⚠️ Zuordnung zum LAP-Topf-Limit klinikintern bestätigen — unklar, ob im altersgestuften Pool (240/180 Min) enthalten oder separates Budget.</span>
+    </div>
+  </div>
+</div>
 
-    <div class="do-dont">
-      <div class="do-box">
-        <h4>✓ Abrechenbar aus LAP-Topf</h4>
-        <ul>
-          <li>Externer Schulbericht, IV-Unterlagen lesen (PE045/040)</li>
-          <li>Fachliches Telefonat mit Schule/Beistand (PK025/020)</li>
-          <li>Austausch mit externem Arzt/Psychologen (PK015/010)</li>
-          <li>Schriftlicher Hilfe-/Krisenplan mit Akte (PE030)</li>
-          <li>Inhaltliches Elterntelefonat ohne Patient (0120)</li>
-        </ul>
-      </div>
-      <div class="dont-box">
-        <h4>✕ Nicht aus LAP-Topf</h4>
-        <ul>
-          <li>Eigene Verlaufsnotizen nachlesen — grundsätzlich nicht abrechenbar. Ausnahme: extensives Aufarbeiten von Eigenakten, wenn sauber dokumentiert.</li>
-          <li>Kurze Vor-/Nachbereitung (→ PE010, nicht LAP)</li>
-          <li>Reine Terminvereinbarungen</li>
-          <li>Interne Rapporte und Teamgespräche</li>
-          <li>PE030-Planung ohne schriftliches Ergebnis in der Akte</li>
-          <li>Kumulierung mit Zuschlag für Kinder bis 12 Jahre (nicht zulässig, KG-Führung S.2)</li>
-        </ul>
-      </div>
-    </div>
-    </div>
+<div class="do-dont">
+  <div class="do-box">
+    <h4>✓ Abrechenbar aus LAP-Topf</h4>
+    <ul>
+      <li>Externer Schulbericht, IV-Unterlagen lesen (PE045/040)</li>
+      <li>Fachliches Telefonat mit Schule/Beistand (PK025/020)</li>
+      <li>Austausch mit externem Arzt/Psychologen (PK015/010)</li>
+      <li>Schriftlicher Hilfe-/Krisenplan mit Akte (PE030)</li>
+      <li>Inhaltliches Elterntelefonat ohne Patient (EA.05.0120)</li>
+    </ul>
+  </div>
+  <div class="dont-box">
+    <h4>✕ Nicht aus LAP-Topf</h4>
+    <ul>
+      <li>Eigene Verlaufsnotizen nachlesen — grundsätzlich nicht abrechenbar. Ausnahme: extensives Aufarbeiten von Eigenakten, wenn sauber dokumentiert.</li>
+      <li>Kurze Vor-/Nachbereitung (→ PE010, nicht LAP)</li>
+      <li>Reine Terminvereinbarungen</li>
+      <li>Interne Rapporte und Teamgespräche</li>
+      <li>PE030-Planung ohne schriftliches Ergebnis in der Akte</li>
+      <li>Kumulierung mit Zuschlag für Kinder bis 12 Jahre (nicht zulässig, KG-Führung S.2)</li>
+    </ul>
+  </div>
+</div>
+</div>
+
   </details>
 
   <!-- ─── BERICHTE / IV ─── -->
+
   <details open class="section section-accordion" id="berichte">
     <summary>
       <div class="section-title">
@@ -1652,7 +1919,7 @@
       <p class="section-lead">Eigener Berichts-Block — nicht frei schätzbar, sondern nach effektivem Zeitaufwand.</p>
     </summary>
     <div class="section-content">
-    <div class="expo-box" style="border-color:#a5b4fc">
+    <div class="expo-box" style="border-color:#c7d2fe">
       <div class="expo-title" style="color:var(--indigo)">Berichtsblock · Ambulante Struktur</div>
       <div class="expo-sub">Nach effektivem Zeitaufwand · Drei Teilberichte</div>
       <div class="expo-stats" style="grid-template-columns:repeat(3,1fr)">
@@ -1671,39 +1938,41 @@
       </div>
     </div>
 
-    <div class="card" style="margin-top:16px;margin-bottom:16px">
-      <div style="font-weight:700;font-size:13px;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Neue ambulante Berichtsstruktur</div>
-      <ul style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text);list-style:none">
-        <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Berichte werden nach effektivem Zeitaufwand verrechnet</li>
-        <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Maximum: 240 Minuten pro Bericht</li>
-        <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Richtwert: 120 Minuten — bei Überschreitung Begründung erforderlich</li>
-        <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Drei Teilberichte in der neuen ambulanten Struktur</li>
-        <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>IV-Berichte sind primär interner KJPP-Fakturierungsprozess</li>
-      </ul>
-    </div>
+<div class="card" style="margin-top:16px;margin-bottom:16px">
+  <div style="font-weight:700;font-size:13px;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Neue ambulante Berichtsstruktur</div>
+  <ul style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text);list-style:none">
+    <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Berichte werden nach effektivem Zeitaufwand verrechnet</li>
+    <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Maximum: 240 Minuten pro Bericht</li>
+    <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Richtwert: 120 Minuten — bei Überschreitung Begründung erforderlich</li>
+    <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Drei Teilberichte in der neuen ambulanten Struktur</li>
+    <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>IV-Berichte sind primär interner KJPP-Fakturierungsprozess</li>
+  </ul>
+</div>
 
-    <div class="do-dont">
-      <div class="do-box">
-        <h4>✓ Praxishinweise</h4>
-        <ul>
-          <li>Zeit sauber erfassen — effektiver Aufwand zählt</li>
-          <li>Doppelverrechnung vermeiden</li>
-          <li>Internen Versand- und Fakturaprozess einhalten</li>
-        </ul>
-      </div>
-      <div class="dont-box">
-        <h4>✕ Häufige Fehler</h4>
-        <ul>
-          <li>Von freier direkter Psychologen-Selbstabrechnung ausgehen</li>
-          <li>Berichtszeit pauschal statt nach effektivem Aufwand angeben</li>
-          <li>IV-Berichte ohne Rücksprache mit Klinikleitung einreichen</li>
-        </ul>
-      </div>
-    </div>
-    </div>
+<div class="do-dont">
+  <div class="do-box">
+    <h4>✓ Praxishinweise</h4>
+    <ul>
+      <li>Zeit sauber erfassen — effektiver Aufwand zählt</li>
+      <li>Doppelverrechnung vermeiden</li>
+      <li>Internen Versand- und Fakturaprozess einhalten</li>
+    </ul>
+  </div>
+  <div class="dont-box">
+    <h4>✕ Häufige Fehler</h4>
+    <ul>
+      <li>Von freier direkter Psychologen-Selbstabrechnung ausgehen</li>
+      <li>Berichtszeit pauschal statt nach effektivem Aufwand angeben</li>
+      <li>IV-Berichte ohne Rücksprache mit Klinikleitung einreichen</li>
+    </ul>
+  </div>
+</div>
+</div>
+
   </details>
 
   <!-- ─── ÜBERBRÜCKUNGSLEISTUNGEN ─── -->
+
   <details open class="section section-accordion" id="ueberbrueckung">
     <summary>
       <div class="section-title">
@@ -1722,27 +1991,29 @@
       </ul>
     </div>
 
-    <div class="do-dont">
-      <div class="do-box">
-        <h4>✓ Gilt für</h4>
-        <ul>
-          <li>Wechsel stationär → ambulant / teilstationär</li>
-          <li>Tagesklinik übernimmt Nachbehandlung vollumfänglich</li>
-        </ul>
-      </div>
-      <div class="dont-box">
-        <h4>✕ Gilt nicht für</h4>
-        <ul>
-          <li>Umgekehrte Richtung (ambulant → stationär)</li>
-          <li>Ambulant → ambulant</li>
-          <li>Externer Therapeut parallel beteiligt</li>
-        </ul>
-      </div>
-    </div>
-    </div>
+<div class="do-dont">
+  <div class="do-box">
+    <h4>✓ Gilt für</h4>
+    <ul>
+      <li>Wechsel stationär → ambulant / teilstationär</li>
+      <li>Tagesklinik übernimmt Nachbehandlung vollumfänglich</li>
+    </ul>
+  </div>
+  <div class="dont-box">
+    <h4>✕ Gilt nicht für</h4>
+    <ul>
+      <li>Umgekehrte Richtung (ambulant → stationär)</li>
+      <li>Ambulant → ambulant</li>
+      <li>Externer Therapeut parallel beteiligt</li>
+    </ul>
+  </div>
+</div>
+</div>
+
   </details>
 
   <!-- ─── SZENARIEN ─── -->
+
   <details open class="section section-accordion" id="szenarien">
     <summary>
       <div class="section-title">
@@ -1754,111 +2025,113 @@
     <div class="section-content">
     <div class="scenario-grid">
 
-      <div class="scenario-card">
-        <div class="scenario-num">1</div>
-        <div class="scenario-body">
-          <div class="scenario-q">🧠 Psychotherapiesitzung 50 Min + 12 Min Verlaufseintrag/Vorbereitung</div>
-          <div class="scenario-think">Patient anwesend · Psychologin · Sitzungszeit + Vor/Nachbereitung getrennt erfassen</div>
-          <span class="scenario-answer">→ PA010 (50 Min) + PE010 (12 Min)</span>
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-num">2</div>
-        <div class="scenario-body">
-          <div class="scenario-q">📋 12-seitiger Bericht früherer Klinik + SPD-Bericht lesen, 14 Jahre alt</div>
-          <div class="scenario-think">Fremdakten · Patient unter 18 · LAP-Topf unter 18</div>
-          <span class="scenario-answer">→ PE045 (LAP-Topf, 240 Min / 90 Tage)</span>
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-num">3</div>
-        <div class="scenario-body">
-          <div class="scenario-q">🔬 Testdurchführung 90 Min (CBCL, AIM-5) + Auswertung nächsten Tag 60 Min</div>
-          <div class="scenario-think">Diagnostikblock · Durchführung und Auswertung getrennt · Nicht mit 0010 kombinieren</div>
-          <span class="scenario-answer">→ PA220 (90 Min) + PE020 (60 Min) — verschiedene Tage OK</span>
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-num">4</div>
-        <div class="scenario-body">
-          <div class="scenario-q">📱 Telefon-Sitzung 45 Min mit Jugendlichem — echtes therapeutisches Gespräch</div>
-          <div class="scenario-think">Synchron · Patient «anwesend» via Telefon · Vollsitzung, nicht Verlaufskonsultation</div>
-          <span class="scenario-answer">→ PA011 (45 Min) — fernmündliche Sitzung</span>
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-num">5</div>
-        <div class="scenario-body">
-          <div class="scenario-q">✉️ Kurze schriftliche Antwort auf E-Mail von Patient (klinisch relevant)</div>
-          <div class="scenario-think">Zeitversetzt · asynchron · aktuell max. 4× / 30 Tage</div>
-          <span class="scenario-answer">→ EA.05.0080 — ältere 6er-Regel nicht verwenden!</span>
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-num">6</div>
-        <div class="scenario-body">
-          <div class="scenario-q">🚶 Exposition ausserhalb Klinik: 30 Min Fahrt + 90 Min Exposition + 15 Min VN</div>
-          <div class="scenario-think">Expositionstherapie · Wegzeit intern inkludiert · PE010 separat möglich</div>
-          <span class="scenario-answer teal">→ PA230 (90+30 Min inkl. Wegzeit) + PE010 (15 Min)</span>
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-num">7</div>
-        <div class="scenario-body">
-          <div class="scenario-q">⚡ Jugendlicher erscheint unangemeldet nachts im KANT — akute Krise</div>
-          <div class="scenario-think">KANT / Nachtdienst · Anordnung B · unbegrenzt · nicht kumulierbar mit regulären Konsultationen</div>
-          <span class="scenario-answer orange">→ EA.00.0090 Anordnung B (unbegrenzt)</span>
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-num">8</div>
-        <div class="scenario-body">
-          <div class="scenario-q">⚡ Krise mitten in laufender Therapiestunde — unerwartet eskaliert</div>
-          <div class="scenario-think">Laufende PT · Anordnung A · max. 180 Min · Dokumentation: Auslöser, Bedrohungscharakter, Massnahmen</div>
-          <span class="scenario-answer" style="background:#fff7ed;border-color:#fed7aa;color:#c2410c">→ PA110 Anordnung A (max. 180 Min)</span>
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-num">9</div>
-        <div class="scenario-body">
-          <div class="scenario-q">📞 Telefonat mit Klassenlehrerin: Schulpräsenz und Anpassungen (20 Min, Patient 13 Jahre)</div>
-          <div class="scenario-think">Patient nicht dabei · Schule = Dritte · unter 18 · fachlicher Inhalt · LAP-Topf unter 18</div>
-          <span class="scenario-answer">→ PK025 (LAP-Topf unter 18, 240 Min Limit)</span>
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-num">10</div>
-        <div class="scenario-body">
-          <div class="scenario-q">👥 Zwei Psychologinnen leiten gemeinsam Familiensitzung (Doppelkonsultation)</div>
-          <div class="scenario-think">Psy/Psy-Doppelkonsultation · Regelbetrieb regressgefährdet · zweite Person als LUF</div>
-          <span class="scenario-answer no">→ Regressrisiko! Fallführende rechnet ab, 2. Person LUF</span>
-        </div>
-      </div>
-
-      <div class="scenario-card">
-        <div class="scenario-num">11</div>
-        <div class="scenario-body">
-          <div class="scenario-q">💬 Mutter schickt abends SMS über Verschlechterung — Psychologin antwortet nächsten Morgen per E-Mail (klinisch relevant, 10 Min)</div>
-          <div class="scenario-think">Zeitversetzt · asynchron · nicht synchron am Telefon · Antwort am Folgetag</div>
-          <span class="scenario-answer">→ EA.05.0080 (zeitversetzt, 1×/Tag, max. 4×/30 Tage)</span>
-          <p style="font-size:12px;color:var(--slate-light);margin:6px 0 0;line-height:1.5">Hätte die Psychologin stattdessen direkt telefoniert (synchron, 20 Min Rückmeldung): → <strong>EA.00.0110</strong> (Verlaufskonsultation). Hätte es ein volles therapeutisches Gespräch am Telefon gegeben (45 Min): → <strong>PA011</strong> (fernmündliche Sitzung).</p>
-        </div>
-      </div>
-
+  <div class="scenario-card">
+    <div class="scenario-num">1</div>
+    <div class="scenario-body">
+      <div class="scenario-q">🧠 Psychotherapiesitzung 50 Min + 12 Min Verlaufseintrag/Vorbereitung</div>
+      <div class="scenario-think">Patient anwesend · Psychologin · Sitzungszeit + Vor/Nachbereitung getrennt erfassen</div>
+      <span class="scenario-answer">→ PA010 (50 Min) + PE010 (12 Min)</span>
     </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">2</div>
+    <div class="scenario-body">
+      <div class="scenario-q">📋 12-seitiger Bericht früherer Klinik + SPD-Bericht lesen, 14 Jahre alt</div>
+      <div class="scenario-think">Fremdakten · Patient unter 18 · LAP-Topf unter 18</div>
+      <span class="scenario-answer">→ PE045 (LAP-Topf, 240 Min / 90 Tage)</span>
     </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">3</div>
+    <div class="scenario-body">
+      <div class="scenario-q">🔬 Testdurchführung 90 Min (CBCL, AIM-5) + Auswertung nächsten Tag 60 Min</div>
+      <div class="scenario-think">Diagnostikblock · Durchführung und Auswertung getrennt · Nicht mit 0010 kombinieren</div>
+      <span class="scenario-answer">→ PA220 (90 Min) + PE020 (60 Min) — verschiedene Tage OK</span>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">4</div>
+    <div class="scenario-body">
+      <div class="scenario-q">📱 Telefon-Sitzung 45 Min mit Jugendlichem — echtes therapeutisches Gespräch</div>
+      <div class="scenario-think">Synchron · Patient «anwesend» via Telefon · Vollsitzung, nicht Verlaufskonsultation</div>
+      <span class="scenario-answer">→ PA011 (45 Min) — fernmündliche Sitzung</span>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">5</div>
+    <div class="scenario-body">
+      <div class="scenario-q">✉️ Kurze schriftliche Antwort auf E-Mail von Patient (klinisch relevant)</div>
+      <div class="scenario-think">Zeitversetzt · asynchron · aktuell max. 4× / 30 Tage</div>
+      <span class="scenario-answer">→ EA.05.0080 — ältere 6er-Regel nicht verwenden!</span>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">6</div>
+    <div class="scenario-body">
+      <div class="scenario-q">🚶 Exposition ausserhalb Klinik: 30 Min Fahrt + 90 Min Exposition + 15 Min VN</div>
+      <div class="scenario-think">Expositionstherapie · Wegzeit intern inkludiert · PE010 separat möglich</div>
+      <span class="scenario-answer teal">→ PA230 (90+30 Min inkl. Wegzeit) + PE010 (15 Min)</span>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">7</div>
+    <div class="scenario-body">
+      <div class="scenario-q">⚡ Jugendlicher erscheint unangemeldet nachts im KANT — akute Krise</div>
+      <div class="scenario-think">KANT / Nachtdienst · Anordnung B · unbegrenzt · nicht kumulierbar mit regulären Konsultationen</div>
+      <span class="scenario-answer orange">→ EA.00.0090 Anordnung B (unbegrenzt)</span>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">8</div>
+    <div class="scenario-body">
+      <div class="scenario-q">⚡ Krise mitten in laufender Therapiestunde — unerwartet eskaliert</div>
+      <div class="scenario-think">Laufende PT · Anordnung A · max. 180 Min · Dokumentation: Auslöser, Bedrohungscharakter, Massnahmen</div>
+      <span class="scenario-answer" style="background:#fff7ed;border-color:#fed7aa;color:#c2410c">→ PA110 Anordnung A (max. 180 Min)</span>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">9</div>
+    <div class="scenario-body">
+      <div class="scenario-q">📞 Telefonat mit Klassenlehrerin: Schulpräsenz und Anpassungen (20 Min, Patient 13 Jahre)</div>
+      <div class="scenario-think">Patient nicht dabei · Schule = Dritte · unter 18 · fachlicher Inhalt · LAP-Topf unter 18</div>
+      <span class="scenario-answer">→ PK025 (LAP-Topf unter 18, 240 Min Limit)</span>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">10</div>
+    <div class="scenario-body">
+      <div class="scenario-q">👥 Zwei Psychologinnen leiten gemeinsam Familiensitzung (Doppelkonsultation)</div>
+      <div class="scenario-think">Psy/Psy-Doppelkonsultation · Regelbetrieb regressgefährdet · zweite Person als LUF</div>
+      <span class="scenario-answer no">→ Regressrisiko! Fallführende rechnet ab, 2. Person LUF</span>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">11</div>
+    <div class="scenario-body">
+      <div class="scenario-q">💬 Mutter schickt abends SMS über Verschlechterung — Psychologin antwortet nächsten Morgen per E-Mail (klinisch relevant, 10 Min)</div>
+      <div class="scenario-think">Zeitversetzt · asynchron · nicht synchron am Telefon · Antwort am Folgetag</div>
+      <span class="scenario-answer">→ EA.05.0080 (zeitversetzt, 1×/Tag, max. 4×/30 Tage)</span>
+      <p style="font-size:12px;color:var(--slate-light);margin:6px 0 0;line-height:1.5">Hätte die Psychologin stattdessen direkt telefoniert (synchron, 20 Min Rückmeldung): → <strong>EA.00.0110</strong> (Verlaufskonsultation). Hätte es ein volles therapeutisches Gespräch am Telefon gegeben (45 Min): → <strong>PA011</strong> (fernmündliche Sitzung).</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
   </details>
 
   <!-- ─── KURZFASSUNG ─── -->
+
   <details open class="section section-accordion" id="kurzfassung">
     <summary>
       <div class="section-title">
@@ -1913,6 +2186,7 @@
 </div>
 
 <!-- FOOTER -->
+
 <div class="footer">
   <span>Tarif-Kompass 2026 · Psychologinnen mit Psychotherapieausbildung · KJPP-Tagesklinik</span>
   <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026 · Stand Website: 15.03.2026 · Basierend auf Quelldokument vom 12.03.2026</span>
@@ -1922,16 +2196,17 @@
 </div>
 
 <!-- BUTTON BAR -->
+
 <div class="btn-bar">
-  <a class="dl-btn" style="background:#4f46e5;color:white;" href="files/spickzettel-psych-print.html" target="_blank">
+  <a class='dl-btn' href='files/spickzettel-psych-print.html' style='background:#4f46e5;color:white;' target='_blank'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
     Spickzettel
   </a>
-  <a class="dl-btn" style="background:#0d9488;color:white;" href="files/positionen-psych-print.html" target="_blank">
+  <a class='dl-btn' href='files/positionen-psych-print.html' style='background:#4f46e5;color:white;' target='_blank'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
     Positionen
   </a>
-  <a class="dl-btn" style="background:#7c3aed;color:white;" href="files/verlaufseintrag-psych-print.html" target="_blank">
+  <a class='dl-btn' href='files/verlaufseintrag-psych-print.html' style='background:#4338ca;color:white;' target='_blank'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
     Verlaufseintrag
   </a>
@@ -1942,7 +2217,59 @@
 </div>
 
 <script>
-  // ── Smooth scroll navigation ──
+  // ═══════════════════════════════════════════════════════
+  // CODE DATABASE — all tariff codes with metadata
+  // ═══════════════════════════════════════════════════════
+  const codeDB = [
+    { code:'EA.05.0010', alias:['PA010'], name:'Einzelsetting', limit:'75 Min', detail:'Patient anwesend · + PE010 15 Min VN', section:'positionen' },
+    { code:'EA.05.0070', alias:[], name:'Telemedizin synchron', limit:'Wie 0010', detail:'Video/Telefon Echtzeit · Einzelsetting', section:'positionen' },
+    { code:'PE010', alias:[], name:'Vor-/Nachbereitung', limit:'15 Min', detail:'Zu PA010/PA030 · interne Psychologenlogik', section:'positionen' },
+    { code:'EA.05.0030', alias:['PA030'], name:'Familiensetting', limit:'90 Min', detail:'Patient + Eltern · + PE010 15 Min VN', section:'positionen' },
+    { code:'PA011', alias:['PA031'], name:'Fernmündliche Sitzung', limit:'75 Min', detail:'Telefon/Video synchron · Anwesenheitsleistung', section:'positionen' },
+    { code:'EA.00.0110', alias:[], name:'Telefonische Verlaufskonsultation', limit:'20 Min', detail:'Kurze Rückmeldung · Nicht-EA.05-Ziffer', section:'positionen' },
+    { code:'EA.05.0050', alias:['PA110','PA111'], name:'Krisenintervention', limit:'180 Min', detail:'Unter lfd. PT · Anordnung A', section:'krise' },
+    { code:'EA.00.0090', alias:[], name:'Psychiatrische Krisenintervention', limit:'Unbegrenzt', detail:'KANT/Nacht-/Wochenenddienst · Anordnung B', section:'krise' },
+    { code:'EA.05.0150', alias:['PA220'], name:'Testdurchführung', limit:'180 Min / 90 T', detail:'Richtwert 60 Min · nicht mit 0010/0030 kombinieren', section:'diagnostik' },
+    { code:'PE020', alias:[], name:'Test-Auswertung / Bericht', limit:'240 Min / 90 T', detail:'In Abwesenheit · Richtwert 80 Min', section:'diagnostik' },
+    { code:'PA230', alias:[], name:'Expositionstherapie', limit:'360 Min / 180 T', detail:'Wegzeit inkl. · + PE010 15 Min VN', section:'exposition' },
+    { code:'EA.05.0080', alias:[], name:'Telemedizin zeitversetzt', limit:'1×/Tag · 4×/30 T', detail:'E-Mail / asynchron · 6er-Regel veraltet!', section:'telefon' },
+    { code:'EA.05.0060', alias:[], name:'Wegzeit', limit:'60 Min/Sitzung', detail:'Hin + zurück · Bei PA230 bereits inkl.!', section:'positionen' },
+    { code:'EA.05.0100', alias:['PE045','PE040'], name:'Fremdaktenstudium', limit:'LAP altersgesteuert', detail:'<18 J: 240 Min · ≥18 J: 180 Min / 90 T', section:'lap-topf' },
+    { code:'EA.05.0110', alias:['PK025','PK020'], name:'Auskünfte Dritte', limit:'LAP altersgesteuert', detail:'Schule, Beistand, Behörde · fachlich', section:'lap-topf' },
+    { code:'EA.05.0130', alias:['PK015','PK010'], name:'Ext. Behandler-Besprechung', limit:'LAP altersgesteuert', detail:'Ausserhalb regulärer Rapporte', section:'lap-topf' },
+    { code:'EA.05.0140', alias:['PE030'], name:'Diagnostik-/Therapieplanung', limit:'15 Min · 1×/90 T', detail:'Schriftliches Ergebnis zwingend', section:'lap-topf' },
+    { code:'EA.00.0130', alias:[], name:'Telemedizinische Krisenintervention', limit:'Unbegrenzt', detail:'Krise · Anordnung B · telemedizinisch', section:'krise' },
+    { code:'EA.05.0120', alias:[], name:'Auskünfte Angehörige', limit:'LAP-Topf', detail:'Ohne Patient · fachlicher Austausch', section:'lap-topf' },
+  ];
+
+  // Build fast lookup: all codes + aliases → entry
+  const codeLookup = {};
+  codeDB.forEach(entry => {
+    const norm = c => c.replace(/[\.\s\-\/]/g, '').toUpperCase();
+    codeLookup[norm(entry.code)] = entry;
+    entry.alias.forEach(a => { codeLookup[norm(a)] = entry; });
+  });
+
+  function findCode(query) {
+    const norm = query.replace(/[\.\s\-\/]/g, '').toUpperCase();
+    // Exact match
+    if (codeLookup[norm]) return codeLookup[norm];
+    // Partial match (e.g. "PA01" matches PA010)
+    for (const key in codeLookup) {
+      if (key.startsWith(norm) && norm.length >= 3) return codeLookup[key];
+    }
+    // Number-only match (e.g. "0010" → EA.05.0010)
+    if (/^\d{3,4}$/.test(query)) {
+      for (const entry of codeDB) {
+        if (entry.code.includes(query)) return entry;
+      }
+    }
+    return null;
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // NAV + SCROLL
+  // ═══════════════════════════════════════════════════════
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -1954,11 +2281,10 @@
     });
   });
 
-  // ── Scroll-spy: highlight active nav link ──
   const sections = document.querySelectorAll('.section');
   const navLinks = document.querySelectorAll('.nav-link');
   const navBar = document.querySelector('.nav-bar');
-  const navOffset = navBar ? navBar.offsetHeight + 20 : 60;
+  const navOffset = navBar ? navBar.offsetHeight + 60 : 80;
 
   function updateScrollSpy() {
     let current = '';
@@ -1973,7 +2299,6 @@
   window.addEventListener('scroll', updateScrollSpy, { passive: true });
   updateScrollSpy();
 
-  // ── Scroll animations: fade-in sections ──
   const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1984,91 +2309,179 @@
   }, { threshold: 0.08 });
   sections.forEach(sec => fadeObserver.observe(sec));
 
-  // ── Live search ──
-  const searchInput = document.getElementById('searchInput');
-  const searchResults = document.getElementById('searchResults');
-  let searchOpen = false;
-
-  function toggleSearch() {
-    searchOpen = !searchOpen;
-    searchInput.classList.toggle('open', searchOpen);
-    if (searchOpen) {
-      searchInput.focus();
-    } else {
-      searchInput.value = '';
-      searchResults.classList.remove('visible');
-      clearHighlights();
+  // ── Mobile: close details except Entscheidungsbaum + Kurzfassung ──
+  (function() {
+    if (window.innerWidth <= 600) {
+      document.querySelectorAll('details.section-accordion').forEach(d => {
+        const id = d.id;
+        if (id !== 'entscheidung' && id !== 'kurzfassung') {
+          d.removeAttribute('open');
+        }
+      });
     }
+  })();
+
+  // ═══════════════════════════════════════════════════════
+  // HELPER: navigate to section + highlight position
+  // ═══════════════════════════════════════════════════════
+  function navigateToCode(sectionId, codeText) {
+    const sec = document.getElementById(sectionId);
+    if (!sec) return;
+    if (sec.tagName === 'DETAILS') sec.open = true;
+    sec.classList.add('visible');
+
+    // Try to find and highlight the specific pos-item containing this code
+    if (codeText) {
+      const posItems = sec.querySelectorAll('.pos-item');
+      for (const item of posItems) {
+        if (item.textContent.includes(codeText)) {
+          item.classList.remove('highlight-pulse');
+          void item.offsetWidth; // trigger reflow
+          item.classList.add('highlight-pulse');
+          setTimeout(() => {
+            item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 100);
+          return;
+        }
+      }
+    }
+    sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  // ═══════════════════════════════════════════════════════
+  // ENHANCED SEARCH — code-aware + text fallback
+  // ═══════════════════════════════════════════════════════
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+
   searchInput.addEventListener('keydown', e => {
-    if (e.key === 'Escape') toggleSearch();
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      searchResults.classList.remove('visible');
+      searchInput.blur();
+    }
   });
 
   searchInput.addEventListener('input', () => {
-    const q = searchInput.value.trim().toLowerCase();
-    clearHighlights();
+    const q = searchInput.value.trim();
     if (q.length < 2) {
       searchResults.classList.remove('visible');
       return;
     }
 
-    const results = [];
+    let html = '';
+
+    // 1. Code match?
+    const codeMatch = findCode(q);
+    if (codeMatch) {
+      const aliases = codeMatch.alias.length ? ' · ' + codeMatch.alias.join(' / ') : '';
+      html += '<div class="code-result" data-section="' + codeMatch.section + '" data-code="' + codeMatch.code + '">' +
+        '<div class="code-result-header">' +
+          '<span class="code-result-code">' + codeMatch.code + aliases + '</span>' +
+          '<span class="code-result-name">' + codeMatch.name + '</span>' +
+        '</div>' +
+        '<div class="code-result-details">' +
+          '<span class="code-result-detail"><strong>Limit:</strong> ' + codeMatch.limit + '</span>' +
+          '<span class="code-result-detail"><strong>Info:</strong> ' + codeMatch.detail + '</span>' +
+        '</div>' +
+        '<span class="code-result-jump">→ Zur Position springen</span>' +
+      '</div>';
+    }
+
+    // 2. Text search (also runs — shows section matches below code card)
+    const qLow = q.toLowerCase();
+    const textResults = [];
     sections.forEach(sec => {
       const title = sec.querySelector('.section-title');
       const titleText = title ? title.textContent : '';
       const content = sec.textContent;
-      const idx = content.toLowerCase().indexOf(q);
+      const idx = content.toLowerCase().indexOf(qLow);
       if (idx !== -1) {
         const start = Math.max(0, idx - 30);
-        const end = Math.min(content.length, idx + q.length + 50);
+        const end = Math.min(content.length, idx + qLow.length + 50);
         let snippet = (start > 0 ? '…' : '') +
           content.substring(start, idx) +
-          '<mark>' + content.substring(idx, idx + q.length) + '</mark>' +
-          content.substring(idx + q.length, end) +
+          '<mark>' + content.substring(idx, idx + qLow.length) + '</mark>' +
+          content.substring(idx + qLow.length, end) +
           (end < content.length ? '…' : '');
-        results.push({ id: sec.id, title: titleText.trim(), snippet });
+        textResults.push({ id: sec.id, title: titleText.trim(), snippet });
       }
     });
 
-    if (results.length === 0) {
-      searchResults.innerHTML = '<div class="sr-empty">Keine Treffer</div>';
-    } else {
-      searchResults.innerHTML = results.map(r =>
+    if (textResults.length > 0) {
+      html += textResults.map(r =>
         '<div class="sr-item" data-target="' + r.id + '">' +
         '<div class="sr-title">' + r.title + '</div>' +
         '<div class="sr-context">' + r.snippet + '</div></div>'
       ).join('');
-      searchResults.querySelectorAll('.sr-item').forEach(item => {
-        item.addEventListener('click', () => {
-          const target = document.getElementById(item.dataset.target);
-          if (target) {
-            if (target.tagName === 'DETAILS') target.open = true;
-            target.classList.add('visible');
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-          searchResults.classList.remove('visible');
-        });
+    }
+
+    if (!html) {
+      html = '<div class="sr-empty">Keine Treffer</div>';
+    }
+
+    searchResults.innerHTML = html;
+
+    // Bind code-result click
+    const codeEl = searchResults.querySelector('.code-result');
+    if (codeEl) {
+      codeEl.style.cursor = 'pointer';
+      codeEl.addEventListener('click', () => {
+        navigateToCode(codeEl.dataset.section, codeEl.dataset.code);
+        searchResults.classList.remove('visible');
+        searchInput.value = '';
       });
     }
+
+    // Bind text-result clicks
+    searchResults.querySelectorAll('.sr-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const target = document.getElementById(item.dataset.target);
+        if (target) {
+          if (target.tagName === 'DETAILS') target.open = true;
+          target.classList.add('visible');
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        searchResults.classList.remove('visible');
+        searchInput.value = '';
+      });
+    });
+
     searchResults.classList.add('visible');
   });
 
-  function clearHighlights() {
-    document.querySelectorAll('.section mark').forEach(m => {
-      m.replaceWith(m.textContent);
-    });
-  }
-
   document.addEventListener('click', e => {
-    if (!e.target.closest('.search-wrap')) {
-      if (searchOpen) toggleSearch();
+    if (!e.target.closest('.qt-search')) {
+      searchResults.classList.remove('visible');
     }
+  });
+
+  // ── Keyboard shortcut: Ctrl+K / Cmd+K ──
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    }
+  });
+
+  // ═══════════════════════════════════════════════════════
+  // SCENARIO PANEL — click handlers
+  // ═══════════════════════════════════════════════════════
+  document.querySelectorAll('.sp-card').forEach(card => {
+    card.addEventListener('click', e => {
+      e.preventDefault();
+      const sectionId = card.dataset.spTarget;
+      const code = card.dataset.spCode || '';
+      navigateToCode(sectionId, code);
+    });
   });
 </script>
 
 <!-- Back to Top Button -->
-<button class="back-to-top" id="backToTop" aria-label="Nach oben scrollen">&#9650;</button>
+
+<button class="back-to-top" id="backToTop" aria-label="Nach oben scrollen">▲</button>
+
 <script>
 (function() {
   var btn = document.getElementById('backToTop');
@@ -2084,5 +2497,6 @@
   });
 })();
 </script>
+
 </body>
 </html>

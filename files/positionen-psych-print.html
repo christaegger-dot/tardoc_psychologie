@@ -60,6 +60,7 @@
 
 /* bottom section */
 .cols2{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.page-break{break-before:page;page-break-before:always}
 
 /* LAP age table */
 .lap-tbl{background:white;border:1.5px solid var(--line);border-radius:7px;overflow:hidden}
@@ -274,7 +275,7 @@
     </div>
 
     <!-- UNTERER BEREICH -->
-    <div class="cols2">
+    <div class="cols2 page-break">
       <div style="display:flex;flex-direction:column;gap:3mm">
 
         <!-- LAP Alterssteuerung -->

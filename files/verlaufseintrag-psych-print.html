@@ -22,6 +22,7 @@
 .body{flex:1;padding:5mm 14mm 5mm;display:flex;flex-direction:column;gap:3.5mm}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:4.5mm}
 .cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3.5mm}
+.page-break{break-before:page;page-break-before:always}
 
 .sec-num{font-size:6pt;font-weight:700;letter-spacing:.05em;padding:1px 7px;border-radius:8px;text-transform:uppercase}
 .sec-num.i{background:var(--ind-l);color:var(--ind)}
@@ -138,7 +139,7 @@
         <div class="tc tc-t">
           <div class="tc-head">
             <h3>Fernmündliche Sitzung<small>PA011 / PA031 + PE010</small></h3>
-            <span class="tc-code">synchron · max. 75 Min</span>
+            <span class="tc-code">synchron · max. 75 M</span>
           </div>
           <div class="tc-body">
             <div class="tl"><div class="tl-lbl">Datum</div><div class="tl-line"></div></div>
@@ -189,7 +190,7 @@
     </div>
 
     <!-- ROW 2: Krise + Exposition + Auswertung -->
-    <div>
+    <div class="page-break">
       <div class="cols3">
 
         <!-- Krise A -->

@@ -777,8 +777,10 @@
     <a href="#krise" class="nav-link">Krise A/B</a>
     <a href="#exposition" class="nav-link">Exposition</a>
     <a href="#lap-topf" class="nav-link">LAP-Topf</a>
+    <a href="#berichte" class="nav-link">Berichte/IV</a>
+    <a href="#ueberbrueckung" class="nav-link">Überbrückung</a>
     <a href="#szenarien" class="nav-link">Szenarien</a>
-    <a href="#kurzfassung" class="nav-link">10-Punkte</a>
+    <a href="#kurzfassung" class="nav-link">11-Punkte</a>
     <div class="search-wrap">
       <button class="search-btn" aria-label="Suche öffnen" onclick="toggleSearch()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1321,7 +1323,7 @@
           <span class="diag-stat-val">90 Tage</span>
         </div>
         <div class="diag-stat">
-          <span class="diag-stat-lbl">Richtwert</span>
+          <span class="diag-stat-lbl">Richtwert <span style="font-size:11px;color:var(--amber)" title="Nicht im Quelldokument vom 12.03.2026 belegt — vermutlich aus öffentlicher EA.05-Logik">⚠️ Quelle klären</span></span>
           <span class="diag-stat-val">80 Min</span>
         </div>
         <div class="diag-stat">
@@ -1363,7 +1365,7 @@
         <h4>✓ So funktioniert Diagnostik korrekt</h4>
         <ul>
           <li>Durchführung und Auswertung an verschiedenen Tagen möglich</li>
-          <li>Bei typisch 3 Abklärungssitzungen: oft nach 80-Min-Richtwert</li>
+          <li>Bei typisch 3 Abklärungssitzungen: oft nach 80-Min-Richtwert <span style="font-size:11px;color:var(--amber)" title="Nicht im Quelldokument vom 12.03.2026 belegt">(⚠️ Quelle klären)</span></li>
           <li>Kleindiagnostik unter 20 Min: intern über PA010 + PE010 statt grossen Diagnostikblock</li>
           <li>Zeit sauber erfassen, Doppelverrechnung vermeiden</li>
         </ul>
@@ -1488,7 +1490,7 @@
     <div class="note" style="margin-top:16px">
       <span class="note-icon">⚠️</span>
       <div>
-        <strong>Psy/Psy-Doppelkonsultationen:</strong> Im Regelbetrieb regressgefährdet — besonders Familiensettings. Berufsgruppenübergreifend in begründbaren Fällen möglich. Dokumentation zwingend.
+        <strong>Psy/Psy-Doppelkonsultationen:</strong> Im Regelbetrieb regressgefährdet — besonders Familiensettings. Ausnahme Einarbeitung: Fallführende rechnet ab, zweite Person als LUF. Berufsgruppenübergreifend in begründbaren Fällen möglich. Dokumentation zwingend.
       </div>
     </div>
     </div>
@@ -1597,7 +1599,7 @@
       <div class="dont-box">
         <h4>✕ Nicht aus LAP-Topf</h4>
         <ul>
-          <li>Eigene Verlaufsnotizen nachlesen (ohne begründete Ausnahme)</li>
+          <li>Eigene Verlaufsnotizen nachlesen — grundsätzlich nicht abrechenbar. Ausnahme: extensives Aufarbeiten von Eigenakten, wenn sauber dokumentiert.</li>
           <li>Kurze Vor-/Nachbereitung (→ PE010, nicht LAP)</li>
           <li>Reine Terminvereinbarungen</li>
           <li>Interne Rapporte und Teamgespräche</li>
@@ -1608,11 +1610,111 @@
     </div>
   </details>
 
+  <!-- ─── BERICHTE / IV ─── -->
+  <details open class="section section-accordion" id="berichte">
+    <summary>
+      <div class="section-title">
+      <span class="num">11</span>
+      Berichte, Versicherer und IV
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Eigener Berichts-Block — nicht frei schätzbar, sondern nach effektivem Zeitaufwand.</p>
+    </summary>
+    <div class="section-content">
+    <div class="expo-box" style="border-color:#a5b4fc">
+      <div class="expo-title" style="color:var(--indigo)">Berichtsblock · Ambulante Struktur</div>
+      <div class="expo-sub">Nach effektivem Zeitaufwand · Drei Teilberichte</div>
+      <div class="expo-stats" style="grid-template-columns:repeat(3,1fr)">
+        <div class="expo-stat">
+          <div class="expo-stat-num" style="color:var(--indigo)">240</div>
+          <div class="expo-stat-lbl">Min. Maximum</div>
+        </div>
+        <div class="expo-stat">
+          <div class="expo-stat-num" style="color:var(--indigo)">120</div>
+          <div class="expo-stat-lbl">Min. Richtwert</div>
+        </div>
+        <div class="expo-stat">
+          <div class="expo-stat-num" style="color:var(--indigo)">3</div>
+          <div class="expo-stat-lbl">Teilberichte</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;margin-bottom:16px">
+      <div style="font-weight:700;font-size:13px;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Neue ambulante Berichtsstruktur</div>
+      <ul style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text);list-style:none">
+        <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Berichte werden nach effektivem Zeitaufwand verrechnet</li>
+        <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Maximum: 240 Minuten pro Bericht</li>
+        <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Richtwert: 120 Minuten — bei Überschreitung Begründung erforderlich</li>
+        <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Drei Teilberichte in der neuen ambulanten Struktur</li>
+        <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>IV-Berichte sind primär interner KJPP-Fakturierungsprozess</li>
+      </ul>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-box">
+        <h4>✓ Praxishinweise</h4>
+        <ul>
+          <li>Zeit sauber erfassen — effektiver Aufwand zählt</li>
+          <li>Doppelverrechnung vermeiden</li>
+          <li>Internen Versand- und Fakturaprozess einhalten</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <h4>✕ Häufige Fehler</h4>
+        <ul>
+          <li>Von freier direkter Psychologen-Selbstabrechnung ausgehen</li>
+          <li>Berichtszeit pauschal statt nach effektivem Aufwand angeben</li>
+          <li>IV-Berichte ohne Rücksprache mit Klinikleitung einreichen</li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </details>
+
+  <!-- ─── ÜBERBRÜCKUNGSLEISTUNGEN ─── -->
+  <details open class="section section-accordion" id="ueberbrueckung">
+    <summary>
+      <div class="section-title">
+      <span class="num">12</span>
+      Überbrückungsleistungen
+    <span class="accordion-icon">&#x25BC;</span></div>
+      <p class="section-lead">Sonderfall beim Wechsel stationär → teilstationär/ambulant.</p>
+    </summary>
+    <div class="section-content">
+    <div class="card" style="margin-bottom:16px">
+      <div style="font-weight:700;font-size:13px;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Regel</div>
+      <ul style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text);list-style:none">
+        <li style="display:flex;gap:8px"><span style="color:var(--amber);font-weight:700;flex-shrink:0">→</span>Überbrückungskonferenz durch die Tagesklinik auf den offenen stationären Fall erfassbar</li>
+        <li style="display:flex;gap:8px"><span style="color:var(--amber);font-weight:700;flex-shrink:0">→</span><strong>Bedingung 1:</strong> Tagesklinik übernimmt die Nachbehandlung vollumfänglich</li>
+        <li style="display:flex;gap:8px"><span style="color:var(--amber);font-weight:700;flex-shrink:0">→</span><strong>Bedingung 2:</strong> Kein externer Therapeut parallel beteiligt</li>
+      </ul>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-box">
+        <h4>✓ Gilt für</h4>
+        <ul>
+          <li>Wechsel stationär → ambulant / teilstationär</li>
+          <li>Tagesklinik übernimmt Nachbehandlung vollumfänglich</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <h4>✕ Gilt nicht für</h4>
+        <ul>
+          <li>Umgekehrte Richtung (ambulant → stationär)</li>
+          <li>Ambulant → ambulant</li>
+          <li>Externer Therapeut parallel beteiligt</li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </details>
+
   <!-- ─── SZENARIEN ─── -->
   <details open class="section section-accordion" id="szenarien">
     <summary>
       <div class="section-title">
-      <span class="num">11</span>
+      <span class="num">13</span>
       Alltagsszenarien
     <span class="accordion-icon">&#x25BC;</span></div>
       <p class="section-lead">Typische Situationen aus dem Tagesklinik-Alltag für Psychologinnen.</p>
@@ -1728,14 +1830,14 @@
   <details open class="section section-accordion" id="kurzfassung">
     <summary>
       <div class="section-title">
-      <span class="num">12</span>
-      10 wichtigste Praxisregeln
+      <span class="num">14</span>
+      11 wichtigste Praxisregeln
     <span class="accordion-icon">&#x25BC;</span></div>
       <p class="section-lead">Die Kurzfassung für den Tagesklinik-Alltag.</p>
     </summary>
     <div class="section-content">
     <div class="cheat-sheet">
-      <div class="cheat-title">10-Punkte Spickzettel für Psychologinnen</div>
+      <div class="cheat-title">11-Punkte Spickzettel für Psychologinnen</div>
       <div class="cheat-sub">Aussen EA.05 · Innen PA-/PE-/PK-Logik · KJPP Tagesklinik</div>
       <div class="cheat-items">
         <div class="cheat-item">
@@ -1768,6 +1870,9 @@
         <div class="cheat-item">
           <p><strong>LAP-Topf ist altersgesteuert:</strong> Unter 18 J. = 240 Min / 90 Tage (PE045+PK025+PK015). Ab 18 J. = 180 Min / 90 Tage (PE040+PK020+PK010).</p>
         </div>
+        <div class="cheat-item">
+          <p><strong>Berichte und IV:</strong> Nach effektivem Zeitaufwand, max. 240 Min (Richtwert 120 Min). Drei Teilberichte in der neuen ambulanten Struktur. Intern melden — nicht von freier Selbstabrechnung ausgehen.</p>
+        </div>
       </div>
     </div>
     </div>
@@ -1778,7 +1883,7 @@
 <!-- FOOTER -->
 <div class="footer">
   <span>Tarif-Kompass 2026 · Psychologinnen mit Psychotherapieausbildung · KJPP-Tagesklinik</span>
-  <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026</span>
+  <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026 · Stand Website: 15.03.2026 · Basierend auf Quelldokument vom 12.03.2026</span>
   <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:12px;color:var(--slate-light)">
     Sozialarbeiter-Version: <a href="https://tardoc.netlify.app/" style="color:var(--slate-light);text-decoration:underline">tardoc.netlify.app</a>
   </div>

@@ -1,0 +1,17 @@
+{
+  "name": "Tarif-Kompass 2026",
+  "short_name": "Tarif-Kompass",
+  "description": "TARDOC EA.05 Referenz für Psychologinnen in der KJPP-Tagesklinik",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e3a5f",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}

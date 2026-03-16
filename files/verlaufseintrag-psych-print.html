@@ -2,6 +2,8 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+    <meta name="description" content="Verlaufseintrag-Vorlagen für Psychologinnen in der KJPP-Tagesklinik — TARDOC EA.05.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Verlaufseinträge · Tarif-Kompass 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -57,7 +59,19 @@ body {
   cursor: pointer; text-decoration: none; white-space: nowrap;
 }
 .pbtn-ghost { background: var(--bg); color: var(--slate); border: 1px solid var(--line); }
-.pbtn-dark  { background: var(--ink); color: white; }
+
+  .pbtn-breadcrumb {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+    padding-right: 0.5rem;
+  }
+  .pbtn-breadcrumb span { color: #cbd5e1; }
+  @media print { .pbtn-breadcrumb { display: none !important; } }
+  .pbtn-dark  { background: var(--ink); color: white; }
 
 .sheet {
   width: 210mm; max-width: 100%;
@@ -201,6 +215,7 @@ body {
   .cols3, .cols2 { break-inside: avoid; }
 }
 </style>
+  <noscript><style>* { opacity: 1 !important; visibility: visible !important; }</style></noscript>
 </head>
 <body>
 

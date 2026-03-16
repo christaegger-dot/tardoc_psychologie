@@ -25,7 +25,12 @@
 <meta name="twitter:title" content="Tarif-Kompass 2026 · Psychologinnen KJPP">
 <meta name="twitter:description" content="TARDOC EA.05 Referenz: 75+15-Logik, Diagnostik, Exposition, Krise A/B, LAP-Topf.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/og-image.png">
+    <meta name="theme-color" content="#1e3a5f">
+    <link rel="manifest" href="/manifest.json">
+  <link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%234338ca'/><text x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'>T</text></svg>">
 <title>Tarif-Kompass 2026 · Psychologinnen KJPP</title>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" as="style">
@@ -1563,7 +1568,7 @@ justify-content: center;
     <div class="sp-card-hint">Max. 1×/Tag, 4×/30 Tage</div>
   </a>
 
-  <a href="#" class="sp-card" data-sp-target="lap-topf" data-sp-code="PE030">
+  <a href="#" class="sp-card" data-sp-target="berichte" data-sp-code="PE030">
     <div class="sp-card-icon">📝</div>
     <div class="sp-card-label">Therapie-/Diagnostikplanung</div>
     <div class="sp-card-codes">PE030</div>
@@ -3314,7 +3319,7 @@ justify-content: center;
   })();
   // ── Keyboard shortcut: Ctrl+K / Cmd+K ──
   document.addEventListener('keydown', function(e) {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) || (e.altKey && e.key === 's') {
       e.preventDefault();
       searchInput.focus();
       searchInput.select();
@@ -3330,6 +3335,14 @@ justify-content: center;
       const sectionId = card.dataset.spTarget;
       const code = card.dataset.spCode || '';
       navigateToCode(sectionId, code);
+    });
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const sectionId = card.dataset.spTarget;
+        const code = card.dataset.spCode || '';
+        navigateToCode(sectionId, code);
+      }
     });
   });
 
@@ -3394,5 +3407,22 @@ justify-content: center;
   })();
 </script>
 
+
+  <a id="backToTop" href="#" aria-label="Zurück nach oben" title="Zurück nach oben">↑</a>
+<script>
+  // ═══ TOGGLE ALL SECTIONS ═══
+  (function() {
+    var btn = document.getElementById('toggleAllBtn');
+    if (!btn) return;
+    var allOpen = false;
+    btn.addEventListener('click', function() {
+      allOpen = !allOpen;
+      document.querySelectorAll('details.section-accordion').forEach(function(d) {
+        d.open = allOpen;
+      });
+      btn.textContent = allOpen ? 'Alle schliessen' : 'Alle öffnen';
+    });
+  })();
+</script>
 </body>
 </html>

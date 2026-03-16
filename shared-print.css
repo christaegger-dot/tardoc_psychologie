@@ -121,6 +121,7 @@ body {
   background: var(--paper);
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 @media screen {
@@ -220,6 +221,15 @@ body {
 }
 .ft span { font-size: 7pt; color: var(--soft); }
 
+/* ── RESPONSIVE SCREEN ── */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+@media screen and (max-width: 220mm) {
+  body { padding: 12px 8px; }
+  .sheet { width: 100%; min-height: auto; }
+  .printbar { width: 100%; }
+}
+
 /* ── PRINT RULES ── */
 @media print {
   body {
@@ -231,13 +241,28 @@ body {
   .sheet {
     box-shadow: none;
     border-radius: 0;
-    width: 100%;
+    width: 210mm;
     height: 297mm;
     overflow: hidden;
   }
   @page {
     size: A4;
     margin: 0;
+  }
+  /* Karten nie zwischen Seiten aufreissen */
+  .tc {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  /* Section-Header immer mit nachfolgendem Inhalt zusammenhalten */
+  .sec {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  /* ROW-Gruppen zusammenhalten wenn möglich */
+  .cols3, .cols {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
   * {
     -webkit-print-color-adjust: exact;

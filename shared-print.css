@@ -249,6 +249,21 @@ html, body { max-width: 100%; overflow-x: hidden; }
     size: A4;
     margin: 0;
   }
+  /* Karten nie zwischen Seiten aufreissen */
+  .tc {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  /* Section-Header immer mit nachfolgendem Inhalt zusammenhalten */
+  .sec {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  /* ROW-Gruppen zusammenhalten wenn möglich */
+  .cols3, .cols {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
   * {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;

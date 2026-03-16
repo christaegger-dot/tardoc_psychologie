@@ -143,11 +143,11 @@ body {
   padding: 2px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
   background: rgba(0,0,0,.07); color: var(--slate);
 }
-.tc-i .tc-code { background: rgba(67,56,202,.12); color: var(--ind); }
-.tc-t .tc-code { background: rgba(10,124,113,.12); color: var(--teal); }
-.tc-p .tc-code { background: rgba(124,58,237,.12); color: var(--purp); }
-.tc-r .tc-code { background: rgba(190,18,60,.12); color: var(--rose); }
-.tc-k .tc-code { background: rgba(5,150,105,.12); color: var(--green); }
+.tc-i .tc-code { background: rgba(67,56,202,.12); color: #3730A3; }
+.tc-t .tc-code { background: rgba(10,124,113,.12); color: #065F55; }
+.tc-p .tc-code { background: rgba(124,58,237,.12); color: #5B21B6; }
+.tc-r .tc-code { background: rgba(190,18,60,.12); color: #9F1239; }
+.tc-k .tc-code { background: rgba(5,150,105,.12); color: #065F46; }
 
 .tc-body { padding: 7px 9px; flex: 1; display: flex; flex-direction: column; gap: 5px; }
 
@@ -167,7 +167,7 @@ body {
   border-radius: 4px; padding: 4px 6px;
   background: rgba(255,255,255,.7);
 }
-.fl-box p { font-size: 7px; color: rgba(0,0,0,.25); font-style: italic; }
+.fl-box p { font-size: 7px; color: rgba(0,0,0,.65); font-style: italic; }
 
 /* ── Checkbox list ── */
 .ck-list { display: flex; flex-direction: column; gap: 2px; margin-top: 2px; }
@@ -190,7 +190,7 @@ body {
   border-top: 1px solid var(--line); padding: 5px 14px;
   display: flex; justify-content: space-between; flex-shrink: 0;
 }
-.ft span { font-size: 7px; color: var(--sl-l); }
+.ft span { font-size: 7px; color: #64748B; }
 
 /* ── Page break ── */
 .page-break { break-before: page; page-break-before: always; }
@@ -239,16 +239,29 @@ body {
   .card-header { font-size: 12px; }
 }
 
-</style>
+
+  /* axe-core contrast fixes */
+  .printbar-label { color: #374151 !important; }
+  .mast-sub, .masthead-sub { color: #d1d5db !important; }
+  .dt-ql { color: #374151 !important; }
+  .lg-anw, .lg-diag, .lg-exp, .lg-lap, .lg-krise, .lg-tel, .lg-weg, .lg-nv { 
+    color: #1e3a5f !important; font-weight: 700 !important; 
+  }
+  .eq-hint { color: #374151 !important; }
+  .q-num { color: #374151 !important; }
+  .cmp-yes { color: #166534 !important; }
+  .cmp-no { color: #991b1b !important; }
+
+  </style>
   <noscript><style>* { opacity: 1 !important; visibility: visible !important; }</style></noscript>
 </head>
 <body>
 
-<div class="printbar">
+<nav class="printbar" aria-label="Seitennavigation">
   <div class="printbar-label"><strong>Verlaufseintrag-Vorlagen Psychologinnen</strong> · 2 Seiten A4 · Tarif-Kompass 2026</div>
   <a href="/" class="pbtn pbtn-ghost">← Zurück</a>
   <a href="#" onclick="window.print(); return false;" class="pbtn pbtn-dark">🖨 Als PDF drucken</a>
-</div>
+</nav>
 
 <!-- ══ SEITE 1 ══ -->
 <main class="sheet">
@@ -372,40 +385,40 @@ body {
         </div>
       </div>
       <div style="background:#E0F2EF;border:1.5px solid rgba(10,124,113,.3);border-radius:8px;padding:8px 10px">
-        <div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0A7C71;margin-bottom:4px">LAP-Topf Übersicht</div>
+        <div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#065F55;margin-bottom:4px">LAP-Topf Übersicht</div>
         <table style="width:100%;border-collapse:collapse;font-size:7.5px">
           <tr style="border-bottom:1px solid rgba(0,0,0,.08)">
             <td style="padding:2px 0;color:#475569">PE045/040 Fremdakten</td>
-            <td style="font-weight:700;color:#0A7C71;text-align:right">&lt;18 / ≥18</td>
+            <td style="font-weight:700;color:#065F55;text-align:right">&lt;18 / ≥18</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(0,0,0,.08)">
             <td style="padding:2px 0;color:#475569">PK025/020 Auskünfte Dritte</td>
-            <td style="font-weight:700;color:#0A7C71;text-align:right">&lt;18 / ≥18</td>
+            <td style="font-weight:700;color:#065F55;text-align:right">&lt;18 / ≥18</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(0,0,0,.08)">
             <td style="padding:2px 0;color:#475569">PK015/010 Ext. Behandler</td>
-            <td style="font-weight:700;color:#0A7C71;text-align:right">&lt;18 / ≥18</td>
+            <td style="font-weight:700;color:#065F55;text-align:right">&lt;18 / ≥18</td>
           </tr>
           <tr>
             <td style="padding:3px 0;font-weight:700;color:#1E293B">Gemeinsam &lt;18 J.</td>
-            <td style="font-weight:800;color:#0A7C71;text-align:right">240 Min/90T</td>
+            <td style="font-weight:800;color:#065F55;text-align:right">240 Min/90T</td>
           </tr>
           <tr>
             <td style="padding:2px 0;font-weight:700;color:#1E293B">Gemeinsam ≥18 J.</td>
-            <td style="font-weight:800;color:#0A7C71;text-align:right">180 Min/90T</td>
+            <td style="font-weight:800;color:#065F55;text-align:right">180 Min/90T</td>
           </tr>
         </table>
       </div>
       <div style="background:#FFFBEB;border:1.5px solid rgba(217,119,6,.3);border-radius:8px;padding:8px 10px">
-        <div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D97706;margin-bottom:4px">E-Mail / Zeitversetzt</div>
+        <div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#92400E;margin-bottom:4px">E-Mail / Zeitversetzt</div>
         <p style="font-size:7.5px;color:#475569;line-height:1.5;margin-bottom:5px">Asynchrone Kommunikation via EA.05.0080 ist streng limitiert. Die alte 6er-Regel ist <strong style="color:#BE123C">veraltet</strong>.</p>
         <div style="display:flex;gap:8px">
           <div style="text-align:center">
-            <div style="font-size:20px;font-weight:800;color:#D97706;line-height:1">1×</div>
+            <div style="font-size:20px;font-weight:800;color:#92400E;line-height:1">1×</div>
             <div style="font-size:7px;color:#475569">pro Tag</div>
           </div>
           <div style="text-align:center">
-            <div style="font-size:20px;font-weight:800;color:#D97706;line-height:1">4×</div>
+            <div style="font-size:20px;font-weight:800;color:#92400E;line-height:1">4×</div>
             <div style="font-size:7px;color:#475569">pro 30 Tage</div>
           </div>
         </div>
@@ -421,7 +434,7 @@ body {
 </main>
 
 <!-- ══ SEITE 2 ══ -->
-<main class="sheet page-break">
+<section role="region" aria-label="Seite 2" class="sheet page-break">
   <header class="mast">
     <div class="mast-top">
       <div>
@@ -632,7 +645,7 @@ body {
     <span>Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik · Seite 2 / 2</span>
     <span>TARDOC Kapitel EA.05 · Gültig ab 01.01.2026</span>
   </footer>
-</main>
+</section>
 
 </body>
 </html>

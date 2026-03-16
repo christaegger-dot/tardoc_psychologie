@@ -71,7 +71,7 @@ body {
   letter-spacing: -.4px; line-height: 1;
 }
 .masthead h1 em { color: #A5B4FC; font-style: normal; }
-.masthead-sub { font-size: 8.5px; color: rgba(255,255,255,.45); }
+.masthead-sub { font-size: 8.5px; color: rgba(255,255,255,.80); }
 .masthead-badge {
   font-size: 9px; font-weight: 700; color: #A5B4FC;
   background: rgba(165,180,252,.12);
@@ -109,9 +109,9 @@ body {
   box-shadow: 0 2px 8px rgba(26,53,96,.2), 0 6px 20px rgba(26,53,96,.12);
   width: 100%;
 }
-.q-num  { font-size: 7.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #818CF8; margin-bottom: 3px; }
+.q-num  { font-size: 7.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #C7D2FE; margin-bottom: 3px; }
 .q-text { font-size: 13.5px; font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 3px; }
-.q-hint { font-size: 8px; color: rgba(255,255,255,.38); }
+.q-hint { font-size: 8px; color: rgba(255,255,255,.72); }
 
 /* ── Branch split ───────────────────────────────────────────────── */
 /* Horizontal bar + two arms */
@@ -228,7 +228,7 @@ body {
 .wi strong { font-weight: 700; }
 .fc {
   grid-column: 1/-1;
-  font-size: 7px; color: var(--sl-l);
+  font-size: 7px; color: #4B5563;
   text-align: center; padding-top: 4px;
   border-top: 1px solid #FDE68A;
 }
@@ -299,15 +299,28 @@ body {
   .sheet { width: 100% !important; max-width: 100% !important; overflow: hidden; }
 }
 
-</style>
+
+  /* axe-core contrast fixes */
+  .printbar-label { color: #374151 !important; }
+  .mast-sub, .masthead-sub { color: rgba(255,255,255,.80) !important; }
+  .dt-ql { color: #374151 !important; }
+  .lg-anw, .lg-diag, .lg-exp, .lg-lap, .lg-krise, .lg-tel, .lg-weg, .lg-nv { 
+    color: #1e3a5f !important; font-weight: 700 !important; 
+  }
+  .eq-hint { color: rgba(255,255,255,.72) !important; }
+  .q-num { color: #C7D2FE !important; }
+  .cmp-yes { color: #166534 !important; }
+  .cmp-no { color: #991b1b !important; }
+
+  </style>
   <noscript><style>* { opacity: 1 !important; visibility: visible !important; }</style></noscript>
 </head>
 <body>
-<div class="printbar">
+<nav class="printbar" aria-label="Seitennavigation">
   <div class="printbar-label"><strong>Entscheidungsbaum</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
   <a href="/" class="pbtn pbtn-ghost">← Zurück</a>
   <a href="#" onclick="window.print(); return false;" class="pbtn pbtn-dark">🖨 Als PDF drucken</a>
-</div>
+</nav>
 <div class="sheet">
 
 <!-- MASTHEAD -->
@@ -320,7 +333,8 @@ body {
 </header>
 
 <!-- TREE -->
-<div class="tree">
+<main id="main-content" aria-label="Entscheidungsbaum">
+    <div class="tree">
 
   <!-- ── Q1 ── -->
   <div class="q-node">

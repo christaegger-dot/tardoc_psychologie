@@ -16,6 +16,10 @@
 <meta property="og:description" content="TARDOC EA.05 Regeln, Positionen, Limiten und Dokumentationsvorlagen für Psychologinnen mit PT-Ausbildung in der KJPP-Tagesklinik.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tardoc-psychologiekjpp.netlify.app/">
+<meta property="og:image" content="https://tardoc-psychologiekjpp.netlify.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tarif-Kompass 2026 · Psychologinnen KJPP · TARDOC EA.05">
 <meta property="og:locale" content="de_CH">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tarif-Kompass 2026 · Psychologinnen KJPP">
@@ -1343,6 +1347,13 @@ justify-content: center;
   .qt-search.has-value .qt-search-clear { display: block; }
 </style>
 
+<noscript>
+<style>
+  .section, .section-accordion { opacity: 1 !important; transform: none !important; }
+  details.section-accordion { open: true; }
+  details.section-accordion > .section-content { display: block !important; }
+</style>
+</noscript>
 </head>
 <body>
 <a href="#quickstart" class="skip-link">Zum Inhalt springen</a>
@@ -3054,12 +3065,27 @@ justify-content: center;
     var id = hash.replace('#', '');
     var target = document.getElementById(id);
     if (!target) return;
+    // Open the target if it's a details/accordion
     if (target.tagName === 'DETAILS') target.open = true;
+    // Also open any parent details elements
+    var parent = target.closest('details');
+    if (parent) parent.open = true;
     target.classList.add('visible');
     setTimeout(function() {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
+    }, 120);
   }
+  // Intercept all internal anchor clicks to open accordions
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var hash = a.getAttribute('href');
+    if (hash && hash.length > 1) {
+      e.preventDefault();
+      history.pushState(null, '', hash);
+      openSectionByHash(hash);
+    }
+  });
   // On page load
   if (window.location.hash) openSectionByHash(window.location.hash);
   // On hash change (back/forward, clicked anchor links)

@@ -31,7 +31,7 @@
     <meta name="theme-color" content="#1e3a5f">
     <link rel="manifest" href="/manifest.json">
   <link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%234338ca'/><text x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'>T</text></svg>">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect rx='18' width='100' height='100' fill='%234338ca'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'%3ET%3C/text%3E%3C/svg%3E">
 <title>Tarif-Kompass 2026 · Psychologinnen KJPP</title>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" as="style">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@
     --rose: #e11d48;
     --rose-soft: #fff1f2;
     --slate: #475569;
-    --slate-light: #94a3b8;
+    --slate-light: #64748b;
     --bg: #f5f7ff;
     --card: #ffffff;
     --border: #e2e8f0;
@@ -997,8 +997,7 @@ font-size: 17px; margin-bottom: 4px;
 .krise-box.b .krise-sub { color: var(--rose); }
 .krise-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .krise-list li { font-size: 13.5px; display: flex; gap: 8px; }
-.krise-list li::before { content: ‘→’; flex-shrink: 0; font-weight: 700; }
-.krise-box.a .krise-list li::before { color: #ea580c; }
+.krise-list li::before { content: '\2192'; flex-shrink: 0; font-weight: 700; }.krise-box.a .krise-list li::before { color: #ea580c; }
 .krise-box.b .krise-list li::before { color: var(--rose); }
 
 /* ── LAP ALTERS GRID ── */
@@ -1066,9 +1065,7 @@ padding: 10px 20px; align-items: center;
 .do-box h4 { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
 .dont-box h4 { color: var(--rose); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
 .do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }
-.do-box li::before { content: ‘✓’; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-.dont-box li::before { content: ‘✕’; color: var(--rose); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }.do-box li::before { content: '\2713'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }.dont-box li::before { content: '\2715'; color: var(--rose); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
 /* ── SCENARIO CARDS ── */
 .scenario-grid { display: grid; gap: 14px; }
@@ -1360,7 +1357,7 @@ justify-content: center;
 <noscript>
 <style>
   .section, .section-accordion { opacity: 1 !important; transform: none !important; }
-  details.section-accordion { open: true; }
+  details.section-accordion[open] { /* open state handled by browser */ }
   details.section-accordion > .section-content { display: block !important; }
 </style>
 </noscript>
@@ -1583,7 +1580,7 @@ justify-content: center;
 
   <!-- ─── TOGGLE ALL ─── -->
   <div class="toggle-all-bar" role="region" aria-label="Sektionen-Steuerung">
-    <button class="toggle-all-btn" id="toggleAllBtn" aria-label="Alle Sektionen öffnen oder schliessen">Alle öffnen</button>
+    <button class="toggle-all-btn" id="toggleAllBtn">Alle öffnen</button>
   </div>
   <!-- ─── ZWEI EBENEN ─── -->
 

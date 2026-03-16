@@ -27,7 +27,7 @@
 <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="apple-touch-icon" sizes="180x180" href="/og-image.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="theme-color" content="#1e3a5f">
     <link rel="manifest" href="/manifest.json">
   <link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/">
@@ -1425,7 +1425,7 @@ justify-content: center;
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <!-- SIDEBAR NAV (Desktop only, sticky) -->
-<nav class="sidebar-nav" aria-label="Seitennavigation">
+<nav id="sidebar" class="sidebar-nav" aria-label="Seitennavigation">
   <div class="nav-title">Sektionen</div>
   <a href="#zweischicht" class="nav-link"><span class="nav-num">1</span>Zwei Ebenen</a>
   <a href="#grundregeln" class="nav-link"><span class="nav-num">2</span>Grundregeln</a>
@@ -1449,7 +1449,7 @@ justify-content: center;
 
 <div class="quick-tools">
   <div class="quick-tools-inner">
-    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Sektionen-Navigation öffnen" aria-expanded="false">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Sektionen-Navigation öffnen" aria-expanded="false" aria-controls="sidebar">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       Sektionen
     </button>
@@ -3390,7 +3390,7 @@ justify-content: center;
 (function() {
   var btn = document.getElementById('backToTop');
   window.addEventListener('scroll', function() {
-    if (window.scrollY > 600) {
+    if (window.scrollY > 400) {
       btn.classList.add('visible');
     } else {
       btn.classList.remove('visible');

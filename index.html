@@ -76,7 +76,7 @@ line-height: 1.65;
 
 /* ── HEADER ── */
 .header {
-background: linear-gradient(135deg, #4338ca 0%, #6366f1 60%, #818cf8 100%);
+background: #4338ca;
 color: white;
 padding: 48px 40px 40px;
 position: relative;
@@ -146,13 +146,13 @@ padding: 7px 14px; border-radius: 8px;
 font-size: 12.5px; font-weight: 500;
 }
 .layer-pill.ext {
-background: rgba(255,255,255,0.18);
-border: 1px solid rgba(255,255,255,0.35);
-color: rgba(255,255,255,0.95);
+background: #4f46e5;
+border: 1px solid #6366f1;
+color: #ffffff;
 }
 .layer-pill.int {
-background: rgba(165,180,252,0.3);
-border: 1px solid rgba(165,180,252,0.6);
+background: #3730a3;
+border: 1px solid #4338ca;
 color: #e0e7ff;
 }
 .layer-pill strong { font-weight: 700; }
@@ -463,7 +463,7 @@ mark { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 1px; 
 
 /* ── ACCORDION (mobile) ── */
 .section-accordion { border: none; margin-bottom: 52px; }
-.section-accordion > summary { list-style: none; cursor: pointer; }
+.section-accordion > summary { list-style: none; cursor: pointer; background: var(--bg); }
 .section-accordion > summary::-webkit-details-marker { display: none; }
 .section-accordion > summary::marker { display: none; content: ‘’; }
 .section-accordion > summary .section-title { position: relative; }
@@ -806,7 +806,7 @@ background: var(--indigo-soft);
 .rule-card.amber .rule-icon { background: #fffbeb; }
 .rule-card.rose  .rule-icon { background: #fff1f2; }
 .rule-card.teal  .rule-icon { background: var(--indigo-soft); }
-.rule-card h4 { font-weight: 600; font-size: 14px; margin-bottom: 4px; color: var(--navy); }
+.rule-card h4, .rule-card h3.rule-h3 { font-weight: 600; font-size: 14px; margin-bottom: 4px; color: var(--navy); }
 .rule-card p  { font-size: 13.5px; color: var(--slate); }
 
 /* ── HIGHLIGHT BOX ── */
@@ -858,15 +858,17 @@ display: grid; grid-template-columns: 1fr 80px 80px;
 padding: 12px 20px; border-bottom: 1px solid var(--border);
 align-items: center;
 font-size: 13.5px;
+background: white;
+color: var(--text);
 }
 .prod-row:last-child { border-bottom: none; }
 .prod-row.header {
-background: linear-gradient(135deg, #4338ca, #6366f1); color: white;
+background: #4338ca; color: white;
 font-size: 11px; font-weight: 700;
 letter-spacing: .08em; text-transform: uppercase;
 padding: 10px 20px;
 }
-.prod-role { color: var(--text); font-weight: 500; }
+.prod-role { color: #1e293b; font-weight: 500; background: white; }
 .prod-num { text-align: center; font-weight: 700; }
 .prod-num.y { color: var(--indigo-light); }
 .prod-num.m { color: var(--indigo); }
@@ -877,7 +879,7 @@ padding: 10px 20px;
 .idt-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 28px; }
 .idt-node { display: flex; flex-direction: column; align-items: center; gap: 0; }
 .idt-q {
-background: linear-gradient(135deg, #4338ca, #6366f1); color: white;
+background: #4338ca; color: white;
 border-radius: 12px; padding: 16px 24px;
 font-size: 14.5px; font-weight: 500; text-align: center;
 width: 100%; max-width: 500px;
@@ -1005,9 +1007,9 @@ font-size: 17px; margin-bottom: 4px;
 .lap-age-box { border-radius: 12px; padding: 22px; }
 .lap-age-box.u18 { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; }
 .lap-age-box.o18 { background: #f0f0ff; border: 1.5px solid #c7d2fe; }
-.lap-age-box h4 { font-weight: 700; font-size: 14px; margin-bottom: 14px; }
-.lap-age-box.u18 h4 { color: var(--indigo); }
-.lap-age-box.o18 h4 { color: var(--indigo); }
+.lap-age-box h4, .lap-age-box h3.lap-h3 { font-weight: 700; font-size: 14px; margin-bottom: 14px; }
+.lap-age-box.u18 h4, .lap-age-box.u18 h3.lap-h3 { color: var(--indigo); }
+.lap-age-box.o18 h4, .lap-age-box.o18 h3.lap-h3 { color: var(--indigo); }
 .lap-entry {
 display: flex; justify-content: space-between; align-items: center;
 padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
@@ -1049,7 +1051,7 @@ align-items: start; font-size: 13.5px; gap: 16px;
 }
 .tel-row:last-child { border-bottom: none; }
 .tel-row.head {
-background: linear-gradient(135deg, #4338ca, #6366f1); color: white;
+background: #4338ca; color: white;
 font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
 padding: 10px 20px; align-items: center;
 }
@@ -1062,8 +1064,8 @@ padding: 10px 20px; align-items: center;
 .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .do-box { background: var(--green-bg); border: 1px solid #a7f3d0; border-radius: 10px; padding: 20px; }
 .dont-box { background: var(--red-bg); border: 1px solid #fecdd3; border-radius: 10px; padding: 20px; }
-.do-box h4 { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-.dont-box h4 { color: var(--rose); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.do-box h4, .do-box h3.do-h3 { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.dont-box h4, .dont-box h3.do-h3 { color: var(--rose); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
 .do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }.do-box li::before { content: '\2713'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }.dont-box li::before { content: '\2715'; color: var(--rose); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
@@ -1628,35 +1630,35 @@ justify-content: center;
       <div class="rule-card">
         <div class="rule-icon">📋</div>
         <div>
-          <h4>Jede Person rechnet nur eigene Leistungen ab</h4>
+          <h3 class="rule-h3">Jede Person rechnet nur eigene Leistungen ab</h3>
           <p>Alle Termine werden über die Dispo geplant und aus der Dispo abgerechnet. Taggenau, mit Verlaufseintrag. Interne Besprechungen gehen nicht zulasten KK/IV → als LUF erfassen.</p>
         </div>
       </div>
       <div class="rule-card">
         <div class="rule-icon">✍️</div>
         <div>
-          <h4>Der Verlaufseintrag ist tarifliche Absicherung — nicht optional</h4>
+          <h3 class="rule-h3">Der Verlaufseintrag ist tarifliche Absicherung — nicht optional</h3>
           <p>Besonders wichtig bei Krisen, Diagnostik, Expositionen und langer Netzwerkarbeit. Jede Leistung braucht einen passenden Eintrag am selben Tag.</p>
         </div>
       </div>
       <div class="rule-card amber">
         <div class="rule-icon">📱</div>
         <div>
-          <h4>Telefon ≠ E-Mail ≠ Verlaufskonsultation — strikt unterscheiden</h4>
+          <h3 class="rule-h3">Telefon ≠ E-Mail ≠ Verlaufskonsultation — strikt unterscheiden</h3>
           <p>Fernmündliche Sitzung, telefonische Verlaufskonsultation, Auskunft in Abwesenheit und zeitversetzte Telemedizin sind vier verschiedene Tarifwelten. Hier entstehen die meisten Fehler.</p>
         </div>
       </div>
       <div class="rule-card teal">
         <div class="rule-icon">🔢</div>
         <div>
-          <h4>Mehrschichtiges Mengensystem — alles läuft parallel</h4>
+          <h3 class="rule-h3">Mehrschichtiges Mengensystem — alles läuft parallel</h3>
           <p>4h-Regel, Jahres-/Monatsziele, 75-/15-Min-Logik, 90-Tage-Diagnostiklimiten, 180-Tage-Expositionslimiten, LAP-Töpfe. Keine einzelne Ziffer steuert den Alltag allein.</p>
         </div>
       </div>
       <div class="rule-card rose">
         <div class="rule-icon">🚫</div>
         <div>
-          <h4>Interne Leistungen bleiben intern (LUF)</h4>
+          <h3 class="rule-h3">Interne Leistungen bleiben intern (LUF)</h3>
           <p>Supervision, Intervision, interne Rapporte, Ausbildungs-Doppelkonsultationen, Terminvereinbarungen und Leistungserfassung am PC: nicht als Patientenleistung verrechenbar.</p>
         </div>
       </div>
@@ -2130,80 +2132,26 @@ justify-content: center;
       <p class="section-lead">Eigener Leistungsblock mit zwei getrennten Limiten — kein Nebenthema.</p>
     </summary>
     <div class="section-content">
-    <div class="diag-grid" class="mb-20">
-      <div class="diag-box a">
-        <h4>Durchführung · PA220 / EA.05.0150</h4>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Zeitlimit</span>
-          <span class="diag-stat-val">180 Min</span>
-        </div>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Zeitraum</span>
-          <span class="diag-stat-val">90 Tage</span>
-        </div>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Richtwert (TtT S.10)</span>
-          <span class="diag-stat-val">60 Min</span>
-        </div>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Mit Patient anwesend?</span>
-          <span class="text-green-bold">Ja</span>
-        </div>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Kumulierbar mit 0010/0030?</span>
-          <span class="text-rose-bold">Nein</span>
-        </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div style="background:#eef2ff;border:2px solid #6366f1;border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:#4338ca;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Durchführung · PA220</div>
+        <div style="font-size:22px;font-weight:800;color:#4338ca">180 Min</div>
+        <div style="font-size:12px;color:#475569">/ 90 Tage · Richtwert 60 Min</div>
+        <div style="font-size:12px;color:#e11d48;font-weight:600;margin-top:6px">✕ Nicht mit 0010/0030 am selben Tag</div>
       </div>
-      <div class="diag-box b">
-        <h4>Auswertung / Bericht · PE020</h4>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Zeitlimit</span>
-          <span class="diag-stat-val">240 Min</span>
-        </div>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Zeitraum</span>
-          <span class="diag-stat-val">90 Tage</span>
-        </div>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Richtwert (TtT S.10)</span>
-          <span class="diag-stat-val">80 Min</span>
-        </div>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Andere Tage möglich?</span>
-          <span class="text-green-bold">Ja</span>
-        </div>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Patient anwesend?</span>
-          <span class="text-rose-bold">Nein</span>
-        </div>
-        <div class="diag-stat">
-          <span class="diag-stat-lbl">Freies Zusatzbudget?</span>
-          <span class="text-rose-bold">Nein</span>
-        </div>
+      <div style="background:#f0fdf4;border:2px solid #6ee7b7;border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:#065f46;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Auswertung · PE020</div>
+        <div style="font-size:22px;font-weight:800;color:#065f46">240 Min</div>
+        <div style="font-size:12px;color:#475569">/ 90 Tage · Richtwert 80 Min</div>
+        <div style="font-size:12px;color:#059669;font-weight:600;margin-top:6px">✓ Andere Tage möglich</div>
       </div>
     </div>
-
-<div class="do-dont">
-  <div class="do-box">
-    <h4>✓ So funktioniert Diagnostik korrekt</h4>
-    <ul>
-      <li>Durchführung und Auswertung an verschiedenen Tagen möglich</li>
-      <li>Bei typisch 3 Abklärungssitzungen: Durchführung nach 60-Min-Richtwert, Auswertung nach 80-Min-Richtwert (TtT S.10)</li>
-      <li>Kleindiagnostik unter 20 Min: intern über PA010 + PE010 statt grossen Diagnostikblock</li>
-      <li>Zeit sauber erfassen, Doppelverrechnung vermeiden</li>
-    </ul>
-  </div>
-  <div class="dont-box">
-    <h4>✕ Häufige Fehler</h4>
-    <ul>
-      <li>Grosse Testabklärung einfach «in eine normale Sitzung hineinrechnen»</li>
-      <li>EA.05.0150 zusammen mit EA.05.0010/0030 am selben Tag buchen</li>
-      <li>Auswertungszeit als freies Zusatzbudget betrachten</li>
-      <li>Interpretation selbst vornehmen statt Psychiater/psych. Psychotherapeut</li>
-    </ul>
-  </div>
-</div>
-</div>
+    <div style="font-size:13.5px;color:#475569;margin-bottom:16px">Kleindiagnostik unter 20 Min → intern über PA010 + PE010 (kein separater Diagnostikblock). Rückmeldegespräch = reguläre Sitzung PA010/030.</div>
+    <a href="/diagnostik-detail" style="display:inline-flex;align-items:center;gap:8px;background:#4338ca;color:white;padding:10px 18px;border-radius:8px;font-size:13.5px;font-weight:600;text-decoration:none;margin-bottom:4px">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Vollversion: Diagnostik-Detail →
+    </a>
+    </div>
 
   </details>
 
@@ -2285,49 +2233,24 @@ justify-content: center;
       <p class="section-lead">Psychologinnenspezifisch: nicht ein Krisencode, sondern ein zweistufiges System.</p>
     </summary>
     <div class="section-content">
-    <div class="krise-grid">
-      <div class="krise-box a">
-        <div class="krise-sub">Anordnung A</div>
-        <h3>Krise unter laufender Psychotherapie</h3>
-        <ul class="krise-list" class="mt-16">
-          <li>Interne Ziffern: <strong>PA110 / PA111</strong></li>
-          <li>Max. <strong>180 Minuten pro Sitzung</strong></li>
-          <li>Bleibt unter laufender Anordnung A</li>
-          <li>Dokumentation: Auslöser, Bedrohung, Massnahmen, Mehraufwand</li>
-        </ul>
-        <div style="margin-top:14px;padding:10px 12px;background:rgba(255,255,255,0.6);border-radius:8px;font-size:12.5px;color:#92400e">
-          Unvorhersehbar · als bedrohlich/überwältigend erlebt · ohne professionelle Hilfe nicht bewältigbar
-        </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div style="background:#fff7ed;border:2px solid #fed7aa;border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:#c2410c;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Anordnung A</div>
+        <div style="font-size:14px;font-weight:700;color:#7c2d12;margin-bottom:6px">Laufende Psychotherapie</div>
+        <div style="font-size:13px;color:#92400e">PA110 / PA111 · max. <strong>180 Min</strong></div>
       </div>
-      <div class="krise-box b">
-        <div class="krise-sub">Anordnung B</div>
-        <h3>Krise im KANT / Spät-, Nacht-, Wochenenddienst</h3>
-        <ul class="krise-list" class="mt-16">
-          <li><strong>EA.00.0090</strong> Psychiatrische Krisenintervention</li>
-          <li>oder <strong>EA.00.0130</strong> Telemedizinische Krisenintervention</li>
-          <li>Effektiv aufgewendete Zeit, <strong>unbegrenzt</strong></li>
-          <li>Nicht kumulierbar mit Konsultationen am selben Tag</li>
-        </ul>
-        <div style="margin-top:14px;padding:10px 12px;background:rgba(255,255,255,0.6);border-radius:8px;font-size:12.5px;color:#9f1239">
-          Sonderfall: Bei zwei Psych. in einer Krise rechnet intern jeder aus seiner Dispo ab — sofern dokumentiert wird, wer was gemacht hat.
-        </div>
+      <div style="background:#fff1f2;border:2px solid #fda4af;border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:#9f1239;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Anordnung B</div>
+        <div style="font-size:14px;font-weight:700;color:#881337;margin-bottom:6px">KANT / Nacht- / Wochenenddienst</div>
+        <div style="font-size:13px;color:#9f1239">EA.00.0090 / EA.00.0130 · <strong>unbegrenzt</strong></div>
       </div>
     </div>
-
-<div class="note" class="mt-16">
-  <span class="note-icon">⚠️</span>
-  <div>
-    Psy/Psy-Doppelkonsultationen: Im Regelbetrieb regressgefährdet — besonders Familiensettings. Ausnahme Einarbeitung: Fallführende rechnet ab, zweite Person als LUF. Berufsgruppenübergreifend in begründbaren Fällen möglich. Dokumentation zwingend.
-  </div>
-</div>
-
-<div class="note indigo" style="margin-top:16px">
-  <span class="note-icon">ℹ️</span>
-  <div>
-    Überbrückungsleistungen (stationär → ambulant): Überbrückungskonferenz durch die Tagesklinik auf den offenen stationären Fall erfassbar — sofern die Tagesklinik die Nachbehandlung vollumfänglich übernimmt und kein externer Therapeut parallel beteiligt ist. Gilt nicht in umgekehrter Richtung (ambulant → stationär) oder bei ambulant → ambulant.
-  </div>
-</div>
-</div>
+    <div style="font-size:13.5px;color:#475569;margin-bottom:16px">Dokumentationspflicht: Auslöser, Bedrohungscharakter, Massnahmen, Mehraufwand. Psy/Psy-Doppelkonsultationen: Fallführende rechnet ab, zweite Person als LUF.</div>
+    <a href="/krise-detail" style="display:inline-flex;align-items:center;gap:8px;background:#9f1239;color:white;padding:10px 18px;border-radius:8px;font-size:13.5px;font-weight:600;text-decoration:none;margin-bottom:4px">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Vollversion: Krisenintervention A/B →
+    </a>
+    </div>
 
   </details>
 
@@ -2388,7 +2311,7 @@ justify-content: center;
     </div>
     <div class="lap-age-grid" class="mb-20">
       <div class="lap-age-box u18">
-        <h4>👶 Unter 18 Jahre</h4>
+        <h3 class="lap-h3">👶 Unter 18 Jahre</h3>
         <div class="lap-entry"><span>PE045 · Fremdaktenstudium</span><span class="lap-code">LAP</span></div>
         <div class="lap-entry"><span>PK025 · Koordination Dritte</span><span class="lap-code">LAP</span></div>
         <div class="lap-entry"><span>PK015 · Info-Austausch Ärzte/Psych.</span><span class="lap-code">LAP</span></div>
@@ -2398,7 +2321,7 @@ justify-content: center;
         </div>
       </div>
       <div class="lap-age-box o18">
-        <h4>🧑 Ab 18 Jahre</h4>
+        <h3 class="lap-h3">🧑 Ab 18 Jahre</h3>
         <div class="lap-entry"><span>PE040 · Fremdaktenstudium</span><span class="lap-code">LAP</span></div>
         <div class="lap-entry"><span>PK020 · Koordination Dritte</span><span class="lap-code">LAP</span></div>
         <div class="lap-entry"><span>PK010 · Info-Austausch Ärzte/Psych.</span><span class="lap-code">LAP</span></div>
@@ -2421,14 +2344,14 @@ justify-content: center;
       <span style="font-weight:700;color:var(--indigo);min-width:80px">EA.05.0120</span>
       <span class="text-navy">Auskünfte Angehörige (ohne Patient)</span>
       <span style="color:var(--slate);margin-left:auto">Fachlicher Austausch</span>
-      <span style="width:100%;font-size:12px;color:var(--indigo);font-weight:600;margin-top:2px;background:var(--indigo-soft);padding:4px 8px;border-radius:4px">Sonderfall: EA.05.0120 wird als separates Budget ausserhalb des altersgestuften LAP-Pools (240/180 Min) behandelt. Bei Unsicherheiten Rücksprache mit Tarif-Verantwortlichen.</span>
+      <span style="width:100%;font-size:12px;color:var(--indigo);font-weight:600;margin-top:2px;background:var(--indigo-soft);padding:4px 8px;border-radius:4px">&#x2713; Bestätigt: EA.05.0120 läuft als separates Budget <strong>ausserhalb</strong> des altersgestuften LAP-Pools (240/180 Min) — zählt nicht auf das Limit an.</span>
     </div>
   </div>
 </div>
 
 <div class="do-dont">
   <div class="do-box">
-    <h4>✓ Abrechenbar aus LAP-Topf</h4>
+    <h3 class="do-h3">✓ Abrechenbar aus LAP-Topf</h3>
     <ul>
       <li>Externer Schulbericht, IV-Unterlagen lesen (PE045/040)</li>
       <li>Fachliches Telefonat mit Schule/Beistand (PK025/020)</li>
@@ -2438,7 +2361,7 @@ justify-content: center;
     </ul>
   </div>
   <div class="dont-box">
-    <h4>✕ Nicht aus LAP-Topf</h4>
+    <h3 class="do-h3">✕ Nicht aus LAP-Topf</h3>
     <ul>
       <li>Eigene Verlaufsnotizen nachlesen — grundsätzlich nicht abrechenbar. Ausnahme: extensives Aufarbeiten von Eigenakten, wenn sauber dokumentiert.</li>
       <li>Kurze Vor-/Nachbereitung (→ PE010, nicht LAP)</li>
@@ -2486,17 +2409,40 @@ justify-content: center;
 <div class="card" style="margin-top:16px;margin-bottom:16px">
   <div class="card-section-title">Neue ambulante Berichtsstruktur</div>
   <ul class="list-clean">
-    <li class="flex-gap-8"><span class="pill-indigo">→</span>Berichte werden nach effektivem Zeitaufwand verrechnet</li>
-    <li class="flex-gap-8"><span class="pill-indigo">→</span>Maximum: 240 Minuten pro Bericht</li>
-    <li class="flex-gap-8"><span class="pill-indigo">→</span>Richtwert: 120 Minuten — bei Überschreitung Begründung erforderlich</li>
-    <li class="flex-gap-8"><span class="pill-indigo">→</span>Drei Teilberichte in der neuen ambulanten Struktur</li>
-    <li class="flex-gap-8"><span class="pill-indigo">→</span>IV-Berichte sind primär interner KJPP-Fakturierungsprozess</li>
+    <li class="flex-gap-8"><span class="pill-indigo">→</span>Berichte werden nach <strong>effektivem Zeitaufwand</strong> verrechnet — nicht pauschal</li>
+    <li class="flex-gap-8"><span class="pill-indigo">→</span>Maximum: <strong>240 Minuten</strong> pro Bericht</li>
+    <li class="flex-gap-8"><span class="pill-indigo">→</span>Richtwert: <strong>120 Minuten</strong> — bei Überschreitung Begründung im Verlauf erforderlich</li>
+    <li class="flex-gap-8"><span class="pill-indigo">→</span>Drei Teilberichte in der neuen ambulanten Struktur (siehe unten)</li>
+    <li class="flex-gap-8"><span class="pill-indigo">→</span>IV-Berichte: interner KJPP-Fakturierungsprozess — nicht von freier Selbstabrechnung ausgehen</li>
   </ul>
+</div>
+
+<div class="card" style="margin-top:0;margin-bottom:16px;border-color:#c7d2fe">
+  <div class="card-section-title" style="color:var(--indigo)">Die drei Teilberichte (ambulante Struktur)</div>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
+    <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
+      <span style="font-weight:700;color:var(--indigo);min-width:28px">1.</span>
+      <div><strong>Psychologischer Bericht / Verlaufsbericht</strong><br><span style="font-size:12.5px;color:var(--slate)">Klinischer Verlauf, Interventionen, Therapieziele, Ergebnis. Kernstück der Dokumentation.</span></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
+      <span style="font-weight:700;color:var(--indigo);min-width:28px">2.</span>
+      <div><strong>Diagnostikbericht</strong><br><span style="font-size:12.5px;color:var(--slate)">Testergebnisse, Befunde, diagnostische Einordnung. Nur wenn Diagnostikblock (PA220/PE020) durchgeführt wurde.</span></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
+      <span style="font-weight:700;color:var(--indigo);min-width:28px">3.</span>
+      <div><strong>IV-/Versichererbericht</strong><br><span style="font-size:12.5px;color:var(--slate)">Auf Anfrage von IV oder Versicherer. <strong>Interner Prozess:</strong> Immer über Klinikleitung koordinieren — nicht direkt einreichen.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="note" style="margin-bottom:16px">
+  <span class="note-icon">&#x2139;&#xFE0F;</span>
+  <div style="font-size:13px"><strong>Interner Fakturaprozess:</strong> Berichte werden über die KJPP-Administration abgerechnet — die Psychologin erfasst Zeit und Inhalt, die Fakturierung läuft intern. Detaillierter Ablauf wird klinik-intern kommuniziert. Bei Fragen: Rücksprache mit Klinikleitung oder Administration.</div>
 </div>
 
 <div class="do-dont">
   <div class="do-box">
-    <h4>✓ Praxishinweise</h4>
+    <h3 class="do-h3">✓ Praxishinweise</h3>
     <ul>
       <li>Zeit sauber erfassen — effektiver Aufwand zählt</li>
       <li>Doppelverrechnung vermeiden</li>
@@ -2504,7 +2450,7 @@ justify-content: center;
     </ul>
   </div>
   <div class="dont-box">
-    <h4>✕ Häufige Fehler</h4>
+    <h3 class="do-h3">✕ Häufige Fehler</h3>
     <ul>
       <li>Von freier direkter Psychologen-Selbstabrechnung ausgehen</li>
       <li>Berichtszeit pauschal statt nach effektivem Aufwand angeben</li>
@@ -2621,6 +2567,22 @@ justify-content: center;
 
   <div class="scenario-card">
     <div class="scenario-num">11</div>
+    <div class="scenario-body">
+      <div class="scenario-q">👩‍👦 Mutter ruft an: 15 Min fachlicher Austausch über Medikamenten-Compliance und Strukturierung zu Hause — Patient nicht dabei</div>
+      <div class="scenario-think">Angehörige ohne Patient · fachlicher Inhalt · nicht reine Organisation · EA.05.0120 läuft separat vom LAP-Pool</div>
+      <span class="scenario-answer">→ EA.05.0120 (Auskünfte Angehörige — separates Budget, nicht im LAP-Pool)</span>
+      <div class="scenario-distinction">
+        <div class="scenario-distinction-label">Vierer-Abgrenzung</div>
+        Hätte die Psychologin <strong>mit dem Patienten selbst</strong> gesprochen (synchron, 45 Min): → <strong>PA011</strong> (fernmündliche Sitzung).
+        Hätte sie nur kurz rückgemeldet (10 Min, synchron): → <strong>EA.00.0110</strong> (Verlaufskonsultation).
+        Hätte sie per E-Mail geantwortet (zeitversetzt): → <strong>EA.05.0080</strong> (max. 1×/Tag).
+        Telefonat mit Schule/Beistand statt Eltern: → <strong>PK025/020</strong> (LAP-Topf, altersgesteuert).
+      </div>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">12</div>
     <div class="scenario-body">
       <div class="scenario-q">💬 Mutter schickt abends SMS über Verschlechterung — Psychologin antwortet nächsten Morgen per E-Mail (klinisch relevant, 10 Min)</div>
       <div class="scenario-think">Zeitversetzt · asynchron · nicht synchron am Telefon · Antwort am Folgetag</div>

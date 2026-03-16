@@ -1,0 +1,323 @@
+<!-- ============================================================
+     Tarif-Kompass 2026 · Krisenintervention A/B · Psychologinnen KJPP
+     Version: 1.0.0 · Stand: 16.03.2026
+     ============================================================ -->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Krisenintervention A/B-Logik — Vollversion. Tarif-Kompass 2026 für Psychologinnen KJPP.">
+<title>Krisenintervention · Tarif-Kompass 2026 · Psychologinnen KJPP</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect rx='18' width='100' height='100' fill='%234338ca'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #4338ca;
+    --indigo: #4338ca;
+    --indigo-light: #6366f1;
+    --indigo-soft: #eef2ff;
+    --amber: #d97706;
+    --rose: #e11d48;
+    --slate: #475569;
+    --slate-light: #4b5563;
+    --bg: #f5f7ff;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --text-soft: #4b5563;
+    --green: #059669;
+    --green-bg: #ecfdf5;
+    --red-bg: #fff1f2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.65; }
+
+  /* HEADER */
+  .header { background: linear-gradient(135deg, #9f1239 0%, #e11d48 60%, #fb7185 100%); color: white; padding: 40px 40px 36px; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.08); }
+  .header-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .header-badge { display: inline-block; background: rgba(255,255,255,0.22); color: white; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.3); }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.8); font-size: 13px; text-decoration: none; margin-bottom: 16px; transition: color .15s; }
+  .back-link:hover { color: white; }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: 34px; line-height: 1.2; margin-bottom: 6px; }
+  .header h1 span { color: #fecdd3; }
+  .header-sub { font-size: 15px; color: rgba(255,255,255,0.82); font-weight: 300; }
+
+  /* MAIN */
+  .main { max-width: 860px; margin: 0 auto; padding: 40px 40px 80px; }
+
+  /* KRISE GRID */
+  .krise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  @media (max-width: 600px) { .krise-grid { grid-template-columns: 1fr; } }
+  .krise-box { border-radius: 14px; padding: 22px; }
+  .krise-box.a { background: linear-gradient(135deg, #fff7ed, #ffedd5); border: 2px solid #fed7aa; }
+  .krise-box.b { background: linear-gradient(135deg, #fff1f2, #ffe4e6); border: 2px solid #fda4af; }
+  .krise-sub { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
+  .krise-box.a .krise-sub { color: #c2410c; }
+  .krise-box.b .krise-sub { color: #9f1239; }
+  .krise-box p.krise-title { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+  .krise-box.a h3 { color: #7c2d12; }
+  .krise-box.b h3 { color: #881337; }
+  .krise-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .krise-list li { font-size: 13.5px; display: flex; gap: 8px; line-height: 1.4; }
+  .krise-list li::before { content: '→'; font-weight: 700; flex-shrink: 0; }
+  .krise-box.a .krise-list li::before { color: #c2410c; }
+  .krise-box.b .krise-list li::before { color: #9f1239; }
+
+  /* CARD */
+  .card { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 20px 24px; margin-bottom: 20px; }
+  .card-section-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); margin-bottom: 12px; }
+
+  /* DO/DONT */
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  @media (max-width: 600px) { .do-dont { grid-template-columns: 1fr; } }
+  .do-box { background: var(--green-bg); border: 1.5px solid #6ee7b7; border-radius: 12px; padding: 18px 20px; }
+  .dont-box { background: var(--red-bg); border: 1.5px solid #fda4af; border-radius: 12px; padding: 18px 20px; }
+  .do-box h4 { color: #065f46; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+  .dont-box h4 { color: #9f1239; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+  .do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; line-height: 1.45; }
+  .do-box li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .dont-box li::before { content: '✕'; color: var(--rose); font-weight: 700; flex-shrink: 0; }
+
+  /* NOTE */
+  .note { display: flex; gap: 12px; background: #fffbeb; border: 1.5px solid #fcd34d; border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; }
+  .note.indigo { background: var(--indigo-soft); border-color: #c7d2fe; }
+  .note.red { background: #fff1f2; border-color: #fda4af; }
+  .note-icon { font-size: 18px; flex-shrink: 0; }
+
+  /* SCENARIO */
+  .scenario-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; display: flex; gap: 16px; }
+  .scenario-num { background: #fff1f2; color: var(--rose); font-weight: 700; font-size: 15px; min-width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .scenario-q { font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  .scenario-think { font-size: 12.5px; color: var(--slate); margin-bottom: 8px; }
+  .scenario-answer { display: inline-block; font-weight: 700; font-size: 13px; padding: 5px 12px; border-radius: 6px; }
+  .scenario-answer.a { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+  .scenario-answer.b { background: #fff1f2; color: #9f1239; border: 1px solid #fda4af; }
+
+  /* SECTION TITLE */
+  .section-title-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: var(--rose); color: white; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  h2.page-section { font-family: 'DM Serif Display', serif; font-size: 26px; color: #881337; margin-bottom: 6px; }
+  .section-lead { font-size: 14.5px; color: var(--slate); margin-bottom: 24px; }
+
+  /* DECISION TABLE */
+  .decision-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13.5px; }
+  .decision-table th { background: #1e293b; color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
+  .decision-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .decision-table tr:nth-child(even) td { background: #f8fafc; }
+  .badge-a { display: inline-block; background: #fff7ed; color: #c2410c; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 4px; border: 1px solid #fed7aa; }
+  .badge-b { display: inline-block; background: #fff1f2; color: #9f1239; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 4px; border: 1px solid #fda4af; }
+
+  /* FOOTER */
+  .footer { background: #1e293b; color: rgba(255,255,255,0.7); font-size: 12px; padding: 20px 40px; text-align: center; display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .footer a { color: rgba(255,255,255,0.6); text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .header { padding: 28px 20px 24px; }
+    .main { padding: 24px 16px 60px; }
+    .header h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Zurück zum Tarif-Kompass
+    </a>
+    <div class="header-badge">TARDOC EA.05 · Krisenintervention</div>
+    <h1>Krisenintervention: <span>A/B-Logik</span></h1>
+    <p class="header-sub">Psychologinnenspezifisch: nicht ein Krisencode, sondern ein zweistufiges System · KJPP</p>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="section-title-bar">
+    <span class="num">1</span>
+    <h2 class="page-section">Die zwei Krisentypen</h2>
+  </div>
+  <p class="section-lead">Anordnung A und B sind nicht austauschbar — sie gelten für grundlegend verschiedene Situationen.</p>
+
+  <div class="krise-grid">
+    <div class="krise-box a">
+      <div class="krise-sub">Anordnung A</div>
+        <p class="krise-title" style="color:#7c2d12">Krise unter laufender Psychotherapie</p>
+      <ul class="krise-list">
+        <li>Interne Ziffern: <strong>PA110 / PA111</strong></li>
+        <li>Max. <strong>180 Minuten pro Sitzung</strong></li>
+        <li>Bleibt unter laufender Anordnung A</li>
+        <li>Dokumentation: Auslöser, Bedrohung, Massnahmen, Mehraufwand</li>
+      </ul>
+      <div style="margin-top:14px;padding:10px 12px;background:rgba(255,255,255,0.6);border-radius:8px;font-size:12.5px;color:#92400e">
+        Unvorhersehbar · als bedrohlich/überwältigend erlebt · ohne professionelle Hilfe nicht bewältigbar
+      </div>
+    </div>
+    <div class="krise-box b">
+      <div class="krise-sub">Anordnung B</div>
+        <p class="krise-title" style="color:#881337">Krise im KANT / Spät-, Nacht-, Wochenenddienst</p>
+      <ul class="krise-list">
+        <li><strong>EA.00.0090</strong> Psychiatrische Krisenintervention</li>
+        <li>oder <strong>EA.00.0130</strong> Telemedizinische Krisenintervention</li>
+        <li>Effektiv aufgewendete Zeit, <strong>unbegrenzt</strong></li>
+        <li>Nicht kumulierbar mit Konsultationen am selben Tag</li>
+      </ul>
+      <div style="margin-top:14px;padding:10px 12px;background:rgba(255,255,255,0.6);border-radius:8px;font-size:12.5px;color:#9f1239">
+        Sonderfall: Bei zwei Psych. in einer Krise rechnet intern jeder aus seiner Dispo ab — sofern dokumentiert wird, wer was gemacht hat.
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title-bar" style="margin-top:32px">
+    <span class="num">2</span>
+    <h2 class="page-section">Schnell-Entscheidungstabelle</h2>
+  </div>
+  <p class="section-lead">Welche Situation führt zu welcher Ziffer?</p>
+
+  <table class="decision-table">
+    <thead>
+      <tr>
+        <th>Situation</th>
+        <th>Ziffer</th>
+        <th>Limit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Krise mitten in laufender Therapiestunde (eskaliert unerwartet)</td>
+        <td><span class="badge-a">PA110</span> Anordnung A</td>
+        <td>Max. 180 Min</td>
+      </tr>
+      <tr>
+        <td>Krise ausserhalb regulärer Sitzung, aber Patient in laufender Therapie</td>
+        <td><span class="badge-a">PA110</span> Anordnung A</td>
+        <td>Max. 180 Min</td>
+      </tr>
+      <tr>
+        <td>Patient erscheint unangemeldet im KANT (Nacht/Wochenende)</td>
+        <td><span class="badge-b">EA.00.0090</span> Anordnung B</td>
+        <td>Unbegrenzt</td>
+      </tr>
+      <tr>
+        <td>Telefonische Krisenintervention im Spätdienst</td>
+        <td><span class="badge-b">EA.00.0130</span> Anordnung B</td>
+        <td>Unbegrenzt</td>
+      </tr>
+      <tr>
+        <td>Zwei Psychologinnen gemeinsam in einer Krise</td>
+        <td>Jede aus eigener Dispo — mit Dokumentation</td>
+        <td>Je nach Anordnung</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title-bar" style="margin-top:32px">
+    <span class="num">3</span>
+    <h2 class="page-section">Dokumentationsanforderungen</h2>
+  </div>
+  <p class="section-lead">Kriseninterventionen sind ohne saubere Dokumentation tariflich nicht haltbar.</p>
+
+  <div class="card" style="border-color:#fda4af">
+    <div class="card-section-title" style="color:#9f1239">Pflichtbestandteile im Verlaufseintrag</div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
+        <span style="color:var(--rose);font-weight:700;min-width:24px">1.</span>
+        <div><strong>Auslösendes Ereignis</strong> — Was hat die Krise ausgelöst? Konkret und situationsbezogen.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
+        <span style="color:var(--rose);font-weight:700;min-width:24px">2.</span>
+        <div><strong>Bedrohungscharakter / Überforderung</strong> — Warum war es unvorhersehbar? Warum nicht ohne Hilfe bewältigbar?</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
+        <span style="color:var(--rose);font-weight:700;min-width:24px">3.</span>
+        <div><strong>Konkrete Massnahmen</strong> — Was wurde getan? Spezifisch und handlungsbezogen.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
+        <span style="color:var(--rose);font-weight:700;min-width:24px">4.</span>
+        <div><strong>Begründung des Mehraufwands</strong> (bei Anordnung A) — Warum war mehr Zeit als in einer regulären Sitzung nötig?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title-bar" style="margin-top:32px">
+    <span class="num">4</span>
+    <h2 class="page-section">Sonderfälle und Hinweise</h2>
+  </div>
+
+  <div class="note">
+    <span class="note-icon">⚠️</span>
+    <div>
+      <strong>Psy/Psy-Doppelkonsultationen:</strong> Im Regelbetrieb regressgefährdet — besonders Familiensettings. Ausnahme Einarbeitung: Fallführende rechnet ab, zweite Person als LUF. Berufsgruppenübergreifend in begründbaren Fällen möglich. <strong>Dokumentation zwingend.</strong>
+    </div>
+  </div>
+
+  <div class="note indigo">
+    <span class="note-icon">ℹ️</span>
+    <div>
+      <strong>Überbrückungsleistungen (stationär → ambulant):</strong> Überbrückungskonferenz durch die Tagesklinik auf den offenen stationären Fall erfassbar — sofern die Tagesklinik die Nachbehandlung vollumfänglich übernimmt und kein externer Therapeut parallel beteiligt ist. Gilt <em>nicht</em> in umgekehrter Richtung (ambulant → stationär) oder bei ambulant → ambulant.
+    </div>
+  </div>
+
+  <div class="note red">
+    <span class="note-icon">⚠️</span>
+    <div>
+      <strong>Anordnung B nicht kumulierbar:</strong> EA.00.0090 / EA.00.0130 darf am selben Tag <strong>nicht</strong> mit regulären Konsultationen (EA.05.0010/0030) kombiniert werden.
+    </div>
+  </div>
+
+  <div class="section-title-bar" style="margin-top:32px">
+    <span class="num">5</span>
+    <h2 class="page-section">Praxisszenarien</h2>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">A</div>
+    <div>
+      <div class="scenario-q">⚡ Jugendlicher erscheint unangemeldet nachts im KANT — akute Krise</div>
+      <div class="scenario-think">KANT / Nachtdienst · Anordnung B · unbegrenzt · nicht kumulierbar mit regulären Konsultationen</div>
+      <span class="scenario-answer b">→ EA.00.0090 Anordnung B (unbegrenzt)</span>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">B</div>
+    <div>
+      <div class="scenario-q">⚡ Krise mitten in laufender Therapiestunde — unerwartet eskaliert</div>
+      <div class="scenario-think">Laufende PT · Anordnung A · max. 180 Min · Dokumentation: Auslöser, Bedrohungscharakter, Massnahmen</div>
+      <span class="scenario-answer a">→ PA110 Anordnung A (max. 180 Min)</span>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-num">C</div>
+    <div>
+      <div class="scenario-q">📞 Telefonische Krisenintervention Samstagabend, 45 Min</div>
+      <div class="scenario-think">Wochenenddienst · telemedizinisch · Anordnung B</div>
+      <span class="scenario-answer b">→ EA.00.0130 Anordnung B (telemedizinisch, unbegrenzt)</span>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;padding:16px 20px;background:#fff1f2;border-radius:12px;border:1px solid #fda4af">
+    <div style="font-size:12px;font-weight:700;color:#9f1239;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Print-Version</div>
+    <p style="font-size:13.5px;color:var(--text)">Die kompakte Druckversion mit dem vollständigen Krisen-Leitfaden ist als separates Blatt verfügbar:</p>
+    <a href="/files/krisen-leitfaden-psych-print" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:#9f1239;color:white;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Krisen-Leitfaden-Print öffnen
+    </a>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>Tarif-Kompass 2026 · Krisenintervention A/B · Psychologinnen KJPP</span>
+  <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026 · Stand: 16.03.2026</span>
+  <span><a href="/">← Zurück zum Tarif-Kompass</a></span>
+</footer>
+
+</body>
+</html>

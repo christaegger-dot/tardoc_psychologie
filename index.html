@@ -3323,7 +3323,7 @@ justify-content: center;
   })();
   // ── Keyboard shortcut: Ctrl+K / Cmd+K ──
   document.addEventListener('keydown', function(e) {
-    if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) || (e.altKey && e.key === 's') {
+    if (((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) || (e.altKey && e.key === 's')) {
       e.preventDefault();
       searchInput.focus();
       searchInput.select();

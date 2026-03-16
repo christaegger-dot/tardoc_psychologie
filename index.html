@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- ============================================================
      Tarif-Kompass 2026 · Psychologinnen KJPP
-     Version: 1.2.1 · Stand: 16.03.2026
+     Version: 1.2.3 · Stand: 16.03.2026
      Gültig ab: 01.01.2026 (TARDOC EA.05)
      Repository: https://github.com/christaegger-dot/tardoc_psychologie
      Live: https://tardoc-psychologiekjpp.netlify.app/
@@ -308,6 +308,27 @@ mark { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 1px; 
 /* ── SCROLL ANIMATIONS ── */
 .section { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
 .section.visible { opacity: 1; transform: translateY(0); }
+
+/* ── SCROLL MARGIN (verhindert Verstecken unter Sticky-Bar) ── */
+.section-accordion {
+  scroll-margin-top: 56px;
+}
+@media (min-width: 1024px) {
+  .section-accordion {
+    scroll-margin-top: 46px;
+  }
+}
+
+/* ── SECTION HIGHLIGHT ANIMATION ── */
+@keyframes sectionHighlight {
+  0%   { background-color: rgba(99, 102, 241, 0.10); }
+  30%  { background-color: rgba(99, 102, 241, 0.14); }
+  100% { background-color: transparent; }
+}
+.section-accordion.nav-highlight {
+  animation: sectionHighlight 1.4s ease;
+  border-radius: 12px;
+}
 
 /* ── ACCORDION (mobile) ── */
 .section-accordion { border: none; margin-bottom: 52px; }
@@ -2443,6 +2464,13 @@ justify-content: center;
       if (target) {
         if (target.tagName === 'DETAILS') target.open = true;
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Highlight-Effekt: kurzer Hintergrundblitz
+        target.classList.remove('nav-highlight');
+        void target.offsetWidth; // reflow erzwingen
+        target.classList.add('nav-highlight');
+        target.addEventListener('animationend', () => {
+          target.classList.remove('nav-highlight');
+        }, { once: true });
       }
     });
   });

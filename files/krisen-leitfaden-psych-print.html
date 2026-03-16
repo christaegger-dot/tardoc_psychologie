@@ -137,14 +137,37 @@ body {
 
 /* ── Print ── */
 @media print {
+  .printbar { display: none !important; }
   body { background: white; padding: 0; display: block; }
   .sheet { box-shadow: none; width: 210mm; }
   @page { size: A4; margin: 0; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+.printbar {
+  width: 210mm; max-width: 100%;
+  background: #F8FAFC; border: 1px solid var(--line);
+  border-bottom: 2px solid #C7D2FE; border-radius: 10px;
+  padding: 10px 20px; display: flex; align-items: center; gap: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.07);
+}
+.printbar-label { flex: 1; font-size: 11px; color: var(--sl-l); }
+.printbar-label strong { color: var(--ink); }
+.pbtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 15px; border-radius: 7px; border: none;
+  font-family: inherit; font-size: 11px; font-weight: 600;
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+}
+.pbtn-ghost { background: var(--bg); color: var(--slate); border: 1px solid var(--line); }
+.pbtn-dark  { background: var(--ink); color: white; }
 </style>
 </head>
 <body>
+<div class="printbar">
+  <div class="printbar-label"><strong>Krisen-Leitfaden</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
+  <a href="javascript:history.back()" class="pbtn pbtn-ghost">← Zurück</a>
+  <button onclick="window.print()" class="pbtn pbtn-dark">🖨 Als PDF drucken</button>
+</div>
 
 <main class="sheet">
 

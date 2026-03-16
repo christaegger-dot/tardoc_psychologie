@@ -2,276 +2,429 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="10-Punkte-Spickzettel TARDOC EA.05 für Psychologinnen mit PT-Ausbildung. Entscheidungsbaum, Mengengrenzen und Krisenlogik auf einen Blick.">
-<meta property="og:title" content="Spickzettel · Tarif-Kompass 2026 · Psychologinnen">
-<meta property="og:description" content="10-Punkte-Spickzettel TARDOC EA.05: Entscheidungsbaum, Mengengrenzen und Krisenlogik auf einen Blick.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://tardoc-psychologiekjpp.netlify.app/files/spickzettel-psych-print.html">
-<meta property="og:locale" content="de_CH">
-<link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/files/spickzettel-psych-print.html">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%234338ca'/><text x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'>T</text></svg>">
-<title>Spickzettel · Tarif-Kompass 2026 · Psychologinnen</title>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" as="style">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../shared-print.css">
+<title>Spickzettel · Tarif-Kompass 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ── LAYOUT ── */
-.body { flex: 1; padding: 4mm 14mm 4mm; display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
-/* Masthead kompakter für 1-Seiten-Layout */
-.mast { padding: 5mm 14mm 4mm; }
-.mast h1 { font-size: 21pt; }
-.mast-top { margin-bottom: 2.5mm; }
-.col { display: flex; flex-direction: column; gap: 3.5mm; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── PILLS (Masthead) ── */
-.pills { display: flex; gap: 3mm; flex-wrap: wrap; margin-top: 1mm; }
-.pill { border-radius: 20px; padding: 3px 10px; display: flex; align-items: center; gap: 6px; }
-.pill-i { background: rgba(165,180,252,.14); border: 1px solid rgba(165,180,252,.35); }
-.pill-t { background: rgba(79,209,197,.12); border: 1px solid rgba(79,209,197,.3); }
-.pill-p { background: rgba(196,181,253,.12); border: 1px solid rgba(196,181,253,.3); }
-.pill-a { background: rgba(251,191,36,.12); border: 1px solid rgba(251,191,36,.3); }
-.pill-num { font-family: 'Playfair Display', serif; font-size: 13pt; color: white; line-height: 1; }
-.pill-lbl { font-size: 6.5pt; color: rgba(255,255,255,.55); line-height: 1.3; }
-.pill-lbl strong { color: white; display: block; font-size: 7.5pt; }
+:root {
+  --ink:    #1A3560;
+  --ind:    #4338CA;
+  --ind-s:  #EEF2FF;
+  --teal:   #0A7C71;
+  --teal-s: #E0F2EF;
+  --purp:   #7C3AED;
+  --purp-s: #F3EEFF;
+  --amber:  #D97706;
+  --amb-s:  #FFFBEB;
+  --rose:   #BE123C;
+  --rose-s: #FFF1F3;
+  --green:  #059669;
+  --grn-s:  #ECFDF5;
+  --slate:  #475569;
+  --sl-l:   #94A3B8;
+  --line:   #E2E8F0;
+  --white:  #FFFFFF;
+  --text:   #1E293B;
+  --bg:     #F1F5F9;
+}
 
-/* ── ENTSCHEIDUNGSBAUM ── */
-.dt { display: flex; flex-direction: column; }
-.dt-q { background: var(--ink); border-radius: 6px; padding: 6px 9px; color: white; }
-.dt-ql { font-size: 6pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #a5b4fc; margin-bottom: 1px; }
-.dt-qt { font-size: 8.5pt; font-weight: 600; line-height: 1.25; }
-.dt-qn { font-size: 6.5pt; color: rgba(255,255,255,.45); margin-top: 1px; }
-.dt-arrow { height: 4mm; display: flex; justify-content: center; align-items: center; }
-.dt-arrow::after { content: ''; display: block; width: 1px; height: 100%; background: var(--line); }
-.dt-fork { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
-.dt-br { display: flex; flex-direction: column; gap: 2mm; }
-.tag { font-size: 6pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; display: inline-block; margin-bottom: 0.5mm; }
-.tag-y { background: var(--green-l); color: var(--green); }
-.tag-n { background: var(--rose-l); color: var(--rose); }
-.dr { border-radius: 6px; padding: 5px 8px; }
-.dr-lbl { font-size: 5.5pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1px; }
-.dr p { font-size: 8pt; font-weight: 600; color: var(--ink); line-height: 1.25; }
-.dr small { font-size: 6.5pt; color: var(--soft); display: block; margin-top: 1px; }
-.dr.ri { background: var(--rose-l); border-left: 3px solid var(--rose); } .dr.ri .dr-lbl { color: var(--rose); }
-.dr.ra { background: var(--ind-l); border-left: 3px solid var(--ind); } .dr.ra .dr-lbl { color: var(--ind); }
-.dr.rl { background: var(--teal-l); border-left: 3px solid var(--teal); } .dr.rl .dr-lbl { color: var(--teal); }
-.dr.rp { background: var(--purple-l); border-left: 3px solid var(--purple); } .dr.rp .dr-lbl { color: var(--purple); }
-.de { font-size: 7.5pt; color: var(--ink); padding: 2px 0; border-bottom: 1px solid var(--line); display: flex; gap: 5px; }
-.de:last-child { border-bottom: none; }
-.de-c { font-weight: 700; color: var(--ind); white-space: nowrap; min-width: 44px; font-size: 7pt; }
-.de-c.t { color: var(--teal); } .de-c.p { color: var(--purple); }
-.sp { height: 2mm; }
-.co { border-radius: 5px; padding: 4px 8px; font-size: 7pt; line-height: 1.35; display: flex; gap: 5px; }
-.co.a { background: var(--amber-l); color: #7a3a00; border: 1px solid var(--amber-m); }
-.co.i { background: var(--ind-l); color: #1e1b6b; border: 1px solid var(--ind-m); }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.5;
+}
 
-/* ── 10-PUNKTE CHEAT ── */
-.cheat { background: linear-gradient(135deg, #1e3a6e 0%, #2d1b69 100%); border-radius: 7px; overflow: hidden; border: 1px solid rgba(165,180,252,.2); }
-.ci { display: grid; grid-template-columns: 22px 1fr; border-bottom: 1px solid rgba(255,255,255,.09); }
+@media screen {
+  body { padding: 20px 12px 48px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+}
+
+.printbar {
+  width: 210mm; max-width: 100%;
+  background: #F8FAFC; border: 1px solid var(--line);
+  border-bottom: 2px solid #C7D2FE; border-radius: 10px;
+  padding: 10px 20px; display: flex; align-items: center; gap: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.07);
+}
+.printbar-label { flex: 1; font-size: 11px; color: var(--sl-l); }
+.printbar-label strong { color: var(--ink); }
+.pbtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 15px; border-radius: 7px; border: none;
+  font-family: inherit; font-size: 11px; font-weight: 600;
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+}
+.pbtn-ghost { background: var(--bg); color: var(--slate); border: 1px solid var(--line); }
+.pbtn-dark  { background: var(--ink); color: white; }
+
+.sheet {
+  width: 210mm; max-width: 100%;
+  background: var(--white);
+  display: flex; flex-direction: column;
+}
+@media screen { .sheet { box-shadow: 0 4px 28px rgba(0,0,0,.14); border-radius: 3px; } }
+
+/* ── Masthead ── */
+.mast {
+  background: var(--ink); padding: 10px 16px 9px;
+  flex-shrink: 0;
+}
+.mast-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
+.mast h1 { font-size: 20px; font-weight: 800; color: white; letter-spacing: -.4px; line-height: 1; }
+.mast h1 em { color: #A5B4FC; font-style: normal; }
+.mast-sub { font-size: 7.5px; color: rgba(255,255,255,.45); margin-top: 2px; }
+.mast-badge {
+  font-size: 8px; font-weight: 700; color: #A5B4FC;
+  background: rgba(165,180,252,.12); border: 1px solid rgba(165,180,252,.28);
+  border-radius: 4px; padding: 3px 8px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* ── Key metrics pills ── */
+.pills { display: flex; gap: 5px; flex-wrap: wrap; }
+.pill {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+  border-radius: 6px; padding: 4px 9px;
+}
+.pill-num { font-size: 14px; font-weight: 800; line-height: 1; }
+.pill-lbl { font-size: 7px; color: rgba(255,255,255,.65); line-height: 1.3; }
+.pill-lbl strong { display: block; color: white; font-size: 7.5px; }
+.p-i .pill-num { color: #A5B4FC; }
+.p-t .pill-num { color: #6EE7B7; }
+.p-p .pill-num { color: #C4B5FD; }
+.p-a .pill-num { color: #FDE68A; }
+
+/* ── Body ── */
+.body { flex: 1; padding: 9px 14px 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* ── Section header ── */
+.sh {
+  display: flex; align-items: center; gap: 6px;
+  padding-bottom: 4px; margin-bottom: 5px;
+  border-bottom: 1.5px solid var(--line);
+}
+.sh-bar { width: 3px; height: 12px; border-radius: 2px; flex-shrink: 0; }
+.sh h2 { font-size: 7px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+
+/* ── Left column sections ── */
+.col-left { display: flex; flex-direction: column; gap: 9px; }
+.col-right { display: flex; flex-direction: column; gap: 9px; }
+
+/* ── Mini decision tree (simplified) ── */
+.dt { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+
+/* Question node */
+.dt-q {
+  background: var(--ink); border-radius: 8px; padding: 7px 10px;
+  position: relative;
+}
+.dt-ql { font-size: 6px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #818CF8; margin-bottom: 2px; }
+.dt-qt { font-size: 11px; font-weight: 700; color: white; line-height: 1.2; }
+.dt-qn { font-size: 7px; color: rgba(255,255,255,.45); margin-top: 2px; }
+
+/* Vertical connector line */
+.v-conn { width: 2px; height: 8px; background: var(--sl-l); align-self: center; }
+
+/* Two-branch fork */
+.dt-fork { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.dt-br { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+
+/* Branch arrow label */
+.dt-arrow {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 7.5px; font-weight: 700;
+}
+.dt-arrow::before { content: ''; display: block; width: 1px; height: 10px; background: var(--sl-l); }
+.dt-arrow-y { color: var(--green); }
+.dt-arrow-n { color: var(--rose); }
+
+/* Result leaf node */
+.dt-leaf {
+  width: 100%; border-radius: 7px; padding: 7px 9px;
+  border: 2px solid;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.dt-leaf-title { font-size: 9px; font-weight: 700; line-height: 1.2; }
+.dt-leaf-sub   { font-size: 7px; line-height: 1.4; }
+
+.dt-leaf-ri { background: var(--rose-s); border-color: rgba(190,18,60,.4); }
+.dt-leaf-ri .dt-leaf-title { color: var(--rose); }
+.dt-leaf-ri .dt-leaf-sub   { color: #9F1239; }
+
+.dt-leaf-rp { background: var(--purp-s); border-color: rgba(124,58,237,.35); }
+.dt-leaf-rp .dt-leaf-title { color: var(--purp); }
+.dt-leaf-rp .dt-leaf-sub   { color: #5B21B6; }
+
+.dt-leaf-ra { background: var(--ind-s); border-color: rgba(67,56,202,.35); }
+.dt-leaf-ra .dt-leaf-title { color: var(--ind); }
+.dt-leaf-ra .dt-leaf-sub   { color: #3730A3; }
+
+.dt-leaf-rl { background: var(--teal-s); border-color: rgba(10,124,113,.35); }
+.dt-leaf-rl .dt-leaf-title { color: var(--teal); }
+.dt-leaf-rl .dt-leaf-sub   { color: #065F46; }
+
+.dt-leaf-ra2 { background: #F0FDF4; border-color: rgba(5,150,105,.35); }
+.dt-leaf-ra2 .dt-leaf-title { color: var(--green); }
+.dt-leaf-ra2 .dt-leaf-sub   { color: #065F46; }
+
+/* Sub-question (indented) */
+.dt-subq {
+  background: #2D4A7A; border-radius: 7px; padding: 6px 9px; width: 100%;
+}
+.dt-subq .dt-ql { color: #93C5FD; }
+.dt-subq .dt-qt { font-size: 9.5px; }
+
+.dt-warn {
+  background: var(--amb-s); border: 1px solid var(--amber);
+  border-radius: 5px; padding: 4px 7px;
+  font-size: 7px; color: #78350F; line-height: 1.4;
+}
+
+/* ── 4 Kontakttypen ── */
+.tel-tbl { width: 100%; border-collapse: collapse; font-size: 8px; }
+.tel-tbl thead tr { background: var(--ink); }
+.tel-tbl thead th { color: rgba(255,255,255,.9); font-size: 6.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 7px; text-align: left; }
+.tel-tbl tbody tr { border-bottom: 1px solid var(--line); }
+.tel-tbl tbody tr:last-child { border-bottom: none; }
+.tel-tbl td { padding: 4px 7px; vertical-align: top; }
+.tel-type { font-weight: 600; font-size: 8px; }
+.tel-sub  { font-size: 7px; color: var(--sl-l); }
+.tel-code { font-weight: 700; font-size: 7.5px; font-family: 'Courier New', monospace; }
+.tel-warn { font-size: 7px; font-weight: 700; color: var(--amber); }
+.tel-note { font-size: 7.5px; color: var(--slate); }
+
+/* ── 10-Punkte Spickzettel ── */
+.cheat { display: flex; flex-direction: column; gap: 2px; }
+.ci { display: flex; gap: 6px; align-items: baseline; padding: 3px 0; border-bottom: 1px solid var(--line); }
 .ci:last-child { border-bottom: none; }
-.cin { background: rgba(165,180,252,.22); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 9.5pt; color: white; border-right: 1px solid rgba(165,180,252,.18); }
-.cc { padding: 4px 8px; }
-.cc strong { font-size: 7.5pt; color: white; display: block; line-height: 1.25; }
-.cc span { font-size: 6.5pt; color: rgba(255,255,255,.7); line-height: 1.25; }
+.cin {
+  width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;
+  background: var(--ink); color: white;
+  font-size: 7.5px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.cc { font-size: 8px; line-height: 1.35; }
+.cc strong { color: var(--ink); font-weight: 700; }
+.cc span { color: var(--slate); margin-left: 3px; }
 
-/* ── KONTAKTTYPEN ── */
-.tel { background: white; border: 1.5px solid var(--line); border-radius: 7px; overflow: hidden; }
-.tel-row { display: grid; grid-template-columns: 1fr 44px 1fr; gap: 0; border-bottom: 1px solid var(--line); padding: 4px 8px; font-size: 7pt; align-items: start; }
-.tel-row:last-child { border-bottom: none; }
-.tel-row.hd { background: var(--ink); color: white; font-size: 6pt; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: 4px 8px; }
-.tel-type { font-weight: 700; color: var(--ink); font-size: 7.5pt; }
-.tel-sub { font-size: 6pt; color: var(--soft); }
-.tel-code { font-weight: 700; color: var(--ind); text-align: center; font-size: 6.5pt; }
-.tel-note { color: var(--soft); font-size: 7pt; }
-.tel-warn { color: var(--rose); font-weight: 700; font-size: 6.5pt; }
+/* ── Krisenlogik ── */
+.krise-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.kb { border-radius: 7px; padding: 7px 9px; border: 1.5px solid; }
+.kb-a { background: var(--rose-s); border-color: var(--rose); }
+.kb-b { background: var(--purp-s); border-color: var(--purp); }
+.kb h4 { font-size: 8px; font-weight: 700; margin-bottom: 4px; }
+.kb-a h4 { color: var(--rose); }
+.kb-b h4 { color: var(--purp); }
+.kb-row { display: flex; gap: 4px; font-size: 7.5px; padding: 1.5px 0; }
+.kb-row strong { font-family: 'Courier New', monospace; font-size: 7px; }
 
-/* ── MENGENGRENZEN ── */
-.lim { border-radius: 7px; padding: 6px 9px; display: flex; justify-content: space-between; align-items: flex-start; }
-.lim.i { background: var(--ind-l); border: 1.5px solid var(--ind-m); }
-.lim.t { background: var(--teal-l); border: 1.5px solid var(--teal-m); }
-.lim.p { background: var(--purple-l); border: 1.5px solid var(--purple-m); }
-.lim.a { background: var(--amber-l); border: 1.5px solid var(--amber-m); }
-.lim-txt h4 { font-size: 8.5pt; font-weight: 700; color: var(--ink); margin-bottom: 1px; }
-.lim-txt p { font-size: 6.5pt; color: var(--soft); line-height: 1.4; }
-.lim-n { font-family: 'Playfair Display', serif; font-size: 17pt; line-height: 1; text-align: right; white-space: nowrap; }
-.lim-n span { font-family: 'Source Sans 3', sans-serif; font-size: 6.5pt; font-weight: 400; display: block; color: var(--soft); }
-.lim.i .lim-n { color: var(--ind); } .lim.t .lim-n { color: var(--teal); }
-.lim.p .lim-n { color: var(--purple); } .lim.a .lim-n { color: var(--amber); }
+/* ── Mengengrenzen ── */
+.lim-list { display: flex; flex-direction: column; gap: 4px; }
+.lim {
+  display: flex; align-items: center; justify-content: space-between;
+  border-radius: 6px; padding: 6px 9px; border: 1.5px solid;
+}
+.lim-i { background: var(--ind-s); border-color: rgba(67,56,202,.25); }
+.lim-p { background: var(--purp-s); border-color: rgba(124,58,237,.25); }
+.lim-t { background: var(--teal-s); border-color: rgba(10,124,113,.25); }
+.lim-txt h4 { font-size: 8px; font-weight: 700; color: var(--ink); }
+.lim-txt p  { font-size: 7px; color: var(--slate); margin-top: 1px; }
+.lim-n {
+  font-size: 20px; font-weight: 800; line-height: 1;
+  text-align: right; flex-shrink: 0; min-width: 50px;
+}
+.lim-n span { display: block; font-size: 7px; font-weight: 500; color: var(--slate); }
+.lim-i .lim-n { color: var(--ind); }
+.lim-p .lim-n { color: var(--purp); }
+.lim-t .lim-n { color: var(--teal); }
 
-/* ── KRISENLOGIK ── */
-.krise-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
-.kb { border-radius: 6px; padding: 5px 8px; }
-.kb.a { background: #fff7ed; border: 1.5px solid #fdba74; }
-.kb.b { background: var(--rose-l); border: 1.5px solid var(--rose-m); }
-.kb h4 { font-size: 7pt; font-weight: 700; margin-bottom: 2px; }
-.kb.a h4 { color: #c2410c; } .kb.b h4 { color: var(--rose); }
-.kb ul { list-style: none; display: flex; flex-direction: column; gap: 1.5px; }
-.kb li { font-size: 7pt; color: var(--mid); display: flex; gap: 4px; }
-.kb li::before { content: '→'; font-weight: 700; flex-shrink: 0; }
-.kb.a li::before { color: #ea580c; } .kb.b li::before { color: var(--rose); }
+/* ── Fehler box ── */
+.wb {
+  background: var(--amb-s); border: 1.5px solid var(--amber);
+  border-radius: 7px; padding: 7px 9px;
+}
+.wb h4 { font-size: 8px; font-weight: 700; color: var(--amber); margin-bottom: 4px; }
+.wb-row { display: flex; gap: 4px; font-size: 7.5px; padding: 1.5px 0; color: var(--text); }
+.wb-x { color: var(--rose); font-weight: 700; flex-shrink: 0; }
 
-/* ── WARNBOX ── */
-.wb { background: var(--amber-l); border: 1.5px solid var(--amber-m); border-radius: 7px; padding: 5px 9px; }
-.wb h4 { font-size: 7.5pt; font-weight: 700; color: var(--amber); margin-bottom: 2px; }
-.wb p { font-size: 7pt; color: #6b3700; line-height: 1.4; }
+/* ── Footer ── */
+.ft {
+  border-top: 1px solid var(--line); padding: 5px 14px;
+  display: flex; justify-content: space-between; flex-shrink: 0;
+}
+.ft span { font-size: 7px; color: var(--sl-l); }
+
+@media print {
+  body { background: white; padding: 0; display: block; }
+  .printbar { display: none !important; }
+  .sheet { box-shadow: none; border-radius: 0; width: 210mm; }
+  @page { size: A4; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
 </style>
 </head>
 <body>
 
-<nav class="printbar" aria-label="Seitennavigation">
+<div class="printbar">
   <div class="printbar-label"><strong>Spickzettel Psychologinnen</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
-  <a class="pbtn pbtn-ghost" href="../index.html">← Zurück</a>
-  <button class="pbtn pbtn-dark" id="printBtn" onclick="handlePrint()" aria-label="Seite als PDF drucken oder speichern">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-    <span id="printBtnLabel">Als PDF drucken</span>
-  </button>
-</nav>
-<div class="ios-hint" id="iosHint">
-  <strong>📱 PDF auf iPhone/iPad speichern:</strong>
-  Tippe unten auf das Teilen-Symbol (Quadrat mit Pfeil nach oben) → «Als PDF sichern» oder «Drucken» → dann mit zwei Fingern auf die Vorschau zoomen → «Teilen» → «In Dateien sichern».
+  <a href="javascript:history.back()" class="pbtn pbtn-ghost">← Zurück</a>
+  <button onclick="window.print()" class="pbtn pbtn-dark">🖨 Als PDF drucken</button>
 </div>
-<script>
-function handlePrint() {
-  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  var isAndroid = /Android/.test(navigator.userAgent);
-  if (isIOS) {
-    var hint = document.getElementById('iosHint');
-    hint.classList.toggle('visible');
-  } else {
-    window.print();
-  }
-}
-// Knopf-Label auf Mobile anpassen
-(function(){
-  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  if (isIOS) {
-    document.getElementById('printBtnLabel').textContent = 'PDF speichern — Anleitung';
-  }
-})();
-</script>
 
 <main class="sheet">
   <header class="mast">
     <div class="mast-top">
       <div>
         <h1>Tarif-Kompass <em>2026</em></h1>
-        <div class="mast-sub">Spickzettel · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</div>
+        <div class="mast-sub">Spickzettel · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik · TARDOC EA.05</div>
       </div>
-      <div class="mast-meta">
-        <strong>TARDOC · EA.05</strong>
-        Gültig ab 01.01.2026<br>tardoc-psychologiekjpp.netlify.app
-      </div>
+      <span class="mast-badge">TARDOC EA.05 · 01.01.2026</span>
     </div>
     <div class="pills">
-      <div class="pill pill-i"><div class="pill-num">75/90</div><div class="pill-lbl"><strong>Einzel/Familie</strong>+ PE010 15 Min</div></div>
-      <div class="pill pill-i"><div class="pill-num">4h</div><div class="pill-lbl"><strong>4-Stunden-Regel</strong>Ø 90 Tage</div></div>
-      <div class="pill pill-t"><div class="pill-num">240'</div><div class="pill-lbl"><strong>LAP &lt;18 J.</strong>/ 90 Tage</div></div>
-      <div class="pill pill-t"><div class="pill-num">180'</div><div class="pill-lbl"><strong>LAP ≥18 J.</strong>/ 90 Tage</div></div>
-      <div class="pill pill-p"><div class="pill-num">360'</div><div class="pill-lbl"><strong>Exposition</strong>/ 180 Tage</div></div>
-      <div class="pill pill-a"><div class="pill-num">4×</div><div class="pill-lbl"><strong>E-Mail max.</strong>/ 30 Tage</div></div>
+      <div class="pill p-i"><div class="pill-num">75/90</div><div class="pill-lbl"><strong>Einzel/Familie</strong>+ PE010 15 Min</div></div>
+      <div class="pill p-i"><div class="pill-num">4h</div><div class="pill-lbl"><strong>4-Stunden-Regel</strong>Ø 90 Tage</div></div>
+      <div class="pill p-t"><div class="pill-num">240'</div><div class="pill-lbl"><strong>LAP &lt;18 J.</strong>/ 90 Tage</div></div>
+      <div class="pill p-t"><div class="pill-num">180'</div><div class="pill-lbl"><strong>LAP ≥18 J.</strong>/ 90 Tage</div></div>
+      <div class="pill p-p"><div class="pill-num">360'</div><div class="pill-lbl"><strong>Exposition</strong>/ 180 Tage</div></div>
+      <div class="pill p-a"><div class="pill-num">4×</div><div class="pill-lbl"><strong>E-Mail max.</strong>/ 30 Tage</div></div>
     </div>
   </header>
 
   <div class="body">
 
-    <!-- ── LINKE SPALTE ── -->
-    <div class="col">
+    <!-- LINKE SPALTE -->
+    <div class="col-left">
 
-      <!-- Entscheidungsbaum -->
+      <!-- Entscheidungsbaum (mini) -->
       <div>
-        <div class="sec"><div class="sec-bar i"></div><h2>Entscheidungsbaum</h2><div class="sec-rule"></div></div>
+        <div class="sh"><div class="sh-bar" style="background:var(--ind)"></div><h2>Entscheidungsbaum</h2></div>
         <div class="dt">
+
+          <!-- Q1 -->
           <div class="dt-q">
             <div class="dt-ql">Frage 1</div>
             <div class="dt-qt">Interne Tätigkeit?</div>
-            <div class="dt-qn">Rapport · Supervision · Intervision · Terminvereinbarung → LUF</div>
+            <div class="dt-qn">Rapport · Supervision · Intervision · Terminvereinbarung</div>
           </div>
-          <div class="dt-arrow"></div>
-          <div class="dt-fork">
+
+          <!-- Fork Q1 -->
+          <div class="dt-fork" style="margin-top:5px">
+
+            <!-- Branch JA -->
             <div class="dt-br">
-              <div class="tag tag-y">✓ Ja</div>
-              <div class="dr ri"><div class="dr-lbl">Resultat</div><p>Nicht verrechenbar</p><small>LUF intern erfassen</small></div>
+              <div class="dt-arrow dt-arrow-y">✔ JA</div>
+              <div class="dt-leaf dt-leaf-ri" style="width:100%">
+                <div class="dt-leaf-title">Nicht verrechenbar</div>
+                <div class="dt-leaf-sub">Intern als LUF erfassen</div>
+              </div>
             </div>
+
+            <!-- Branch NEIN → Q2 -->
             <div class="dt-br">
-              <div class="tag tag-n">✗ Nein → Frage 2</div>
-              <div class="dt-q" style="padding:5px 8px">
+              <div class="dt-arrow dt-arrow-n">✘ NEIN</div>
+              <div class="dt-subq">
                 <div class="dt-ql">Frage 2</div>
-                <div class="dt-qt" style="font-size:8pt">Spezialblock oder Normalkontakt?</div>
+                <div class="dt-qt">Spezialblock?</div>
+                <div class="dt-qn">Diagnostik · Exposition · Krise A</div>
               </div>
+
+              <!-- Fork Q2 -->
+              <div class="dt-fork" style="width:100%;margin-top:4px">
+
+                <!-- Branch SPEZIALBLOCK -->
+                <div class="dt-br">
+                  <div class="dt-arrow dt-arrow-y" style="color:var(--purp)">✔ JA</div>
+                  <div class="dt-leaf dt-leaf-rp" style="width:100%">
+                    <div class="dt-leaf-title">Spezialblock</div>
+                    <div class="dt-leaf-sub">Diagnostik · Exposition
+Krise Anordnung A</div>
+                  </div>
+                </div>
+
+                <!-- Branch NORMALKONTAKT → Q3 -->
+                <div class="dt-br">
+                  <div class="dt-arrow dt-arrow-n">✘ NEIN</div>
+                  <div class="dt-subq" style="background:#1E3A5F">
+                    <div class="dt-ql">Frage 3</div>
+                    <div class="dt-qt">Patient anwesend?</div>
+                  </div>
+
+                  <!-- Fork Q3 -->
+                  <div class="dt-fork" style="width:100%;margin-top:4px">
+
+                    <!-- Branch ANWESEND -->
+                    <div class="dt-br">
+                      <div class="dt-arrow dt-arrow-y">✔ JA</div>
+                      <div class="dt-leaf dt-leaf-ra" style="width:100%">
+                        <div class="dt-leaf-title">Anwesenheits&shy;leistung</div>
+                        <div class="dt-leaf-sub">Einzel · Familie
+Fernmündl. synchron</div>
+                      </div>
+                    </div>
+
+                    <!-- Branch NICHT ANWESEND -->
+                    <div class="dt-br">
+                      <div class="dt-arrow dt-arrow-n">✘ NEIN</div>
+                      <div class="dt-leaf dt-leaf-rl" style="width:100%">
+                        <div class="dt-leaf-title">LAP-Topf</div>
+                        <div class="dt-leaf-sub">Akten · Dritte
+E-Mail zeitversetzt</div>
+                      </div>
+                    </div>
+
+                  </div><!-- /Fork Q3 -->
+                </div>
+
+              </div><!-- /Fork Q2 -->
             </div>
-          </div>
-          <div class="sp"></div>
-          <div class="dr rp" style="padding:5px 8px;margin-bottom:2mm">
-            <div class="dr-lbl">Spezialblock Psychologinnen</div>
-            <div class="de"><span class="de-c p">PA220</span><span>Testdurchführung 180'/90T</span></div>
-            <div class="de"><span class="de-c p">PE020</span><span>Auswertung/Bericht 240'/90T</span></div>
-            <div class="de"><span class="de-c p">PA230</span><span>Exposition 360'/180T · Wegzeit inkl.</span></div>
-            <div class="de"><span class="de-c p">PA110</span><span>Krise Anordnung A (max. 180 Min)</span></div>
-          </div>
-          <div class="dt-fork">
-            <div class="dt-br">
-              <div class="tag tag-y">✓ Patient anwesend</div>
-              <div class="dr ra" style="padding:5px 8px">
-                <div class="dr-lbl">Anwesenheitsleistung</div>
-                <div class="de"><span class="de-c">PA010</span><span>Einzel (75 Min)</span></div>
-                <div class="de"><span class="de-c">PA030</span><span>Familie (90 Min)</span></div>
-                <div class="de"><span class="de-c">PA011/031</span><span>Fernmündlich synchron</span></div>
-                <div class="de"><span class="de-c">PE010</span><span>VN max. 15 Min</span></div>
-              </div>
-            </div>
-            <div class="dt-br">
-              <div class="tag tag-n">✗ Nein → LAP-Topf</div>
-              <div class="dr rl" style="padding:5px 8px">
-                <div class="dr-lbl">LAP · altersgesteuert</div>
-                <div class="de"><span class="de-c t">PE045/040</span><span>Fremdakten</span></div>
-                <div class="de"><span class="de-c t">PK025/020</span><span>Auskünfte Dritte</span></div>
-                <div class="de"><span class="de-c t">PK015/010</span><span>Ext. Behandler</span></div>
-                <div class="de"><span class="de-c t">PE030</span><span>Planung 15'/1×90T</span></div>
-                <div class="de"><span class="de-c" style="color:var(--amber);font-size:6.5pt">EA.05.0080</span><span>E-Mail 1×/T, 4×/30T</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="sp"></div>
-          <div class="co a"><span>⚠</span><span>PE010 = interne Psychologenlogik, nicht allg. EA.05-Regel! Wegzeit bei PA230 bereits inkludiert — nicht doppelt buchen.</span></div>
-        </div>
+
+          </div><!-- /Fork Q1 -->
+
+        </div><!-- /dt -->
       </div>
 
-      <!-- Kontakttypen -->
+      <!-- 4 Kontakttypen -->
       <div>
-        <div class="sec"><div class="sec-bar t"></div><h2>4 Kontakttypen</h2><div class="sec-rule"></div></div>
-        <div class="tel">
-          <div class="tel-row hd"><div>Typ</div><div>Ziffer</div><div>Limit</div></div>
-          <div class="tel-row">
-            <div><div class="tel-type">Fernmündl. Sitzung</div><div class="tel-sub">Video/Tel. synchron mit Patient</div></div>
-            <div class="tel-code">PA011<br>PA031</div>
-            <div class="tel-note">max. 75 Min + PE010</div>
-          </div>
-          <div class="tel-row">
-            <div><div class="tel-type">Verlaufskonsult.</div><div class="tel-sub">Kurze Rückmeldung</div></div>
-            <div class="tel-code">EA.00.0110</div>
-            <div class="tel-note">max. 20 Min</div>
-          </div>
-          <div class="tel-row" style="background:#fffbeb">
-            <div><div class="tel-type">E-Mail / zeitversetzt</div><div class="tel-sub">Asynchron</div></div>
-            <div class="tel-code" style="color:var(--amber)">EA.05.0080</div>
-            <div><div class="tel-warn">1×/Tag</div><div class="tel-warn">4×/30 Tage</div><div style="font-size:6pt;color:var(--rose)">6er-Regel veraltet!</div></div>
-          </div>
-          <div class="tel-row">
-            <div><div class="tel-type">LAP-Kontakt Dritte</div><div class="tel-sub">Schule/Beistand/Eltern</div></div>
-            <div class="tel-code" style="color:var(--teal)">PK025<br>PK020</div>
-            <div class="tel-note">LAP-Topf altersgesteuert</div>
-          </div>
-        </div>
+        <div class="sh"><div class="sh-bar" style="background:var(--teal)"></div><h2>4 Kontakttypen</h2></div>
+        <table class="tel-tbl">
+          <thead>
+            <tr><th>Typ</th><th>Ziffer</th><th>Limit</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="tel-type">Fernmündl. Sitzung</div><div class="tel-sub">Video/Tel. synchron mit Patient</div></td>
+              <td><span class="tel-code" style="color:var(--ind)">PA011 / PA031</span></td>
+              <td><span class="tel-note">max. 75 Min + PE010</span></td>
+            </tr>
+            <tr>
+              <td><div class="tel-type">Verlaufskonsult.</div><div class="tel-sub">Kurze Rückmeldung</div></td>
+              <td><span class="tel-code" style="color:var(--slate)">EA.00.0110</span></td>
+              <td><span class="tel-note">max. 20 Min</span></td>
+            </tr>
+            <tr style="background:#FFFBEB">
+              <td><div class="tel-type">E-Mail / zeitversetzt</div><div class="tel-sub">Asynchron</div></td>
+              <td><span class="tel-code" style="color:var(--amber)">EA.05.0080</span></td>
+              <td><div class="tel-warn">1×/Tag · 4×/30 Tage</div><div style="font-size:6.5px;color:var(--rose)">6er-Regel veraltet!</div></td>
+            </tr>
+            <tr>
+              <td><div class="tel-type">LAP-Kontakt Dritte</div><div class="tel-sub">Schule/Beistand/Eltern</div></td>
+              <td><span class="tel-code" style="color:var(--teal)">PK025 / PK020</span></td>
+              <td><span class="tel-note">LAP-Topf altersgesteuert</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </div>
 
-    <!-- ── RECHTE SPALTE ── -->
-    <div class="col">
+    <!-- RECHTE SPALTE -->
+    <div class="col-right">
 
       <!-- 10-Punkte Spickzettel -->
       <div>
-        <div class="sec"><div class="sec-bar k"></div><h2>10-Punkte Spickzettel</h2><div class="sec-rule"></div></div>
+        <div class="sh"><div class="sh-bar" style="background:var(--ink)"></div><h2>10-Punkte Spickzettel</h2></div>
         <div class="cheat">
           <div class="ci"><div class="cin">1</div><div class="cc"><strong>Zwei Ebenen:</strong><span>EA.05 (aussen) + PA/PE/PK (innen)</span></div></div>
           <div class="ci"><div class="cin">2</div><div class="cc"><strong>4h-Regel:</strong><span>Alle Blöcke summieren sich! Ø 90 Tage</span></div></div>
@@ -288,46 +441,42 @@ function handlePrint() {
 
       <!-- Krisenlogik -->
       <div>
-        <div class="sec"><div class="sec-bar p"></div><h2>Krisenlogik A / B</h2><div class="sec-rule"></div></div>
+        <div class="sh"><div class="sh-bar" style="background:var(--rose)"></div><h2>Krisenlogik A / B</h2></div>
         <div class="krise-row">
-          <div class="kb a">
+          <div class="kb kb-a">
             <h4>Anordnung A · lfd. PT</h4>
-            <ul>
-              <li><strong>PA110 / PA111</strong></li>
-              <li>Max. 180 Min / Sitzung</li>
-              <li>Unter laufender Anordnung</li>
-              <li>Dokumentation zwingend</li>
-            </ul>
+            <div class="kb-row"><strong>PA110 / PA111</strong></div>
+            <div class="kb-row">Max. 180 Min / Sitzung</div>
+            <div class="kb-row">Unter laufender Anordnung</div>
+            <div class="kb-row">Dokumentation zwingend</div>
           </div>
-          <div class="kb b">
+          <div class="kb kb-b">
             <h4>Anordnung B · KANT/Dienst</h4>
-            <ul>
-              <li><strong>EA.00.0090</strong></li>
-              <li>Unbegrenzte Zeit</li>
-              <li>Nicht kombinierbar mit Konsult.</li>
-              <li>Zwei Psych.: je aus Dispo</li>
-            </ul>
+            <div class="kb-row"><strong>EA.00.0090</strong></div>
+            <div class="kb-row">Unbegrenzte Zeit</div>
+            <div class="kb-row">Nicht kombinierbar mit Konsult.</div>
+            <div class="kb-row">Zwei Psych.: je aus Dispo</div>
           </div>
         </div>
       </div>
 
       <!-- Mengengrenzen -->
       <div>
-        <div class="sec"><div class="sec-bar i"></div><h2>Mengengrenzen</h2><div class="sec-rule"></div></div>
-        <div style="display:flex;flex-direction:column;gap:2mm">
-          <div class="lim i">
-            <div class="lim-txt"><h4>Sitzung + PE010</h4><p>Einzel 75' (PA010) / Familie 90' (PA030)<br>+ VN max. 15 Min · interne Psychologenlogik</p></div>
+        <div class="sh"><div class="sh-bar" style="background:var(--ind)"></div><h2>Mengengrenzen</h2></div>
+        <div class="lim-list">
+          <div class="lim lim-i">
+            <div class="lim-txt"><h4>Sitzung + PE010</h4><p>Einzel 75' (PA010) / Familie 90' (PA030) + VN max. 15 Min</p></div>
             <div class="lim-n">75–90<span>+15 Min</span></div>
           </div>
-          <div class="lim i">
+          <div class="lim lim-i">
             <div class="lim-txt"><h4>Testdurchführung PA220</h4><p>90 Tage Fenster · Richtwert 60 Min</p></div>
             <div class="lim-n">180<span>Min/90T</span></div>
           </div>
-          <div class="lim p">
+          <div class="lim lim-p">
             <div class="lim-txt"><h4>Test-Auswertung PE020</h4><p>In Abwesenheit · Richtwert 80 Min · separate Tage OK</p></div>
             <div class="lim-n">240<span>Min/90T</span></div>
           </div>
-          <div class="lim p">
+          <div class="lim lim-p">
             <div class="lim-txt"><h4>Exposition PA230</h4><p>180 Tage Fenster · Wegzeit inkl.</p></div>
             <div class="lim-n">360<span>Min/180T</span></div>
           </div>
@@ -337,7 +486,11 @@ function handlePrint() {
       <!-- Fehlerquellen -->
       <div class="wb">
         <h4>⚠ Häufigste Fehlerquellen</h4>
-        <p>E-Mail-6er-Regel veraltet · Wegzeit bei PA230 doppelt buchen · Psy/Psy-DK im Regelbetrieb · EA.05.0150 mit 0010 kombinieren · Alte interne Folien statt neuer Übersicht verwenden.</p>
+        <div class="wb-row"><span class="wb-x">✗</span><span>E-Mail-6er-Regel veraltet — aktuell 4×/30 Tage</span></div>
+        <div class="wb-row"><span class="wb-x">✗</span><span>Wegzeit bei PA230 doppelt als EA.05.0060 buchen</span></div>
+        <div class="wb-row"><span class="wb-x">✗</span><span>Psy/Psy-DK im Regelbetrieb ohne Begründung</span></div>
+        <div class="wb-row"><span class="wb-x">✗</span><span>EA.05.0150 + EA.05.0010 am selben Tag kombinieren</span></div>
+        <div class="wb-row"><span class="wb-x">✗</span><span>Alte interne Folien statt neuer Übersicht verwenden</span></div>
       </div>
 
     </div>
@@ -348,5 +501,6 @@ function handlePrint() {
     <span>TARDOC Kapitel EA.05 · tardoc-psychologiekjpp.netlify.app</span>
   </footer>
 </main>
+
 </body>
 </html>

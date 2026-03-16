@@ -242,8 +242,8 @@ html, body { max-width: 100%; overflow-x: hidden; }
     box-shadow: none;
     border-radius: 0;
     width: 210mm;
-    height: 297mm;
-    overflow: hidden;
+    min-height: 297mm;
+    overflow: visible;
   }
   @page {
     size: A4;

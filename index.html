@@ -33,8 +33,8 @@
     --indigo: #4338ca;
     --indigo-light: #6366f1;
     --indigo-soft: #eef2ff;
-    --teal: #4f46e5;  /* → indigo (vereinfacht) */
-    --teal-light: #6366f1;  /* → indigo-light (vereinfacht) */
+
+
     --amber: #d97706;
     --amber-light: #fbbf24;
     --rose: #e11d48;
@@ -50,8 +50,8 @@
     --green-bg: #ecfdf5;
     --red-bg: #fff1f2;
     --amber-bg: #fffbeb;
-    --purple: #4338ca;  /* → indigo (vereinfacht) */
-    --purple-bg: #eef2ff;  /* → indigo-soft (vereinfacht) */
+
+
   }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -156,18 +156,17 @@ color: #e0e7ff;
 /* ── SIDEBAR LAYOUT ab 1024px ── */
 @media (min-width: 1024px) {
   .page-layout {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    max-width: 1290px;
+    display: block;
+    max-width: 1100px;
     margin: 0 auto;
-    align-items: start;
-    gap: 0;
   }
   .sidebar-nav {
-    display: block; /* Sidebar auf Desktop einblenden */
-    position: sticky;
-    top: 60px; /* unterhalb Quick-Tools-Bar */
-    height: calc(100vh - 60px);
+    display: none; /* Sidebar standardmässig versteckt — per Toggle einblendbar */
+    position: fixed;
+    top: 46px;
+    left: 0;
+    width: 260px;
+    height: calc(100vh - 46px);
     overflow-y: auto;
     padding: 24px 0 40px;
     background: white;
@@ -232,12 +231,27 @@ color: #e0e7ff;
     transition: color .15s;
   }
   .sidebar-nav .nav-print-link:hover { color: var(--indigo); }
+  /* Sidebar open state (toggled) */
+  .sidebar-nav.sidebar-open {
+    display: block;
+    z-index: 300;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+  }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.2);
+    z-index: 299;
+  }
+  .sidebar-overlay.visible { display: block; }
   /* Hauptinhalt bekommt eigenes Padding */
   .main-content-area {
     min-width: 0;
   }
   .main-content-area .main {
     max-width: 900px;
+    margin: 0 auto;
     padding: 40px 40px 80px;
   }
   /* Horizontale Nav-Bar auf Desktop ausblenden */
@@ -378,6 +392,41 @@ mark { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 1px; 
 .section { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
 .section.visible { opacity: 1; transform: translateY(0); }
 
+/* ── UTILITY CLASSES (extracted from inline styles, K3) ── */
+.fs-11 { font-size: 11px; }
+.fs-10 { font-size: 10px; }
+.fs-12-slate { font-size: 12px; color: var(--slate); }
+.fs-13-5-slate { font-size: 13.5px; color: var(--slate); }
+.fs-12-light { font-size: 12px; color: rgba(255,255,255,0.55); }
+.flex-gap-8 { display: flex; gap: 8px; }
+.flex-gap-5 { display: flex; gap: 5px; width: 100%; }
+.grid-gap-6 { display: grid; gap: 6px; width: 100%; }
+.grid-gap-5 { display: grid; gap: 5px; width: 100%; }
+.grid-gap-8 { display: grid; gap: 8px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-16 { margin-bottom: 16px; }
+.mt-16 { margin-top: 16px; }
+.text-center { text-align: center; }
+.pill-indigo { color: var(--indigo); font-weight: 700; flex-shrink: 0; }
+.pill-amber { color: var(--amber); font-weight: 700; flex-shrink: 0; }
+.text-indigo { color: var(--indigo); }
+.text-indigo-light { color: var(--indigo-light); }
+.text-navy { color: var(--navy); }
+.text-green-bold { font-size: 13px; font-weight: 700; color: var(--green); }
+.text-rose-bold { font-size: 13px; font-weight: 700; color: var(--rose); }
+.card-section-title { font-weight: 700; font-size: 13px; color: var(--indigo); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
+.card-section-title-amber { font-weight: 700; font-size: 13px; color: var(--amber); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
+.layer-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--indigo); margin-bottom: 12px; }
+.layer-heading { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 10px; }
+.layer-card { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; border-radius: 12px; padding: 24px; }
+.layer-card-alt { background: #e8eaff; border: 1.5px solid #a5b4fc; border-radius: 12px; padding: 24px; }
+.pos-item-accent { border-left: 3px solid var(--indigo-light); }
+.list-clean { display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; color: var(--text); list-style: none; }
+.idt-res-indigo { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; color: var(--navy); }
+.idt-sublabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--indigo); padding: 6px 0 2px; border-bottom: 1.5px dashed var(--indigo-light); margin-bottom: 2px; }
+.text-blue-700 { color: #1d4ed8; }
+.idt-sublabel-blue { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #1d4ed8; padding: 8px 0 2px; border-bottom: 1.5px dashed #60a5fa; margin-bottom: 2px; }
+
 /* ── SCROLL MARGIN (verhindert Verstecken unter Sticky-Bar) ── */
 .section-accordion {
   scroll-margin-top: 56px;
@@ -448,7 +497,7 @@ border: 6px solid transparent; border-top-color: var(--navy);
 .tip-title { font-weight: 700; margin-bottom: 3px; color: #c7d2fe; }
 .tip-limit { font-weight: 600; color: #fbbf24; }
 
-/* Mobile: Tooltips als Inline-Block statt Popup */
+/* Mobile: Tooltips hinter «mehr…»-Toggle versteckt */
 @media (max-width: 768px) {
   .code-tip .tip-box {
     position: static;
@@ -462,12 +511,23 @@ border: 6px solid transparent; border-top-color: var(--navy);
     font-size: 11px;
     box-shadow: none;
     pointer-events: auto;
-    display: block;
+    display: none;
   }
+  .code-tip.tip-open .tip-box { display: block; }
   .code-tip .tip-box::after { display: none; }
   .tip-title { color: var(--indigo); font-size: 11px; }
   .tip-limit { color: var(--amber); font-size: 11px; }
-  .code-tip { border-bottom: none; cursor: default; }
+  .code-tip { border-bottom: none; cursor: pointer; }
+  .tip-toggle {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--indigo-light);
+    margin-left: 6px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .tip-open .tip-toggle { color: var(--slate-light); }
 }
 
 /* ── SECTION ── */
@@ -480,7 +540,7 @@ margin-bottom: 40px;
 .scenario-panel-title {
 font-family: ‘DM Serif Display’, serif;
 font-size: 22px; color: var(--navy);
-margin-bottom: 6px;
+margin: 0 0 6px 0; padding: 0; font-weight: normal;
 }
 .scenario-panel-lead {
 font-size: 14px; color: var(--text-soft);
@@ -502,8 +562,65 @@ box-shadow: 0 6px 24px rgba(99,102,241,0.22);
 transform: translateY(-3px);
 background: var(--indigo-soft);
 }
+.sp-card-highlight {
+border-color: var(--indigo-light);
+background: var(--indigo-soft);
+grid-column: 1 / -1;
+display: flex !important;
+align-items: center;
+gap: 14px;
+padding: 16px 20px;
+}
+.sp-card-highlight .sp-card-icon { margin-bottom: 0; font-size: 24px; }
+.sp-card-highlight .sp-card-label { font-size: 15px; margin-bottom: 0; }
+.sp-card-highlight .sp-card-hint { margin-top: 2px; }
+@media (max-width: 600px) {
+  .sp-card-highlight { flex-wrap: wrap; }
+}
+/* ── SKIP LINK ── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--indigo);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 0 0 8px 8px;
+  z-index: 999;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top .2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+/* ── SIDEBAR TOGGLE ── */
+.sidebar-toggle {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--slate);
+  cursor: pointer;
+  transition: all .15s;
+  flex-shrink: 0;
+}
+.sidebar-toggle:hover {
+  background: var(--indigo-soft);
+  color: var(--indigo);
+  border-color: var(--indigo-light);
+}
+@media (min-width: 1024px) {
+  .sidebar-toggle { display: flex; }
+}
 .sp-card-icon {
-font-size: 20px; margin-bottom: 6px;
+font-size: 20px; margin: 0 0 6px 0; padding: 0; font-weight: normal;
 }
 .sp-card-label {
 font-size: 13px; font-weight: 600;
@@ -529,11 +646,11 @@ margin-top: 3px;
 background: linear-gradient(135deg, var(--indigo-soft), #e0e7ff);
 border: 1.5px solid #a5b4fc;
 border-radius: 10px; padding: 14px 16px;
-margin-bottom: 6px;
+margin: 0 0 6px 0; padding: 0; font-weight: normal;
 }
 .code-result-header {
 display: flex; align-items: center; gap: 10px;
-margin-bottom: 6px;
+margin: 0 0 6px 0; padding: 0; font-weight: normal;
 }
 .code-result-code {
 font-weight: 700; font-size: 14px; color: var(--indigo);
@@ -564,8 +681,9 @@ text-decoration: none;
 
 /* ── CATEGORY FILTER CHIPS ── */
 .sf-filters {
-display: flex; gap: 5px; flex-wrap: wrap; padding: 6px 0 2px;
+display: none; gap: 5px; flex-wrap: wrap; padding: 6px 0 2px;
 }
+.qt-search.search-active .sf-filters { display: flex; }
 .sf-chip {
 font-size: 11px; font-weight: 600; padding: 3px 10px;
 border-radius: 20px; border: 1.5px solid var(--border);
@@ -623,7 +741,7 @@ animation: posHighlight 2s ease;
 .section-title {
 font-family: ‘DM Serif Display’, serif;
 font-size: 26px; color: var(--navy);
-margin-bottom: 6px;
+margin: 0 0 6px 0; padding: 0; font-weight: normal;
 display: flex; align-items: center; gap: 12px;
 }
 .section-title .num {
@@ -895,7 +1013,7 @@ font-weight: 700; font-size: 15px;
 background: var(--indigo-soft); border: 1.5px solid #a5b4fc;
 border-radius: 14px; padding: 28px;
 }
-.expo-title { font-family: ‘DM Serif Display’, serif; font-size: 20px; color: var(--indigo); margin-bottom: 6px; }
+.expo-title { font-family: ‘DM Serif Display’, serif; font-size: 20px; color: var(--indigo); margin: 0 0 6px 0; padding: 0; font-weight: normal; }
 .expo-sub   { font-size: 13px; color: var(--text-soft); margin-bottom: 20px; }
 .expo-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .expo-stat  { background: white; border: 1px solid #c7d2fe; border-radius: 10px; padding: 14px 16px; text-align: center; }
@@ -969,6 +1087,24 @@ background: var(--indigo-soft); border-color: #c7d2fe; color: var(--indigo);
 .scenario-answer.orange {
 background: #fff7ed; border-color: #fed7aa; color: #c2410c;
 }
+.scenario-distinction {
+margin-top: 8px;
+padding: 10px 14px;
+background: #f0f1ff;
+border: 1.5px dashed #a5b4fc;
+border-radius: 8px;
+font-size: 12px;
+color: var(--slate);
+line-height: 1.55;
+}
+.scenario-distinction-label {
+font-size: 10px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: .08em;
+color: var(--indigo-light);
+margin-bottom: 4px;
+}
 
 /* ── CHEAT SHEET ── */
 .cheat-sheet {
@@ -976,7 +1112,7 @@ background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
 border-radius: 14px; padding: 32px;
 border: 2px solid #c7d2fe;
 }
-.cheat-title { font-family: ‘DM Serif Display’, serif; font-size: 22px; margin-bottom: 6px; color: #3730a3; }
+.cheat-title { font-family: ‘DM Serif Display’, serif; font-size: 22px; margin: 0 0 6px 0; padding: 0; font-weight: normal; color: #3730a3; }
 .cheat-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 24px; }
 .cheat-items { display: grid; gap: 10px; counter-reset: cheat; }
 .cheat-item {
@@ -1036,7 +1172,7 @@ white-space: nowrap;
 .qt-link:hover { opacity: .8; }
 .qt-search {
 position: relative; display: flex; align-items: center;
-margin-left: auto; flex: 1; max-width: 280px;
+margin-left: auto; flex: 1; max-width: 280px; min-width: 160px;
 }
 .qt-search-input {
 width: 100%; padding: 7px 12px 7px 32px;
@@ -1054,13 +1190,29 @@ color: var(--slate-light); pointer-events: none;
 display: flex; align-items: center;
 }
 .qt-search-results {
-display: none; position: absolute; top: 100%; right: 0; left: 0;
+display: none; position: absolute; top: 100%; right: 0;
 background: white; border: 1.5px solid var(--border);
 border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,.12);
-max-height: 360px; overflow-y: auto;
+max-height: 420px; overflow-y: auto;
 margin-top: 6px; z-index: 200;
+min-width: 320px; width: max-content; max-width: 420px;
 }
 .qt-search-results.visible { display: block; }
+.sr-close {
+position: sticky; top: 0; right: 0;
+display: flex; justify-content: flex-end;
+padding: 6px 10px 2px;
+background: white;
+z-index: 1;
+}
+.sr-close-btn {
+background: var(--bg); border: 1px solid var(--border);
+border-radius: 50%; width: 24px; height: 24px;
+display: flex; align-items: center; justify-content: center;
+cursor: pointer; font-size: 14px; color: var(--slate);
+transition: all .15s;
+}
+.sr-close-btn:hover { background: var(--indigo-soft); color: var(--indigo); }
 @media (max-width: 768px) {
 .quick-tools { position: static; top: auto; }
 .quick-tools-inner { padding: 8px 14px; gap: 8px; flex-wrap: wrap; }
@@ -1178,6 +1330,7 @@ justify-content: center;
 
 </head>
 <body>
+<a href="#quickstart" class="skip-link">Zum Inhalt springen</a>
 
 <!-- HEADER -->
 
@@ -1229,7 +1382,6 @@ justify-content: center;
     <a href="#exposition" class="nav-link">Exposition</a>
     <a href="#lap-topf" class="nav-link">LAP-Topf</a>
     <a href="#berichte" class="nav-link">Berichte/IV</a>
-    <a href="#ueberbrueckung" class="nav-link">Überbrückung</a>
     <a href="#szenarien" class="nav-link">Szenarien</a>
     <a href="#kurzfassung" class="nav-link">11-Punkte</a>
   </div>
@@ -1237,6 +1389,9 @@ justify-content: center;
 
 <!-- PAGE LAYOUT WRAPPER (Desktop: Sidebar + Content) -->
 <div class="page-layout">
+
+<!-- SIDEBAR OVERLAY (click to close) -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <!-- SIDEBAR NAV (Desktop only, sticky) -->
 <nav class="sidebar-nav" aria-label="Seitennavigation">
@@ -1252,35 +1407,8 @@ justify-content: center;
   <a href="#exposition" class="nav-link"><span class="nav-num">9</span>Exposition</a>
   <a href="#lap-topf" class="nav-link"><span class="nav-num">10</span>LAP-Topf</a>
   <a href="#berichte" class="nav-link"><span class="nav-num">11</span>Berichte/IV</a>
-  <a href="#ueberbrueckung" class="nav-link"><span class="nav-num">12</span>Überbrückung</a>
-  <a href="#szenarien" class="nav-link"><span class="nav-num">13</span>Szenarien</a>
-  <a href="#kurzfassung" class="nav-link"><span class="nav-num">14</span>11-Punkte</a>
-  <hr class="nav-divider">
-  <div class="nav-print-title">Druckdateien</div>
-  <a href="files/spickzettel-psych-print.html" class="nav-print-link" target="_blank">
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-    Spickzettel
-  </a>
-  <a href="files/positionen-psych-print.html" class="nav-print-link" target="_blank">
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-    Positionen
-  </a>
-  <a href="files/verlaufseintrag-psych-print.html" class="nav-print-link" target="_blank">
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-    Verlaufseintrag
-  </a>
-  <a href="files/entscheidungsbaum-psych-print.html" class="nav-print-link" target="_blank">
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-    Entscheidungsbaum
-  </a>
-  <a href="files/diagnostik-psych-print.html" class="nav-print-link" target="_blank">
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
-    Diagnostik
-  </a>
-  <a href="files/krisen-leitfaden-psych-print.html" class="nav-print-link" target="_blank">
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    Krisen-Leitfaden
-  </a>
+  <a href="#szenarien" class="nav-link"><span class="nav-num">12</span>Szenarien</a>
+  <a href="#kurzfassung" class="nav-link"><span class="nav-num">13</span>11-Punkte</a>
 </nav>
 
 <!-- MAIN CONTENT AREA -->
@@ -1290,11 +1418,15 @@ justify-content: center;
 
 <div class="quick-tools">
   <div class="quick-tools-inner">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Sektionen-Navigation öffnen" aria-expanded="false">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      Sektionen
+    </button>
     <div class="qt-search">
       <span class="qt-search-icon">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </span>
-      <input type="text" class="qt-search-input" id="searchInput" placeholder="Code oder Begriff suchen … (Ctrl+K)" aria-label="Suchbegriff eingeben" autocomplete="off">
+      <input type="text" class="qt-search-input" id="searchInput" placeholder="Suchen … (Ctrl+K)" aria-label="Code oder Begriff suchen" autocomplete="off">
       <div class="sf-filters" id="searchFilters">
         <span class="sf-chip" data-cat="anwesenheit">Anwesenheit</span>
         <span class="sf-chip" data-cat="diagnostik">Diagnostik</span>
@@ -1307,27 +1439,27 @@ justify-content: center;
       <div class="qt-search-results" id="searchResults"></div>
     </div>
     <div class="qt-links">
-      <a class="qt-link" href="files/spickzettel-psych-print.html" target="_blank" style="background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;">
+      <a class='qt-link' href='/files/spickzettel-psych-print' style='background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;' target='_blank'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Spickzettel
       </a>
-      <a class="qt-link" href="files/positionen-psych-print.html" target="_blank" style="background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;">
+      <a class='qt-link' href='/files/positionen-psych-print' style='background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;' target='_blank'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
         Positionen
       </a>
-      <a class="qt-link" href="files/verlaufseintrag-psych-print.html" target="_blank" style="background:#e8eaff;color:#3730a3;border:1px solid #a5b4fc;">
+      <a class='qt-link' href='/files/verlaufseintrag-psych-print' style='background:#e8eaff;color:#3730a3;border:1px solid #a5b4fc;' target='_blank'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         Verlaufseintrag
       </a>
-      <a class="qt-link" href="files/entscheidungsbaum-psych-print.html" target="_blank" style="background:#e0f2fe;color:#0369a1;border:1px solid #7dd3fc;">
+      <a class='qt-link' href='/files/entscheidungsbaum-psych-print' style='background:#e0f2fe;color:#0369a1;border:1px solid #7dd3fc;' target='_blank'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
         Entscheidungsbaum
       </a>
-      <a class="qt-link" href="files/diagnostik-psych-print.html" target="_blank" style="background:#ede9fe;color:#6d28d9;border:1px solid #c4b5fd;">
+      <a class='qt-link' href='/files/diagnostik-psych-print' style='background:#ede9fe;color:#6d28d9;border:1px solid #c4b5fd;' target='_blank'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
         Diagnostik
       </a>
-      <a class="qt-link" href="files/krisen-leitfaden-psych-print.html" target="_blank" style="background:#fee2e2;color:#b91c1c;border:1px solid #fca5a5;">
+      <a class='qt-link' href='/files/krisen-leitfaden-psych-print' style='background:#fee2e2;color:#b91c1c;border:1px solid #fca5a5;' target='_blank'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         Krisen-Leitfaden
       </a>
@@ -1347,6 +1479,13 @@ justify-content: center;
     <div class="scenario-panel-title">Was will ich tun?</div>
     <p class="scenario-panel-lead">Klicke auf deine Situation — du landest direkt bei der richtigen Ziffer.</p>
     <div class="sp-grid">
+
+  <a class="sp-card sp-card-highlight" data-sp-target="entscheidung">
+    <div class="sp-card-icon">🌳</div>
+    <div class="sp-card-label">Ich bin unsicher — Entscheidungsbaum</div>
+    <div class="sp-card-codes"></div>
+    <div class="sp-card-hint">Schritt für Schritt zur richtigen Ziffer</div>
+  </a>
 
   <a class="sp-card" data-sp-target="positionen" data-sp-code="PA010">
     <div class="sp-card-icon">🧠</div>
@@ -1404,44 +1543,37 @@ justify-content: center;
     <div class="sp-card-hint">15 Min, 1×/90 T, schriftlich!</div>
   </a>
 
-  <a class="sp-card" data-sp-target="entscheidung">
-    <div class="sp-card-icon">🌳</div>
-    <div class="sp-card-label">Ich bin unsicher — Entscheidungsbaum</div>
-    <div class="sp-card-codes"></div>
-    <div class="sp-card-hint">Schritt für Schritt zur Ziffer</div>
-  </a>
-
 </div>
 
   </div>
 
   <!-- ─── ZWEI EBENEN ─── -->
 
-  <details open class="section section-accordion" id="zweischicht">
+  <details class="section section-accordion" id="zweischicht">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num">1</span>
       Das hybride Zwei-Ebenen-System
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Psychologinnen in der KJPP arbeiten gleichzeitig in zwei Logiken.</p>
     </summary>
     <div class="section-content">
-    <div class="card-grid card-grid-2" style="margin-bottom:20px">
-      <div style="background:var(--indigo-soft);border:1.5px solid #a5b4fc;border-radius:12px;padding:24px">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:12px">Aussen · Tariflogisch</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px">EA.05</div>
-        <p style="font-size:13.5px;color:var(--slate)">Ambulante Leistungen durch nichtärztliche Fachpersonen in der Psychiatrie. Öffentlich sichtbar, gilt für alle nichtärztlichen Berufsgruppen inkl. Psychologinnen/Psychologen unter Aufsicht eines Facharztes.</p>
+    <div class="card-grid card-grid-2" class="mb-20">
+      <div class="layer-card">
+        <div class="layer-label">Aussen · Tariflogisch</div>
+        <div class="layer-heading">EA.05</div>
+        <p class="fs-13-5-slate">Ambulante Leistungen durch nichtärztliche Fachpersonen in der Psychiatrie. Öffentlich sichtbar, gilt für alle nichtärztlichen Berufsgruppen inkl. Psychologinnen/Psychologen unter Aufsicht eines Facharztes.</p>
       </div>
-      <div style="background:#e8eaff;border:1.5px solid #a5b4fc;border-radius:12px;padding:24px">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:12px">Innen · Operativ</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px">PA- / PE- / PK-Codes</div>
-        <p style="font-size:13.5px;color:var(--slate)">KJPP-interne KISIM-Logik: Leistungen werden im Hintergrund umgewandelt. Interne Ziffern wie PA010, PE010, PA220, PE020, PA230, PK015 erscheinen nicht im öffentlichen EA.05-Browser.</p>
+      <div class="layer-card-alt">
+        <div class="layer-label">Innen · Operativ</div>
+        <div class="layer-heading">PA- / PE- / PK-Codes</div>
+        <p class="fs-13-5-slate">KJPP-interne KISIM-Logik: Leistungen werden im Hintergrund umgewandelt. Interne Ziffern wie PA010, PE010, PA220, PE020, PA230, PK015 erscheinen nicht im öffentlichen EA.05-Browser.</p>
       </div>
     </div>
 
 <div class="note indigo">
   <span class="note-icon">ℹ️</span>
-  <div><strong>Wichtigste Regel:</strong> Wenn sich ältere interne Psychologen-Folien und die aktuelle KJPP-Übersicht vom 01.01.2026 widersprechen, hat die neuere Übersicht + offizielle EA.05-Logik Vorrang. Das betrifft besonders die E-Mail-/Telemedizin-Limite.</div>
+  <div>Wichtigste Regel: Wenn sich ältere interne Psychologen-Folien und die aktuelle KJPP-Übersicht vom 01.01.2026 widersprechen, hat die neuere Übersicht + offizielle EA.05-Logik Vorrang. Das betrifft besonders die E-Mail-/Telemedizin-Limite.</div>
 </div>
 </div>
 
@@ -1449,12 +1581,12 @@ justify-content: center;
 
   <!-- ─── GRUNDREGELN ─── -->
 
-  <details open class="section section-accordion" id="grundregeln">
+  <details class="section section-accordion" id="grundregeln">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num">2</span>
       Die 5 Grundregeln
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Was immer gilt — unabhängig von der spezifischen Situation.</p>
     </summary>
     <div class="section-content">
@@ -1500,16 +1632,16 @@ justify-content: center;
 
   <!-- ─── LIMITS ─── -->
 
-  <details open class="section section-accordion" id="limits">
+  <details class="section section-accordion" id="limits">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num">3</span>
       Mengengrenzen und interne Ziele
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Die 4h-Regel als oberstes Limit — plus interne Produktivitätsziele, die parallel laufen.</p>
     </summary>
     <div class="section-content">
-    <div class="card-grid card-grid-2" style="margin-bottom:20px">
+    <div class="card-grid card-grid-2" class="mb-20">
       <div class="limit-box">
         <div class="limit-title">4-Stunden-Regel (oberstes Limit)</div>
         <div class="limit-visual">
@@ -1522,7 +1654,7 @@ justify-content: center;
         <p class="limit-note">Alle Leistungsblöcke summieren sich: Sitzungen + Diagnostik + Telemedizin + Netzwerk + Krisenarbeit. Nicht nur die einzelne Ziffer muss stimmen — der Gesamtfall muss im Rahmen bleiben.</p>
         <div class="limit-exception">
           <span>⚡</span>
-          <span><strong>Krise:</strong> Überschreitung möglich — aber mit inhaltlich tragfähiger Begründung im Verlauf. Versicherer kann Begründung verlangen.</span>
+          <span>Krise: Überschreitung möglich — aber mit inhaltlich tragfähiger Begründung im Verlauf. Versicherer kann Begründung verlangen.</span>
         </div>
       </div>
 
@@ -1531,8 +1663,8 @@ justify-content: center;
     <div class="prod-table">
       <div class="prod-row header">
         <div>Stufe</div>
-        <div style="text-align:center">Jahr</div>
-        <div style="text-align:center">Monat</div>
+        <div class="text-center">Jahr</div>
+        <div class="text-center">Monat</div>
       </div>
       <div class="prod-row">
         <div class="prod-role">Ober-/Leitende Psych.</div>
@@ -1557,7 +1689,7 @@ justify-content: center;
     </div>
     <div class="limit-exception" style="margin-top:12px">
       <span>📅</span>
-      <span><strong>Richtwert:</strong> 5 Konsultationen/Tag — relevant für die Agendaplanung.</span>
+      <span>Richtwert: 5 Konsultationen/Tag — relevant für die Agendaplanung.</span>
     </div>
   </div>
 </div>
@@ -1572,12 +1704,12 @@ justify-content: center;
 
   <!-- ─── ENTSCHEIDUNGSBAUM ─── -->
 
-  <details open class="section section-accordion" id="entscheidung">
+  <details class="section section-accordion" id="entscheidung">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num teal">4</span>
       Entscheidungsbaum: Welche Ziffer passt?
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Von oben nach unten — psychologenspezifische Leistungsblöcke separat beachten.</p>
     </summary>
     <div class="section-content">
@@ -1589,7 +1721,7 @@ justify-content: center;
     <div class="idt-q">
       <small>Frage 1</small>
       Ist es eine <strong>interne Tätigkeit</strong>?<br>
-      <span style="font-size:12px;color:rgba(255,255,255,0.55)">(Rapport · Supervision · Intervision · Terminvereinbarung · Leistungserfassung · LUF)</span>
+      <span class="fs-12-light">(Rapport · Supervision · Intervision · Terminvereinbarung · Leistungserfassung · LUF)</span>
     </div>
     <div class="idt-down">↓</div>
     <div class="idt-fork">
@@ -1606,13 +1738,13 @@ justify-content: center;
         <div class="idt-q" style="max-width:none">
           <small>Frage 2</small>
           <strong>Spezifischer Leistungsblock?</strong><br>
-          <span style="font-size:12px;color:rgba(255,255,255,0.55)">Diagnostik · Exposition · Krise → eigene Logik</span>
+          <span class="fs-12-light">Diagnostik · Exposition · Krise → eigene Logik</span>
         </div>
         <div class="idt-line"></div>
         <div class="idt-sub-fork">
           <div class="idt-sub-branch">
             <div class="idt-branch-label" style="background:var(--indigo-soft);color:var(--indigo);font-size:10px;padding:3px 10px;border-radius:20px;margin-bottom:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Spezialblock</div>
-            <div style="display:grid;gap:6px;width:100%">
+            <div class="grid-gap-6">
               <div class="idt-res purple">
                 <small>PA220 · EA.05.0150 · Diagnostik</small>
                 <strong>Testdurchführung</strong>
@@ -1636,7 +1768,7 @@ justify-content: center;
             </div>
           </div>
           <div class="idt-sub-branch">
-            <div class="idt-branch-label n" style="font-size:10px">Normaler Kontakt → Frage 3</div>
+            <div class="idt-branch-label n" class="fs-10">Normaler Kontakt → Frage 3</div>
             <div class="idt-q" style="font-size:13px;max-width:none">
               <small>Frage 3</small>
               Patient / Familie <strong>anwesend</strong>?
@@ -1644,8 +1776,8 @@ justify-content: center;
             <div class="idt-line"></div>
             <div class="idt-sub-fork">
               <div class="idt-sub-branch">
-                <div class="idt-branch-label y" style="font-size:10px">JA</div>
-                <div style="display:grid;gap:5px;width:100%">
+                <div class="idt-branch-label y" class="fs-10">JA</div>
+                <div class="grid-gap-5">
                   <div class="idt-res indigo">
                     <small>PA010 / EA.05.0010</small>
                     <strong>Einzelsetting</strong>
@@ -1661,8 +1793,8 @@ justify-content: center;
                     <strong>Fernmündlich (Telefon/Video)</strong>
                     max. 75 Min
                   </div>
-                  <div class="idt-res" style="background:var(--indigo-soft);border:1.5px solid #a5b4fc;color:var(--navy)">
-                    <small style="color:var(--indigo-light)">EA.05.0070 · öffentlich</small>
+                  <div class="idt-res" class="idt-res-indigo">
+                    <small class="text-indigo-light">EA.05.0070 · öffentlich</small>
                     <strong>Telemedizin synchron</strong>
                     Video/Telefon Echtzeit · auch für Angehörige
                   </div>
@@ -1672,8 +1804,8 @@ justify-content: center;
                     Kurze Rückmeldung / Instruktion → <strong>EA.00.0110</strong> (20 Min).<br>
                     <span style="color:var(--slate-light);font-style:italic">Im Zweifel: War es eine echte Sitzung oder nur ein kurzer Check-in?</span>
                   </div>
-                  <div class="idt-res" style="background:var(--indigo-soft);border:1.5px solid #a5b4fc;color:var(--navy)">
-                    <small style="color:var(--indigo-light)">EA.00.0110 · Nicht-EA.05</small>
+                  <div class="idt-res" class="idt-res-indigo">
+                    <small class="text-indigo-light">EA.00.0110 · Nicht-EA.05</small>
                     <strong>Telefonische Verlaufskonsultation</strong>
                     max. 20 Min · KEINE volle Sitzung
                   </div>
@@ -1686,11 +1818,11 @@ justify-content: center;
                 </div>
               </div>
               <div class="idt-sub-branch">
-                <div class="idt-branch-label n" style="font-size:10px">NEIN → Patient nicht anwesend</div>
-                <div style="display:grid;gap:5px;width:100%">
+                <div class="idt-branch-label n" class="fs-10">NEIN → Patient nicht anwesend</div>
+                <div class="grid-gap-5">
                   <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);padding:6px 0 2px;border-bottom:1.5px dashed var(--indigo-light);margin-bottom:2px">Direkte Patientenkommunikation (zeitversetzt)</div>
-                  <div class="idt-res" style="background:var(--indigo-soft);border:1.5px solid #a5b4fc;color:var(--navy)">
-                    <small style="color:var(--indigo-light)">EA.05.0080 · zeitversetzt</small>
+                  <div class="idt-res" class="idt-res-indigo">
+                    <small class="text-indigo-light">EA.05.0080 · zeitversetzt</small>
                     <strong>E-Mail / asynchron</strong>
                     max. 1×/Tag · 4×/30 Tage
                   </div>
@@ -1726,8 +1858,7 @@ justify-content: center;
   </div>
 </div>
 <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#64748b;line-height:1.5">
-  Zusätzlich bei Auswärtsterminen: <strong>EA.05.0060 Wegzeit</strong> (max. 60 Min hin+zurück).<br>
-  Bei PA230 Exposition: Wegzeit bereits inkludiert — nicht doppelt buchen.
+  Zusätzlich bei Auswärtsterminen: <strong>EA.05.0060 Wegzeit</strong> — Details in <a href="#positionen" style="color:#4338ca">Abschnitt 5</a>.
 </div>
 </div>
 
@@ -1735,25 +1866,25 @@ justify-content: center;
 
   <!-- ─── POSITIONEN ─── -->
 
-  <details open class="section section-accordion" id="positionen">
+  <details class="section section-accordion" id="positionen">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num">5</span>
       Alle relevanten EA.05-Positionen
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Öffentliche Tarifziffern und interne KJPP-Psychologen-Codes im Überblick.</p>
     </summary>
     <div class="section-content">
     <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px;padding:10px 16px;background:#f8fafc;border-radius:10px;font-size:12px;color:var(--slate)">
       <span style="font-weight:600;color:var(--text);margin-right:4px">Legende:</span>
-      <span class="pos-badge badge-anw" style="font-size:11px">Anwesenheit</span>
-      <span class="pos-badge badge-kris" style="font-size:11px">Krise</span>
-      <span class="pos-badge badge-diag" style="font-size:11px">Diagnostik</span>
-      <span class="pos-badge badge-lap" style="font-size:11px">LAP-Topf</span>
-      <span class="pos-badge badge-expo" style="font-size:11px">Exposition</span>
-      <span class="pos-badge badge-tel" style="font-size:11px">Telemedizin</span>
-      <span class="pos-badge badge-weg" style="font-size:11px">Wegzeit</span>
-      <span class="pos-badge badge-diag" style="font-size:11px">+15 Min VN</span>
+      <span class="pos-badge badge-anw" class="fs-11">Anwesenheit</span>
+      <span class="pos-badge badge-kris" class="fs-11">Krise</span>
+      <span class="pos-badge badge-diag" class="fs-11">Diagnostik</span>
+      <span class="pos-badge badge-lap" class="fs-11">LAP-Topf</span>
+      <span class="pos-badge badge-expo" class="fs-11">Exposition</span>
+      <span class="pos-badge badge-tel" class="fs-11">Telemedizin</span>
+      <span class="pos-badge badge-weg" class="fs-11">Wegzeit</span>
+      <span class="pos-badge badge-diag" class="fs-11">+15 Min VN</span>
     </div>
     <div class="pos-grid">
 
@@ -1781,7 +1912,7 @@ justify-content: center;
     <span class="pos-badge badge-anw">Anwesenheit</span>
   </div>
 
-  <div class="pos-item" style="border-left:3px solid var(--indigo-light)">
+  <div class="pos-item" class="pos-item-accent">
     <div>
       <span class="pos-code code-tip" tabindex="0">PE010<span class="tip-box"><span class="tip-title">Vor-/Nachbereitung</span>Zu PA010/PA030 · nur Psychologen-intern<br><span class="tip-limit">Max. 15 Min</span></span></span>
       <span class="pos-code-sub">interne Psychologenlogik</span>
@@ -1817,14 +1948,14 @@ justify-content: center;
     <span class="pos-badge badge-anw">Anwesenheit</span>
   </div>
 
-  <div class="pos-item" style="border-left:3px solid var(--indigo-light)">
+  <div class="pos-item" class="pos-item-accent">
     <div>
       <span class="pos-code code-tip" tabindex="0">EA.00.0110<span class="tip-box"><span class="tip-title">Telefonische Verlaufskonsultation</span>Kurze Rückmeldung / Instruktion · kein volles Therapiegespräch<br><span class="tip-limit">Max. 20 Min</span> · Nicht-EA.05-Ziffer (EA00)</span></span>
       <span class="pos-code-sub">Nicht-EA.05 · Verlauf</span>
     </div>
     <div>
       <div class="pos-name">Telefonische Verlaufskonsultation</div>
-      <div class="pos-desc">Kurze telefonische Verlaufskonsultation oder Instruktion — <strong>nicht</strong> mit fernmündlicher Sitzung (PA011, max. 75 Min) verwechseln. Max. <strong>20 Min.</strong> Keine Anwesenheitsleistung. Andere Tariflogik als EA.05-Kapitel. <span style="color:var(--amber);font-weight:600">⚠ Ziffer aus EA00, nicht EA.05 — für Abgrenzung im Alltag unverzichtbar.</span></div>
+      <div class="pos-desc">Kurze telefonische Verlaufskonsultation oder Instruktion. Max. <strong>20 Min.</strong> Nicht mit PA011 (75 Min Sitzung) verwechseln. <span style="color:var(--amber);font-weight:600">⚠ Ziffer aus EA00, nicht EA.05.</span> <a href="#telefon" style="color:var(--indigo-light);font-size:12px">→ Abgrenzung s. Abschnitt 7</a></div>
     </div>
     <span class="pos-badge badge-tel">Telefon / Verlauf</span>
   </div>
@@ -1848,7 +1979,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Testdiagnostik / Testdurchführung</div>
-      <div class="pos-desc">Durchführung von Tests. Max. <strong>180 Min / 90 Tage.</strong> Richtwert 60 Min (TtT S.10). Nicht kumulierbar mit EA.05.0010/0030. Interpretation nur durch Fachärzte oder psych. Psychotherapeuten.</div>
+      <div class="pos-desc">Durchführung von Tests. Max. <strong>180 Min / 90 Tage.</strong> Richtwert 60 Min. <a href="#diagnostik" style="color:var(--indigo-light);font-size:12px">→ Details s. Abschnitt 6</a></div>
     </div>
     <span class="pos-badge badge-diag">Diagnostik</span>
   </div>
@@ -1860,7 +1991,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Test-Auswertung, Interpretation und Bericht</div>
-      <div class="pos-desc">Auswertung in Abwesenheit des Patienten. Max. <strong>240 Min / 90 Tage.</strong> Richtwert 80 Min (TtT S.10). An anderen Tagen als Durchführung möglich. Kein freies Zusatzbudget!</div>
+      <div class="pos-desc">Auswertung in Abwesenheit des Patienten. Max. <strong>240 Min / 90 Tage.</strong> Richtwert 80 Min. <a href="#diagnostik" style="color:var(--indigo-light);font-size:12px">→ Details s. Abschnitt 6</a></div>
     </div>
     <span class="pos-badge badge-diag">Diagnostik</span>
   </div>
@@ -1872,7 +2003,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Expositionstherapie</div>
-      <div class="pos-desc">Eigene psychologenspezifische Ziffer. Max. <strong>360 Min / 180 Tage.</strong> Wegzeit ist intern inkludiert — nicht nochmals separat als EA.05.0060 buchen. + PE010 15 Min VN.</div>
+      <div class="pos-desc">Eigene psychologenspezifische Ziffer. Max. <strong>360 Min / 180 Tage.</strong> Wegzeit intern inkludiert. <a href="#exposition" style="color:var(--indigo-light);font-size:12px">→ Details s. Abschnitt 9</a></div>
     </div>
     <span class="pos-badge badge-expo">Exposition</span>
   </div>
@@ -1896,7 +2027,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Wegzeit</div>
-      <div class="pos-desc">Reine effektive Wegzeit hin + zurück. Max. <strong>60 Min / Sitzung.</strong> Nicht Teil der 4h-Regel. Bei PA230 Exposition: Wegzeit bereits inkludiert — nicht doppelt buchen!</div>
+      <div class="pos-desc">Reine effektive Wegzeit hin + zurück. Max. <strong>60 Min / Sitzung.</strong> Nicht Teil der 4h-Regel. Bei PA230: bereits inkludiert.</div>
     </div>
     <span class="pos-badge badge-weg">Wegzeit</span>
   </div>
@@ -1956,16 +2087,16 @@ justify-content: center;
 
   <!-- ─── DIAGNOSTIK ─── -->
 
-  <details open class="section section-accordion" id="diagnostik">
+  <details class="section section-accordion" id="diagnostik">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num">6</span>
       Diagnostik und Testabklärung
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Eigener Leistungsblock mit zwei getrennten Limiten — kein Nebenthema.</p>
     </summary>
     <div class="section-content">
-    <div class="diag-grid" style="margin-bottom:20px">
+    <div class="diag-grid" class="mb-20">
       <div class="diag-box a">
         <h4>Durchführung · PA220 / EA.05.0150</h4>
         <div class="diag-stat">
@@ -1982,11 +2113,11 @@ justify-content: center;
         </div>
         <div class="diag-stat">
           <span class="diag-stat-lbl">Mit Patient anwesend?</span>
-          <span style="font-size:13px;font-weight:700;color:var(--green)">Ja</span>
+          <span class="text-green-bold">Ja</span>
         </div>
         <div class="diag-stat">
           <span class="diag-stat-lbl">Kumulierbar mit 0010/0030?</span>
-          <span style="font-size:13px;font-weight:700;color:var(--rose)">Nein</span>
+          <span class="text-rose-bold">Nein</span>
         </div>
       </div>
       <div class="diag-box b">
@@ -2005,15 +2136,15 @@ justify-content: center;
         </div>
         <div class="diag-stat">
           <span class="diag-stat-lbl">Andere Tage möglich?</span>
-          <span style="font-size:13px;font-weight:700;color:var(--green)">Ja</span>
+          <span class="text-green-bold">Ja</span>
         </div>
         <div class="diag-stat">
           <span class="diag-stat-lbl">Patient anwesend?</span>
-          <span style="font-size:13px;font-weight:700;color:var(--rose)">Nein</span>
+          <span class="text-rose-bold">Nein</span>
         </div>
         <div class="diag-stat">
           <span class="diag-stat-lbl">Freies Zusatzbudget?</span>
-          <span style="font-size:13px;font-weight:700;color:var(--rose)">Nein</span>
+          <span class="text-rose-bold">Nein</span>
         </div>
       </div>
     </div>
@@ -2044,16 +2175,16 @@ justify-content: center;
 
   <!-- ─── TELEFON/TELEMEDIZIN ─── -->
 
-  <details open class="section section-accordion" id="telefon">
+  <details class="section section-accordion" id="telefon">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num">7</span>
       Telefon, E-Mail und Telemedizin
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Die häufigste Fehlerquelle — vier Kontakttypen mit vier verschiedenen Tariflogiken.</p>
     </summary>
     <div class="section-content">
-    <div class="tel-table" style="margin-bottom:20px">
+    <div class="tel-table" class="mb-20">
       <div class="tel-row head">
         <div>Kontakttyp</div>
         <div>Ziffer</div>
@@ -2062,7 +2193,7 @@ justify-content: center;
       <div class="tel-row">
         <div>
           <div class="tel-type">Fernmündliche Sitzung</div>
-          <div style="font-size:12px;color:var(--slate)">Telefon/Video mit Patient, echte Behandlung, synchron</div>
+          <div class="fs-12-slate">Telefon/Video mit Patient, echte Behandlung, synchron</div>
         </div>
         <div class="tel-code">PA011<br>PA031</div>
         <div class="tel-limit">Max. 75 Min · Anwesenheitsleistung · + PE010 möglich</div>
@@ -2070,7 +2201,7 @@ justify-content: center;
       <div class="tel-row">
         <div>
           <div class="tel-type">Telefonische Verlaufskonsultation</div>
-          <div style="font-size:12px;color:var(--slate)">Kurze Verlaufsrückmeldung, Instruktion — nicht volle Sitzung</div>
+          <div class="fs-12-slate">Kurze Verlaufsrückmeldung, Instruktion — nicht volle Sitzung</div>
         </div>
         <div class="tel-code">EA.00.0110</div>
         <div class="tel-limit">Max. 20 Min · andere Logik als fernmündliche Sitzung</div>
@@ -2078,7 +2209,7 @@ justify-content: center;
       <div class="tel-row" style="background:#fffbeb">
         <div>
           <div class="tel-type">Zeitversetzte Telemedizin / E-Mail</div>
-          <div style="font-size:12px;color:var(--slate)">Asynchrone Kommunikation, E-Mail, Nachrichten</div>
+          <div class="fs-12-slate">Asynchrone Kommunikation, E-Mail, Nachrichten</div>
         </div>
         <div class="tel-code" style="color:var(--amber)">EA.05.0080</div>
         <div>
@@ -2090,9 +2221,9 @@ justify-content: center;
       <div class="tel-row">
         <div>
           <div class="tel-type">LAP-Kontakt mit Dritten/Angehörigen</div>
-          <div style="font-size:12px;color:var(--slate)">Telefonat über Patient, ohne Patient, mit Schule/Beistand/Eltern</div>
+          <div class="fs-12-slate">Telefonat über Patient, ohne Patient, mit Schule/Beistand/Eltern</div>
         </div>
-        <div class="tel-code" style="color:#1d4ed8">PK025/PK020<br>EA.05.0110/0120</div>
+        <div class="tel-code" class="text-blue-700">PK025/PK020<br>EA.05.0110/0120</div>
         <div class="tel-limit">LAP-Topf · altersgestufte Limits · fachlicher Inhalt</div>
       </div>
     </div>
@@ -2100,7 +2231,7 @@ justify-content: center;
 <div class="note">
   <span class="note-icon">🔑</span>
   <div>
-    <strong>Vor jedem Telefonkontakt gedanklich klären:</strong>
+    Vor jedem Telefonkontakt gedanklich klären:
     War es eine echte fernmündliche Sitzung? — Eine kurze Verlaufskonsultation? — Eine zeitversetzte E-Mail-Kommunikation? — Ein LAP-Kontakt mit Dritten/Angehörigen (ohne Patient)?
     Diese Unterscheidung ist wichtiger als die einzelne Codebezeichnung.
   </div>
@@ -2111,12 +2242,12 @@ justify-content: center;
 
   <!-- ─── KRISE A/B ─── -->
 
-  <details open class="section section-accordion" id="krise">
+  <details class="section section-accordion" id="krise">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num">8</span>
       Krisenintervention: A-/B-Logik
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Psychologinnenspezifisch: nicht ein Krisencode, sondern ein zweistufiges System.</p>
     </summary>
     <div class="section-content">
@@ -2124,7 +2255,7 @@ justify-content: center;
       <div class="krise-box a">
         <div class="krise-sub">Anordnung A</div>
         <h3>Krise unter laufender Psychotherapie</h3>
-        <ul class="krise-list" style="margin-top:16px">
+        <ul class="krise-list" class="mt-16">
           <li>Interne Ziffern: <strong>PA110 / PA111</strong></li>
           <li>Max. <strong>180 Minuten pro Sitzung</strong></li>
           <li>Bleibt unter laufender Anordnung A</li>
@@ -2137,7 +2268,7 @@ justify-content: center;
       <div class="krise-box b">
         <div class="krise-sub">Anordnung B</div>
         <h3>Krise im KANT / Spät-, Nacht-, Wochenenddienst</h3>
-        <ul class="krise-list" style="margin-top:16px">
+        <ul class="krise-list" class="mt-16">
           <li><strong>EA.00.0090</strong> Psychiatrische Krisenintervention</li>
           <li>oder <strong>EA.00.0130</strong> Telemedizinische Krisenintervention</li>
           <li>Effektiv aufgewendete Zeit, <strong>unbegrenzt</strong></li>
@@ -2149,10 +2280,17 @@ justify-content: center;
       </div>
     </div>
 
-<div class="note" style="margin-top:16px">
+<div class="note" class="mt-16">
   <span class="note-icon">⚠️</span>
   <div>
-    <strong>Psy/Psy-Doppelkonsultationen:</strong> Im Regelbetrieb regressgefährdet — besonders Familiensettings. Ausnahme Einarbeitung: Fallführende rechnet ab, zweite Person als LUF. Berufsgruppenübergreifend in begründbaren Fällen möglich. Dokumentation zwingend.
+    Psy/Psy-Doppelkonsultationen: Im Regelbetrieb regressgefährdet — besonders Familiensettings. Ausnahme Einarbeitung: Fallführende rechnet ab, zweite Person als LUF. Berufsgruppenübergreifend in begründbaren Fällen möglich. Dokumentation zwingend.
+  </div>
+</div>
+
+<div class="note indigo" style="margin-top:16px">
+  <span class="note-icon">ℹ️</span>
+  <div>
+    Überbrückungsleistungen (stationär → ambulant): Überbrückungskonferenz durch die Tagesklinik auf den offenen stationären Fall erfassbar — sofern die Tagesklinik die Nachbehandlung vollumfänglich übernimmt und kein externer Therapeut parallel beteiligt ist. Gilt nicht in umgekehrter Richtung (ambulant → stationär) oder bei ambulant → ambulant.
   </div>
 </div>
 </div>
@@ -2161,12 +2299,12 @@ justify-content: center;
 
   <!-- ─── EXPOSITION ─── -->
 
-  <details open class="section section-accordion" id="exposition">
+  <details class="section section-accordion" id="exposition">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num">9</span>
       Expositionstherapie
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Eigener psychologischer Leistungsblock — sprengt die normale Sitzungslogik.</p>
     </summary>
     <div class="section-content">
@@ -2193,7 +2331,7 @@ justify-content: center;
       </div>
       <div class="expo-note">
         <span>⚠️</span>
-        <span><strong>Häufige Fehlerquelle:</strong> Bei PA230-Logik die Wegzeit nicht nochmals separat als EA.05.0060 erfassen — sie ist intern bereits inkludiert!</span>
+        <span>Häufige Fehlerquelle: Bei PA230-Logik die Wegzeit nicht nochmals separat als EA.05.0060 erfassen — sie ist intern bereits inkludiert!</span>
       </div>
     </div>
     </div>
@@ -2201,20 +2339,20 @@ justify-content: center;
 
   <!-- ─── LAP-TOPF ─── -->
 
-  <details open class="section section-accordion" id="lap-topf">
+  <details class="section section-accordion" id="lap-topf">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num teal">10</span>
       LAP-Topf: Altersgesteuerte Substruktur
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Für Psychologinnen existiert intern nicht nur ein LAP-Topf — sondern eine alters- und funktionsbezogene Feinsteuerung.</p>
     </summary>
     <div class="section-content">
-    <div class="note" style="margin-bottom:16px">
+    <div class="note" class="mb-16">
       <span class="note-icon">⚠️</span>
-      <div>Alle Leistungen in Abwesenheit des Patienten sind <strong>nicht kumulierbar mit dem Zuschlag für Leistungen bei Kindern bis 12 Jahre</strong>. (KG-Führung S.2)</div>
+      <div>Alle Leistungen in Abwesenheit des Patienten sind nicht kumulierbar mit dem Zuschlag für Leistungen bei Kindern bis 12 Jahre. (KG-Führung S.2)</div>
     </div>
-    <div class="lap-age-grid" style="margin-bottom:20px">
+    <div class="lap-age-grid" class="mb-20">
       <div class="lap-age-box u18">
         <h4>👶 Unter 18 Jahre</h4>
         <div class="lap-entry"><span>PE045 · Fremdaktenstudium</span><span class="lap-code">LAP</span></div>
@@ -2222,7 +2360,7 @@ justify-content: center;
         <div class="lap-entry"><span>PK015 · Info-Austausch Ärzte/Psych.</span><span class="lap-code">LAP</span></div>
         <div class="lap-total">
           <span>Gemeinsames Limit</span>
-          <span style="color:var(--teal)">240 Min / 90 Tage</span>
+          <span style="color:var(--indigo)">240 Min / 90 Tage</span>
         </div>
       </div>
       <div class="lap-age-box o18">
@@ -2232,24 +2370,24 @@ justify-content: center;
         <div class="lap-entry"><span>PK010 · Info-Austausch Ärzte/Psych.</span><span class="lap-code">LAP</span></div>
         <div class="lap-total">
           <span>Gemeinsames Limit</span>
-          <span style="color:#1d4ed8">180 Min / 90 Tage</span>
+          <span class="text-blue-700">180 Min / 90 Tage</span>
         </div>
       </div>
     </div>
 
-<div class="card" style="margin-bottom:16px">
-  <div style="font-weight:700;font-size:13px;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Zusätzlich in beiden Altersgruppen</div>
-  <div style="display:grid;gap:8px">
+<div class="card" class="mb-16">
+  <div class="card-section-title">Zusätzlich in beiden Altersgruppen</div>
+  <div class="grid-gap-8">
     <div style="display:flex;gap:12px;align-items:center;font-size:13.5px">
       <span style="font-weight:700;color:var(--indigo);min-width:80px">PE030</span>
-      <span style="color:var(--navy)">Diagnostik-/Therapieplanung</span>
+      <span class="text-navy">Diagnostik-/Therapieplanung</span>
       <span style="color:var(--rose);font-weight:600;margin-left:auto">15 Min · max. 1× / 90 Tage</span>
     </div>
     <div style="display:flex;gap:12px;align-items:center;font-size:13.5px;flex-wrap:wrap">
-      <span style="font-weight:700;color:var(--teal);min-width:80px">EA.05.0120</span>
-      <span style="color:var(--navy)">Auskünfte Angehörige (ohne Patient)</span>
+      <span style="font-weight:700;color:var(--indigo);min-width:80px">EA.05.0120</span>
+      <span class="text-navy">Auskünfte Angehörige (ohne Patient)</span>
       <span style="color:var(--slate);margin-left:auto">Fachlicher Austausch</span>
-      <span style="width:100%;font-size:12px;color:var(--amber);font-weight:600;margin-top:2px">⚠️ Zuordnung zum LAP-Topf-Limit klinikintern bestätigen — unklar, ob im altersgestuften Pool (240/180 Min) enthalten oder separates Budget.</span>
+      <span style="width:100%;font-size:12px;color:var(--indigo);font-weight:600;margin-top:2px;background:var(--indigo-soft);padding:4px 8px;border-radius:4px">Sonderfall: EA.05.0120 wird als separates Budget ausserhalb des altersgestuften LAP-Pools (240/180 Min) behandelt. Bei Unsicherheiten Rücksprache mit Tarif-Verantwortlichen.</span>
     </div>
   </div>
 </div>
@@ -2283,42 +2421,42 @@ justify-content: center;
 
   <!-- ─── BERICHTE / IV ─── -->
 
-  <details open class="section section-accordion" id="berichte">
+  <details class="section section-accordion" id="berichte">
     <summary>
-      <div class="section-title">
+      <h2 class="section-title">
       <span class="num">11</span>
       Berichte, Versicherer und IV
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Eigener Berichts-Block — nicht frei schätzbar, sondern nach effektivem Zeitaufwand.</p>
     </summary>
     <div class="section-content">
     <div class="expo-box" style="border-color:#c7d2fe">
-      <div class="expo-title" style="color:var(--indigo)">Berichtsblock · Ambulante Struktur</div>
+      <div class="expo-title" class="text-indigo">Berichtsblock · Ambulante Struktur</div>
       <div class="expo-sub">Nach effektivem Zeitaufwand · Drei Teilberichte</div>
       <div class="expo-stats" style="grid-template-columns:repeat(3,1fr)">
         <div class="expo-stat">
-          <div class="expo-stat-num" style="color:var(--indigo)">240</div>
+          <div class="expo-stat-num" class="text-indigo">240</div>
           <div class="expo-stat-lbl">Min. Maximum</div>
         </div>
         <div class="expo-stat">
-          <div class="expo-stat-num" style="color:var(--indigo)">120</div>
+          <div class="expo-stat-num" class="text-indigo">120</div>
           <div class="expo-stat-lbl">Min. Richtwert</div>
         </div>
         <div class="expo-stat">
-          <div class="expo-stat-num" style="color:var(--indigo)">3</div>
+          <div class="expo-stat-num" class="text-indigo">3</div>
           <div class="expo-stat-lbl">Teilberichte</div>
         </div>
       </div>
     </div>
 
 <div class="card" style="margin-top:16px;margin-bottom:16px">
-  <div style="font-weight:700;font-size:13px;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Neue ambulante Berichtsstruktur</div>
-  <ul style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text);list-style:none">
-    <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Berichte werden nach effektivem Zeitaufwand verrechnet</li>
-    <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Maximum: 240 Minuten pro Bericht</li>
-    <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Richtwert: 120 Minuten — bei Überschreitung Begründung erforderlich</li>
-    <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>Drei Teilberichte in der neuen ambulanten Struktur</li>
-    <li style="display:flex;gap:8px"><span style="color:var(--indigo);font-weight:700;flex-shrink:0">→</span>IV-Berichte sind primär interner KJPP-Fakturierungsprozess</li>
+  <div class="card-section-title">Neue ambulante Berichtsstruktur</div>
+  <ul class="list-clean">
+    <li class="flex-gap-8"><span class="pill-indigo">→</span>Berichte werden nach effektivem Zeitaufwand verrechnet</li>
+    <li class="flex-gap-8"><span class="pill-indigo">→</span>Maximum: 240 Minuten pro Bericht</li>
+    <li class="flex-gap-8"><span class="pill-indigo">→</span>Richtwert: 120 Minuten — bei Überschreitung Begründung erforderlich</li>
+    <li class="flex-gap-8"><span class="pill-indigo">→</span>Drei Teilberichte in der neuen ambulanten Struktur</li>
+    <li class="flex-gap-8"><span class="pill-indigo">→</span>IV-Berichte sind primär interner KJPP-Fakturierungsprozess</li>
   </ul>
 </div>
 
@@ -2344,55 +2482,14 @@ justify-content: center;
 
   </details>
 
-  <!-- ─── ÜBERBRÜCKUNGSLEISTUNGEN ─── -->
-
-  <details open class="section section-accordion" id="ueberbrueckung">
-    <summary>
-      <div class="section-title">
-      <span class="num">12</span>
-      Überbrückungsleistungen
-    <span class="accordion-icon">&#x25BC;</span></div>
-      <p class="section-lead">Sonderfall beim Wechsel stationär → teilstationär/ambulant.</p>
-    </summary>
-    <div class="section-content">
-    <div class="card" style="margin-bottom:16px">
-      <div style="font-weight:700;font-size:13px;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">Regel</div>
-      <ul style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text);list-style:none">
-        <li style="display:flex;gap:8px"><span style="color:var(--amber);font-weight:700;flex-shrink:0">→</span>Überbrückungskonferenz durch die Tagesklinik auf den offenen stationären Fall erfassbar</li>
-        <li style="display:flex;gap:8px"><span style="color:var(--amber);font-weight:700;flex-shrink:0">→</span><strong>Bedingung 1:</strong> Tagesklinik übernimmt die Nachbehandlung vollumfänglich</li>
-        <li style="display:flex;gap:8px"><span style="color:var(--amber);font-weight:700;flex-shrink:0">→</span><strong>Bedingung 2:</strong> Kein externer Therapeut parallel beteiligt</li>
-      </ul>
-    </div>
-
-<div class="do-dont">
-  <div class="do-box">
-    <h4>✓ Gilt für</h4>
-    <ul>
-      <li>Wechsel stationär → ambulant / teilstationär</li>
-      <li>Tagesklinik übernimmt Nachbehandlung vollumfänglich</li>
-    </ul>
-  </div>
-  <div class="dont-box">
-    <h4>✕ Gilt nicht für</h4>
-    <ul>
-      <li>Umgekehrte Richtung (ambulant → stationär)</li>
-      <li>Ambulant → ambulant</li>
-      <li>Externer Therapeut parallel beteiligt</li>
-    </ul>
-  </div>
-</div>
-</div>
-
-  </details>
-
   <!-- ─── SZENARIEN ─── -->
 
-  <details open class="section section-accordion" id="szenarien">
+  <details class="section section-accordion" id="szenarien">
     <summary>
-      <div class="section-title">
-      <span class="num">13</span>
+      <h2 class="section-title">
+      <span class="num">12</span>
       Alltagsszenarien
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Typische Situationen aus dem Tagesklinik-Alltag für Psychologinnen.</p>
     </summary>
     <div class="section-content">
@@ -2494,7 +2591,10 @@ justify-content: center;
       <div class="scenario-q">💬 Mutter schickt abends SMS über Verschlechterung — Psychologin antwortet nächsten Morgen per E-Mail (klinisch relevant, 10 Min)</div>
       <div class="scenario-think">Zeitversetzt · asynchron · nicht synchron am Telefon · Antwort am Folgetag</div>
       <span class="scenario-answer">→ EA.05.0080 (zeitversetzt, 1×/Tag, max. 4×/30 Tage)</span>
-      <p style="font-size:12px;color:var(--slate-light);margin:6px 0 0;line-height:1.5">Hätte die Psychologin stattdessen direkt telefoniert (synchron, 20 Min Rückmeldung): → <strong>EA.00.0110</strong> (Verlaufskonsultation). Hätte es ein volles therapeutisches Gespräch am Telefon gegeben (45 Min): → <strong>PA011</strong> (fernmündliche Sitzung).</p>
+      <div class="scenario-distinction">
+        <div class="scenario-distinction-label">Abgrenzungshilfe</div>
+        Hätte die Psychologin stattdessen direkt telefoniert (synchron, 20 Min Rückmeldung): → <strong>EA.00.0110</strong> (Verlaufskonsultation). Hätte es ein volles therapeutisches Gespräch am Telefon gegeben (45 Min): → <strong>PA011</strong> (fernmündliche Sitzung).
+      </div>
     </div>
   </div>
 
@@ -2505,12 +2605,12 @@ justify-content: center;
 
   <!-- ─── KURZFASSUNG ─── -->
 
-  <details open class="section section-accordion" id="kurzfassung">
+  <details class="section section-accordion" id="kurzfassung">
     <summary>
-      <div class="section-title">
-      <span class="num">14</span>
+      <h2 class="section-title">
+      <span class="num">13</span>
       11 wichtigste Praxisregeln
-    <span class="accordion-icon">&#x25BC;</span></div>
+    <span class="accordion-icon">&#x25BC;</span></h2>
       <p class="section-lead">Die Kurzfassung für den Tagesklinik-Alltag.</p>
     </summary>
     <div class="section-content">
@@ -2573,27 +2673,27 @@ justify-content: center;
 <!-- BUTTON BAR -->
 
 <div class="btn-bar">
-  <a class='dl-btn' href='files/spickzettel-psych-print.html' style='background:#4f46e5;color:white;' target='_blank'>
+  <a class='dl-btn' href='/files/spickzettel-psych-print' style='background:#4f46e5;color:white;' target='_blank'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
     Spickzettel
   </a>
-  <a class='dl-btn' href='files/positionen-psych-print.html' style='background:#4f46e5;color:white;' target='_blank'>
+  <a class='dl-btn' href='/files/positionen-psych-print' style='background:#4f46e5;color:white;' target='_blank'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
     Positionen
   </a>
-  <a class='dl-btn' href='files/verlaufseintrag-psych-print.html' style='background:#4338ca;color:white;' target='_blank'>
+  <a class='dl-btn' href='/files/verlaufseintrag-psych-print' style='background:#4338ca;color:white;' target='_blank'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
     Verlaufseintrag
   </a>
-  <a class='dl-btn' href='files/entscheidungsbaum-psych-print.html' style='background:#0369a1;color:white;' target='_blank'>
+  <a class='dl-btn' href='/files/entscheidungsbaum-psych-print' style='background:#0369a1;color:white;' target='_blank'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
     Entscheidungsbaum
   </a>
-  <a class='dl-btn' href='files/diagnostik-psych-print.html' style='background:#6d28d9;color:white;' target='_blank'>
+  <a class='dl-btn' href='/files/diagnostik-psych-print' style='background:#6d28d9;color:white;' target='_blank'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
     Diagnostik
   </a>
-  <a class='dl-btn' href='files/krisen-leitfaden-psych-print.html' style='background:#b91c1c;color:white;' target='_blank'>
+  <a class='dl-btn' href='/files/krisen-leitfaden-psych-print' style='background:#b91c1c;color:white;' target='_blank'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
     Krisen-Leitfaden
   </a>
@@ -2626,7 +2726,7 @@ justify-content: center;
     { code:'EA.05.0130', alias:['PK015','PK010'], name:'Ext. Behandler-Besprechung', limit:'LAP altersgesteuert', detail:'Ausserhalb regulärer Rapporte', section:'lap-topf', cat:'lap' },
     { code:'EA.05.0140', alias:['PE030'], name:'Diagnostik-/Therapieplanung', limit:'15 Min · 1×/90 T', detail:'Schriftliches Ergebnis zwingend', section:'lap-topf', cat:'lap' },
     { code:'EA.00.0130', alias:[], name:'Telemedizinische Krisenintervention', limit:'Unbegrenzt', detail:'Krise · Anordnung B · telemedizinisch', section:'krise', cat:'krise' },
-    { code:'EA.05.0120', alias:[], name:'Auskünfte Angehörige', limit:'LAP-Topf', detail:'Ohne Patient · fachlicher Austausch', section:'lap-topf', cat:'lap' },
+    { code:'EA.05.0120', alias:[], name:'Auskünfte Angehörige', limit:'Separates Budget', detail:'Ohne Patient · fachlicher Austausch · Sonderfall', section:'lap-topf', cat:'lap' },
   ];
 
   // Category labels for display
@@ -2783,6 +2883,52 @@ justify-content: center;
       navToggle.querySelector('.nav-toggle-icon').textContent = isOpen ? '✕' : '☰';
       if (navMobileTitle) navMobileTitle.textContent = isOpen ? 'Schliessen' : '☰ Navigation';
       document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // SIDEBAR TOGGLE (Desktop — off-canvas)
+  // ═══════════════════════════════════════════════════════
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const sidebarNav = document.querySelector('.sidebar-nav');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  function closeSidebar() {
+    if (sidebarNav) sidebarNav.classList.remove('sidebar-open');
+    if (sidebarOverlay) sidebarOverlay.classList.remove('visible');
+    if (sidebarToggle) sidebarToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  if (sidebarToggle && sidebarNav) {
+    sidebarToggle.addEventListener('click', () => {
+      const isOpen = sidebarNav.classList.toggle('sidebar-open');
+      sidebarOverlay.classList.toggle('visible', isOpen);
+      sidebarToggle.setAttribute('aria-expanded', isOpen);
+    });
+  }
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', closeSidebar);
+  }
+
+  // Close sidebar when clicking a nav link inside it
+  sidebarNav && sidebarNav.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => { closeSidebar(); });
+  });
+
+  // ═══════════════════════════════════════════════════════
+  // SEARCH FOCUS — show filter chips only when active
+  // ═══════════════════════════════════════════════════════
+  const qtSearch = document.querySelector('.qt-search');
+  const searchInput = document.getElementById('searchInput');
+  if (qtSearch && searchInput) {
+    searchInput.addEventListener('focus', () => { qtSearch.classList.add('search-active'); });
+    searchInput.addEventListener('blur', () => {
+      setTimeout(() => {
+        if (!searchInput.value) qtSearch.classList.remove('search-active');
+      }, 200);
+    });
+    searchInput.addEventListener('input', () => {
+      if (searchInput.value) qtSearch.classList.add('search-active');
     });
   }
 
@@ -2999,6 +3145,16 @@ justify-content: center;
   }
 
   function bindResultClicks() {
+    // Add close button
+    var closeHtml = '<div class="sr-close"><button class="sr-close-btn" aria-label="Schliessen">&times;</button></div>';
+    searchResults.insertAdjacentHTML('afterbegin', closeHtml);
+    searchResults.querySelector('.sr-close-btn').addEventListener('click', function() {
+      searchResults.classList.remove('visible');
+      searchInput.value = '';
+      activeFilter = null;
+      searchFiltersEl.querySelectorAll('.sf-chip').forEach(function(c) { c.classList.remove('active'); });
+    });
+
     searchResults.querySelectorAll('.sr-clickable').forEach(function(item) {
       item.style.cursor = 'pointer';
       item.addEventListener('click', function() {
@@ -3062,6 +3218,10 @@ justify-content: center;
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.qt-search')) {
       searchResults.classList.remove('visible');
+      if (activeFilter) {
+        activeFilter = null;
+        searchFiltersEl.querySelectorAll('.sf-chip').forEach(function(c) { c.classList.remove('active'); });
+      }
     }
   });
 
@@ -3085,6 +3245,37 @@ justify-content: center;
       navigateToCode(sectionId, code);
     });
   });
+
+  // ═══════════════════════════════════════════════════════
+  // MOBILE TOOLTIP TOGGLE (N4)
+  // ═══════════════════════════════════════════════════════
+  function setupMobileTooltips() {
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    var tips = document.querySelectorAll('.code-tip');
+    tips.forEach(function(tip) {
+      // Remove old toggles if resizing
+      var oldToggle = tip.querySelector('.tip-toggle');
+      if (oldToggle) oldToggle.remove();
+      tip.classList.remove('tip-open');
+
+      if (isMobile) {
+        var toggle = document.createElement('span');
+        toggle.className = 'tip-toggle';
+        toggle.textContent = 'mehr…';
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var isOpen = tip.classList.toggle('tip-open');
+          toggle.textContent = isOpen ? 'weniger' : 'mehr…';
+        });
+        tip.appendChild(toggle);
+      }
+    });
+  }
+  setupMobileTooltips();
+  window.addEventListener('resize', (function() {
+    var timer;
+    return function() { clearTimeout(timer); timer = setTimeout(setupMobileTooltips, 250); };
+  })());
 </script>
 
 <!-- Back to Top Button -->

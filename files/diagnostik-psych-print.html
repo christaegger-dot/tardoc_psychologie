@@ -2,114 +2,167 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Diagnostik-Übersicht TARDOC EA.05 für Psychologinnen mit PT-Ausbildung. Alle Diagnostik-Codes, Limiten und Abläufe auf einen Blick.">
-<meta property="og:title" content="Diagnostik-Übersicht · Tarif-Kompass 2026 · Psychologinnen">
-<meta property="og:description" content="TARDOC EA.05 Diagnostik-Übersicht: Testdurchführung, Auswertung, Limiten und häufige Fehler.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://tardoc-psychologiekjpp.netlify.app/files/diagnostik-psych-print.html">
-<meta property="og:locale" content="de_CH">
-<link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/files/diagnostik-psych-print.html">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%234338ca'/><text x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'>T</text></svg>">
-<title>Diagnostik-Übersicht · Tarif-Kompass 2026 · Psychologinnen</title>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" as="style">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../shared-print.css">
+<title>Diagnostik EA.05 · Tarif-Kompass 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-/* ── LAYOUT ── */
-.body { flex: 1; padding: 5mm 14mm 4mm; display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
-.col { display: flex; flex-direction: column; gap: 3.5mm; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── STAT-KARTEN ── */
-.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
-.stat { border-radius: 7px; padding: 6px 9px; display: flex; justify-content: space-between; align-items: flex-start; }
-.stat.i { background: var(--ind-l); border: 1.5px solid var(--ind-m); }
-.stat.p { background: var(--purple-l); border: 1.5px solid var(--purple-m); }
-.stat-txt h4 { font-size: 8pt; font-weight: 700; color: var(--ink); margin-bottom: 1px; }
-.stat-txt p { font-size: 6.5pt; color: var(--soft); line-height: 1.4; }
-.stat-n { font-family: 'Playfair Display', serif; font-size: 20pt; line-height: 1; text-align: right; }
-.stat-n span { font-family: 'Source Sans 3', sans-serif; font-size: 6.5pt; font-weight: 400; display: block; color: var(--soft); }
+:root {
+  --ink:    #1A3560;
+  --ind:    #4338CA;
+  --ind-s:  #EEF2FF;
+  --ind-m:  #A5B4FC;
+  --teal:   #0A7C71;
+  --teal-s: #E0F2EF;
+  --teal-m: #A7D9D5;
+  --purp:   #7C3AED;
+  --purp-s: #F3EEFF;
+  --purp-m: #C4B5FD;
+  --amber:  #D97706;
+  --amb-s:  #FFFBEB;
+  --amb-m:  #FCD34D;
+  --rose:   #BE123C;
+  --rose-s: #FFF1F3;
+  --rose-m: #FECDD3;
+  --green:  #059669;
+  --grn-s:  #ECFDF5;
+  --grn-m:  #6EE7B7;
+  --slate:  #475569;
+  --sl-l:   #94A3B8;
+  --line:   #E2E8F0;
+  --text:   #1E293B;
+  --bg:     #F1F5F9;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 9pt;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media screen {
+  body { padding: 24px 16px 48px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+}
+
+/* ── A4 Sheet ── */
+.sheet {
+  width: 210mm; max-width: 100%;
+  background: white;
+  display: flex; flex-direction: column;
+}
+@media screen { .sheet { box-shadow: 0 4px 28px rgba(0,0,0,.14); } }
+
+/* ── Masthead ── */
+.mast {
+  background: var(--ink); padding: 9mm 14mm 8mm;
+  position: relative; overflow: hidden; flex-shrink: 0;
+}
+.mast::after {
+  content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 50mm;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,.18));
+  pointer-events: none;
+}
+.mast-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3mm; }
+.mast h1 { font-family: 'Playfair Display', serif; font-size: 26pt; color: white; line-height: 1.05; }
+.mast h1 em { color: #A5B4FC; font-style: normal; }
+.mast-sub { font-size: 8.5pt; color: rgba(255,255,255,.5); font-weight: 300; margin-top: 3px; }
+.mast-meta { text-align: right; font-size: 7.5pt; color: rgba(255,255,255,.4); line-height: 1.6; position: relative; z-index: 1; flex-shrink: 0; }
+.mast-meta strong { color: #A5B4FC; font-size: 8.5pt; display: block; margin-bottom: 1px; }
+
+/* ── Body layout: 2 columns ── */
+.body { flex: 1; padding: 6mm 14mm 5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.col { display: flex; flex-direction: column; gap: 4.5mm; }
+
+/* ── Section header ── */
+.sec { display: flex; align-items: center; gap: 7px; margin-bottom: 3mm; }
+.sec-bar { width: 3px; height: 16px; border-radius: 2px; flex-shrink: 0; }
+.sec h2 { font-size: 7pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.sec-rule { flex: 1; height: 1px; background: var(--line); }
+
+/* ── Stat cards ── */
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+.stat { border-radius: 9px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: flex-start; }
+.stat.i { background: var(--ind-s); border: 1.5px solid var(--ind-m); }
+.stat.p { background: var(--purp-s); border: 1.5px solid var(--purp-m); }
+.stat-txt h4 { font-size: 9pt; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+.stat-txt p { font-size: 7.5pt; color: var(--slate); line-height: 1.45; }
+.stat-n { font-family: 'Playfair Display', serif; font-size: 24pt; line-height: 1; text-align: right; flex-shrink: 0; margin-left: 6px; }
+.stat-n span { font-family: 'Inter', sans-serif; font-size: 7pt; font-weight: 400; display: block; color: var(--slate); }
 .stat.i .stat-n { color: var(--ind); }
-.stat.p .stat-n { color: var(--purple); }
+.stat.p .stat-n { color: var(--purp); }
 
-/* ── VERGLEICHSTABELLE ── */
-.cmp { background: white; border: 1.5px solid var(--line); border-radius: 8px; overflow: hidden; }
-.cmp-head { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--ink); color: white; padding: 5px 10px; font-size: 6pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; gap: 6px; }
-.cmp-row { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 5px 10px; border-bottom: 1px solid var(--line); font-size: 7.5pt; gap: 6px; align-items: center; }
+/* ── Comparison table ── */
+.cmp { background: white; border: 1.5px solid var(--line); border-radius: 9px; overflow: hidden; }
+.cmp-head { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--ink); color: white; padding: 6px 11px; font-size: 6.5pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; gap: 6px; }
+.cmp-row { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 6px 11px; border-bottom: 1px solid var(--line); font-size: 8pt; gap: 6px; align-items: center; }
 .cmp-row:last-child { border-bottom: none; }
-.cmp-row:nth-child(even) { background: #fafbfc; }
+.cmp-row:nth-child(even) { background: #FAFBFC; }
 .cmp-lbl { font-weight: 600; color: var(--ink); }
 .cmp-val { font-weight: 700; }
-.cmp-val.i { color: var(--ind); } .cmp-val.p { color: var(--purple); }
+.cmp-val.i { color: var(--ind); }
+.cmp-val.p { color: var(--purp); }
 .cmp-yes { color: var(--green); font-weight: 700; }
-.cmp-no { color: var(--rose); font-weight: 700; }
+.cmp-no  { color: var(--rose);  font-weight: 700; }
 
-/* ── ABLAUF-TIMELINE ── */
+/* ── Info box (Kleindiagnostik) ── */
+.info-box { background: #F8FAFC; border: 1.5px solid var(--line); border-left: 4px solid var(--teal); border-radius: 8px; padding: 9px 12px; }
+.info-box h4 { font-size: 9pt; font-weight: 700; color: var(--teal); margin-bottom: 4px; }
+.info-box p { font-size: 8pt; color: var(--slate); line-height: 1.5; }
+
+/* ── Timeline ── */
 .tl { display: flex; flex-direction: column; gap: 0; }
-.tl-step { display: grid; grid-template-columns: 28px 1fr; gap: 6px; }
+.tl-step { display: grid; grid-template-columns: 30px 1fr; gap: 7px; }
 .tl-dot { display: flex; flex-direction: column; align-items: center; }
-.tl-circle { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.tl-circle.i { background: var(--ind); } .tl-circle.p { background: var(--purple); } .tl-circle.t { background: var(--teal); }
-.tl-line { width: 1.5px; flex: 1; background: var(--line); margin-top: 2px; }
-.tl-content { padding-bottom: 4mm; }
-.tl-content h4 { font-size: 8pt; font-weight: 700; color: var(--ink); margin-bottom: 1px; }
-.tl-content p { font-size: 7pt; color: var(--soft); line-height: 1.4; }
-.tl-code { font-size: 6.5pt; font-weight: 700; display: inline-block; padding: 1px 6px; border-radius: 8px; margin-bottom: 2px; }
-.tl-code.i { background: var(--ind-l); color: var(--ind); }
-.tl-code.p { background: var(--purple-l); color: var(--purple); }
+.tl-circle { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.tl-circle.i { background: var(--ind); }
+.tl-circle.p { background: var(--purp); }
+.tl-circle.t { background: var(--teal); }
+.tl-line { width: 2px; flex: 1; background: var(--line); margin-top: 3px; }
+.tl-content { padding-bottom: 5mm; }
+.tl-content h4 { font-size: 9pt; font-weight: 700; color: var(--ink); margin-bottom: 2px; line-height: 1.3; }
+.tl-content p { font-size: 7.5pt; color: var(--slate); line-height: 1.45; }
+.tl-code { font-size: 7pt; font-weight: 700; display: inline-block; padding: 2px 8px; border-radius: 8px; margin-bottom: 3px; }
+.tl-code.i { background: var(--ind-s); color: var(--ind); }
+.tl-code.p { background: var(--purp-s); color: var(--purp); }
+.tl-code.t { background: var(--teal-s); color: var(--teal); }
 
-/* ── DO/DONT ── */
-.dd { border-radius: 7px; padding: 6px 9px; }
-.dd.do { background: var(--green-l); border: 1.5px solid rgba(52,211,153,.35); }
-.dd.dont { background: var(--rose-l); border: 1.5px solid var(--rose-m); }
-.dd h4 { font-size: 7.5pt; font-weight: 700; margin-bottom: 3px; }
-.dd.do h4 { color: var(--green); } .dd.dont h4 { color: var(--rose); }
-.dd li { font-size: 7pt; color: var(--mid); line-height: 1.35; margin-bottom: 2px; }
-.dd ul { list-style: none; display: flex; flex-direction: column; gap: 1.5px; }
-.dd.do li::before { content: '✓ '; font-weight: 700; color: var(--green); }
-.dd.dont li::before { content: '✕ '; font-weight: 700; color: var(--rose); }
+/* ── Do / Don't ── */
+.dd { border-radius: 9px; padding: 9px 12px; }
+.dd.do   { background: var(--grn-s); border: 1.5px solid var(--grn-m); }
+.dd.dont { background: var(--rose-s); border: 1.5px solid var(--rose-m); }
+.dd h4 { font-size: 9pt; font-weight: 700; margin-bottom: 5px; }
+.dd.do   h4 { color: var(--green); }
+.dd.dont h4 { color: var(--rose); }
+.dd ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+.dd li { font-size: 8pt; color: var(--text); line-height: 1.4; display: flex; gap: 5px; }
+.dd.do   li::before { content: '✓'; font-weight: 700; color: var(--green); flex-shrink: 0; }
+.dd.dont li::before { content: '✕'; font-weight: 700; color: var(--rose); flex-shrink: 0; }
 
-/* ── WARNBOX ── */
-.wb { background: var(--amber-l); border: 1.5px solid var(--amber-m); border-radius: 7px; padding: 5px 9px; }
-.wb h4 { font-size: 7.5pt; font-weight: 700; color: var(--amber); margin-bottom: 2px; }
-.wb p { font-size: 7pt; color: #6b3700; line-height: 1.4; }
+/* ── Warning box ── */
+.wb { background: var(--amb-s); border: 1.5px solid var(--amb-m); border-radius: 9px; padding: 9px 12px; }
+.wb h4 { font-size: 9pt; font-weight: 700; color: var(--amber); margin-bottom: 4px; }
+.wb p  { font-size: 8pt; color: #78350F; line-height: 1.5; }
 
-/* ── KLEINDIAGNOSTIK ── */
-.mini { background: #f0f2f5; border: 1.5px solid var(--line); border-radius: 7px; padding: 5px 9px; }
-.mini h4 { font-size: 7.5pt; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
-.mini p { font-size: 7pt; color: var(--mid); line-height: 1.4; }
+/* ── Footer ── */
+.ft { border-top: 1px solid var(--line); padding: 3mm 14mm; display: flex; justify-content: space-between; flex-shrink: 0; margin-top: auto; }
+.ft span { font-size: 7pt; color: var(--sl-l); }
+
+/* ── Print ── */
+@media print {
+  body { background: white; padding: 0; display: block; }
+  .sheet { box-shadow: none; width: 210mm; }
+  @page { size: A4; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
 </style>
 </head>
 <body>
 
-<nav class="printbar" aria-label="Seitennavigation">
-  <div class="printbar-label"><strong>Diagnostik-Übersicht Psychologinnen</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
-  <a class="pbtn pbtn-ghost" href="../index.html">← Zurück</a>
-  <button class="pbtn pbtn-dark" id="printBtn" onclick="handlePrint()" aria-label="Seite als PDF drucken oder speichern">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-    <span id="printBtnLabel">Als PDF drucken</span>
-  </button>
-</nav>
-<div class="ios-hint" id="iosHint">
-  <strong>PDF auf iPhone/iPad speichern:</strong>
-  Tippe unten auf das Teilen-Symbol (Quadrat mit Pfeil nach oben) → «Als PDF sichern» oder «Drucken» → dann mit zwei Fingern auf die Vorschau zoomen → «Teilen» → «In Dateien sichern».
-</div>
-<script>
-function handlePrint() {
-  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  if (isIOS) {
-    document.getElementById('iosHint').classList.toggle('visible');
-  } else {
-    window.print();
-  }
-}
-(function(){
-  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  if (isIOS) { document.getElementById('printBtnLabel').textContent = 'PDF speichern — Anleitung'; }
-})();
-</script>
-
 <main class="sheet">
+
   <header class="mast">
     <div class="mast-top">
       <div>
@@ -118,7 +171,7 @@ function handlePrint() {
       </div>
       <div class="mast-meta">
         <strong>TARDOC · EA.05</strong>
-        Gültig ab 01.01.2026<br>tardoc-psychologiekjpp.netlify.app
+        Gültig ab 01.01.2026
       </div>
     </div>
   </header>
@@ -130,14 +183,20 @@ function handlePrint() {
 
       <!-- Hauptlimiten -->
       <div>
-        <div class="sec"><div class="sec-bar i"></div><h2>Diagnostik-Limiten</h2><div class="sec-rule"></div></div>
+        <div class="sec"><div class="sec-bar" style="background:var(--ind)"></div><h2>Diagnostik-Limiten</h2><div class="sec-rule"></div></div>
         <div class="stat-grid">
           <div class="stat i">
-            <div class="stat-txt"><h4>Durchführung PA220</h4><p>EA.05.0150 · Patient anwesend<br>Richtwert 60 Min (TtT S.10)</p></div>
+            <div class="stat-txt">
+              <h4>Durchführung PA220</h4>
+              <p>EA.05.0150 · Patient anwesend<br>Richtwert 60 Min (TtT S.10)</p>
+            </div>
             <div class="stat-n">180<span>Min/90T</span></div>
           </div>
           <div class="stat p">
-            <div class="stat-txt"><h4>Auswertung PE020</h4><p>In Abwesenheit Patient<br>Richtwert 80 Min (TtT S.10)</p></div>
+            <div class="stat-txt">
+              <h4>Auswertung PE020</h4>
+              <p>In Abwesenheit Patient<br>Richtwert 80 Min (TtT S.10)</p>
+            </div>
             <div class="stat-n">240<span>Min/90T</span></div>
           </div>
         </div>
@@ -145,7 +204,7 @@ function handlePrint() {
 
       <!-- Vergleichstabelle -->
       <div>
-        <div class="sec"><div class="sec-bar p"></div><h2>Durchführung vs. Auswertung</h2><div class="sec-rule"></div></div>
+        <div class="sec"><div class="sec-bar" style="background:var(--purp)"></div><h2>Durchführung vs. Auswertung</h2><div class="sec-rule"></div></div>
         <div class="cmp">
           <div class="cmp-head"><div>Eigenschaft</div><div>PA220 Durchführung</div><div>PE020 Auswertung</div></div>
           <div class="cmp-row"><div class="cmp-lbl">EA.05-Ziffer</div><div class="cmp-val i">EA.05.0150</div><div class="cmp-val p">PE020 (intern)</div></div>
@@ -161,11 +220,9 @@ function handlePrint() {
       </div>
 
       <!-- Kleindiagnostik -->
-      <div>
-        <div class="mini">
-          <h4>Kleindiagnostik (&lt;20 Min)</h4>
-          <p>Kurze Tests unter 20 Minuten: intern über <strong>PA010 + PE010</strong> erfassen statt grossen Diagnostikblock aktivieren. Kein PA220/PE020 nötig.</p>
-        </div>
+      <div class="info-box">
+        <h4>Kleindiagnostik (&lt;20 Min)</h4>
+        <p>Kurze Tests unter 20 Minuten: intern über <strong>PA010 + PE010</strong> erfassen — kein grosser Diagnostikblock nötig. PA220/PE020 nur bei vollständiger Testbatterie aktivieren.</p>
       </div>
 
     </div>
@@ -175,7 +232,7 @@ function handlePrint() {
 
       <!-- Ablauf-Timeline -->
       <div>
-        <div class="sec"><div class="sec-bar t"></div><h2>Typischer Ablauf (3 Abklärungssitzungen)</h2><div class="sec-rule"></div></div>
+        <div class="sec"><div class="sec-bar" style="background:var(--teal)"></div><h2>Typischer Ablauf (3 Abklärungssitzungen)</h2><div class="sec-rule"></div></div>
         <div class="tl">
           <div class="tl-step">
             <div class="tl-dot"><div class="tl-circle i"></div><div class="tl-line"></div></div>
@@ -189,7 +246,7 @@ function handlePrint() {
             <div class="tl-dot"><div class="tl-circle i"></div><div class="tl-line"></div></div>
             <div class="tl-content">
               <span class="tl-code i">PA220 · EA.05.0150</span>
-              <h4>2.+3. Sitzung — Weitere Durchführung</h4>
+              <h4>2. + 3. Sitzung — Weitere Durchführung</h4>
               <p>Je ca. 60 Min · kumuliert max. 180 Min im 90-Tage-Fenster · Verhalten und Auffälligkeiten notieren</p>
             </div>
           </div>
@@ -204,16 +261,16 @@ function handlePrint() {
           <div class="tl-step">
             <div class="tl-dot"><div class="tl-circle t"></div></div>
             <div class="tl-content">
-              <span class="tl-code" style="background:var(--teal-l);color:var(--teal)">PA010 + PE010</span>
-              <h4>Rückmeldung an Patient/Familie</h4>
+              <span class="tl-code t">PA010 + PE010</span>
+              <h4>Rückmeldung an Patient / Familie</h4>
               <p>Reguläre Sitzung PA010 (75 Min) + PE010 (15 Min) · Ergebnisse besprechen</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Do/Don't -->
-      <div style="display:flex;flex-direction:column;gap:2.5mm">
+      <!-- Do / Don't -->
+      <div style="display:flex;flex-direction:column;gap:3.5mm">
         <div class="dd do">
           <h4>So funktioniert Diagnostik korrekt</h4>
           <ul>
@@ -229,15 +286,15 @@ function handlePrint() {
             <li>Testabklärung in normale Sitzung hineinrechnen</li>
             <li>EA.05.0150 + EA.05.0010/0030 am selben Tag buchen</li>
             <li>Auswertungszeit als freies Zusatzbudget betrachten</li>
-            <li>Interpretation selbst vornehmen statt Psychiater/psych. PT</li>
+            <li>Interpretation selbst vornehmen statt Psychiater / psych. PT</li>
           </ul>
         </div>
       </div>
 
-      <!-- Warnbox -->
+      <!-- Warning box -->
       <div class="wb">
         <h4>⚠ Kein freies Zusatzbudget</h4>
-        <p>Die 240 Min PE020 sind kein «Bonusbudget» zur freien Verfügung. Auswertungszeit ist strikt an Testdiagnostik gebunden und muss dokumentiert werden.</p>
+        <p>Die 240 Min PE020 sind kein «Bonusbudget» zur freien Verfügung. Auswertungszeit ist strikt an Testdiagnostik gebunden und muss lückenlos dokumentiert werden. Versicherer kann Begründung verlangen.</p>
       </div>
 
     </div>
@@ -245,8 +302,9 @@ function handlePrint() {
 
   <footer class="ft">
     <span>Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</span>
-    <span>TARDOC Kapitel EA.05 · tardoc-psychologiekjpp.netlify.app</span>
+    <span>TARDOC Kapitel EA.05 · Gültig ab 01.01.2026</span>
   </footer>
+
 </main>
 </body>
 </html>

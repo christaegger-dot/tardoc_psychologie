@@ -222,6 +222,31 @@ body {
   @page { size: A4; margin: 0; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+
+/* ── RESPONSIVE MOBILE (max 600px) ── */
+@media screen and (max-width: 600px) {
+  body { font-size: 13px; }
+  .sheet { padding: 14px 12px !important; border-radius: 0 !important; }
+  .pbtn { font-size: 11px; padding: 5px 10px; }
+  .pbtn-breadcrumb { font-size: 10px; }
+  /* Tables: allow horizontal scroll */
+  table { font-size: 11px; }
+  .printbar { flex-wrap: wrap; gap: 6px; }
+}
+
+@media screen and (max-width: 600px) {
+  /* Legend pills: wrap */
+  .legend { flex-wrap: wrap; gap: 4px; }
+  /* Main table: allow horizontal scroll */
+  .pos-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pos-table { font-size: 10px; min-width: 500px; }
+  /* Page 2: dg-grid 2-col → 1-col */
+  .dg-grid { grid-template-columns: 1fr !important; }
+  /* Page 2: two-column sections → stack */
+  .page2-cols { flex-direction: column !important; }
+  .page2-cols > div { width: 100% !important; }
+}
+
 </style>
   <noscript><style>* { opacity: 1 !important; visibility: visible !important; }</style></noscript>
 </head>

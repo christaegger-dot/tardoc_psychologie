@@ -174,6 +174,31 @@ body {
   .pbtn-breadcrumb span { color: #cbd5e1; }
   @media print { .pbtn-breadcrumb { display: none !important; } }
   .pbtn-dark  { background: var(--ink); color: white; }
+
+/* ── RESPONSIVE MOBILE (max 600px) ── */
+@media screen and (max-width: 600px) {
+  body { font-size: 13px; }
+  .sheet { padding: 14px 12px !important; border-radius: 0 !important; }
+  .pbtn { font-size: 11px; padding: 5px 10px; }
+  .pbtn-breadcrumb { font-size: 10px; }
+  /* Tables: allow horizontal scroll */
+  table { font-size: 11px; }
+  .printbar { flex-wrap: wrap; gap: 6px; }
+}
+
+@media screen and (max-width: 600px) {
+  /* cols2: 2-col → 1-col */
+  .cols2 { grid-template-columns: 1fr !important; }
+  /* KB boxes: stack */
+  .kb { font-size: 12px; }
+  /* Documentation checklists: full width */
+  .doc-list { font-size: 12px; }
+  /* Main table: horizontal scroll */
+  table { font-size: 11px; overflow-x: auto; display: block; }
+  /* Warning box */
+  .warn-box { font-size: 11px; }
+}
+
 </style>
   <noscript><style>* { opacity: 1 !important; visibility: visible !important; }</style></noscript>
 </head>

@@ -214,6 +214,31 @@ body {
   .tc { break-inside: avoid; }
   .cols3, .cols2 { break-inside: avoid; }
 }
+
+/* ── RESPONSIVE MOBILE (max 600px) ── */
+@media screen and (max-width: 600px) {
+  body { font-size: 13px; }
+  .sheet { padding: 14px 12px !important; border-radius: 0 !important; }
+  .pbtn { font-size: 11px; padding: 5px 10px; }
+  .pbtn-breadcrumb { font-size: 10px; }
+  /* Tables: allow horizontal scroll */
+  table { font-size: 11px; }
+  .printbar { flex-wrap: wrap; gap: 6px; }
+}
+
+@media screen and (max-width: 600px) {
+  /* cols3 and cols2: stack to 1 column */
+  .cols3 { grid-template-columns: 1fr !important; }
+  .cols2 { grid-template-columns: 1fr !important; }
+  /* Inline grid styles: also override */
+  [style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  [style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  /* Form fields: full width */
+  .form-field { width: 100% !important; }
+  /* Card headers */
+  .card-header { font-size: 12px; }
+}
+
 </style>
   <noscript><style>* { opacity: 1 !important; visibility: visible !important; }</style></noscript>
 </head>

@@ -269,6 +269,36 @@ body {
   .pbtn-breadcrumb span { color: #cbd5e1; }
   @media print { .pbtn-breadcrumb { display: none !important; } }
   .pbtn-dark  { background: var(--ink); color: white; }
+
+/* ── RESPONSIVE MOBILE (max 600px) ── */
+@media screen and (max-width: 600px) {
+  body { font-size: 13px; }
+  .sheet { padding: 14px 12px !important; border-radius: 0 !important; }
+  .pbtn { font-size: 11px; padding: 5px 10px; }
+  .pbtn-breadcrumb { font-size: 10px; }
+  /* Tables: allow horizontal scroll */
+  table { font-size: 11px; }
+  .printbar { flex-wrap: wrap; gap: 6px; }
+}
+
+@media screen and (max-width: 600px) {
+  /* Tree: stack all branches vertically, no overflow */
+  .tree { overflow-x: hidden; min-width: 0; width: 100%; padding: 10px 8px; }
+  .split { flex-direction: column !important; align-items: stretch !important; width: 100% !important; max-width: 100% !important; }
+  .split::before { display: none !important; }
+  .arm { width: 100% !important; max-width: 100% !important; flex: none !important; box-sizing: border-box; }
+  .arm .v-line { height: 8px; }
+  /* All cards: full width */
+  .card { width: 100% !important; max-width: 100% !important; box-sizing: border-box; }
+  .two-col { grid-template-columns: 1fr !important; }
+  /* Footer: stack */
+  .footer { grid-template-columns: 1fr !important; }
+  /* Warning box */
+  .warn-box { font-size: 11px; }
+  /* Sheet: no side padding overflow */
+  .sheet { width: 100% !important; max-width: 100% !important; overflow: hidden; }
+}
+
 </style>
   <noscript><style>* { opacity: 1 !important; visibility: visible !important; }</style></noscript>
 </head>

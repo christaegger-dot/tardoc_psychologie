@@ -277,6 +277,40 @@ body {
   @page { size: A4; margin: 0; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+
+/* ── RESPONSIVE MOBILE (max 600px) ── */
+@media screen and (max-width: 600px) {
+  body { font-size: 13px; }
+  .sheet { padding: 14px 12px !important; border-radius: 0 !important; }
+  .pbtn { font-size: 11px; padding: 5px 10px; }
+  .pbtn-breadcrumb { font-size: 10px; }
+  /* Tables: allow horizontal scroll */
+  table { font-size: 11px; }
+  .printbar { flex-wrap: wrap; gap: 6px; }
+}
+
+@media screen and (max-width: 600px) {
+  /* Sheet: full width */
+  .sheet { width: 100% !important; max-width: 100% !important; overflow: hidden; }
+  /* Pills: wrap */
+  .pills { flex-wrap: wrap; gap: 3px; }
+  .pill { font-size: 10px; padding: 3px 7px; }
+  /* Main 2-column body: stack to 1 column */
+  .body { grid-template-columns: 1fr !important; }
+  /* Decision tree fork: stack */
+  .dt-fork { grid-template-columns: 1fr !important; }
+  /* Krisenlogik: stack */
+  .krise-row { grid-template-columns: 1fr !important; }
+  /* Tables: horizontal scroll */
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 11px; }
+  /* Limit list */
+  .lim-list { font-size: 11px; }
+  /* Cheat list */
+  .cheat { font-size: 11px; }
+  /* Warn box */
+  .warn-box { font-size: 11px; }
+}
+
 </style>
   <noscript><style>* { opacity: 1 !important; visibility: visible !important; }</style></noscript>
 </head>

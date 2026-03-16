@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- ============================================================
      Tarif-Kompass 2026 · Psychologinnen KJPP
-     Version: 1.2.3 · Stand: 16.03.2026
+     Version: 1.2.4 · Stand: 16.03.2026
      Gültig ab: 01.01.2026 (TARDOC EA.05)
      Repository: https://github.com/christaegger-dot/tardoc_psychologie
      Live: https://tardoc-psychologiekjpp.netlify.app/
@@ -150,6 +150,9 @@ color: #e0e7ff;
 /* ── LAYOUT ── */
 .main { max-width: 1100px; margin: 0 auto; padding: 40px 40px 80px; }
 
+/* ── SIDEBAR: standardmässig ausgeblendet, nur ab 1024px sichtbar ── */
+.sidebar-nav { display: none; }
+
 /* ── SIDEBAR LAYOUT ab 1024px ── */
 @media (min-width: 1024px) {
   .page-layout {
@@ -161,6 +164,7 @@ color: #e0e7ff;
     gap: 0;
   }
   .sidebar-nav {
+    display: block; /* Sidebar auf Desktop einblenden */
     position: sticky;
     top: 60px; /* unterhalb Quick-Tools-Bar */
     height: calc(100vh - 60px);

@@ -448,6 +448,28 @@ border: 6px solid transparent; border-top-color: var(--navy);
 .tip-title { font-weight: 700; margin-bottom: 3px; color: #c7d2fe; }
 .tip-limit { font-weight: 600; color: #fbbf24; }
 
+/* Mobile: Tooltips als Inline-Block statt Popup */
+@media (max-width: 768px) {
+  .code-tip .tip-box {
+    position: static;
+    transform: none;
+    width: 100%;
+    background: #f0f1ff;
+    color: var(--slate);
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 4px;
+    font-size: 11px;
+    box-shadow: none;
+    pointer-events: auto;
+    display: block;
+  }
+  .code-tip .tip-box::after { display: none; }
+  .tip-title { color: var(--indigo); font-size: 11px; }
+  .tip-limit { color: var(--amber); font-size: 11px; }
+  .code-tip { border-bottom: none; cursor: default; }
+}
+
 /* ── SECTION ── */
 .section, .section-accordion { margin-bottom: 52px; scroll-margin-top: 100px; }
 
@@ -1419,7 +1441,7 @@ justify-content: center;
 
 <div class="note indigo">
   <span class="note-icon">ℹ️</span>
-  <div><strong>Wichtigste Regel:</strong> Wenn sich ältere interne Psychologen-Folien und die aktuelle KJPP-Übersicht vom 01.01.2026 widersprechen, hat die <strong>neuere Übersicht + offizielle EA.05-Logik Vorrang</strong>. Das betrifft besonders die E-Mail-/Telemedizin-Limite.</div>
+  <div><strong>Wichtigste Regel:</strong> Wenn sich ältere interne Psychologen-Folien und die aktuelle KJPP-Übersicht vom 01.01.2026 widersprechen, hat die neuere Übersicht + offizielle EA.05-Logik Vorrang. Das betrifft besonders die E-Mail-/Telemedizin-Limite.</div>
 </div>
 </div>
 
@@ -1489,7 +1511,7 @@ justify-content: center;
     <div class="section-content">
     <div class="card-grid card-grid-2" style="margin-bottom:20px">
       <div class="limit-box">
-        <div class="limit-title">⏱ 4-Stunden-Regel (oberstes Limit)</div>
+        <div class="limit-title">4-Stunden-Regel (oberstes Limit)</div>
         <div class="limit-visual">
           <div class="limit-bar-track">
             <div class="limit-bar-fill" style="width:100%">4h</div>
@@ -1497,7 +1519,7 @@ justify-content: center;
           <div class="limit-num">240<span style="font-size:14px;font-weight:400;color:#64748b"> Min / Woche</span></div>
         </div>
         <div style="font-size:12px;color:var(--text-soft);margin-bottom:10px">Durchschnitt über 90 Tage / 7 Tage / Patient — exkl. Wegzeit</div>
-        <p class="limit-note">Alle Leistungsblöcke summieren sich: Sitzungen + Diagnostik + Telemedizin + Netzwerk + Krisenarbeit. Nicht nur die einzelne Ziffer muss stimmen — der <strong>Gesamtfall</strong> muss im Rahmen bleiben.</p>
+        <p class="limit-note">Alle Leistungsblöcke summieren sich: Sitzungen + Diagnostik + Telemedizin + Netzwerk + Krisenarbeit. Nicht nur die einzelne Ziffer muss stimmen — der Gesamtfall muss im Rahmen bleiben.</p>
         <div class="limit-exception">
           <span>⚡</span>
           <span><strong>Krise:</strong> Überschreitung möglich — aber mit inhaltlich tragfähiger Begründung im Verlauf. Versicherer kann Begründung verlangen.</span>
@@ -1505,7 +1527,7 @@ justify-content: center;
       </div>
 
   <div class="limit-box">
-    <div class="limit-title">🎯 Interne Jahresziele (100%-Pensum)</div>
+    <div class="limit-title">Interne Jahresziele (100%-Pensum)</div>
     <div class="prod-table">
       <div class="prod-row header">
         <div>Stufe</div>
@@ -1705,7 +1727,7 @@ justify-content: center;
 </div>
 </div>
 <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#64748b;line-height:1.5">
-  📝 Zusätzlich bei Auswärtsterminen: <strong>EA.05.0060 Wegzeit</strong> (max. 60 Min hin+zurück).<br>
+  Zusätzlich bei Auswärtsterminen: <strong>EA.05.0060 Wegzeit</strong> (max. 60 Min hin+zurück).<br>
   Bei PA230 Exposition: Wegzeit bereits inkludiert — nicht doppelt buchen.
 </div>
 </div>
@@ -1791,7 +1813,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Fernmündliche Sitzung (Telefon/Video synchron)</div>
-      <div class="pos-desc">Telefonat oder Video <strong>mit Patient/Familie in Echtzeit</strong> = Anwesenheitsleistung. Intern als eine Sitzung in der Anordnung. Max. <strong>75 Min.</strong> Unterscheiden von zeitversetzter Telemedizin!</div>
+      <div class="pos-desc">Telefonat oder Video mit Patient/Familie in Echtzeit = Anwesenheitsleistung. Intern als eine Sitzung in der Anordnung. Max. <strong>75 Min.</strong> Unterscheiden von zeitversetzter Telemedizin!</div>
     </div>
     <span class="pos-badge badge-anw">Anwesenheit</span>
   </div>
@@ -1851,19 +1873,19 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Expositionstherapie</div>
-      <div class="pos-desc">Eigene psychologenspezifische Ziffer. Max. <strong>360 Min / 180 Tage.</strong> <strong>Wegzeit ist intern inkludiert</strong> — nicht nochmals separat als EA.05.0060 buchen. + PE010 15 Min VN.</div>
+      <div class="pos-desc">Eigene psychologenspezifische Ziffer. Max. <strong>360 Min / 180 Tage.</strong> Wegzeit ist intern inkludiert — nicht nochmals separat als EA.05.0060 buchen. + PE010 15 Min VN.</div>
     </div>
     <span class="pos-badge badge-expo">Exposition</span>
   </div>
 
   <div class="pos-item">
     <div>
-      <span class="pos-code code-tip" tabindex="0">EA.05.0080<span class="tip-box"><span class="tip-title">Telemedizin zeitversetzt</span>E-Mail / asynchron · 6er-Regel veraltet!<br><span class="tip-limit">1×/Tag · 4×/30 Tage</span></span></span>
+      <span class="pos-code code-tip" tabindex="0">EA.05.0080<span class="tip-box"><span class="tip-title">Telemedizin zeitversetzt</span>E-Mail / asynchron<br><span class="tip-limit">1×/Tag · 4×/30 Tage</span></span></span>
       <span class="pos-code-sub">zeitversetzt</span>
     </div>
     <div>
       <div class="pos-name">Telemedizin zeitversetzt / E-Mail</div>
-      <div class="pos-desc">Asynchrone Kommunikation mit Patient. <strong>Max. 1× pro Tag, max. 4× pro 30 Tage.</strong> Gilt auch für E-Mail. Ältere 6er-Regel nicht mehr verwenden!</div>
+      <div class="pos-desc">Asynchrone Kommunikation mit Patient. <strong>Max. 1× pro Tag, max. 4× pro 30 Tage.</strong> Gilt auch für E-Mail.</div>
     </div>
     <span class="pos-badge badge-tel">Telemedizin</span>
   </div>
@@ -1875,7 +1897,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Wegzeit</div>
-      <div class="pos-desc">Reine effektive Wegzeit hin + zurück. Max. <strong>60 Min / Sitzung.</strong> Nicht Teil der 4h-Regel. <strong>Bei PA230 Exposition: Wegzeit bereits inkludiert — nicht doppelt buchen!</strong></div>
+      <div class="pos-desc">Reine effektive Wegzeit hin + zurück. Max. <strong>60 Min / Sitzung.</strong> Nicht Teil der 4h-Regel. Bei PA230 Exposition: Wegzeit bereits inkludiert — nicht doppelt buchen!</div>
     </div>
     <span class="pos-badge badge-weg">Wegzeit</span>
   </div>
@@ -1946,7 +1968,7 @@ justify-content: center;
     <div class="section-content">
     <div class="diag-grid" style="margin-bottom:20px">
       <div class="diag-box a">
-        <h4>🔬 Durchführung · PA220 / EA.05.0150</h4>
+        <h4>Durchführung · PA220 / EA.05.0150</h4>
         <div class="diag-stat">
           <span class="diag-stat-lbl">Zeitlimit</span>
           <span class="diag-stat-val">180 Min</span>
@@ -1969,7 +1991,7 @@ justify-content: center;
         </div>
       </div>
       <div class="diag-box b">
-        <h4>📊 Auswertung / Bericht · PE020</h4>
+        <h4>Auswertung / Bericht · PE020</h4>
         <div class="diag-stat">
           <span class="diag-stat-lbl">Zeitlimit</span>
           <span class="diag-stat-val">240 Min</span>
@@ -2123,7 +2145,7 @@ justify-content: center;
           <li>Nicht kumulierbar mit Konsultationen am selben Tag</li>
         </ul>
         <div style="margin-top:14px;padding:10px 12px;background:rgba(255,255,255,0.6);border-radius:8px;font-size:12.5px;color:#9f1239">
-          Sonderfall: Bei zwei Psych. in einer Krise rechnet intern <strong>jeder aus seiner Dispo ab</strong> — sofern dokumentiert wird, wer was gemacht hat.
+          Sonderfall: Bei zwei Psych. in einer Krise rechnet intern jeder aus seiner Dispo ab — sofern dokumentiert wird, wer was gemacht hat.
         </div>
       </div>
     </div>
@@ -2418,7 +2440,7 @@ justify-content: center;
     <div class="scenario-body">
       <div class="scenario-q">✉️ Kurze schriftliche Antwort auf E-Mail von Patient (klinisch relevant)</div>
       <div class="scenario-think">Zeitversetzt · asynchron · aktuell max. 4× / 30 Tage</div>
-      <span class="scenario-answer">→ EA.05.0080 — ältere 6er-Regel nicht verwenden!</span>
+      <span class="scenario-answer">→ EA.05.0080 (zeitversetzt, 1×/Tag, max. 4×/30 Tage)</span>
     </div>
   </div>
 
@@ -2598,7 +2620,7 @@ justify-content: center;
     { code:'EA.05.0150', alias:['PA220'], name:'Testdurchführung', limit:'180 Min / 90 T', detail:'Richtwert 60 Min · nicht mit 0010/0030 kombinieren', section:'diagnostik', cat:'diagnostik' },
     { code:'PE020', alias:[], name:'Test-Auswertung / Bericht', limit:'240 Min / 90 T', detail:'In Abwesenheit · Richtwert 80 Min', section:'diagnostik', cat:'diagnostik' },
     { code:'PA230', alias:[], name:'Expositionstherapie', limit:'360 Min / 180 T', detail:'Wegzeit inkl. · + PE010 15 Min VN', section:'exposition', cat:'exposition' },
-    { code:'EA.05.0080', alias:[], name:'Telemedizin zeitversetzt', limit:'1×/Tag · 4×/30 T', detail:'E-Mail / asynchron · 6er-Regel veraltet!', section:'telefon', cat:'telemedizin' },
+    { code:'EA.05.0080', alias:[], name:'Telemedizin zeitversetzt', limit:'1×/Tag · 4×/30 T', detail:'E-Mail / asynchron', section:'telefon', cat:'telemedizin' },
     { code:'EA.05.0060', alias:[], name:'Wegzeit', limit:'60 Min/Sitzung', detail:'Hin + zurück · Bei PA230 bereits inkl.!', section:'positionen', cat:'wegzeit' },
     { code:'EA.05.0100', alias:['PE045','PE040'], name:'Fremdaktenstudium', limit:'LAP altersgesteuert', detail:'<18 J: 240 Min · ≥18 J: 180 Min / 90 T', section:'lap-topf', cat:'lap' },
     { code:'EA.05.0110', alias:['PK025','PK020'], name:'Auskünfte Dritte', limit:'LAP altersgesteuert', detail:'Schule, Beistand, Behörde · fachlich', section:'lap-topf', cat:'lap' },

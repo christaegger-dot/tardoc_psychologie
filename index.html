@@ -617,7 +617,20 @@ text-align: center; width: 100%; font-size: 13px;
 .idt-sub-branch { flex: 1; display: flex; flex-direction: column; align-items: center; }
 
 /* ── POSITION TABLE ── */
-.pos-grid { display: grid; gap: 10px; }
+.pos-grid {
+  display: grid;
+  gap: 10px;
+}
+
+/* Zweispalten-Layout ab 900px (Laptop) */
+@media (min-width: 900px) {
+  .pos-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pos-item {
+    grid-template-columns: 120px 1fr auto;
+  }
+}
 .pos-item {
 display: grid; grid-template-columns: 130px 1fr auto;
 gap: 16px; align-items: start;

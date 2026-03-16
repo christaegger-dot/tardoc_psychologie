@@ -16,66 +16,175 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared-print.css">
 <style>
-.mast-note{font-size:8pt;color:rgba(255,255,255,.55);line-height:1.45}
-.mast-note strong{color:rgba(255,255,255,.8)}
+/* ── LAYOUT ── */
+.page { padding: 7mm 14mm 6mm; display: flex; flex-direction: column; gap: 4mm; }
+.page-2 { padding: 7mm 14mm 6mm; display: flex; flex-direction: column; gap: 4mm; }
+.cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
 
-.body{flex:1;padding:5mm 14mm 5mm;display:flex;flex-direction:column;gap:3mm}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm}
-.cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5mm;break-inside:avoid;page-break-inside:avoid}
-.page-break{break-before:page;page-break-before:always}
+/* Seitenumbruch zwischen Seite 1 und Seite 2 */
+.page-break { break-before: page; page-break-before: always; }
 
-.sec-num{font-size:6pt;font-weight:700;letter-spacing:.05em;padding:1px 7px;border-radius:8px;text-transform:uppercase}
-.sec-num.i{background:var(--ind-l);color:var(--ind)}
-.sec-num.t{background:var(--teal-l);color:var(--teal)}
-.sec-num.p{background:var(--purple-l);color:var(--purple)}
-.sec-num.r{background:var(--rose-l);color:var(--rose)}
-.sec-num.a{background:var(--amber-l);color:var(--amber)}
-/* template card */
-.tc{border-radius:7px;overflow:hidden;border:1.5px solid var(--line);break-inside:avoid;page-break-inside:avoid}
-.tc-head{padding:6px 10px;display:flex;align-items:center;justify-content:space-between}
-.tc-head h3{font-size:8.5pt;font-weight:700;color:white;line-height:1.15}
-.tc-head h3 small{font-size:6.5pt;font-weight:400;opacity:.7;display:block}
-.tc-code{font-size:6pt;font-weight:700;letter-spacing:.03em;background:rgba(255,255,255,.15);color:white;padding:2px 7px;border-radius:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-.tc-body{padding:7px 10px;background:white;display:flex;flex-direction:column;gap:3px}
-.tl{display:flex;flex-direction:column;gap:0px}
-.tl-lbl{font-size:5.5pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:0px}
-.tl-line{border:none;border-bottom:1px solid var(--line);height:8px;display:block;width:100%}
-.tl-line2{border:none;border-bottom:1px solid var(--line);height:8px;display:block;width:100%;margin-top:1px}
-.tl-box{border:1px solid var(--line);border-radius:3px;padding:2px 6px;min-height:14px;background:#fafbfc}
-.tl-box p{font-size:6.5pt;color:var(--soft);line-height:1.3}
-.tc-rule{margin:2px 0;height:1px;background:var(--line)}
-.tc-check{display:flex;flex-direction:column;gap:1px}
-.ck{display:flex;align-items:flex-start;gap:4px;font-size:6.5pt;color:var(--mid)}
-.ck-box{width:8px;height:8px;border:1px solid var(--soft);border-radius:2px;flex-shrink:0;margin-top:1px}
-.tc-tip{padding:3px 7px;font-size:6.5pt;line-height:1.3;display:flex;gap:4px}
-.tc-tip span:first-child{flex-shrink:0}
+/* ── KARTEN ── */
+.tc {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid var(--line);
+  break-inside: avoid;
+  page-break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+}
+.tc-head {
+  padding: 6px 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 6px;
+}
+.tc-head h3 {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  flex: 1;
+}
+.tc-head h3 small {
+  font-size: 6.5pt;
+  font-weight: 400;
+  opacity: .7;
+  display: block;
+  margin-top: 1px;
+}
+.tc-code {
+  font-size: 6pt;
+  font-weight: 700;
+  letter-spacing: .03em;
+  background: rgba(255,255,255,.18);
+  color: white;
+  padding: 2px 7px;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tc-body {
+  padding: 7px 10px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
 
-/* colors */
-.tc-i .tc-head{background:var(--ind)} 
-.tc-t .tc-head{background:var(--teal)} 
-.tc-p .tc-head{background:var(--purple)} 
-.tc-r .tc-head{background:var(--rose)} 
-.tc-a .tc-head{background:var(--amber)} 
-.tc-k .tc-head{background:var(--ink)}
-.tc-i .tc-tip{background:var(--ind-l);color:#1e1b6b}
-.tc-t .tc-tip{background:var(--teal-l);color:#0a4a42}
-.tc-p .tc-tip{background:var(--purple-l);color:#4a1d96}
-.tc-r .tc-tip{background:var(--rose-l);color:#7a0020}
-.tc-a .tc-tip{background:var(--amber-l);color:#7a3a00}
-.tc-k .tc-tip{background:#f0f2f5;color:var(--ink)}
+/* Kartenfarben */
+.tc-i .tc-head { background: var(--ind); }
+.tc-t .tc-head { background: var(--teal); }
+.tc-p .tc-head { background: var(--purple); }
+.tc-r .tc-head { background: var(--rose); }
+.tc-a .tc-head { background: var(--amber); }
+.tc-k .tc-head { background: var(--ink); }
 
-/* Hinweis */
-.co{border-radius:4px;padding:3px 7px;font-size:6.5pt;line-height:1.3;display:flex;gap:5px}
-.co.a{background:var(--amber-l);color:#7a3a00;border:1px solid var(--amber-m)}
-.co.i{background:var(--ind-l);color:#1e1b6b;border:1px solid var(--ind-m)}
-.co.r{background:var(--rose-l);color:#7a0020;border:1px solid var(--rose-m)}
-.row1-container{break-after:page;page-break-after:always}
+/* ── FORMULARFELDER ── */
+.fl { display: flex; flex-direction: column; gap: 1px; }
+.fl-lbl {
+  font-size: 5.5pt;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.fl-line {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  height: 9px;
+  display: block;
+  width: 100%;
+}
+.fl-line2 {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  height: 9px;
+  display: block;
+  width: 100%;
+  margin-top: 1px;
+}
+.fl-box {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 3px 6px;
+  min-height: 16px;
+  background: #fafbfc;
+}
+.fl-box p {
+  font-size: 6.5pt;
+  color: var(--soft);
+  line-height: 1.3;
+}
+
+/* ── CHECKBOXEN ── */
+.ck-list { display: flex; flex-direction: column; gap: 2px; margin-top: 1px; }
+.ck {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 6.5pt;
+  color: var(--mid);
+  line-height: 1.3;
+}
+.ck-box {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--soft);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── HINWEIS-BOXEN ── */
+.tip {
+  padding: 4px 8px;
+  font-size: 6.5pt;
+  line-height: 1.35;
+  display: flex;
+  gap: 5px;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+.tc-i .tip { background: var(--ind-l); color: #1e1b6b; }
+.tc-t .tip { background: var(--teal-l); color: #0a4a42; }
+.tc-p .tip { background: var(--purple-l); color: #4a1d96; }
+.tc-r .tip { background: var(--rose-l); color: #7a0020; }
+.tc-a .tip { background: var(--amber-l); color: #7a3a00; }
+.tc-k .tip { background: #f0f2f5; color: var(--ink); }
+.tip-icon { flex-shrink: 0; }
+
+.alert {
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 6.5pt;
+  line-height: 1.35;
+  display: flex;
+  gap: 5px;
+}
+.alert-a { background: var(--amber-l); color: #7a3a00; border: 1px solid var(--amber-m); }
+.alert-r { background: var(--rose-l); color: #7a0020; border: 1px solid var(--rose-m); }
+.alert-i { background: var(--ind-l); color: #1e1b6b; border: 1px solid var(--ind-m); }
+
+/* ── SEKTION-WRAPPER ── */
+.sec-group { display: flex; flex-direction: column; gap: 2.5mm; }
+
+/* ── INTRO-ZEILE ── */
+.mast-note {
+  font-size: 8pt;
+  color: rgba(255,255,255,.55);
+  line-height: 1.45;
+  margin-top: 1mm;
+}
+.mast-note strong { color: rgba(255,255,255,.8); }
 </style>
 </head>
 <body>
 
 <nav class="printbar" aria-label="Seitennavigation">
-  <div class="printbar-label"><strong>Verlaufseintrag-Vorlagen Psychologinnen</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
+  <div class="printbar-label"><strong>Verlaufseintrag-Vorlagen Psychologinnen</strong> · 2 Seiten A4 · Tarif-Kompass 2026</div>
   <a class="pbtn pbtn-ghost" href="../index.html">← Zurück</a>
   <button class="pbtn pbtn-dark" onclick="window.print()" aria-label="Seite als PDF drucken">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -83,6 +192,9 @@
   </button>
 </nav>
 
+<!-- ════════════════════════════════════════════════════════════
+     SEITE 1: Anwesenheitsleistungen (3 Karten)
+     ════════════════════════════════════════════════════════════ -->
 <main class="sheet">
   <header class="mast">
     <div class="mast-top">
@@ -98,221 +210,262 @@
     <p class="mast-note">Der Verlaufseintrag ist die <strong>tarifische Absicherung</strong> jeder Leistung — taggenau, nachvollziehbar, immer am selben Tag. Nicht optional. Jede Leistung braucht einen Eintrag.</p>
   </header>
 
-  <div class="body">
+  <div class="page">
 
-    <!-- ROW 1: 3 Einzel-Typen -->
-    <div class="row1-container">
+    <!-- Sektion: Anwesenheitsleistungen -->
+    <div class="sec-group">
       <div class="sec">
         <div class="sec-bar i"></div>
         <h2>Anwesenheitsleistungen</h2>
-        <span class="sec-num i">PA010 · PA030 · PA011/031 · PE010</span>
+        <span style="font-size:6pt;font-weight:700;letter-spacing:.05em;padding:1px 8px;border-radius:8px;text-transform:uppercase;background:var(--ind-l);color:var(--ind)">PA010 · PA030 · PA011/031 · PE010</span>
         <div class="sec-rule"></div>
       </div>
+
       <div class="cols3">
 
-        <!-- Einzel -->
+        <!-- Einzel-/Familiensitzung -->
         <div class="tc tc-i">
           <div class="tc-head">
             <h3>Einzel-/Familiensitzung<small>PA010 / PA030 + PE010</small></h3>
-            <span class="tc-code">Einzel 75 / Fam. 90 +15</span>
+            <span class="tc-code">Einzel 75 / Fam. 90</span>
           </div>
           <div class="tc-body">
-            <div class="tl"><div class="tl-lbl">Datum</div><div class="tl-line"></div></div>
-            <div class="tl"><div class="tl-lbl">Dauer Sitzung (Min)</div><div class="tl-line"></div></div>
-            <div class="tl"><div class="tl-lbl">Dauer PE010 VN (Max 15 Min)</div><div class="tl-line"></div></div>
-            <div class="tl"><div class="tl-lbl">Anwesende Personen</div><div class="tl-line"></div></div>
-            <div class="tl"><div class="tl-lbl">Therapeutische Themen / Interventionen</div>
-              <div class="tl-box"><p>Inhalt und Methoden der Sitzung…</p></div>
+            <div class="fl"><div class="fl-lbl">Datum</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Dauer Sitzung (Min)</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Dauer PE010 VN (max. 15 Min)</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Anwesende Personen</div><div class="fl-line"></div></div>
+            <div class="fl">
+              <div class="fl-lbl">Therapeutische Themen / Interventionen</div>
+              <div class="fl-box"><p>Inhalt und Methoden der Sitzung…</p></div>
             </div>
-            <div class="tl"><div class="tl-lbl">Verlauf / Reaktion Patient/Familie</div>
-              <div class="tl-box"><p>Beobachtungen, Wirkung…</p></div>
+            <div class="fl">
+              <div class="fl-lbl">Verlauf / Reaktion Patient/Familie</div>
+              <div class="fl-box"><p>Beobachtungen, Wirkung…</p></div>
             </div>
-            <div class="tc-check">
+            <div class="ck-list">
               <div class="ck"><div class="ck-box"></div><span>Taggenau erfasst</span></div>
               <div class="ck"><div class="ck-box"></div><span>Dauer plausibel (max. 75 + max. 15)</span></div>
               <div class="ck"><div class="ck-box"></div><span>PE010 ≠ allg. EA.05-Regel</span></div>
             </div>
           </div>
-          <div class="tc-tip"><span>💡</span><span>PE010 (15 Min) nur für Psychologinnen! Gilt für Einzel + Familie. Kurze unmittelbare Vor-/Nachbereitung — kein separater LAP.</span></div>
+          <div class="tip"><span class="tip-icon">💡</span><span>PE010 (15 Min) nur für Psychologinnen! Gilt für Einzel + Familie. Kurze unmittelbare Vor-/Nachbereitung — kein separater LAP.</span></div>
         </div>
 
-        <!-- Fernmündlich -->
+        <!-- Fernmündliche Sitzung -->
         <div class="tc tc-t">
           <div class="tc-head">
             <h3>Fernmündliche Sitzung<small>PA011 / PA031 + PE010</small></h3>
             <span class="tc-code">synchron · max. 75 Min</span>
           </div>
           <div class="tc-body">
-            <div class="tl"><div class="tl-lbl">Datum</div><div class="tl-line"></div></div>
-            <div class="tl"><div class="tl-lbl">Dauer (Min)</div><div class="tl-line"></div></div>
-            <div class="tl"><div class="tl-lbl">Medium (Telefon / Video)</div><div class="tl-line"></div></div>
-            <div class="tl"><div class="tl-lbl">Anwesende Personen</div><div class="tl-line"></div></div>
-            <div class="tl"><div class="tl-lbl">Therapeutischer Inhalt</div>
-              <div class="tl-box"><p>Themen, Interventionen (gleich wie Präsenzsitzung)…</p></div>
+            <div class="fl"><div class="fl-lbl">Datum</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Dauer (Min)</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Medium (Telefon / Video)</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Anwesende Personen</div><div class="fl-line"></div></div>
+            <div class="fl">
+              <div class="fl-lbl">Therapeutischer Inhalt</div>
+              <div class="fl-box"><p>Themen, Interventionen (gleich wie Präsenzsitzung)…</p></div>
             </div>
-            <div class="tl"><div class="tl-lbl">Verlauf / Reaktion</div>
-              <div class="tl-box"><p>Beobachtungen…</p></div>
+            <div class="fl">
+              <div class="fl-lbl">Verlauf / Reaktion</div>
+              <div class="fl-box"><p>Beobachtungen…</p></div>
             </div>
-            <div class="tc-check">
+            <div class="ck-list">
               <div class="ck"><div class="ck-box"></div><span>Synchron = Anwesenheitsleistung</span></div>
               <div class="ck"><div class="ck-box"></div><span>Taggenau erfasst · + PE010 möglich</span></div>
               <div class="ck"><div class="ck-box"></div><span>Nicht als EA.05.0080 erfassen!</span></div>
             </div>
           </div>
-          <div class="tc-tip"><span>⚠</span><span>Fernmündlich synchron ≠ E-Mail! Sitzung in Echtzeit = Anwesenheitsleistung PA011/031. Zeitversetzt/asynchron = EA.05.0080.</span></div>
+          <div class="tip"><span class="tip-icon">⚠</span><span>Fernmündlich synchron ≠ E-Mail! Sitzung in Echtzeit = Anwesenheitsleistung PA011/031. Zeitversetzt/asynchron = EA.05.0080.</span></div>
         </div>
 
-        <!-- Diagnostik -->
+        <!-- Testdurchführung -->
         <div class="tc tc-p">
           <div class="tc-head">
             <h3>Testdurchführung<small>PA220 · EA.05.0150</small></h3>
             <span class="tc-code">max. 180 Min/90T</span>
           </div>
           <div class="tc-body">
-            <div class="tl"><div class="tl-lbl">Datum</div><div class="tl-line"></div></div>
-            <div class="tl"><div class="tl-lbl">Dauer (Min) — Richtwert 60 Min (TtT S.10)</div><div class="tl-line"></div></div>
-            <div class="tl"><div class="tl-lbl">Angewandte Testverfahren</div><div class="tl-line"></div><div class="tl-line2"></div></div>
-            <div class="tl"><div class="tl-lbl">Fragestellung der Abklärung</div>
-              <div class="tl-box"><p>Klinische Fragestellung, Auftrag…</p></div>
+            <div class="fl"><div class="fl-lbl">Datum</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Dauer (Min) — Richtwert 60 Min (TtT S.10)</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Angewandte Testverfahren</div><div class="fl-line"></div><div class="fl-line2"></div></div>
+            <div class="fl">
+              <div class="fl-lbl">Fragestellung der Abklärung</div>
+              <div class="fl-box"><p>Klinische Fragestellung, Auftrag…</p></div>
             </div>
-            <div class="tl"><div class="tl-lbl">Verhalten des Patienten / Beobachtungen</div>
-              <div class="tl-box"><p>Mitarbeit, Auffälligkeiten, besondere Umstände…</p></div>
+            <div class="fl">
+              <div class="fl-lbl">Verhalten des Patienten / Beobachtungen</div>
+              <div class="fl-box"><p>Mitarbeit, Auffälligkeiten, besondere Umstände…</p></div>
             </div>
-            <div class="tc-check">
+            <div class="ck-list">
               <div class="ck"><div class="ck-box"></div><span>Nicht mit EA.05.0010/0030 am selben Tag</span></div>
               <div class="ck"><div class="ck-box"></div><span>Auswertung = eigene PE020-Erfassung</span></div>
               <div class="ck"><div class="ck-box"></div><span>&lt;20 Min → intern PA010+PE010 möglich</span></div>
             </div>
           </div>
-          <div class="tc-tip"><span>💡</span><span>Durchführung und Auswertung dürfen an verschiedenen Tagen erfolgen. Auswertung immer separat als PE020 erfassen.</span></div>
+          <div class="tip"><span class="tip-icon">💡</span><span>Durchführung und Auswertung dürfen an verschiedenen Tagen erfolgen. Auswertung immer separat als PE020 erfassen.</span></div>
         </div>
 
       </div>
     </div>
 
-    <!-- ROW 2: Krise + Exposition + Auswertung -->
-    <div class="page-break">
-      <div class="cols3">
+  </div>
 
-        <!-- Krise A -->
-        <div>
-          <div class="sec"><div class="sec-bar r"></div><h2>Krise Anordnung A</h2><span class="sec-num r">PA110/111</span><div class="sec-rule"></div></div>
-          <div class="tc tc-r">
-            <div class="tc-head">
-              <h3>Krise unter lfd. PT<small>Anordnung A · max. 180 Min</small></h3>
-              <span class="tc-code">PA110 / PA111</span>
-            </div>
-            <div class="tc-body">
-              <div class="tl"><div class="tl-lbl">Datum / Dauer</div><div class="tl-line"></div></div>
-              <div class="tl"><div class="tl-lbl">Auslöser der Krise</div>
-                <div class="tl-box"><p>Was hat die Krise ausgelöst?…</p></div>
-              </div>
-              <div class="tl"><div class="tl-lbl">Bedrohungscharakter</div>
-                <div class="tl-box"><p>Als bedrohlich/überwältigend erlebt, nicht allein bewältigbar…</p></div>
-              </div>
-              <div class="tl"><div class="tl-lbl">Massnahmen / Interventionen</div>
-                <div class="tl-box"><p>Was wurde konkret unternommen?…</p></div>
-              </div>
-              <div class="tl"><div class="tl-lbl">Abschluss / weiteres Vorgehen</div><div class="tl-line"></div></div>
-              <div class="tc-check">
-                <div class="ck"><div class="ck-box"></div><span>Unvorhersehbar, nicht geplant</span></div>
-                <div class="ck"><div class="ck-box"></div><span>Max. 180 Min pro Sitzung</span></div>
-              </div>
-            </div>
-            <div class="tc-tip"><span>⚠</span><span>KANT/Nachtdienst → Anordnung B (EA.00.0090), nicht PA110. Dokumentation ist zwingend für Regressschutz.</span></div>
-          </div>
-        </div>
+  <footer class="ft">
+    <span>Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik · Seite 1 / 2</span>
+    <span>TARDOC Kapitel EA.05 · Gültig ab 01.01.2026</span>
+  </footer>
+</main>
 
-        <!-- Exposition -->
-        <div>
-          <div class="sec"><div class="sec-bar p"></div><h2>Expositionstherapie</h2><span class="sec-num p">PA230</span><div class="sec-rule"></div></div>
-          <div class="tc tc-p">
-            <div class="tc-head">
-              <h3>Expositionstherapie<small>PA230 · 360 Min / 180 Tage</small></h3>
-              <span class="tc-code">Wegzeit inkl.</span>
-            </div>
-            <div class="tc-body">
-              <div class="tl"><div class="tl-lbl">Datum</div><div class="tl-line"></div></div>
-              <div class="tl"><div class="tl-lbl">Dauer Exposition (Min)</div><div class="tl-line"></div></div>
-              <div class="tl"><div class="tl-lbl">Wegzeit hin + zurück (Min) — in PA230 inkl.</div><div class="tl-line"></div></div>
-              <div class="tl"><div class="tl-lbl">PE010 Vor-/Nachbereitung (max. 15 Min)</div><div class="tl-line"></div></div>
-              <div class="tl"><div class="tl-lbl">Ort / Setting der Exposition</div><div class="tl-line"></div></div>
-              <div class="tl"><div class="tl-lbl">Inhalt und Vorgehen</div>
-                <div class="tl-box"><p>Zielstimulus, Methode, Verlauf…</p></div>
-              </div>
-              <div class="tl"><div class="tl-lbl">Reaktion / Ergebnis</div>
-                <div class="tl-box"><p>Angst-/Stressreaktion, Habituation, Besonderes…</p></div>
-              </div>
-              <div class="tc-check">
-                <div class="ck"><div class="ck-box"></div><span>Wegzeit nicht separat als 0060 erfassen!</span></div>
-                <div class="ck"><div class="ck-box"></div><span>Verbleibendes Budget 90-Tage-Fenster prüfen</span></div>
-              </div>
-            </div>
-            <div class="tc-tip"><span>⚠</span><span>Wegzeit ist bei PA230 intern inkludiert — doppelte Erfassung als EA.05.0060 ist ein häufiger Fehler!</span></div>
-          </div>
-        </div>
+<!-- ════════════════════════════════════════════════════════════
+     SEITE 2: Krise / Exposition / LAP + Auswertung / Überbrückung / Krise B
+     ════════════════════════════════════════════════════════════ -->
+<main class="sheet page-break">
 
-        <!-- LAP / E-Mail -->
-        <div>
-          <div class="sec"><div class="sec-bar t"></div><h2>LAP + E-Mail</h2><span class="sec-num t">PE045/040 · PK · EA.05.0080</span><div class="sec-rule"></div></div>
-          <div class="tc tc-t">
-            <div class="tc-head">
-              <h3>LAP-Leistung / E-Mail<small>Altersgesteuert · 0080 limitiert</small></h3>
-              <span class="tc-code">LAP-Topf</span>
-            </div>
-            <div class="tc-body">
-              <div class="tl"><div class="tl-lbl">Datum</div><div class="tl-line"></div></div>
-              <div class="tl"><div class="tl-lbl">Dauer (Min)</div><div class="tl-line"></div></div>
-              <div class="tl"><div class="tl-lbl">Ziffer / Altersgruppe</div>
-                <div class="tl-box" style="display:flex;gap:10px;align-items:center">
-                  <span style="font-size:7pt;color:var(--soft)">☐ PE045 (&lt;18)</span>
-                  <span style="font-size:7pt;color:var(--soft)">☐ PE040 (≥18)</span>
-                  <span style="font-size:7pt;color:var(--soft)">☐ PK025 (&lt;18)</span>
-                  <span style="font-size:7pt;color:var(--soft)">☐ PK020 (≥18)</span>
-                  <span style="font-size:7pt;color:var(--soft)">☐ PK015/010</span>
-                  <span style="font-size:7pt;color:var(--soft)">☐ 0080</span>
-                </div>
-              </div>
-              <div class="tl"><div class="tl-lbl">Kontaktperson / Institution</div><div class="tl-line"></div></div>
-              <div class="tl"><div class="tl-lbl">Fachlicher Inhalt (kein Termin-Austausch!)</div>
-                <div class="tl-box"><p>Gesprochene Inhalte, Ergebnis des Kontakts…</p></div>
-              </div>
-              <div class="tl"><div class="tl-lbl">Bei EA.05.0080: E-Mail-Anzahl prüfen</div><div class="tl-line"></div></div>
-              <div class="tc-check">
-                <div class="ck"><div class="ck-box"></div><span>Altersgruppe korrekt (&lt;18 / ≥18)</span></div>
-                <div class="ck"><div class="ck-box"></div><span>Kumuliertes Budget 90-Tage prüfen</span></div>
-                <div class="ck"><div class="ck-box"></div><span>E-Mail max. 4× pro 30 Tage!</span></div>
-              </div>
-            </div>
-            <div class="tc-tip"><span>💡</span><span>&lt;18 J.: PE045 + PK025 + PK015 gemeinsam 240 Min / 90T. ≥18 J.: PE040 + PK020 + PK010 gemeinsam 180 Min / 90T.</span></div>
-          </div>
-        </div>
-
+  <header class="mast">
+    <div class="mast-top">
+      <div>
+        <h1>Verlaufs<em>einträge</em></h1>
+        <div class="mast-sub">Seite 2 — Krise · Exposition · LAP · Diagnostik-Auswertung · Überbrückung</div>
+      </div>
+      <div class="mast-meta">
+        <strong>TARDOC · EA.05</strong>
+        Gültig ab 01.01.2026<br>tardoc-psychologiekjpp.netlify.app
       </div>
     </div>
+  </header>
 
-    <!-- ROW 3: Auswertung + Überbrückung + Warnung -->
+  <div class="page-2">
+
+    <!-- Zeile 2: Krise A / Exposition / LAP+E-Mail -->
     <div class="cols3">
 
-      <!-- Auswertung -->
+      <!-- Krise A -->
+      <div class="sec-group">
+        <div class="sec"><div class="sec-bar r"></div><h2>Krise Anordnung A</h2><span style="font-size:6pt;font-weight:700;letter-spacing:.05em;padding:1px 8px;border-radius:8px;text-transform:uppercase;background:var(--rose-l);color:var(--rose)">PA110/111</span><div class="sec-rule"></div></div>
+        <div class="tc tc-r">
+          <div class="tc-head">
+            <h3>Krise unter lfd. PT<small>Anordnung A · max. 180 Min</small></h3>
+            <span class="tc-code">PA110 / PA111</span>
+          </div>
+          <div class="tc-body">
+            <div class="fl"><div class="fl-lbl">Datum / Dauer</div><div class="fl-line"></div></div>
+            <div class="fl">
+              <div class="fl-lbl">Auslöser der Krise</div>
+              <div class="fl-box"><p>Was hat die Krise ausgelöst?…</p></div>
+            </div>
+            <div class="fl">
+              <div class="fl-lbl">Bedrohungscharakter</div>
+              <div class="fl-box"><p>Als bedrohlich/überwältigend erlebt, nicht allein bewältigbar…</p></div>
+            </div>
+            <div class="fl">
+              <div class="fl-lbl">Massnahmen / Interventionen</div>
+              <div class="fl-box"><p>Was wurde konkret unternommen?…</p></div>
+            </div>
+            <div class="fl"><div class="fl-lbl">Abschluss / weiteres Vorgehen</div><div class="fl-line"></div></div>
+            <div class="ck-list">
+              <div class="ck"><div class="ck-box"></div><span>Unvorhersehbar, nicht geplant</span></div>
+              <div class="ck"><div class="ck-box"></div><span>Max. 180 Min pro Sitzung</span></div>
+            </div>
+          </div>
+          <div class="tip"><span class="tip-icon">⚠</span><span>KANT/Nachtdienst → Anordnung B (EA.00.0090), nicht PA110. Dokumentation ist zwingend für Regressschutz.</span></div>
+        </div>
+      </div>
+
+      <!-- Exposition -->
+      <div class="sec-group">
+        <div class="sec"><div class="sec-bar p"></div><h2>Expositionstherapie</h2><span style="font-size:6pt;font-weight:700;letter-spacing:.05em;padding:1px 8px;border-radius:8px;text-transform:uppercase;background:var(--purple-l);color:var(--purple)">PA230</span><div class="sec-rule"></div></div>
+        <div class="tc tc-p">
+          <div class="tc-head">
+            <h3>Expositionstherapie<small>PA230 · 360 Min / 180 Tage</small></h3>
+            <span class="tc-code">Wegzeit inkl.</span>
+          </div>
+          <div class="tc-body">
+            <div class="fl"><div class="fl-lbl">Datum</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Dauer Exposition (Min)</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Wegzeit hin + zurück (Min) — in PA230 inkl.</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">PE010 Vor-/Nachbereitung (max. 15 Min)</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Ort / Setting der Exposition</div><div class="fl-line"></div></div>
+            <div class="fl">
+              <div class="fl-lbl">Inhalt und Vorgehen</div>
+              <div class="fl-box"><p>Zielstimulus, Methode, Verlauf…</p></div>
+            </div>
+            <div class="fl">
+              <div class="fl-lbl">Reaktion / Ergebnis</div>
+              <div class="fl-box"><p>Angst-/Stressreaktion, Habituation, Besonderes…</p></div>
+            </div>
+            <div class="ck-list">
+              <div class="ck"><div class="ck-box"></div><span>Wegzeit nicht separat als 0060 erfassen!</span></div>
+              <div class="ck"><div class="ck-box"></div><span>Verbleibendes Budget 90-Tage-Fenster prüfen</span></div>
+            </div>
+          </div>
+          <div class="tip"><span class="tip-icon">⚠</span><span>Wegzeit ist bei PA230 intern inkludiert — doppelte Erfassung als EA.05.0060 ist ein häufiger Fehler!</span></div>
+        </div>
+      </div>
+
+      <!-- LAP / E-Mail -->
+      <div class="sec-group">
+        <div class="sec"><div class="sec-bar t"></div><h2>LAP + E-Mail</h2><span style="font-size:6pt;font-weight:700;letter-spacing:.05em;padding:1px 8px;border-radius:8px;text-transform:uppercase;background:var(--teal-l);color:var(--teal)">PE045/040 · PK · EA.05.0080</span><div class="sec-rule"></div></div>
+        <div class="tc tc-t">
+          <div class="tc-head">
+            <h3>LAP-Leistung / E-Mail<small>Altersgesteuert · 0080 limitiert</small></h3>
+            <span class="tc-code">LAP-Topf</span>
+          </div>
+          <div class="tc-body">
+            <div class="fl"><div class="fl-lbl">Datum</div><div class="fl-line"></div></div>
+            <div class="fl"><div class="fl-lbl">Dauer (Min)</div><div class="fl-line"></div></div>
+            <div class="fl">
+              <div class="fl-lbl">Ziffer / Altersgruppe</div>
+              <div class="fl-box" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+                <span style="font-size:7pt;color:var(--soft)">☐ PE045 (&lt;18)</span>
+                <span style="font-size:7pt;color:var(--soft)">☐ PE040 (≥18)</span>
+                <span style="font-size:7pt;color:var(--soft)">☐ PK025 (&lt;18)</span>
+                <span style="font-size:7pt;color:var(--soft)">☐ PK020 (≥18)</span>
+                <span style="font-size:7pt;color:var(--soft)">☐ PK015/010</span>
+                <span style="font-size:7pt;color:var(--soft)">☐ 0080</span>
+              </div>
+            </div>
+            <div class="fl"><div class="fl-lbl">Kontaktperson / Institution</div><div class="fl-line"></div></div>
+            <div class="fl">
+              <div class="fl-lbl">Fachlicher Inhalt (kein Termin-Austausch!)</div>
+              <div class="fl-box"><p>Gesprochene Inhalte, Ergebnis des Kontakts…</p></div>
+            </div>
+            <div class="fl"><div class="fl-lbl">Bei EA.05.0080: E-Mail-Anzahl prüfen</div><div class="fl-line"></div></div>
+            <div class="ck-list">
+              <div class="ck"><div class="ck-box"></div><span>Altersgruppe korrekt (&lt;18 / ≥18)</span></div>
+              <div class="ck"><div class="ck-box"></div><span>Kumuliertes Budget 90-Tage prüfen</span></div>
+              <div class="ck"><div class="ck-box"></div><span>E-Mail max. 4× pro 30 Tage!</span></div>
+            </div>
+          </div>
+          <div class="tip"><span class="tip-icon">💡</span><span>&lt;18 J.: PE045 + PK025 + PK015 gemeinsam 240 Min / 90T. ≥18 J.: PE040 + PK020 + PK010 gemeinsam 180 Min / 90T.</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Zeile 3: Auswertung / Überbrückung / Krise B -->
+    <div class="cols3">
+
+      <!-- Test-Auswertung -->
       <div class="tc tc-p">
         <div class="tc-head">
           <h3>Test-Auswertung / Bericht<small>PE020 · max. 240 Min / 90 Tage</small></h3>
           <span class="tc-code">in Abwesenheit</span>
         </div>
         <div class="tc-body">
-          <div class="tl"><div class="tl-lbl">Datum</div><div class="tl-line"></div></div>
-          <div class="tl"><div class="tl-lbl">Dauer (Min) — Richtwert 80 Min (TtT S.10)</div><div class="tl-line"></div></div>
-          <div class="tl"><div class="tl-lbl">Ausgewertete Testverfahren</div><div class="tl-line"></div></div>
-          <div class="tl"><div class="tl-lbl">Ergebnis (Befund / Einschätzung)</div>
-            <div class="tl-box"><p>Hauptbefunde, Schlussfolgerungen, Empfehlungen…</p></div>
+          <div class="fl"><div class="fl-lbl">Datum</div><div class="fl-line"></div></div>
+          <div class="fl"><div class="fl-lbl">Dauer (Min) — Richtwert 80 Min (TtT S.10)</div><div class="fl-line"></div></div>
+          <div class="fl"><div class="fl-lbl">Ausgewertete Testverfahren</div><div class="fl-line"></div></div>
+          <div class="fl">
+            <div class="fl-lbl">Ergebnis (Befund / Einschätzung)</div>
+            <div class="fl-box"><p>Hauptbefunde, Schlussfolgerungen, Empfehlungen…</p></div>
           </div>
-          <div class="tc-check">
+          <div class="ck-list">
             <div class="ck"><div class="ck-box"></div><span>In Abwesenheit Patient</span></div>
             <div class="ck"><div class="ck-box"></div><span>Kein freies Zusatzbudget</span></div>
           </div>
         </div>
-        <div class="tc-tip"><span>💡</span><span>Interpretation nur durch Fachärzte oder psych. Psychotherapeuten. Auswertung und Durchführung dürfen auf verschiedene Tage fallen.</span></div>
+        <div class="tip"><span class="tip-icon">💡</span><span>Interpretation nur durch Fachärzte oder psych. Psychotherapeuten. Auswertung und Durchführung dürfen auf verschiedene Tage fallen.</span></div>
       </div>
 
       <!-- Überbrückung -->
@@ -322,21 +475,23 @@
           <span class="tc-code">nur TK · NB übernimmt</span>
         </div>
         <div class="tc-body">
-          <div class="tl"><div class="tl-lbl">Datum der Überbrückungskonferenz</div><div class="tl-line"></div></div>
-          <div class="tl"><div class="tl-lbl">Stationärer Fall (angelegt durch stationäres Team)</div><div class="tl-line"></div></div>
-          <div class="tl"><div class="tl-lbl">Nachbehandlung vollumfänglich TK?</div>
-            <div class="tl-box"><p>Bestätigen: alle therapeutischen Gespräche TK, kein externer Therapeut…</p></div>
+          <div class="fl"><div class="fl-lbl">Datum der Überbrückungskonferenz</div><div class="fl-line"></div></div>
+          <div class="fl"><div class="fl-lbl">Stationärer Fall (angelegt durch stationäres Team)</div><div class="fl-line"></div></div>
+          <div class="fl">
+            <div class="fl-lbl">Nachbehandlung vollumfänglich TK?</div>
+            <div class="fl-box"><p>Bestätigen: alle therapeutischen Gespräche TK, kein externer Therapeut…</p></div>
           </div>
-          <div class="tl"><div class="tl-lbl">Geplantes Vorgehen / Massnahmen</div>
-            <div class="tl-box"><p>Übernahme, Termine, Zuständigkeiten…</p></div>
+          <div class="fl">
+            <div class="fl-lbl">Geplantes Vorgehen / Massnahmen</div>
+            <div class="fl-box"><p>Übernahme, Termine, Zuständigkeiten…</p></div>
           </div>
-          <div class="tc-check">
+          <div class="ck-list">
             <div class="ck"><div class="ck-box"></div><span>Nur stationär → ambulant (nicht umgekehrt)</span></div>
             <div class="ck"><div class="ck-box"></div><span>Stationäre MA erfassen nicht!</span></div>
             <div class="ck"><div class="ck-box"></div><span>Kein externer Therapeut parallel beteiligt</span></div>
           </div>
         </div>
-        <div class="tc-tip"><span>⚠</span><span>Nur wenn TK die Nachbehandlung vollumfänglich übernimmt und kein externer Therapeut vorhanden ist.</span></div>
+        <div class="tip"><span class="tip-icon">⚠</span><span>Nur wenn TK die Nachbehandlung vollumfänglich übernimmt und kein externer Therapeut vorhanden ist.</span></div>
       </div>
 
       <!-- Krise B -->
@@ -346,21 +501,23 @@
           <span class="tc-code">EA.00.0090 · unbegr.</span>
         </div>
         <div class="tc-body">
-          <div class="tl"><div class="tl-lbl">Datum / Beginn–Ende</div><div class="tl-line"></div></div>
-          <div class="tl"><div class="tl-lbl">Dienstart (KANT / Spätdienst / Wochenende)</div><div class="tl-line"></div></div>
-          <div class="tl"><div class="tl-lbl">Präsentation der Krise / Auslöser</div>
-            <div class="tl-box"><p>Zustand bei Eintreffen, Auslöser, Risikoindikatoren…</p></div>
+          <div class="fl"><div class="fl-lbl">Datum / Beginn–Ende</div><div class="fl-line"></div></div>
+          <div class="fl"><div class="fl-lbl">Dienstart (KANT / Spätdienst / Wochenende)</div><div class="fl-line"></div></div>
+          <div class="fl">
+            <div class="fl-lbl">Präsentation der Krise / Auslöser</div>
+            <div class="fl-box"><p>Zustand bei Eintreffen, Auslöser, Risikoindikatoren…</p></div>
           </div>
-          <div class="tl"><div class="tl-lbl">Interventionen / Massnahmen</div>
-            <div class="tl-box"><p>Was wurde konkret unternommen?…</p></div>
+          <div class="fl">
+            <div class="fl-lbl">Interventionen / Massnahmen</div>
+            <div class="fl-box"><p>Was wurde konkret unternommen?…</p></div>
           </div>
-          <div class="tl"><div class="tl-lbl">Bei zwei Psych.: wer hat was übernommen?</div><div class="tl-line"></div></div>
-          <div class="tc-check">
+          <div class="fl"><div class="fl-lbl">Bei zwei Psych.: wer hat was übernommen?</div><div class="fl-line"></div></div>
+          <div class="ck-list">
             <div class="ck"><div class="ck-box"></div><span>Effektiv aufgewendete Zeit (unbegrenzt)</span></div>
             <div class="ck"><div class="ck-box"></div><span>Nicht kombinierbar mit Konsult. selber Tag</span></div>
           </div>
         </div>
-        <div class="tc-tip"><span>⚠</span><span>Zwei Psych. in einer Krise: jede Person rechnet aus ihrer Dispo ab — sofern dokumentiert ist, wer was gemacht hat.</span></div>
+        <div class="tip"><span class="tip-icon">⚠</span><span>Zwei Psych. in einer Krise: jede Person rechnet aus ihrer Dispo ab — sofern dokumentiert ist, wer was gemacht hat.</span></div>
       </div>
 
     </div>
@@ -368,9 +525,10 @@
   </div>
 
   <footer class="ft">
-    <span>Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</span>
+    <span>Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik · Seite 2 / 2</span>
     <span>TARDOC Kapitel EA.05 · Gültig ab 01.01.2026</span>
   </footer>
 </main>
+
 </body>
 </html>

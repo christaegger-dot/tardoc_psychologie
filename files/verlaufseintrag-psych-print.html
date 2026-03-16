@@ -186,11 +186,29 @@
 <nav class="printbar" aria-label="Seitennavigation">
   <div class="printbar-label"><strong>Verlaufseintrag-Vorlagen Psychologinnen</strong> · 2 Seiten A4 · Tarif-Kompass 2026</div>
   <a class="pbtn pbtn-ghost" href="../index.html">← Zurück</a>
-  <button class="pbtn pbtn-dark" onclick="window.print()" aria-label="Seite als PDF drucken">
+  <button class="pbtn pbtn-dark" id="printBtn" onclick="handlePrint()" aria-label="Seite als PDF drucken oder speichern">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-    Als PDF drucken
+    <span id="printBtnLabel">Als PDF drucken</span>
   </button>
 </nav>
+<div class="ios-hint" id="iosHint">
+  <strong>📱 PDF auf iPhone/iPad speichern:</strong>
+  Tippe unten auf das Teilen-Symbol (Quadrat mit Pfeil nach oben) → «Als PDF sichern» oder «Drucken» → dann mit zwei Fingern auf die Vorschau zoomen → «Teilen» → «In Dateien sichern».
+</div>
+<script>
+function handlePrint() {
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (isIOS) {
+    document.getElementById('iosHint').classList.toggle('visible');
+  } else {
+    window.print();
+  }
+}
+(function(){
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (isIOS) { document.getElementById('printBtnLabel').textContent = 'PDF speichern — Anleitung'; }
+})();
+</script>
 
 <!-- ════════════════════════════════════════════════════════════
      SEITE 1: Anwesenheitsleistungen (3 Karten)

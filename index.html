@@ -389,8 +389,11 @@ cursor: pointer; transition: background .15s;
 mark { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 1px; }
 
 /* ── SCROLL ANIMATIONS ── */
-.section { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-.section.visible { opacity: 1; transform: translateY(0); }
+/* Default: sichtbar (kein JS = kein Fade-in, Sektionen immer sichtbar) */
+.section { opacity: 1; transform: none; }
+/* Progressive Enhancement: JS fügt .fade-ready hinzu → dann Fade-in aktiv */
+.section.fade-ready { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.section.fade-ready.visible { opacity: 1; transform: translateY(0); }
 
 /* ── UTILITY CLASSES (extracted from inline styles, K3) ── */
 .fs-11 { font-size: 11px; }
@@ -2972,6 +2975,9 @@ justify-content: center;
   window.addEventListener('scroll', updateScrollSpy, { passive: true });
   updateScrollSpy();
 
+  // Fade-in als Progressive Enhancement:
+  // JS setzt .fade-ready → Sektion wird unsichtbar → Observer fügt .visible hinzu
+  // Ohne JS oder wenn Observer versagt: Sektionen bleiben sichtbar (opacity:1 Default)
   const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -2980,7 +2986,10 @@ justify-content: center;
       }
     });
   }, { threshold: 0.08 });
-  sections.forEach(sec => fadeObserver.observe(sec));
+  sections.forEach(sec => {
+    sec.classList.add('fade-ready');
+    fadeObserver.observe(sec);
+  });
 
   // ── Mobile: close details except Entscheidungsbaum + Kurzfassung ──
   (function() {

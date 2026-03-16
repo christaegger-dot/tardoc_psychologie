@@ -1251,6 +1251,8 @@ flex-wrap: wrap; gap: 8px;
 }
 
 @media print {
+  .pos-table, .pos-item, .stat-grid, .kb, .doc { page-break-inside: avoid; }
+  .section-accordion { page-break-before: auto; }
 .nav-bar { display: none; }
 .quick-tools { display: none; }
 .btn-bar { display: none; }
@@ -1497,7 +1499,7 @@ justify-content: center;
   <a href="#" class="sp-card sp-card-highlight" data-sp-target="entscheidung">
     <div class="sp-card-icon">🌳</div>
     <div class="sp-card-label">Ich bin unsicher — Entscheidungsbaum</div>
-    <div class="sp-card-codes"></div>
+    <div class="sp-card-codes">3 Fragen · 5 Pfade</div>
     <div class="sp-card-hint">Schritt für Schritt zur richtigen Ziffer</div>
   </a>
 
@@ -2674,11 +2676,12 @@ justify-content: center;
 </div><!-- /.main-content-area -->
 </div><!-- /.page-layout -->
 
+</main>
 <!-- FOOTER -->
 
 <div class="footer">
   <span>Tarif-Kompass 2026 · Psychologinnen mit Psychotherapieausbildung · KJPP-Tagesklinik</span>
-  <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026 · Stand Website: 16.03.2026 · Basierend auf Quelldokument vom 12.03.2026</span>
+  <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026 · Stand Website: <span id="footer-date">16.03.2026</span> · Basierend auf Quelldokument vom 12.03.2026</span>
   <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:12px;color:var(--slate-light)">
     Sozialarbeiter-Version: <a href="https://tardoc.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--slate-light);text-decoration:underline">tardoc.netlify.app</a>
   </div>
@@ -2933,16 +2936,16 @@ justify-content: center;
   // SEARCH FOCUS — show filter chips only when active
   // ═══════════════════════════════════════════════════════
   const qtSearch = document.querySelector('.qt-search');
-  const searchInput = document.getElementById('searchInput');
-  if (qtSearch && searchInput) {
-    searchInput.addEventListener('focus', () => { qtSearch.classList.add('search-active'); });
-    searchInput.addEventListener('blur', () => {
+  const _sfInput = document.getElementById('searchInput');
+  if (qtSearch && _sfInput) {
+    _sfInput.addEventListener('focus', () => { qtSearch.classList.add('search-active'); });
+    _sfInput.addEventListener('blur', () => {
       setTimeout(() => {
-        if (!searchInput.value) qtSearch.classList.remove('search-active');
+        if (!_sfInput.value) qtSearch.classList.remove('search-active');
       }, 200);
     });
-    searchInput.addEventListener('input', () => {
-      if (searchInput.value) qtSearch.classList.add('search-active');
+    _sfInput.addEventListener('input', () => {
+      if (_sfInput.value) qtSearch.classList.add('search-active');
     });
   }
 
@@ -2981,6 +2984,7 @@ justify-content: center;
     });
     navLinks.forEach(link => {
       link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      link.setAttribute('aria-current', link.classList.contains('active') ? 'true' : 'false');
     });
   }
   window.addEventListener('scroll', updateScrollSpy, { passive: true });
@@ -3353,8 +3357,16 @@ justify-content: center;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
+
+  // ── Dynamic footer date ──
+  (function() {
+    var el = document.getElementById('footer-date');
+    if (el) {
+      var d = new Date();
+      el.textContent = d.toLocaleDateString('de-CH', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
+  })();
 </script>
 
-</main>
 </body>
 </html>

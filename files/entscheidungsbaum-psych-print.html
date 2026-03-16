@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Entscheidungsbaum TARDOC EA.05 für Psychologinnen mit PT-Ausbildung. Flowchart zur richtigen Ziffernwahl auf einen Blick.">
+<meta property="og:title" content="Entscheidungsbaum · Tarif-Kompass 2026 · Psychologinnen">
+<meta property="og:description" content="TARDOC EA.05 Entscheidungsbaum: Von der Tätigkeit zur richtigen Ziffer in drei Schritten.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tardoc-psychologiekjpp.netlify.app/files/entscheidungsbaum-psych-print.html">
+<meta property="og:locale" content="de_CH">
+<link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/files/entscheidungsbaum-psych-print.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%234338ca'/><text x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'>T</text></svg>">
+<title>Entscheidungsbaum · Tarif-Kompass 2026 · Psychologinnen</title>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" as="style">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared-print.css">
+<style>
+/* ── LAYOUT ── */
+.body { flex: 1; padding: 5mm 14mm 4mm; display: flex; flex-direction: column; gap: 4mm; }
+
+/* ── FLOWCHART ── */
+.flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+
+/* Question node */
+.fq { background: var(--ink); border-radius: 8px; padding: 7px 14px; color: white; text-align: center; width: 100%; max-width: 170mm; }
+.fq-label { font-size: 6pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #a5b4fc; margin-bottom: 1px; }
+.fq-text { font-size: 9.5pt; font-weight: 600; line-height: 1.25; }
+.fq-hint { font-size: 6.5pt; color: rgba(255,255,255,.45); margin-top: 2px; }
+
+/* Arrow */
+.farr { height: 5mm; display: flex; justify-content: center; align-items: center; position: relative; }
+.farr::after { content: ''; display: block; width: 1.5px; height: 100%; background: var(--line); }
+
+/* Fork container */
+.ffork { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; width: 100%; max-width: 170mm; }
+.ffork-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Branch */
+.fbr { display: flex; flex-direction: column; gap: 2mm; }
+
+/* Yes/No tags */
+.ftag { font-size: 6pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 10px; border-radius: 10px; display: inline-block; text-align: center; }
+.ftag-y { background: var(--green-l); color: var(--green); }
+.ftag-n { background: var(--rose-l); color: var(--rose); }
+
+/* Result boxes */
+.fr { border-radius: 6px; padding: 6px 9px; }
+.fr-lbl { font-size: 5.5pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1px; }
+.fr p { font-size: 8pt; font-weight: 600; color: var(--ink); line-height: 1.25; }
+.fr small { font-size: 6.5pt; color: var(--soft); display: block; margin-top: 1px; }
+.fr.rose { background: var(--rose-l); border-left: 3px solid var(--rose); } .fr.rose .fr-lbl { color: var(--rose); }
+.fr.ind { background: var(--ind-l); border-left: 3px solid var(--ind); } .fr.ind .fr-lbl { color: var(--ind); }
+.fr.teal { background: var(--teal-l); border-left: 3px solid var(--teal); } .fr.teal .fr-lbl { color: var(--teal); }
+.fr.purple { background: var(--purple-l); border-left: 3px solid var(--purple); } .fr.purple .fr-lbl { color: var(--purple); }
+.fr.amber { background: var(--amber-l); border-left: 3px solid var(--amber); } .fr.amber .fr-lbl { color: var(--amber); }
+
+/* Code entries */
+.fe { font-size: 7.5pt; color: var(--ink); padding: 2px 0; border-bottom: 1px solid rgba(0,0,0,.06); display: flex; gap: 5px; }
+.fe:last-child { border-bottom: none; }
+.fe-c { font-weight: 700; white-space: nowrap; min-width: 46px; font-size: 7pt; }
+.fe-c.i { color: var(--ind); } .fe-c.t { color: var(--teal); } .fe-c.p { color: var(--purple); } .fe-c.a { color: var(--amber); }
+
+/* Spezialblock-Box */
+.fspec { background: var(--purple-l); border: 1.5px solid var(--purple-m); border-radius: 7px; padding: 6px 9px; }
+.fspec-title { font-size: 6pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--purple); margin-bottom: 3px; }
+
+/* Callout */
+.co { border-radius: 5px; padding: 4px 8px; font-size: 7pt; line-height: 1.35; display: flex; gap: 5px; }
+.co.a { background: var(--amber-l); color: #7a3a00; border: 1px solid var(--amber-m); }
+.co.i { background: var(--ind-l); color: #1e1b6b; border: 1px solid var(--ind-m); }
+
+/* Connector line for sub-levels */
+.fconn { width: 100%; height: 3mm; display: flex; justify-content: center; }
+.fconn::after { content: ''; display: block; width: 1.5px; height: 100%; background: var(--line); }
+
+/* Compact sub-question */
+.fq-sm { background: var(--ink); border-radius: 6px; padding: 5px 10px; color: white; text-align: center; }
+.fq-sm .fq-text { font-size: 8.5pt; }
+
+/* Group box */
+.fgroup { border: 1.5px solid var(--line); border-radius: 7px; padding: 5px 8px; background: #fafbfc; display: flex; flex-direction: column; gap: 2mm; }
+.fgroup-title { font-size: 6pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding-bottom: 2px; border-bottom: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<nav class="printbar" aria-label="Seitennavigation">
+  <div class="printbar-label"><strong>Entscheidungsbaum Psychologinnen</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
+  <a class="pbtn pbtn-ghost" href="../index.html">← Zurück</a>
+  <button class="pbtn pbtn-dark" id="printBtn" onclick="handlePrint()" aria-label="Seite als PDF drucken oder speichern">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    <span id="printBtnLabel">Als PDF drucken</span>
+  </button>
+</nav>
+<div class="ios-hint" id="iosHint">
+  <strong>PDF auf iPhone/iPad speichern:</strong>
+  Tippe unten auf das Teilen-Symbol (Quadrat mit Pfeil nach oben) → «Als PDF sichern» oder «Drucken» → dann mit zwei Fingern auf die Vorschau zoomen → «Teilen» → «In Dateien sichern».
+</div>
+<script>
+function handlePrint() {
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (isIOS) {
+    document.getElementById('iosHint').classList.toggle('visible');
+  } else {
+    window.print();
+  }
+}
+(function(){
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (isIOS) { document.getElementById('printBtnLabel').textContent = 'PDF speichern — Anleitung'; }
+})();
+</script>
+
+<main class="sheet">
+  <header class="mast">
+    <div class="mast-top">
+      <div>
+        <h1>Entscheidungs<em>baum</em></h1>
+        <div class="mast-sub">Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</div>
+      </div>
+      <div class="mast-meta">
+        <strong>TARDOC · EA.05</strong>
+        Gültig ab 01.01.2026<br>tardoc-psychologiekjpp.netlify.app
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- FRAGE 1 -->
+    <div class="flow">
+      <div class="fq">
+        <div class="fq-label">Frage 1</div>
+        <div class="fq-text">Ist es eine interne Tätigkeit?</div>
+        <div class="fq-hint">Rapport · Supervision · Intervision · Terminvereinbarung · Leistungserfassung · LUF</div>
+      </div>
+      <div class="farr"></div>
+      <div class="ffork">
+        <div class="fbr">
+          <div class="ftag ftag-y">Ja</div>
+          <div class="fr rose">
+            <div class="fr-lbl">Resultat</div>
+            <p>Nicht verrechenbar — LUF</p>
+            <small>Intern erfassen, kein Patientenbudget</small>
+          </div>
+        </div>
+        <div class="fbr">
+          <div class="ftag ftag-n">Nein → Frage 2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAGE 2 -->
+    <div class="flow" style="margin-top:2mm">
+      <div class="fq">
+        <div class="fq-label">Frage 2</div>
+        <div class="fq-text">Spezifischer Leistungsblock oder normaler Kontakt?</div>
+        <div class="fq-hint">Diagnostik · Exposition · Krise → eigene Logik</div>
+      </div>
+      <div class="farr"></div>
+      <div class="ffork">
+        <!-- Spezialblock -->
+        <div class="fbr">
+          <div class="ftag" style="background:var(--purple-l);color:var(--purple)">Spezialblock</div>
+          <div class="fspec">
+            <div class="fspec-title">Psychologenspezifische Spezialblöcke</div>
+            <div class="fe"><span class="fe-c p">PA220</span><span>Testdurchführung · 180 Min/90T</span></div>
+            <div class="fe"><span class="fe-c p">PE020</span><span>Auswertung/Bericht · 240 Min/90T</span></div>
+            <div class="fe"><span class="fe-c p">PA230</span><span>Exposition · 360 Min/180T · Wegzeit inkl.</span></div>
+            <div class="fe"><span class="fe-c a">PA110</span><span>Krise Anordnung A · max. 180 Min</span></div>
+            <div class="fe"><span class="fe-c a">EA.00.0090</span><span>Krise Anordnung B · unbegrenzt</span></div>
+          </div>
+        </div>
+        <!-- Normaler Kontakt -->
+        <div class="fbr">
+          <div class="ftag ftag-n">Normaler Kontakt → Frage 3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAGE 3 -->
+    <div class="flow" style="margin-top:2mm">
+      <div class="fq">
+        <div class="fq-label">Frage 3</div>
+        <div class="fq-text">Patient / Familie anwesend?</div>
+        <div class="fq-hint">Synchron (live / Telefon / Video) = anwesend · Asynchron / über Patient = nicht anwesend</div>
+      </div>
+      <div class="farr"></div>
+      <div class="ffork">
+        <!-- JA: Anwesenheit -->
+        <div class="fbr">
+          <div class="ftag ftag-y">Ja — Anwesenheitsleistung</div>
+          <div class="fgroup">
+            <div class="fgroup-title">Anwesenheitsleistungen</div>
+            <div class="fe"><span class="fe-c i">PA010</span><span>Einzelsetting · max. 75 Min</span></div>
+            <div class="fe"><span class="fe-c i">PA030</span><span>Familiensetting · max. 90 Min</span></div>
+            <div class="fe"><span class="fe-c i">PA011/031</span><span>Fernmündlich synchron · max. 75 Min</span></div>
+            <div class="fe"><span class="fe-c i">EA.05.0070</span><span>Telemedizin synchron</span></div>
+            <div class="fe"><span class="fe-c i">PE010</span><span>VN max. 15 Min (nur Psychologinnen)</span></div>
+          </div>
+          <div class="co i"><span>ℹ</span><span>Vollständiges therapeutisches Gespräch → PA011 (75 Min). Kurze Rückmeldung → EA.00.0110 (20 Min). Unterscheidung beachten!</span></div>
+        </div>
+        <!-- NEIN: LAP-Topf -->
+        <div class="fbr">
+          <div class="ftag ftag-n">Nein — Patient nicht anwesend</div>
+          <div class="fgroup">
+            <div class="fgroup-title">Direktkommunikation (zeitversetzt)</div>
+            <div class="fe"><span class="fe-c a">EA.05.0080</span><span>E-Mail / asynchron · 1×/Tag · 4×/30T</span></div>
+          </div>
+          <div class="fgroup">
+            <div class="fgroup-title">LAP-Topf (altersgesteuert)</div>
+            <div class="fe"><span class="fe-c t">PE045/040</span><span>Fremdaktenstudium</span></div>
+            <div class="fe"><span class="fe-c t">PK025/020</span><span>Auskünfte Dritte (Schule, Beistand)</span></div>
+            <div class="fe"><span class="fe-c t">PK015/010</span><span>Besprechung ext. Behandler</span></div>
+            <div class="fe"><span class="fe-c t">PE030</span><span>Diagnostik-/Therapieplanung · 15 Min/1×90T</span></div>
+          </div>
+          <div class="co a"><span>⚠</span><span>&lt;18 J.: 240 Min/90T · ≥18 J.: 180 Min/90T · Gemeinsamer Topf für alle LAP-Ziffern!</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WARNUNGEN -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:2mm">
+      <div class="co a"><span>⚠</span><span><strong>Wegzeit:</strong> EA.05.0060 max. 60 Min/Sitzung. Bei PA230 (Exposition) bereits inkludiert — nicht doppelt buchen!</span></div>
+      <div class="co a"><span>⚠</span><span><strong>4h-Regel:</strong> Alle Blöcke summieren sich — Ø 90 Tage max. 4h/Woche/Patient. Bei Krisen: Begründung im Verlauf!</span></div>
+    </div>
+
+  </div>
+
+  <footer class="ft">
+    <span>Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</span>
+    <span>TARDOC Kapitel EA.05 · tardoc-psychologiekjpp.netlify.app</span>
+  </footer>
+</main>
+</body>
+</html>

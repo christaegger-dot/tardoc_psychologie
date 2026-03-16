@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Krisen-Leitfaden TARDOC EA.05 für Psychologinnen mit PT-Ausbildung. Anordnung A und B, Codes, Abläufe und Dokumentation auf einen Blick.">
+<meta property="og:title" content="Krisen-Leitfaden · Tarif-Kompass 2026 · Psychologinnen">
+<meta property="og:description" content="TARDOC EA.05 Krisen-Leitfaden: Anordnung A vs. B, Codes, Limiten und Dokumentationspflichten.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tardoc-psychologiekjpp.netlify.app/files/krisen-leitfaden-psych-print.html">
+<meta property="og:locale" content="de_CH">
+<link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/files/krisen-leitfaden-psych-print.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%234338ca'/><text x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'>T</text></svg>">
+<title>Krisen-Leitfaden · Tarif-Kompass 2026 · Psychologinnen</title>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" as="style">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared-print.css">
+<style>
+/* ── LAYOUT ── */
+.body { flex: 1; padding: 5mm 14mm 4mm; display: flex; flex-direction: column; gap: 4mm; }
+.cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.col { display: flex; flex-direction: column; gap: 3.5mm; }
+
+/* ── ENTSCHEIDUNGSFRAGE ── */
+.eq { background: var(--ink); border-radius: 8px; padding: 8px 14px; color: white; text-align: center; }
+.eq-label { font-size: 6.5pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #a5b4fc; margin-bottom: 2px; }
+.eq-text { font-size: 10.5pt; font-weight: 600; line-height: 1.25; }
+.eq-hint { font-size: 7pt; color: rgba(255,255,255,.45); margin-top: 3px; }
+
+/* ── KRISE-BOX ── */
+.kb { border-radius: 8px; padding: 7px 10px; }
+.kb.a { background: #fff7ed; border: 2px solid #fdba74; }
+.kb.b { background: var(--rose-l); border: 2px solid var(--rose-m); }
+.kb-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+.kb h3 { font-size: 9pt; font-weight: 700; line-height: 1.2; }
+.kb.a h3 { color: #c2410c; } .kb.b h3 { color: var(--rose); }
+.kb-sub { font-size: 6pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px; }
+.kb.a .kb-sub { color: #ea580c; } .kb.b .kb-sub { color: var(--rose); }
+.kb-badge { font-size: 6pt; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+.kb.a .kb-badge { background: rgba(234,88,12,.12); color: #c2410c; }
+.kb.b .kb-badge { background: rgba(192,16,58,.12); color: var(--rose); }
+.kb ul { list-style: none; display: flex; flex-direction: column; gap: 2px; margin-top: 3px; }
+.kb li { font-size: 7.5pt; color: var(--mid); display: flex; gap: 5px; line-height: 1.35; }
+.kb li::before { content: '→'; font-weight: 700; flex-shrink: 0; }
+.kb.a li::before { color: #ea580c; } .kb.b li::before { color: var(--rose); }
+
+/* ── VERGLEICHSTABELLE ── */
+.vt { background: white; border: 1.5px solid var(--line); border-radius: 8px; overflow: hidden; }
+.vt-head { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--ink); color: white; padding: 5px 10px; font-size: 6pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; gap: 6px; }
+.vt-row { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 5px 10px; border-bottom: 1px solid var(--line); font-size: 7.5pt; gap: 6px; align-items: center; }
+.vt-row:last-child { border-bottom: none; }
+.vt-row:nth-child(even) { background: #fafbfc; }
+.vt-lbl { font-weight: 600; color: var(--ink); }
+.vt-a { color: #c2410c; font-weight: 600; }
+.vt-b { color: var(--rose); font-weight: 600; }
+
+/* ── DOKUMENTATION CHECKLISTE ── */
+.doc { border-radius: 7px; padding: 6px 9px; }
+.doc.a { background: #fff7ed; border: 1.5px solid #fdba74; }
+.doc.b { background: var(--rose-l); border: 1.5px solid var(--rose-m); }
+.doc h4 { font-size: 7.5pt; font-weight: 700; margin-bottom: 3px; }
+.doc.a h4 { color: #c2410c; } .doc.b h4 { color: var(--rose); }
+.doc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.doc-list li { font-size: 7pt; color: var(--mid); display: flex; gap: 5px; align-items: flex-start; line-height: 1.35; }
+.ck-box { width: 8px; height: 8px; border: 1.5px solid var(--soft); border-radius: 2px; flex-shrink: 0; margin-top: 1px; }
+
+/* ── SONDERFÄLLE ── */
+.sf { background: var(--ind-l); border: 1.5px solid var(--ind-m); border-radius: 7px; padding: 6px 9px; }
+.sf h4 { font-size: 7.5pt; font-weight: 700; color: var(--ind); margin-bottom: 3px; }
+.sf-item { font-size: 7pt; color: var(--mid); line-height: 1.4; margin-bottom: 3px; display: flex; gap: 5px; }
+.sf-item::before { content: '→'; color: var(--ind); font-weight: 700; flex-shrink: 0; }
+.sf-item:last-child { margin-bottom: 0; }
+
+/* ── WARNBOX ── */
+.wb { background: var(--amber-l); border: 1.5px solid var(--amber-m); border-radius: 7px; padding: 5px 9px; }
+.wb h4 { font-size: 7.5pt; font-weight: 700; color: var(--amber); margin-bottom: 2px; }
+.wb p { font-size: 7pt; color: #6b3700; line-height: 1.4; }
+
+/* ── ABLAUF-SCHRITTE ── */
+.steps { display: flex; flex-direction: column; gap: 2mm; }
+.step { display: grid; grid-template-columns: 22px 1fr; gap: 5px; }
+.step-num { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 9pt; color: white; flex-shrink: 0; }
+.step-num.a { background: #ea580c; } .step-num.b { background: var(--rose); }
+.step-content h4 { font-size: 7.5pt; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.step-content p { font-size: 6.5pt; color: var(--soft); line-height: 1.35; }
+</style>
+</head>
+<body>
+
+<nav class="printbar" aria-label="Seitennavigation">
+  <div class="printbar-label"><strong>Krisen-Leitfaden Psychologinnen</strong> · 1 Seite A4 · Tarif-Kompass 2026</div>
+  <a class="pbtn pbtn-ghost" href="../index.html">← Zurück</a>
+  <button class="pbtn pbtn-dark" id="printBtn" onclick="handlePrint()" aria-label="Seite als PDF drucken oder speichern">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    <span id="printBtnLabel">Als PDF drucken</span>
+  </button>
+</nav>
+<div class="ios-hint" id="iosHint">
+  <strong>PDF auf iPhone/iPad speichern:</strong>
+  Tippe unten auf das Teilen-Symbol (Quadrat mit Pfeil nach oben) → «Als PDF sichern» oder «Drucken» → dann mit zwei Fingern auf die Vorschau zoomen → «Teilen» → «In Dateien sichern».
+</div>
+<script>
+function handlePrint() {
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (isIOS) {
+    document.getElementById('iosHint').classList.toggle('visible');
+  } else {
+    window.print();
+  }
+}
+(function(){
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (isIOS) { document.getElementById('printBtnLabel').textContent = 'PDF speichern — Anleitung'; }
+})();
+</script>
+
+<main class="sheet">
+  <header class="mast">
+    <div class="mast-top">
+      <div>
+        <h1>Krisen<em>leitfaden</em></h1>
+        <div class="mast-sub">Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</div>
+      </div>
+      <div class="mast-meta">
+        <strong>TARDOC · EA.05</strong>
+        Gültig ab 01.01.2026<br>tardoc-psychologiekjpp.netlify.app
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- Entscheidungsfrage -->
+    <div class="eq">
+      <div class="eq-label">Kernfrage</div>
+      <div class="eq-text">Laufende Psychotherapie (Anordnung A) oder KANT / Nacht- / Wochenenddienst (Anordnung B)?</div>
+      <div class="eq-hint">Nicht ein Krisencode, sondern ein zweistufiges System — psychologinnenspezifisch</div>
+    </div>
+
+    <!-- Zwei Krisen-Boxen -->
+    <div class="cols2">
+      <div class="kb a">
+        <div class="kb-header">
+          <div>
+            <div class="kb-sub">Anordnung A</div>
+            <h3>Krise unter laufender Psychotherapie</h3>
+          </div>
+          <span class="kb-badge">PA110 / PA111</span>
+        </div>
+        <ul>
+          <li>EA.05.0050 (öffentliche Ziffer)</li>
+          <li>Interne Ziffern: <strong>PA110</strong> (vor Ort) / <strong>PA111</strong> (fernmündlich)</li>
+          <li>Max. <strong>180 Minuten pro Sitzung</strong></li>
+          <li>Bleibt unter laufender Anordnung A</li>
+          <li>Unvorhersehbar, als bedrohlich erlebt</li>
+          <li>Ohne professionelle Hilfe nicht bewältigbar</li>
+        </ul>
+      </div>
+      <div class="kb b">
+        <div class="kb-header">
+          <div>
+            <div class="kb-sub">Anordnung B</div>
+            <h3>Krise im KANT / Spät-, Nacht-, Wochenenddienst</h3>
+          </div>
+          <span class="kb-badge">EA.00.0090</span>
+        </div>
+        <ul>
+          <li><strong>EA.00.0090</strong> Psychiatrische Krisenintervention</li>
+          <li>oder <strong>EA.00.0130</strong> Telemedizinische Krisenintervention</li>
+          <li>Effektiv aufgewendete Zeit, <strong>unbegrenzt</strong></li>
+          <li>Nicht kumulierbar mit Konsultation am selben Tag</li>
+          <li>Zwei Psych.: jeder aus seiner Dispo</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Vergleichstabelle -->
+    <div>
+      <div class="sec"><div class="sec-bar r"></div><h2>A vs. B auf einen Blick</h2><div class="sec-rule"></div></div>
+      <div class="vt">
+        <div class="vt-head"><div>Eigenschaft</div><div>Anordnung A</div><div>Anordnung B</div></div>
+        <div class="vt-row"><div class="vt-lbl">Wann?</div><div class="vt-a">Laufende PT</div><div class="vt-b">KANT / Nacht / Wochenende</div></div>
+        <div class="vt-row"><div class="vt-lbl">Ziffer (öffentlich)</div><div class="vt-a">EA.05.0050</div><div class="vt-b">EA.00.0090 / 0130</div></div>
+        <div class="vt-row"><div class="vt-lbl">Ziffer (intern)</div><div class="vt-a">PA110 / PA111</div><div class="vt-b">—</div></div>
+        <div class="vt-row"><div class="vt-lbl">Zeitlimit</div><div class="vt-a">180 Min/Sitzung</div><div class="vt-b">Unbegrenzt</div></div>
+        <div class="vt-row"><div class="vt-lbl">Fernmündlich?</div><div class="vt-a">PA111</div><div class="vt-b">EA.00.0130</div></div>
+        <div class="vt-row"><div class="vt-lbl">Mit Konsult. kombinierbar?</div><div>Ja</div><div style="color:var(--rose);font-weight:700">Nein (selber Tag)</div></div>
+        <div class="vt-row"><div class="vt-lbl">Zwei Psychologinnen?</div><div>Nicht empfohlen</div><div class="vt-b">Ja, je aus Dispo</div></div>
+      </div>
+    </div>
+
+    <!-- Untere Hälfte: 2 Spalten -->
+    <div class="cols2">
+      <div class="col">
+        <!-- Dokumentation -->
+        <div>
+          <div class="sec"><div class="sec-bar a"></div><h2>Dokumentation Krise A</h2><div class="sec-rule"></div></div>
+          <div class="doc a">
+            <h4>Zwingend im Verlaufseintrag</h4>
+            <ul class="doc-list">
+              <li><div class="ck-box"></div><span>Datum und Dauer (max. 180 Min)</span></li>
+              <li><div class="ck-box"></div><span>Auslöser der Krise beschreiben</span></li>
+              <li><div class="ck-box"></div><span>Bedrohungscharakter: als überwältigend erlebt, nicht allein bewältigbar</span></li>
+              <li><div class="ck-box"></div><span>Konkrete Massnahmen/Interventionen</span></li>
+              <li><div class="ck-box"></div><span>Abschluss und weiteres Vorgehen</span></li>
+              <li><div class="ck-box"></div><span>Unvorhersehbar, nicht geplant</span></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="sec"><div class="sec-bar r"></div><h2>Dokumentation Krise B</h2><div class="sec-rule"></div></div>
+          <div class="doc b">
+            <h4>Zwingend im Verlaufseintrag</h4>
+            <ul class="doc-list">
+              <li><div class="ck-box"></div><span>Datum, Beginn und Ende</span></li>
+              <li><div class="ck-box"></div><span>Dienstart (KANT / Spät / Nacht / WE)</span></li>
+              <li><div class="ck-box"></div><span>Präsentation und Auslöser der Krise</span></li>
+              <li><div class="ck-box"></div><span>Interventionen und Massnahmen</span></li>
+              <li><div class="ck-box"></div><span>Bei zwei Psych.: wer hat was übernommen</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <!-- Sonderfälle -->
+        <div>
+          <div class="sec"><div class="sec-bar i"></div><h2>Sonderfälle und Abgrenzungen</h2><div class="sec-rule"></div></div>
+          <div class="sf">
+            <h4>Wichtige Sonderfälle</h4>
+            <div class="sf-item"><strong>Psy/Psy-Doppelkonsultation:</strong> Im Regelbetrieb regressgefährdet. Ausnahme: Einarbeitung — Fallführende rechnet ab, zweite als LUF.</div>
+            <div class="sf-item"><strong>4h-Regel bei Krisen:</strong> Überschreitung möglich, aber mit inhaltlich tragfähiger Begründung im Verlaufseintrag. Versicherer kann Begründung verlangen.</div>
+            <div class="sf-item"><strong>Berufsgruppenübergreifend:</strong> In begründbaren Fällen möglich. Dokumentation zwingend.</div>
+            <div class="sf-item"><strong>Fernmündliche Krise A:</strong> PA111 verwenden (nicht PA011). Gleiche Dokumentationspflicht wie vor Ort.</div>
+          </div>
+        </div>
+
+        <!-- Warnung -->
+        <div class="wb">
+          <h4>⚠ Häufige Fehler bei Krisenerfassung</h4>
+          <p>Krise A und B verwechseln (180 Min vs. unbegrenzt) · KANT-Krise als PA110 statt EA.00.0090 erfassen · Fehlende Dokumentation des Bedrohungscharakters · Krise B mit Konsultation am selben Tag kombinieren · Psy/Psy-DK in Krise ohne Dokumentation der Aufgabenteilung</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="ft">
+    <span>Tarif-Kompass 2026 · Psychologinnen mit PT-Ausbildung · KJPP-Tagesklinik</span>
+    <span>TARDOC Kapitel EA.05 · tardoc-psychologiekjpp.netlify.app</span>
+  </footer>
+</main>
+</body>
+</html>

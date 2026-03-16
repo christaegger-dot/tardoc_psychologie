@@ -475,6 +475,56 @@ text-decoration: none;
 }
 .code-result-jump:hover { color: var(--indigo); }
 
+/* ── CATEGORY FILTER CHIPS ── */
+.sf-filters {
+display: flex; gap: 5px; flex-wrap: wrap; padding: 6px 0 2px;
+}
+.sf-chip {
+font-size: 11px; font-weight: 600; padding: 3px 10px;
+border-radius: 20px; border: 1.5px solid var(--border);
+background: white; color: var(--slate); cursor: pointer;
+transition: all .15s; white-space: nowrap;
+user-select: none;
+}
+.sf-chip:hover { border-color: var(--indigo-light); color: var(--indigo); }
+.sf-chip.active { background: var(--indigo); border-color: var(--indigo); color: white; }
+.sf-chip.active:hover { background: #4338ca; }
+.sf-chip[data-cat="anwesenheit"].active { background: #059669; border-color: #059669; }
+.sf-chip[data-cat="diagnostik"].active { background: var(--indigo); border-color: var(--indigo); }
+.sf-chip[data-cat="krise"].active { background: var(--rose); border-color: var(--rose); }
+.sf-chip[data-cat="exposition"].active { background: #7c3aed; border-color: #7c3aed; }
+.sf-chip[data-cat="telemedizin"].active { background: #b85c00; border-color: #b85c00; }
+.sf-chip[data-cat="lap"].active { background: #0a7c71; border-color: #0a7c71; }
+.sf-chip[data-cat="wegzeit"].active { background: #b85c00; border-color: #b85c00; }
+
+/* Category badge in search results */
+.sr-cat {
+font-size: 9px; font-weight: 700; letter-spacing: .04em;
+text-transform: uppercase; padding: 1px 6px; border-radius: 8px;
+display: inline-block; margin-left: 6px; vertical-align: middle;
+}
+.sr-cat-anwesenheit { background: #dcfce7; color: #15803d; }
+.sr-cat-diagnostik { background: #eef2ff; color: #4338ca; }
+.sr-cat-krise { background: #fff1f2; color: #c0103a; }
+.sr-cat-exposition { background: #f5f3ff; color: #7c3aed; }
+.sr-cat-telemedizin { background: #fef3e2; color: #b85c00; }
+.sr-cat-lap { background: #e6f4f2; color: #0a7c71; }
+.sr-cat-wegzeit { background: #fef3e2; color: #b85c00; }
+
+/* Keyboard-selected result */
+.sr-item.kb-focus, .code-result.kb-focus { background: var(--bg); outline: 2px solid var(--indigo-light); outline-offset: -2px; }
+
+/* Fuzzy match highlight */
+.fuzzy-hl { color: var(--indigo); font-weight: 700; }
+
+/* Search result count */
+.sr-count { padding: 4px 14px; font-size: 11px; color: var(--slate-light); border-bottom: 1px solid #f1f5f9; }
+
+@media (max-width: 600px) {
+.sf-filters { padding: 4px 0 0; gap: 4px; }
+.sf-chip { font-size: 10px; padding: 2px 8px; }
+}
+
 /* Highlight a pos-item when jumped to */
 .pos-item.highlight-pulse {
 animation: posHighlight 2s ease;
@@ -1142,7 +1192,16 @@ justify-content: center;
       <span class="qt-search-icon">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </span>
-      <input type="text" class="qt-search-input" id="searchInput" placeholder="Code oder Begriff suchen …" aria-label="Suchbegriff eingeben">
+      <input type="text" class="qt-search-input" id="searchInput" placeholder="Code oder Begriff suchen … (Ctrl+K)" aria-label="Suchbegriff eingeben" autocomplete="off">
+      <div class="sf-filters" id="searchFilters">
+        <span class="sf-chip" data-cat="anwesenheit">Anwesenheit</span>
+        <span class="sf-chip" data-cat="diagnostik">Diagnostik</span>
+        <span class="sf-chip" data-cat="krise">Krise</span>
+        <span class="sf-chip" data-cat="exposition">Exposition</span>
+        <span class="sf-chip" data-cat="telemedizin">Telemedizin</span>
+        <span class="sf-chip" data-cat="lap">LAP-Topf</span>
+        <span class="sf-chip" data-cat="wegzeit">Wegzeit</span>
+      </div>
       <div class="qt-search-results" id="searchResults"></div>
     </div>
     <div class="qt-links">
@@ -2448,26 +2507,32 @@ justify-content: center;
   // CODE DATABASE — all tariff codes with metadata
   // ═══════════════════════════════════════════════════════
   const codeDB = [
-    { code:'EA.05.0010', alias:['PA010'], name:'Einzelsetting', limit:'75 Min', detail:'Patient anwesend · + PE010 15 Min VN', section:'positionen' },
-    { code:'EA.05.0070', alias:[], name:'Telemedizin synchron', limit:'Wie 0010', detail:'Video/Telefon Echtzeit · Einzelsetting', section:'positionen' },
-    { code:'PE010', alias:[], name:'Vor-/Nachbereitung', limit:'15 Min', detail:'Zu PA010/PA030 · interne Psychologenlogik', section:'positionen' },
-    { code:'EA.05.0030', alias:['PA030'], name:'Familiensetting', limit:'90 Min', detail:'Patient + Eltern · + PE010 15 Min VN', section:'positionen' },
-    { code:'PA011', alias:['PA031'], name:'Fernmündliche Sitzung', limit:'75 Min', detail:'Telefon/Video synchron · Anwesenheitsleistung', section:'positionen' },
-    { code:'EA.00.0110', alias:[], name:'Telefonische Verlaufskonsultation', limit:'20 Min', detail:'Kurze Rückmeldung · Nicht-EA.05-Ziffer', section:'positionen' },
-    { code:'EA.05.0050', alias:['PA110','PA111'], name:'Krisenintervention', limit:'180 Min', detail:'Unter lfd. PT · Anordnung A', section:'krise' },
-    { code:'EA.00.0090', alias:[], name:'Psychiatrische Krisenintervention', limit:'Unbegrenzt', detail:'KANT/Nacht-/Wochenenddienst · Anordnung B', section:'krise' },
-    { code:'EA.05.0150', alias:['PA220'], name:'Testdurchführung', limit:'180 Min / 90 T', detail:'Richtwert 60 Min · nicht mit 0010/0030 kombinieren', section:'diagnostik' },
-    { code:'PE020', alias:[], name:'Test-Auswertung / Bericht', limit:'240 Min / 90 T', detail:'In Abwesenheit · Richtwert 80 Min', section:'diagnostik' },
-    { code:'PA230', alias:[], name:'Expositionstherapie', limit:'360 Min / 180 T', detail:'Wegzeit inkl. · + PE010 15 Min VN', section:'exposition' },
-    { code:'EA.05.0080', alias:[], name:'Telemedizin zeitversetzt', limit:'1×/Tag · 4×/30 T', detail:'E-Mail / asynchron · 6er-Regel veraltet!', section:'telefon' },
-    { code:'EA.05.0060', alias:[], name:'Wegzeit', limit:'60 Min/Sitzung', detail:'Hin + zurück · Bei PA230 bereits inkl.!', section:'positionen' },
-    { code:'EA.05.0100', alias:['PE045','PE040'], name:'Fremdaktenstudium', limit:'LAP altersgesteuert', detail:'<18 J: 240 Min · ≥18 J: 180 Min / 90 T', section:'lap-topf' },
-    { code:'EA.05.0110', alias:['PK025','PK020'], name:'Auskünfte Dritte', limit:'LAP altersgesteuert', detail:'Schule, Beistand, Behörde · fachlich', section:'lap-topf' },
-    { code:'EA.05.0130', alias:['PK015','PK010'], name:'Ext. Behandler-Besprechung', limit:'LAP altersgesteuert', detail:'Ausserhalb regulärer Rapporte', section:'lap-topf' },
-    { code:'EA.05.0140', alias:['PE030'], name:'Diagnostik-/Therapieplanung', limit:'15 Min · 1×/90 T', detail:'Schriftliches Ergebnis zwingend', section:'lap-topf' },
-    { code:'EA.00.0130', alias:[], name:'Telemedizinische Krisenintervention', limit:'Unbegrenzt', detail:'Krise · Anordnung B · telemedizinisch', section:'krise' },
-    { code:'EA.05.0120', alias:[], name:'Auskünfte Angehörige', limit:'LAP-Topf', detail:'Ohne Patient · fachlicher Austausch', section:'lap-topf' },
+    { code:'EA.05.0010', alias:['PA010'], name:'Einzelsetting', limit:'75 Min', detail:'Patient anwesend · + PE010 15 Min VN', section:'positionen', cat:'anwesenheit' },
+    { code:'EA.05.0070', alias:[], name:'Telemedizin synchron', limit:'Wie 0010', detail:'Video/Telefon Echtzeit · Einzelsetting', section:'positionen', cat:'anwesenheit' },
+    { code:'PE010', alias:[], name:'Vor-/Nachbereitung', limit:'15 Min', detail:'Zu PA010/PA030 · interne Psychologenlogik', section:'positionen', cat:'anwesenheit' },
+    { code:'EA.05.0030', alias:['PA030'], name:'Familiensetting', limit:'90 Min', detail:'Patient + Eltern · + PE010 15 Min VN', section:'positionen', cat:'anwesenheit' },
+    { code:'PA011', alias:['PA031'], name:'Fernmündliche Sitzung', limit:'75 Min', detail:'Telefon/Video synchron · Anwesenheitsleistung', section:'positionen', cat:'anwesenheit' },
+    { code:'EA.00.0110', alias:[], name:'Telefonische Verlaufskonsultation', limit:'20 Min', detail:'Kurze Rückmeldung · Nicht-EA.05-Ziffer', section:'positionen', cat:'telemedizin' },
+    { code:'EA.05.0050', alias:['PA110','PA111'], name:'Krisenintervention', limit:'180 Min', detail:'Unter lfd. PT · Anordnung A', section:'krise', cat:'krise' },
+    { code:'EA.00.0090', alias:[], name:'Psychiatrische Krisenintervention', limit:'Unbegrenzt', detail:'KANT/Nacht-/Wochenenddienst · Anordnung B', section:'krise', cat:'krise' },
+    { code:'EA.05.0150', alias:['PA220'], name:'Testdurchführung', limit:'180 Min / 90 T', detail:'Richtwert 60 Min · nicht mit 0010/0030 kombinieren', section:'diagnostik', cat:'diagnostik' },
+    { code:'PE020', alias:[], name:'Test-Auswertung / Bericht', limit:'240 Min / 90 T', detail:'In Abwesenheit · Richtwert 80 Min', section:'diagnostik', cat:'diagnostik' },
+    { code:'PA230', alias:[], name:'Expositionstherapie', limit:'360 Min / 180 T', detail:'Wegzeit inkl. · + PE010 15 Min VN', section:'exposition', cat:'exposition' },
+    { code:'EA.05.0080', alias:[], name:'Telemedizin zeitversetzt', limit:'1×/Tag · 4×/30 T', detail:'E-Mail / asynchron · 6er-Regel veraltet!', section:'telefon', cat:'telemedizin' },
+    { code:'EA.05.0060', alias:[], name:'Wegzeit', limit:'60 Min/Sitzung', detail:'Hin + zurück · Bei PA230 bereits inkl.!', section:'positionen', cat:'wegzeit' },
+    { code:'EA.05.0100', alias:['PE045','PE040'], name:'Fremdaktenstudium', limit:'LAP altersgesteuert', detail:'<18 J: 240 Min · ≥18 J: 180 Min / 90 T', section:'lap-topf', cat:'lap' },
+    { code:'EA.05.0110', alias:['PK025','PK020'], name:'Auskünfte Dritte', limit:'LAP altersgesteuert', detail:'Schule, Beistand, Behörde · fachlich', section:'lap-topf', cat:'lap' },
+    { code:'EA.05.0130', alias:['PK015','PK010'], name:'Ext. Behandler-Besprechung', limit:'LAP altersgesteuert', detail:'Ausserhalb regulärer Rapporte', section:'lap-topf', cat:'lap' },
+    { code:'EA.05.0140', alias:['PE030'], name:'Diagnostik-/Therapieplanung', limit:'15 Min · 1×/90 T', detail:'Schriftliches Ergebnis zwingend', section:'lap-topf', cat:'lap' },
+    { code:'EA.00.0130', alias:[], name:'Telemedizinische Krisenintervention', limit:'Unbegrenzt', detail:'Krise · Anordnung B · telemedizinisch', section:'krise', cat:'krise' },
+    { code:'EA.05.0120', alias:[], name:'Auskünfte Angehörige', limit:'LAP-Topf', detail:'Ohne Patient · fachlicher Austausch', section:'lap-topf', cat:'lap' },
   ];
+
+  // Category labels for display
+  const catLabels = {
+    anwesenheit:'Anwesenheit', diagnostik:'Diagnostik', krise:'Krise',
+    exposition:'Exposition', telemedizin:'Telemedizin', lap:'LAP-Topf', wegzeit:'Wegzeit'
+  };
 
   // Build fast lookup: all codes + aliases → entry
   const codeLookup = {};
@@ -2476,6 +2541,59 @@ justify-content: center;
     codeLookup[norm(entry.code)] = entry;
     entry.alias.forEach(a => { codeLookup[norm(a)] = entry; });
   });
+
+  // ═══════════════════════════════════════════════════════
+  // FUZZY SEARCH — tolerates typos (Levenshtein ≤ 2)
+  // ═══════════════════════════════════════════════════════
+  function levenshtein(a, b) {
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
+    var matrix = [];
+    for (var i = 0; i <= b.length; i++) matrix[i] = [i];
+    for (var j = 0; j <= a.length; j++) matrix[0][j] = j;
+    for (i = 1; i <= b.length; i++) {
+      for (j = 1; j <= a.length; j++) {
+        var cost = b.charAt(i - 1) === a.charAt(j - 1) ? 0 : 1;
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j - 1] + cost
+        );
+      }
+    }
+    return matrix[b.length][a.length];
+  }
+
+  function fuzzyMatch(query, text) {
+    var q = query.toLowerCase();
+    var t = text.toLowerCase();
+    // Exact substring
+    if (t.indexOf(q) !== -1) return { match: true, score: 0, type: 'exact' };
+    // Word-start match (e.g. "einz" matches "Einzelsetting")
+    var words = t.split(/[\s·\/\-,]+/);
+    for (var w = 0; w < words.length; w++) {
+      if (words[w].indexOf(q) === 0) return { match: true, score: 1, type: 'prefix' };
+    }
+    // Levenshtein on each word (tolerate typos)
+    if (q.length >= 3) {
+      for (var w2 = 0; w2 < words.length; w2++) {
+        var word = words[w2];
+        if (word.length < 2) continue;
+        // Compare against beginning of word (same length as query)
+        var sub = word.substring(0, Math.min(q.length + 1, word.length));
+        var dist = levenshtein(q, sub);
+        if (dist <= Math.min(2, Math.floor(q.length / 3))) {
+          return { match: true, score: 2 + dist, type: 'fuzzy' };
+        }
+        // Full word comparison for short words
+        if (word.length <= q.length + 2) {
+          dist = levenshtein(q, word);
+          if (dist <= 2) return { match: true, score: 2 + dist, type: 'fuzzy' };
+        }
+      }
+    }
+    return { match: false, score: 99, type: 'none' };
+  }
 
   function findCode(query) {
     const norm = query.replace(/[\.\s\-\/]/g, '').toUpperCase();
@@ -2493,6 +2611,51 @@ justify-content: center;
     }
     return null;
   }
+
+  function findCodesFuzzy(query, catFilter) {
+    var results = [];
+    var q = query.toLowerCase();
+    codeDB.forEach(function(entry) {
+      if (catFilter && entry.cat !== catFilter) return;
+      // Match against code, aliases, name, detail
+      var searchFields = [entry.code, entry.name, entry.detail, entry.limit].concat(entry.alias);
+      var bestScore = 99;
+      var bestType = 'none';
+      for (var i = 0; i < searchFields.length; i++) {
+        var fm = fuzzyMatch(query, searchFields[i]);
+        if (fm.match && fm.score < bestScore) {
+          bestScore = fm.score;
+          bestType = fm.type;
+        }
+      }
+      if (bestScore < 99) {
+        results.push({ entry: entry, score: bestScore, type: bestType });
+      }
+    });
+    results.sort(function(a, b) { return a.score - b.score; });
+    return results;
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // CATEGORY FILTER STATE
+  // ═══════════════════════════════════════════════════════
+  var activeFilter = null;
+  var searchFiltersEl = document.getElementById('searchFilters');
+
+  searchFiltersEl.addEventListener('click', function(e) {
+    var chip = e.target.closest('.sf-chip');
+    if (!chip) return;
+    var cat = chip.dataset.cat;
+    if (activeFilter === cat) {
+      activeFilter = null;
+      chip.classList.remove('active');
+    } else {
+      searchFiltersEl.querySelectorAll('.sf-chip').forEach(function(c) { c.classList.remove('active'); });
+      activeFilter = cat;
+      chip.classList.add('active');
+    }
+    triggerSearch();
+  });
 
   // ═══════════════════════════════════════════════════════
   // NAV + SCROLL
@@ -2588,110 +2751,192 @@ justify-content: center;
   const searchInput = document.getElementById('searchInput');
   const searchResults = document.getElementById('searchResults');
 
-  searchInput.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      searchInput.value = '';
-      searchResults.classList.remove('visible');
-      searchInput.blur();
-    }
-  });
+  var kbIndex = -1; // keyboard navigation index
 
-  searchInput.addEventListener('input', () => {
-    const q = searchInput.value.trim();
+  function escapeHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function renderCodeCard(entry) {
+    var aliases = entry.alias.length ? ' · ' + entry.alias.join(' / ') : '';
+    var catCls = 'sr-cat-' + entry.cat;
+    var catLabel = catLabels[entry.cat] || entry.cat;
+    return '<div class="code-result sr-clickable" data-section="' + entry.section + '" data-code="' + entry.code + '">' +
+      '<div class="code-result-header">' +
+        '<span class="code-result-code">' + escapeHtml(entry.code) + escapeHtml(aliases) + '</span>' +
+        '<span class="code-result-name">' + escapeHtml(entry.name) + '<span class="sr-cat ' + catCls + '">' + escapeHtml(catLabel) + '</span></span>' +
+      '</div>' +
+      '<div class="code-result-details">' +
+        '<span class="code-result-detail"><strong>Limit:</strong> ' + escapeHtml(entry.limit) + '</span>' +
+        '<span class="code-result-detail"><strong>Info:</strong> ' + escapeHtml(entry.detail) + '</span>' +
+      '</div>' +
+      '<span class="code-result-jump">→ Zur Position springen</span>' +
+    '</div>';
+  }
+
+  function triggerSearch() {
+    var q = searchInput.value.trim();
+    kbIndex = -1;
+
+    // If only filter active, no text → show all matching codes
+    if (q.length < 2 && activeFilter) {
+      var filtered = codeDB.filter(function(e) { return e.cat === activeFilter; });
+      if (filtered.length > 0) {
+        var h = '<div class="sr-count">' + filtered.length + ' Position' + (filtered.length > 1 ? 'en' : '') + ' in «' + escapeHtml(catLabels[activeFilter]) + '»</div>';
+        filtered.forEach(function(entry) { h += renderCodeCard(entry); });
+        searchResults.innerHTML = h;
+        bindResultClicks();
+        searchResults.classList.add('visible');
+      } else {
+        searchResults.classList.remove('visible');
+      }
+      return;
+    }
+
     if (q.length < 2) {
       searchResults.classList.remove('visible');
       return;
     }
 
-    let html = '';
+    var html = '';
 
-    // 1. Code match?
-    const codeMatch = findCode(q);
-    if (codeMatch) {
-      const aliases = codeMatch.alias.length ? ' · ' + codeMatch.alias.join(' / ') : '';
-      html += '<div class="code-result" data-section="' + codeMatch.section + '" data-code="' + codeMatch.code + '">' +
-        '<div class="code-result-header">' +
-          '<span class="code-result-code">' + codeMatch.code + aliases + '</span>' +
-          '<span class="code-result-name">' + codeMatch.name + '</span>' +
-        '</div>' +
-        '<div class="code-result-details">' +
-          '<span class="code-result-detail"><strong>Limit:</strong> ' + codeMatch.limit + '</span>' +
-          '<span class="code-result-detail"><strong>Info:</strong> ' + codeMatch.detail + '</span>' +
-        '</div>' +
-        '<span class="code-result-jump">→ Zur Position springen</span>' +
-      '</div>';
+    // 1. Exact code match (top card)
+    var codeMatch = findCode(q);
+    if (codeMatch && (!activeFilter || codeMatch.cat === activeFilter)) {
+      html += renderCodeCard(codeMatch);
     }
 
-    // 2. Text search (also runs — shows section matches below code card)
-    const qLow = q.toLowerCase();
-    const textResults = [];
-    sections.forEach(sec => {
-      const title = sec.querySelector('.section-title');
-      const titleText = title ? title.textContent : '';
-      const content = sec.textContent;
-      const idx = content.toLowerCase().indexOf(qLow);
-      if (idx !== -1) {
-        const start = Math.max(0, idx - 30);
-        const end = Math.min(content.length, idx + qLow.length + 50);
-        let snippet = (start > 0 ? '…' : '') +
-          content.substring(start, idx) +
-          '<mark>' + content.substring(idx, idx + qLow.length) + '</mark>' +
-          content.substring(idx + qLow.length, end) +
-          (end < content.length ? '…' : '');
-        textResults.push({ id: sec.id, title: titleText.trim(), snippet });
-      }
+    // 2. Fuzzy code matches (additional codes below exact match)
+    var fuzzyResults = findCodesFuzzy(q, activeFilter);
+    var shown = codeMatch ? [codeMatch.code] : [];
+    fuzzyResults.forEach(function(r) {
+      if (shown.indexOf(r.entry.code) !== -1) return;
+      if (shown.length >= 8) return;
+      shown.push(r.entry.code);
+      var catCls = 'sr-cat-' + r.entry.cat;
+      var catLabel = catLabels[r.entry.cat] || r.entry.cat;
+      var fuzzyLabel = r.type === 'fuzzy' ? ' <span class="fuzzy-hl">(ähnlich)</span>' : '';
+      html += '<div class="sr-item sr-clickable" data-section="' + r.entry.section + '" data-code="' + r.entry.code + '">' +
+        '<div class="sr-title">' + escapeHtml(r.entry.code) + (r.entry.alias.length ? ' · ' + escapeHtml(r.entry.alias.join('/')) : '') +
+        ' — ' + escapeHtml(r.entry.name) + fuzzyLabel +
+        '<span class="sr-cat ' + catCls + '">' + escapeHtml(catLabel) + '</span></div>' +
+        '<div class="sr-context"><strong>' + escapeHtml(r.entry.limit) + '</strong> · ' + escapeHtml(r.entry.detail) + '</div></div>';
     });
 
-    if (textResults.length > 0) {
-      html += textResults.map(r =>
-        '<div class="sr-item" data-target="' + r.id + '">' +
-        '<div class="sr-title">' + r.title + '</div>' +
-        '<div class="sr-context">' + r.snippet + '</div></div>'
-      ).join('');
+    // 3. Text search in sections (also runs — shows section matches below)
+    if (!activeFilter) {
+      var qLow = q.toLowerCase();
+      var textResults = [];
+      sections.forEach(function(sec) {
+        var title = sec.querySelector('.section-title');
+        var titleText = title ? title.textContent : '';
+        var content = sec.textContent;
+        var idx = content.toLowerCase().indexOf(qLow);
+        if (idx !== -1) {
+          var start = Math.max(0, idx - 30);
+          var end = Math.min(content.length, idx + qLow.length + 50);
+          var snippet = (start > 0 ? '…' : '') +
+            escapeHtml(content.substring(start, idx)) +
+            '<mark>' + escapeHtml(content.substring(idx, idx + qLow.length)) + '</mark>' +
+            escapeHtml(content.substring(idx + qLow.length, end)) +
+            (end < content.length ? '…' : '');
+          textResults.push({ id: sec.id, title: titleText.trim(), snippet: snippet });
+        }
+      });
+      if (textResults.length > 0) {
+        html += textResults.map(function(r) {
+          return '<div class="sr-item sr-clickable" data-target="' + r.id + '">' +
+            '<div class="sr-title">' + escapeHtml(r.title) + '</div>' +
+            '<div class="sr-context">' + r.snippet + '</div></div>';
+        }).join('');
+      }
+    }
+
+    // Count results
+    var countEl = '';
+    var totalClickable = (html.match(/sr-clickable/g) || []).length;
+    if (totalClickable > 0) {
+      countEl = '<div class="sr-count">' + totalClickable + ' Treffer' + (activeFilter ? ' in «' + escapeHtml(catLabels[activeFilter]) + '»' : '') + '</div>';
     }
 
     if (!html) {
-      html = '<div class="sr-empty">Keine Treffer</div>';
+      html = '<div class="sr-empty">Keine Treffer' + (activeFilter ? ' in «' + escapeHtml(catLabels[activeFilter]) + '»' : '') + '</div>';
     }
 
-    searchResults.innerHTML = html;
+    searchResults.innerHTML = countEl + html;
+    bindResultClicks();
+    searchResults.classList.add('visible');
+  }
 
-    // Bind code-result click
-    const codeEl = searchResults.querySelector('.code-result');
-    if (codeEl) {
-      codeEl.style.cursor = 'pointer';
-      codeEl.addEventListener('click', () => {
-        navigateToCode(codeEl.dataset.section, codeEl.dataset.code);
-        searchResults.classList.remove('visible');
-        searchInput.value = '';
-      });
-    }
-
-    // Bind text-result clicks
-    searchResults.querySelectorAll('.sr-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const target = document.getElementById(item.dataset.target);
-        if (target) {
-          if (target.tagName === 'DETAILS') target.open = true;
-          target.classList.add('visible');
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  function bindResultClicks() {
+    searchResults.querySelectorAll('.sr-clickable').forEach(function(item) {
+      item.style.cursor = 'pointer';
+      item.addEventListener('click', function() {
+        var sectionId = item.dataset.section || item.dataset.target;
+        var code = item.dataset.code || '';
+        if (sectionId) {
+          var target = document.getElementById(sectionId);
+          if (target) {
+            if (target.tagName === 'DETAILS') target.open = true;
+            target.classList.add('visible');
+          }
+          if (code) {
+            navigateToCode(sectionId, code);
+          } else if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
         searchResults.classList.remove('visible');
         searchInput.value = '';
+        activeFilter = null;
+        searchFiltersEl.querySelectorAll('.sf-chip').forEach(function(c) { c.classList.remove('active'); });
       });
     });
+  }
 
-    searchResults.classList.add('visible');
+  searchInput.addEventListener('input', triggerSearch);
+
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      searchResults.classList.remove('visible');
+      searchInput.blur();
+      return;
+    }
+    // Keyboard navigation
+    var items = searchResults.querySelectorAll('.sr-clickable');
+    if (!items.length) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      kbIndex = Math.min(kbIndex + 1, items.length - 1);
+      updateKbFocus(items);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      kbIndex = Math.max(kbIndex - 1, 0);
+      updateKbFocus(items);
+    } else if (e.key === 'Enter' && kbIndex >= 0 && kbIndex < items.length) {
+      e.preventDefault();
+      items[kbIndex].click();
+    }
   });
 
-  document.addEventListener('click', e => {
+  function updateKbFocus(items) {
+    items.forEach(function(it, i) {
+      it.classList.toggle('kb-focus', i === kbIndex);
+    });
+    if (kbIndex >= 0 && items[kbIndex]) {
+      items[kbIndex].scrollIntoView({ block: 'nearest' });
+    }
+  }
+
+  document.addEventListener('click', function(e) {
     if (!e.target.closest('.qt-search')) {
       searchResults.classList.remove('visible');
     }
   });
 
   // ── Keyboard shortcut: Ctrl+K / Cmd+K ──
-  document.addEventListener('keydown', e => {
+  document.addEventListener('keydown', function(e) {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
       e.preventDefault();
       searchInput.focus();

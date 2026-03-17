@@ -39,24 +39,24 @@
   :root {
     /* ── 6 KERNFARBEN ── */
     --indigo:      #4338ca;   /* Primärfarbe, Badges, Links, aktive Elemente */
-    --amber:       var(--amber);   /* Achtung, Limite, Sonderfall */
-    --amber-dark:  var(--amber-dark);   /* Ernste Warnung ohne Alarm (ersetzt Rose) */
-    --navy:        var(--navy);   /* Dunkle Blöcke, Header, Footer */
-    --slate:       var(--slate);   /* Sekundärer Text, Erklärungen */
+    --amber:       #d97706;   /* Achtung, Limite, Sonderfall */
+    --amber-dark:  #92400e;   /* Ernste Warnung (ersetzt Rose — Option B) */
+    --navy:        #1c2b3a;   /* Dunkle Blöcke, Header, Footer (angeglichen SA-Seite) */
+    --slate:       #475569;   /* Sekundärer Text, Erklärungen */
     --bg:          #f5f7ff;   /* Seitenhintergrund (leicht Indigo-getönt) */
 
     /* ── 8 ABLEITUNGEN ── */
-    --indigo-light: var(--indigo-light);  /* Hover-States, sekundäre Akzente */
-    --indigo-soft:  var(--indigo-soft);  /* Helle Hintergründe für Indigo-Karten */
-    --amber-light:  var(--amber-light);  /* Text auf dunklem Hintergrund */
-    --amber-bg:     var(--amber-bg);  /* Helle Warnbox-Hintergründe */
-    --green:        var(--green);  /* Häkchen, Positiv-Markierungen */
-    --green-bg:     var(--green-bg);  /* Hintergrund Positiv-Karten */
+    --indigo-light: #6366f1;  /* Hover-States, sekundäre Akzente */
+    --indigo-soft:  #eef2ff;  /* Helle Hintergründe für Indigo-Karten */
+    --amber-light:  #fbbf24;  /* Text auf dunklem Hintergrund */
+    --amber-bg:     #fef3e2;  /* Helle Warnbox-Hintergründe */
+    --green:        #0d7a5f;  /* Häkchen, Positiv-Markierungen */
+    --green-bg:     #e6f4f2;  /* Hintergrund Positiv-Karten */
 
     /* ── GEMEINSAME WERTE (identisch mit SA-Seite) ── */
     --card:         #ffffff;
     --border:       #e2e8f0;
-    --text:         var(--text);
+    --text:         #1e293b;  /* Haupttext */
   }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -141,7 +141,7 @@ padding: 7px 14px; border-radius: 8px;
 font-size: 12.5px; font-weight: 500;
 }
 .layer-pill.ext {
-background: var(--indigo-light);
+background: var(--indigo);
 border: 1px solid var(--indigo-light);
 color: #ffffff;
 }
@@ -910,6 +910,89 @@ text-align: center; width: 100%; font-size: 13px;
 .idt-sub-fork { display: flex; gap: 16px; width: 100%; }
 .idt-sub-branch { flex: 1; display: flex; flex-direction: column; align-items: center; }
 
+/* ── INTERAKTIVER BAUM ── */
+.idt-toggle { display: flex; gap: 8px; margin-bottom: 24px; }
+.idt-toggle-btn {
+  padding: 6px 16px; border-radius: 20px;
+  font-size: 12.5px; font-weight: 600; cursor: pointer;
+  border: 1.5px solid var(--border);
+  background: white; color: var(--slate);
+  transition: all .2s;
+}
+.idt-toggle-btn.active { background: var(--indigo); color: white; border-color: var(--indigo); }
+.idt-interactive { display: flex; flex-direction: column; gap: 0; }
+.idt-step {
+  display: none; flex-direction: column; gap: 16px;
+  animation: idtFadeIn .25s ease;
+}
+.idt-step.visible { display: flex; }
+@keyframes idtFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.idt-q-box {
+  background: var(--indigo); color: white;
+  border-radius: 12px; padding: 18px 24px;
+  font-size: 15px; font-weight: 500;
+}
+.idt-q-box small {
+  display: block; font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--indigo-soft); margin-bottom: 5px;
+}
+.idt-q-box .q-sub { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+.idt-choices { display: flex; gap: 10px; flex-wrap: wrap; }
+.idt-choice {
+  flex: 1; min-width: 140px;
+  padding: 12px 18px; border-radius: 10px;
+  font-size: 13.5px; font-weight: 600; cursor: pointer;
+  border: 2px solid var(--border);
+  background: white; color: var(--navy);
+  text-align: center; transition: all .15s;
+}
+.idt-choice:hover { border-color: var(--indigo); color: var(--indigo); background: var(--indigo-soft); }
+.idt-choice.yes-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-bg); }
+.idt-choice.no-btn:hover { border-color: var(--amber); color: var(--amber); background: var(--amber-bg); }
+.idt-result-box {
+  border-radius: 12px; padding: 18px 22px;
+  border: 2px solid;
+}
+.idt-result-box.intern { background: var(--amber-bg); border-color: var(--amber-light); }
+.idt-result-box.intern small { color: var(--amber-dark); }
+.idt-result-box.anw { background: var(--indigo-soft); border-color: var(--indigo-light); }
+.idt-result-box.anw small { color: var(--indigo); }
+.idt-result-box.lap { background: var(--indigo-soft); border-color: var(--indigo-light); }
+.idt-result-box.lap small { color: var(--indigo); }
+.idt-result-box.diag { background: var(--indigo-soft); border-color: var(--indigo); }
+.idt-result-box.diag small { color: var(--indigo); }
+.idt-result-box.warn { background: var(--amber-bg); border-color: var(--amber); }
+.idt-result-box.warn small { color: var(--amber-dark); }
+.idt-result-box small {
+  display: block; font-size: 10px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px;
+}
+.idt-result-box strong { font-size: 14px; color: var(--navy); display: block; margin-bottom: 4px; }
+.idt-result-box p { font-size: 13px; color: var(--slate); }
+.idt-result-box ul { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
+.idt-result-box ul li { font-size: 13px; color: var(--slate); display: flex; gap: 8px; }
+.idt-result-box ul li::before { content: '→'; color: var(--indigo); font-weight: 700; flex-shrink: 0; }
+.idt-result-box.warn ul li::before { color: var(--amber-dark); }
+.idt-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.5px; color: var(--slate); cursor: pointer;
+  background: none; border: none; padding: 0;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.idt-back:hover { color: var(--indigo); }
+.idt-restart {
+  margin-top: 16px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.5px; font-weight: 600; color: var(--indigo); cursor: pointer;
+  background: var(--indigo-soft); border: 1.5px solid var(--indigo);
+  padding: 8px 16px; border-radius: 20px;
+  transition: all .15s;
+}
+.idt-restart:hover { background: var(--indigo); color: white; }
+.idt-fullview { display: none; }
+.idt-fullview.visible { display: block; }
+
 /* ── POSITION TABLE ── */
 .pos-grid {
   display: grid;
@@ -1469,7 +1552,7 @@ justify-content: center;
       <div class="qt-search-results" id="searchResults"></div>
     </div>
     <div class="qt-links">
-      <a class='qt-link' href='/files/spickzettel-psych-print' style='background:var(--indigo-soft);color:var(--indigo-light);border:1px solid var(--indigo-soft);' target='_blank' rel='noopener noreferrer'>
+      <a class='qt-link' href='/files/spickzettel-psych-print' style='background:var(--indigo-soft);color:var(--indigo);border:1px solid var(--indigo-light);' target='_blank' rel='noopener noreferrer'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Spickzettel
       </a>
@@ -1489,7 +1572,7 @@ justify-content: center;
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
         Diagnostik
       </a>
-      <a class='qt-link' href='/files/krisen-leitfaden-psych-print' style='background:var(--amber-bg);color:#b91c1c;border:1px solid var(--amber-bg);' target='_blank' rel='noopener noreferrer'>
+      <a class='qt-link' href='/files/krisen-leitfaden-psych-print' style='background:var(--amber-bg);color:var(--amber-dark);border:1px solid var(--amber-light);' target='_blank' rel='noopener noreferrer'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         Krisen-Leitfaden
       </a>
@@ -1786,7 +1869,7 @@ justify-content: center;
                 <strong>Test-Auswertung / Bericht</strong>
                 240 Min / 90 Tage Limit
               </div>
-              <div class="idt-res" style="background:#faf5ff;border:1.5px solid #e9d5ff;color:var(--navy)">
+              <div class="idt-res" style="background:var(--indigo-soft);border:1.5px solid var(--indigo-light);color:var(--navy)">
                 <small style="color:var(--indigo)">PA230 · Exposition</small>
                 <strong>Expositionstherapie</strong>
                 360 Min / 180 Tage · Wegzeit inkl.

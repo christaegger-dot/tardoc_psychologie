@@ -904,7 +904,7 @@ text-align: center; width: 100%; font-size: 13px;
 .idt-res.blue { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); color: var(--navy); }
 .idt-res.blue small { color: var(--indigo); }
 .idt-res.amber { background: var(--amber-bg); border: 1.5px solid var(--amber); color: var(--navy); }
-.idt-res.amber small { color: var(--amber); }
+.idt-res.amber small { color: var(--amber-dark); }  /* WCAG-Fix: amber 2.90:1 → amber-dark 6.46:1 */
 .idt-res.rose  { background: var(--amber-bg); border: 1.5px solid var(--amber-dark); color: var(--navy); }
 .idt-res.rose small { color: var(--amber-dark); }
 .idt-res.purple { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); color: var(--navy); }
@@ -1018,14 +1018,14 @@ background: white; border: 1px solid var(--border);
 border-radius: 10px; padding: 16px 20px;
 }
 .pos-code {
-font-family: ‘DM Sans’, sans-serif;
+font-family: 'DM Sans', sans-serif;
 font-size: 11.5px; font-weight: 700;
-color: var(--indigo-light); background: var(--indigo-soft);
+color: var(--indigo); background: var(--indigo-soft);  /* WCAG-Fix: indigo-light 3.99:1 → indigo 7.07:1 */
 padding: 4px 8px; border-radius: 6px;
 display: inline-block; white-space: nowrap;
 }
 .pos-code.teal  { color: var(--indigo); background: var(--indigo-soft); }
-.pos-code.amber { color: var(--amber); background: var(--amber-bg); }
+.pos-code.amber { color: var(--amber-dark); background: var(--amber-bg); }  /* WCAG-Fix: amber 2.90:1 → amber-dark 6.46:1 */
 .pos-code.purple { color: var(--indigo); background: var(--indigo-soft); }
 .pos-code-sub {
 font-size: 10px; color: var(--slate); margin-top: 3px; display: block;
@@ -1376,6 +1376,12 @@ margin-right: 0 !important;
 .section { page-break-inside: avoid; }
 * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 @page { size: A4; margin: 15mm; }
+/* Entscheidungsbaum: Toggle ausblenden, statischen Vollbaum erzwingen */
+.idt-toggle { display: none !important; }
+.idt-interactive { display: none !important; }
+.idt-fullview { display: block !important; }
+.idt-fullview .idt-step { display: block !important; }
+.idt-back, .idt-restart { display: none !important; }
 }
 
 /* ── GLOBAL OVERFLOW FIX ── */
@@ -1881,7 +1887,7 @@ justify-content: center;
         </div>
         <div class="idt-choices">
           <button class="idt-choice" onclick="idtGo('r-krise-a')" style="border-color:var(--amber);color:var(--amber-dark)">&#128308; Laufende PT (Anordnung A)</button>
-          <button class="idt-choice" onclick="idtGo('r-krise-b')" style="border-color:var(--amber-dark);color:var(--amber-dark)">&#9899; KANT / Nacht / WE (Anordnung B)</button>
+          <button class="idt-choice" onclick="idtGo('r-krise-b')" style="border-color:var(--amber-dark);color:white;background:var(--amber-dark)">&#9899; KANT / Nacht / WE (Anordnung B)</button>  <!-- WCAG-Fix: amber-light 4.25:1 → white 7.09:1 -->
         </div>
       </div>
 
@@ -2144,11 +2150,12 @@ justify-content: center;
         <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
         <div class="idt-result-box lap">
           <small>Ergebnis — LAP-Topf</small>
-          <strong>PK025 / PK020 · EA.05.0110 — Auскünfte Dritte</strong>
+          <strong>PK025 / PK020 · EA.05.0110 — Auskünfte Dritte</strong>
           <p>Kontakt mit Schule, Beistand, Behörde. LAP-Topf, altersgesteuert.</p>
           <ul>
-            <li>Fachlicher Austausch, nicht Elterntelefonat</li>
-            <li>PK025 = Schule/Beistand, PK020 = Behörde</li>
+            <li>&lt;18 J.: <strong>PK025</strong> (Schule, Beistand)</li>
+            <li>≥18 J.: <strong>PK020</strong> (Behörde, Beistand)</li>
+            <li>Fachlicher Austausch — nicht Elterntelefonat</li>
           </ul>
         </div>
         <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
@@ -2177,8 +2184,9 @@ justify-content: center;
           <strong>PK015 / PK010 · EA.05.0130 — Externe Behandler-Besprechung</strong>
           <p>Kontakt mit externen Behandlern / Ärzten. LAP-Topf, ausserhalb regulärer Rapporte.</p>
           <ul>
-            <li>PK015 = Besprechung, PK010 = Kurzkontakt</li>
-            <li>Altersgesteuert</li>
+            <li>&lt;18 J.: <strong>PK015</strong> (Besprechung) / <strong>PK010</strong> (Kurzkontakt)</li>
+            <li>≥18 J.: <strong>PK010</strong></li>
+            <li>Nicht kombinierbar mit regulären Rapportleistungen</li>
           </ul>
         </div>
         <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
@@ -2479,7 +2487,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Telefonische Verlaufskonsultation</div>
-      <div class="pos-desc">Kurze telefonische Verlaufskonsultation oder Instruktion. Max. <strong>20 Min.</strong> Nicht mit PA011 (75 Min Sitzung) verwechseln. <span style="color:var(--amber);font-weight:600">⚠ Ziffer aus EA00, nicht EA.05.</span> <a href="#telefon" style="color:var(--indigo);font-size:12px">→ Abgrenzung s. Abschnitt 7</a></div>
+      <div class="pos-desc">Kurze telefonische Verlaufskonsultation oder Instruktion. Max. <strong>20 Min.</strong> Nicht mit PA011 (75 Min Sitzung) verwechseln. <span style="color:var(--amber-dark);font-weight:600">⚠ Ziffer aus EA00, nicht EA.05.</span>  <!-- WCAG-Fix: amber 3.19:1 → amber-dark 7.09:1 --> <a href="#telefon" style="color:var(--indigo);font-size:12px">→ Abgrenzung s. Abschnitt 7</a></div>
     </div>
     <span class="pos-badge badge-tel">Telefon / Verlauf</span>
   </div>
@@ -2681,7 +2689,7 @@ justify-content: center;
           <div class="tel-type">Zeitversetzte Telemedizin / E-Mail</div>
           <div class="fs-12-slate">Asynchrone Kommunikation, E-Mail, Nachrichten</div>
         </div>
-        <div class="tel-code" style="color:var(--amber)">EA.05.0080</div>
+        <div class="tel-code" style="color:var(--amber-dark)">EA.05.0080</div>  <!-- WCAG-Fix: amber 2.90:1 → amber-dark 6.46:1 -->
         <div>
           <div class="tel-warn">Max. 1× pro Tag</div>
           <div class="tel-warn">Max. 4× pro 30 Tage</div>
@@ -3921,6 +3929,38 @@ justify-content: center;
         d.open = allOpen;
       });
       btn.textContent = allOpen ? 'Alle schliessen' : 'Alle öffnen';
+    });
+  })();
+</script>
+
+<script>
+  // ═══ PRINT: Alle Akkordeons öffnen + IDT-Vollansicht erzwingen ═══
+  (function() {
+    var prevOpenStates = [];
+    window.addEventListener('beforeprint', function() {
+      // Alle details-Elemente öffnen und Zustand merken
+      var details = document.querySelectorAll('details');
+      prevOpenStates = [];
+      details.forEach(function(d) {
+        prevOpenStates.push(d.open);
+        d.open = true;
+      });
+      // IDT: Vollansicht erzwingen
+      var fv = document.getElementById('idt-fullview');
+      var iv = document.getElementById('idt-interactive');
+      if (fv) fv.classList.add('visible');
+      if (iv) iv.style.display = 'none';
+    });
+    window.addEventListener('afterprint', function() {
+      // Zustand wiederherstellen
+      var details = document.querySelectorAll('details');
+      details.forEach(function(d, i) {
+        if (prevOpenStates[i] !== undefined) d.open = prevOpenStates[i];
+      });
+      var fv = document.getElementById('idt-fullview');
+      var iv = document.getElementById('idt-interactive');
+      if (fv) fv.classList.remove('visible');
+      if (iv) iv.style.display = 'flex';
     });
   })();
 </script>

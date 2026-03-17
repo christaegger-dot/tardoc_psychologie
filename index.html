@@ -1830,9 +1830,415 @@ justify-content: center;
       <p class="section-lead">Von oben nach unten — psychologenspezifische Leistungsblöcke separat beachten.</p>
     </summary>
     <div class="section-content">
+
+    <!-- ── MODUS-TOGGLE ── -->
+    <div class="idt-toggle">
+      <button class="idt-toggle-btn active" id="idt-btn-interactive" onclick="idtSetMode('interactive')" aria-pressed="true">&#9654; Schritt für Schritt</button>
+      <button class="idt-toggle-btn" id="idt-btn-full" onclick="idtSetMode('full')" aria-pressed="false">Alles anzeigen</button>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         INTERAKTIVER MODUS
+    ══════════════════════════════════════════════════════════ -->
+    <div class="idt-interactive" id="idt-interactive">
+
+      <!-- SCHRITT 1: Interne Tätigkeit? -->
+      <div class="idt-step visible" id="idt-s1">
+        <div class="idt-q-box">
+          <small>Frage 1 von 3</small>
+          Ist es eine <strong>interne Tätigkeit</strong>?
+          <div class="q-sub">Rapport · Supervision · Intervision · Terminvereinbarung · Leistungserfassung · LUF</div>
+        </div>
+        <div class="idt-choices">
+          <button class="idt-choice yes-btn" onclick="idtGo('r-intern')">&#10003; Ja</button>
+          <button class="idt-choice no-btn" onclick="idtGo('s2')">&#10007; Nein</button>
+        </div>
+      </div>
+
+      <!-- SCHRITT 2: Spezialblock? -->
+      <div class="idt-step" id="idt-s2">
+        <button class="idt-back" onclick="idtGo('s1')">&#8592; Zurück</button>
+        <div class="idt-q-box">
+          <small>Frage 2 von 3</small>
+          Handelt es sich um einen <strong>spezifischen Leistungsblock</strong>?
+          <div class="q-sub">Diagnostik · Exposition · Krise — oder normaler Kontakt?</div>
+        </div>
+        <div class="idt-choices">
+          <button class="idt-choice" onclick="idtGo('r-diagnostik')" style="border-color:var(--indigo);color:var(--indigo)">&#128203; Diagnostik</button>
+          <button class="idt-choice" onclick="idtGo('r-exposition')" style="border-color:var(--green);color:var(--green-dark)">&#127939; Exposition</button>
+          <button class="idt-choice" onclick="idtGo('s2b')" style="border-color:var(--amber);color:var(--amber-dark)">&#9888; Krise</button>
+          <button class="idt-choice no-btn" onclick="idtGo('s3')">&#8594; Normaler Kontakt</button>
+        </div>
+      </div>
+
+      <!-- SCHRITT 2b: Krise — A oder B? -->
+      <div class="idt-step" id="idt-s2b">
+        <button class="idt-back" onclick="idtGo('s2')">&#8592; Zurück</button>
+        <div class="idt-q-box" style="background:var(--amber-dark)">
+          <small>Krise — Unterfrage</small>
+          Laufende Psychotherapie oder KANT / Nacht- / Wochenenddienst?
+          <div class="q-sub">Anordnung A = lfd. PT · Anordnung B = KANT/Dienst</div>
+        </div>
+        <div class="idt-choices">
+          <button class="idt-choice" onclick="idtGo('r-krise-a')" style="border-color:var(--amber);color:var(--amber-dark)">&#128308; Laufende PT (Anordnung A)</button>
+          <button class="idt-choice" onclick="idtGo('r-krise-b')" style="border-color:var(--amber-dark);color:var(--amber-dark)">&#9899; KANT / Nacht / WE (Anordnung B)</button>
+        </div>
+      </div>
+
+      <!-- SCHRITT 3: Patient anwesend? -->
+      <div class="idt-step" id="idt-s3">
+        <button class="idt-back" onclick="idtGo('s2')">&#8592; Zurück</button>
+        <div class="idt-q-box">
+          <small>Frage 3 von 3</small>
+          Patient / Familie <strong>anwesend</strong>?
+          <div class="q-sub">Synchron (live / Tel. / Video) = anwesend</div>
+        </div>
+        <div class="idt-choices">
+          <button class="idt-choice yes-btn" onclick="idtGo('s3a')">&#10003; Ja — anwesend</button>
+          <button class="idt-choice no-btn" onclick="idtGo('s3b')">&#10007; Nein — nicht anwesend</button>
+        </div>
+      </div>
+
+      <!-- SCHRITT 3a: Anwesend — welches Setting? -->
+      <div class="idt-step" id="idt-s3a">
+        <button class="idt-back" onclick="idtGo('s3')">&#8592; Zurück</button>
+        <div class="idt-q-box">
+          <small>Anwesenheitsleistung — Setting?</small>
+          Welches Setting liegt vor?
+          <div class="q-sub">Einzeln · Familie · Telefon/Video · Kurze Rückmeldung · Krise</div>
+        </div>
+        <div class="idt-choices" style="flex-wrap:wrap">
+          <button class="idt-choice" onclick="idtGo('r-einzel')" style="min-width:140px">&#128100; Einzelsetting</button>
+          <button class="idt-choice" onclick="idtGo('r-familie')" style="min-width:140px">&#128106; Familiensetting</button>
+          <button class="idt-choice" onclick="idtGo('r-telefon-sitzung')" style="min-width:140px">&#128222; Telefon/Video (echte Sitzung)</button>
+          <button class="idt-choice" onclick="idtGo('r-verlaufskonsult')" style="min-width:140px">&#128172; Kurze Verlaufskonsultation</button>
+          <button class="idt-choice" onclick="idtGo('r-krise-lfd')" style="min-width:140px;border-color:var(--amber);color:var(--amber-dark)">&#9888; Krise (unter lfd. PT)</button>
+        </div>
+      </div>
+
+      <!-- SCHRITT 3b: Nicht anwesend — welche Abwesenheitsleistung? -->
+      <div class="idt-step" id="idt-s3b">
+        <button class="idt-back" onclick="idtGo('s3')">&#8592; Zurück</button>
+        <div class="idt-q-box">
+          <small>Abwesenheitsleistung — Art?</small>
+          Was für eine Leistung ohne Patientenanwesenheit?
+          <div class="q-sub">LAP-Topf · E-Mail · Wegzeit</div>
+        </div>
+        <div class="idt-choices" style="flex-wrap:wrap">
+          <button class="idt-choice" onclick="idtGo('r-akten')" style="min-width:140px">&#128196; Akten lesen</button>
+          <button class="idt-choice" onclick="idtGo('r-dritte')" style="min-width:140px">&#127981; Kontakt Dritte (Schule, Beistand)</button>
+          <button class="idt-choice" onclick="idtGo('r-angehoerige')" style="min-width:140px">&#128106; Elterntelefonat ohne Patient</button>
+          <button class="idt-choice" onclick="idtGo('r-behandler')" style="min-width:140px">&#129657; Externe Behandler</button>
+          <button class="idt-choice" onclick="idtGo('r-therapieplanung')" style="min-width:140px">&#128221; Hilfe-/Therapieplanung</button>
+          <button class="idt-choice" onclick="idtGo('r-email')" style="min-width:140px">&#128140; E-Mail / zeitversetzt</button>
+          <button class="idt-choice" onclick="idtGo('r-wegzeit')" style="min-width:140px">&#128663; Wegzeit</button>
+        </div>
+      </div>
+
+      <!-- ══ ERGEBNISKARTEN ══ -->
+
+      <!-- R: Intern / LUF -->
+      <div class="idt-step" id="idt-r-intern">
+        <button class="idt-back" onclick="idtGo('s1')">&#8592; Zurück</button>
+        <div class="idt-result-box intern">
+          <small>Ergebnis — Interne Tätigkeit</small>
+          <strong>Nicht verrechenbar — LUF</strong>
+          <p>Intern erfassen, kein Patientenbudget. Rapport, Supervision, Intervision, Terminvereinbarung und Leistungserfassung gehen zu Lasten des Leistungsführers (LUF).</p>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Diagnostik -->
+      <div class="idt-step" id="idt-r-diagnostik">
+        <button class="idt-back" onclick="idtGo('s2')">&#8592; Zurück</button>
+        <div class="idt-result-box diag">
+          <small>Ergebnis — Diagnostik</small>
+          <strong>PA220 / EA.05.0150 + PE020</strong>
+          <p>Testdurchführung (PA220): max. 180 Min / 90 Tage. Test-Auswertung / Bericht (PE020): max. 240 Min / 90 Tage.</p>
+          <ul>
+            <li>Richtwert Durchführung: 60 Min</li>
+            <li>Richtwert Auswertung: 80 Min</li>
+            <li>Separate Tage für Auswertung OK</li>
+          </ul>
+        </div>
+        <div class="idt-result-box warn" style="margin-top:10px">
+          <small>&#9888; Wichtiger Hinweis</small>
+          <strong>Nicht mit EA.05.0010 / EA.05.0030 am selben Tag kombinieren!</strong>
+          <p>PA220 und PE020 dürfen nicht zusammen mit Einzel- oder Familiensetting am gleichen Tag abgerechnet werden.</p>
+          <ul><li><a href="#diagnostik" style="color:var(--amber-dark)">&#8594; Details s. Abschnitt 6</a></li></ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Exposition -->
+      <div class="idt-step" id="idt-r-exposition">
+        <button class="idt-back" onclick="idtGo('s2')">&#8592; Zurück</button>
+        <div class="idt-result-box anw" style="border-color:var(--green);background:var(--green-bg)">
+          <small style="color:var(--green-dark)">Ergebnis — Exposition</small>
+          <strong>PA230 / Expositionstherapie</strong>
+          <p>Max. 360 Min / 180 Tage. Wegzeit ist bereits inkludiert.</p>
+          <ul>
+            <li>Inkl. Vor-/Nachbereitung und Wegzeit</li>
+            <li>+ PE010 (15 Min VN) zusätzlich möglich</li>
+          </ul>
+        </div>
+        <div class="idt-result-box warn" style="margin-top:10px">
+          <small>&#9888; Wichtiger Hinweis</small>
+          <strong>Wegzeit nicht doppelt als EA.05.0060 buchen!</strong>
+          <p>Bei PA230 ist die Wegzeit bereits im Limit enthalten. EA.05.0060 darf nicht zusätzlich erfasst werden.</p>
+          <ul><li><a href="#exposition" style="color:var(--amber-dark)">&#8594; Details s. Abschnitt 9</a></li></ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Krise A -->
+      <div class="idt-step" id="idt-r-krise-a">
+        <button class="idt-back" onclick="idtGo('s2b')">&#8592; Zurück</button>
+        <div class="idt-result-box warn">
+          <small>Ergebnis — Krise Anordnung A</small>
+          <strong>PA110 / PA111 — Krisenintervention lfd. PT</strong>
+          <p>Max. 180 Min pro Sitzung. Unter laufender Psychotherapie-Anordnung A.</p>
+          <ul>
+            <li>PA110 = vor Ort</li>
+            <li>PA111 = fernmündlich</li>
+            <li>Dokumentation zwingend: Auslöser, Bedrohungscharakter, Massnahmen</li>
+          </ul>
+        </div>
+        <div class="idt-result-box warn" style="margin-top:10px">
+          <small>&#9888; Dokumentationspflicht</small>
+          <strong>Verlaufseintrag mit Krisenspezifika</strong>
+          <p>Unvorhersehbar, als bedrohlich erlebt, nicht allein bewältigbar. Konkrete Massnahmen und weiteres Vorgehen dokumentieren.</p>
+          <ul><li><a href="#krise" style="color:var(--amber-dark)">&#8594; Details s. Abschnitt 8</a></li></ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Krise B -->
+      <div class="idt-step" id="idt-r-krise-b">
+        <button class="idt-back" onclick="idtGo('s2b')">&#8592; Zurück</button>
+        <div class="idt-result-box warn">
+          <small>Ergebnis — Krise Anordnung B</small>
+          <strong>EA.00.0090 — Psychiatrische Krisenintervention</strong>
+          <p>Unbegrenzte Zeit. KANT / Nacht- / Wochenenddienst. Zwei Psychologinnen: je aus eigenem Dispo.</p>
+          <ul>
+            <li>Nicht kumulierbar mit Konsultation am selben Tag</li>
+            <li>Effektiv aufgewendete Zeit, unbegrenzt</li>
+            <li>Zwei Psych.: je aus Dispo</li>
+          </ul>
+        </div>
+        <div class="idt-result-box warn" style="margin-top:10px;border-color:var(--amber-dark)">
+          <small>&#9888; Abgrenzung A vs. B</small>
+          <strong>Krise A und B nicht verwechseln!</strong>
+          <p>Anordnung A = laufende PT, max. 180 Min. Anordnung B = KANT/Dienst, unbegrenzt. KANT-Krise nie als PA110 erfassen!</p>
+          <ul><li><a href="#krise" style="color:var(--amber-dark)">&#8594; Details s. Abschnitt 8</a></li></ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Einzelsetting -->
+      <div class="idt-step" id="idt-r-einzel">
+        <button class="idt-back" onclick="idtGo('s3a')">&#8592; Zurück</button>
+        <div class="idt-result-box anw">
+          <small>Ergebnis — Einzelsetting</small>
+          <strong>PA010 / EA.05.0010</strong>
+          <p>Patient anwesend, Einzelsetting. Max. 75 Min. Zusätzlich PE010 (15 Min Vor-/Nachbereitung) möglich.</p>
+          <ul>
+            <li>Intern: PA010</li>
+            <li>Öffentlich: EA.05.0010</li>
+            <li>+ PE010 (15 Min VN)</li>
+          </ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Familiensetting -->
+      <div class="idt-step" id="idt-r-familie">
+        <button class="idt-back" onclick="idtGo('s3a')">&#8592; Zurück</button>
+        <div class="idt-result-box anw">
+          <small>Ergebnis — Familiensetting</small>
+          <strong>PA030 / EA.05.0030</strong>
+          <p>Patient + Eltern / Familie anwesend. Max. 90 Min. Zusätzlich PE010 (15 Min) möglich.</p>
+          <ul>
+            <li>Intern: PA030</li>
+            <li>Öffentlich: EA.05.0030</li>
+            <li>+ PE010 (15 Min VN)</li>
+          </ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Telefon/Video echte Sitzung -->
+      <div class="idt-step" id="idt-r-telefon-sitzung">
+        <button class="idt-back" onclick="idtGo('s3a')">&#8592; Zurück</button>
+        <div class="idt-result-box anw">
+          <small>Ergebnis — Telefonische / Videogestützte Sitzung</small>
+          <strong>PA011 / PA031 (intern) · EA.05.0070 (öffentlich)</strong>
+          <p>Vollständiges therapeutisches Gespräch per Telefon oder Video. Max. 75 Min. PE010 zusätzlich möglich.</p>
+          <ul>
+            <li>PA011 = Einzelsetting fernmündlich</li>
+            <li>PA031 = Familiensetting fernmündlich</li>
+            <li>EA.05.0070 = öffentliche Telemedizin-Ziffer</li>
+          </ul>
+        </div>
+        <div class="idt-result-box warn" style="margin-top:10px">
+          <small>&#8597; Abgrenzung beachten!</small>
+          <strong>Echte Sitzung vs. kurzer Check-in</strong>
+          <p>War es ein vollständiges therapeutisches Gespräch? → PA011 (75 Min). Nur eine kurze Rückmeldung / Instruktion? → EA.00.0110 (20 Min).</p>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Verlaufskonsultation -->
+      <div class="idt-step" id="idt-r-verlaufskonsult">
+        <button class="idt-back" onclick="idtGo('s3a')">&#8592; Zurück</button>
+        <div class="idt-result-box anw">
+          <small>Ergebnis — Telefonische Verlaufskonsultation</small>
+          <strong>EA.00.0110</strong>
+          <p>Kurze Rückmeldung oder Instruktion per Telefon. Max. 20 Min. Keine volle therapeutische Sitzung.</p>
+          <ul>
+            <li>Nicht-EA.05-Ziffer (kein KJPP-interner Code)</li>
+            <li>Nur für kurze Check-ins, nicht für echte Sitzungen</li>
+          </ul>
+        </div>
+        <div class="idt-result-box warn" style="margin-top:10px">
+          <small>&#8597; Abgrenzung beachten!</small>
+          <strong>War es wirklich nur ein kurzer Check-in?</strong>
+          <p>Wenn das Gespräch therapeutischen Charakter hatte → PA011 verwenden, nicht EA.00.0110.</p>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Krise unter lfd. PT (anwesend) -->
+      <div class="idt-step" id="idt-r-krise-lfd">
+        <button class="idt-back" onclick="idtGo('s3a')">&#8592; Zurück</button>
+        <div class="idt-result-box warn">
+          <small>Ergebnis — Krise unter laufender PT</small>
+          <strong>EA.05.0050 / PA110 — Krisenintervention</strong>
+          <p>Unter laufender Psychotherapie-Anordnung A. Max. 180 Min pro Sitzung.</p>
+          <ul>
+            <li>Dokumentation: Auslöser, Bedrohungscharakter, Massnahmen</li>
+            <li>Unvorhersehbar, als bedrohlich erlebt</li>
+          </ul>
+          <ul><li><a href="#krise" style="color:var(--amber-dark)">&#8594; Details s. Abschnitt 8</a></li></ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Akten lesen -->
+      <div class="idt-step" id="idt-r-akten">
+        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <div class="idt-result-box lap">
+          <small>Ergebnis — LAP-Topf</small>
+          <strong>PE045 / PE040 · EA.05.0100 — Fremdaktenstudium</strong>
+          <p>Akten lesen, altersgesteuert. LAP-Topf (nicht Patientenbudget).</p>
+          <ul>
+            <li>&lt;18 J.: max. 240 Min / 90 Tage</li>
+            <li>≥18 J.: max. 180 Min / 90 Tage</li>
+          </ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Dritte -->
+      <div class="idt-step" id="idt-r-dritte">
+        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <div class="idt-result-box lap">
+          <small>Ergebnis — LAP-Topf</small>
+          <strong>PK025 / PK020 · EA.05.0110 — Auскünfte Dritte</strong>
+          <p>Kontakt mit Schule, Beistand, Behörde. LAP-Topf, altersgesteuert.</p>
+          <ul>
+            <li>Fachlicher Austausch, nicht Elterntelefonat</li>
+            <li>PK025 = Schule/Beistand, PK020 = Behörde</li>
+          </ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Angehörige -->
+      <div class="idt-step" id="idt-r-angehoerige">
+        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <div class="idt-result-box lap">
+          <small>Ergebnis — Separates Budget</small>
+          <strong>EA.05.0120 — Auскünfte Angehörige</strong>
+          <p>Elterntelefonat ohne Patient. Separates Budget (nicht LAP-Pool).</p>
+          <ul>
+            <li>Ohne Patient, fachlicher Austausch</li>
+            <li>Separates Budget — nicht im LAP-Topf</li>
+          </ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Externe Behandler -->
+      <div class="idt-step" id="idt-r-behandler">
+        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <div class="idt-result-box lap">
+          <small>Ergebnis — LAP-Topf</small>
+          <strong>PK015 / PK010 · EA.05.0130 — Externe Behandler-Besprechung</strong>
+          <p>Kontakt mit externen Behandlern / Ärzten. LAP-Topf, ausserhalb regulärer Rapporte.</p>
+          <ul>
+            <li>PK015 = Besprechung, PK010 = Kurzkontakt</li>
+            <li>Altersgesteuert</li>
+          </ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Therapieplanung -->
+      <div class="idt-step" id="idt-r-therapieplanung">
+        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <div class="idt-result-box lap">
+          <small>Ergebnis — LAP-Topf</small>
+          <strong>PE030 · EA.05.0140 — Diagnostik-/Therapieplanung</strong>
+          <p>15 Min, max. 1× pro 90 Tage. Schriftliches Ergebnis ist zwingend erforderlich.</p>
+          <ul>
+            <li>Schriftliches Ergebnis zwingend!</li>
+            <li>Max. 1× / 90 Tage</li>
+          </ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: E-Mail -->
+      <div class="idt-step" id="idt-r-email">
+        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <div class="idt-result-box anw">
+          <small>Ergebnis — Zeitversetzte Kommunikation</small>
+          <strong>EA.05.0080 — E-Mail / asynchron</strong>
+          <p>Max. 1× pro Tag, max. 4× pro 30 Tage. 6er-Regel ist veraltet — nicht mehr anwenden!</p>
+          <ul>
+            <li>Max. 1×/Tag</li>
+            <li>Max. 4×/30 Tage</li>
+            <li>6er-Regel veraltet!</li>
+          </ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+      <!-- R: Wegzeit -->
+      <div class="idt-step" id="idt-r-wegzeit">
+        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <div class="idt-result-box anw">
+          <small>Ergebnis — Wegzeit</small>
+          <strong>EA.05.0060 — Wegzeit</strong>
+          <p>Max. 60 Min pro Sitzung (Hin + zurück). Nur bei Auswärtsterminen.</p>
+          <ul>
+            <li>Bei PA230 (Exposition) bereits inkludiert!</li>
+            <li>Nicht doppelt erfassen</li>
+          </ul>
+        </div>
+        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+      </div>
+
+    </div><!-- /idt-interactive -->
+
+    <!-- ══════════════════════════════════════════════════════════
+         VOLLANSICHT (statischer Fallback)
+    ══════════════════════════════════════════════════════════ -->
+    <div class="idt-fullview" id="idt-fullview">
     <div class="idt">
-      <div class="idt-title">Schritt für Schritt zur richtigen Ziffer</div>
-      <div class="idt-sub">Drei Hauptfragen — dann spezifische Sublogik pro Leistungsblock.</div>
+      <div class="idt-title">Vollständiger Überblick</div>
+      <div class="idt-sub">Alle Pfade auf einen Blick — psychologenspezifische Leistungsblöcke separat beachten.</div>
 
   <div class="idt-node">
     <div class="idt-q">
@@ -1885,7 +2291,7 @@ justify-content: center;
             </div>
           </div>
           <div class="idt-sub-branch">
-            <div class="idt-branch-label n" class="fs-10">Normaler Kontakt → Frage 3</div>
+            <div class="idt-branch-label n">Normaler Kontakt → Frage 3</div>
             <div class="idt-q" style="font-size:13px;max-width:none">
               <small>Frage 3</small>
               Patient / Familie <strong>anwesend</strong>?
@@ -1893,7 +2299,7 @@ justify-content: center;
             <div class="idt-line"></div>
             <div class="idt-sub-fork">
               <div class="idt-sub-branch">
-                <div class="idt-branch-label y" class="fs-10">JA</div>
+                <div class="idt-branch-label y">JA</div>
                 <div class="grid-gap-5">
                   <div class="idt-res indigo">
                     <small>PA010 / EA.05.0010</small>
@@ -1910,8 +2316,8 @@ justify-content: center;
                     <strong>Fernmündlich (Telefon/Video)</strong>
                     max. 75 Min
                   </div>
-                  <div class="idt-res" class="idt-res-indigo">
-                    <small class="text-indigo-light">EA.05.0070 · öffentlich</small>
+                  <div class="idt-res">
+                    <small style="color:var(--indigo)">EA.05.0070 · öffentlich</small>
                     <strong>Telemedizin synchron</strong>
                     Video/Telefon Echtzeit · auch für Angehörige
                   </div>
@@ -1921,8 +2327,8 @@ justify-content: center;
                     Kurze Rückmeldung / Instruktion → <strong>EA.00.0110</strong> (20 Min).<br>
                     <span style="color:var(--slate);font-style:italic">Im Zweifel: War es eine echte Sitzung oder nur ein kurzer Check-in?</span>
                   </div>
-                  <div class="idt-res" class="idt-res-indigo">
-                    <small class="text-indigo-light">EA.00.0110 · Nicht-EA.05</small>
+                  <div class="idt-res">
+                    <small style="color:var(--indigo)">EA.00.0110 · Nicht-EA.05</small>
                     <strong>Telefonische Verlaufskonsultation</strong>
                     max. 20 Min · KEINE volle Sitzung
                   </div>
@@ -1935,11 +2341,11 @@ justify-content: center;
                 </div>
               </div>
               <div class="idt-sub-branch">
-                <div class="idt-branch-label n" class="fs-10">NEIN → Patient nicht anwesend</div>
+                <div class="idt-branch-label n">NEIN → Patient nicht anwesend</div>
                 <div class="grid-gap-5">
                   <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);padding:6px 0 2px;border-bottom:1.5px dashed var(--indigo-light);margin-bottom:2px">Direkte Patientenkommunikation (zeitversetzt)</div>
-                  <div class="idt-res" class="idt-res-indigo">
-                    <small class="text-indigo-light">EA.05.0080 · zeitversetzt</small>
+                  <div class="idt-res">
+                    <small style="color:var(--indigo)">EA.05.0080 · zeitversetzt</small>
                     <strong>E-Mail / asynchron</strong>
                     max. 1×/Tag · 4×/30 Tage
                   </div>
@@ -1950,11 +2356,11 @@ justify-content: center;
                   </div>
                   <div class="idt-res blue">
                     <small>PK025/PK020 · EA.05.0110</small>
-                    <strong>Auskünfte Dritte</strong>
+                    <strong>Auскünfte Dritte</strong>
                   </div>
                   <div class="idt-res blue">
                     <small>EA.05.0120</small>
-                    <strong>Auskünfte Angehörige</strong>
+                    <strong>Auскünfte Angehörige</strong>
                   </div>
                   <div class="idt-res blue">
                     <small>PK015/PK010 · EA.05.0130</small>
@@ -1974,9 +2380,10 @@ justify-content: center;
     </div>
   </div>
 </div>
-<div style="background:var(--bg-subtle);border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:var(--slate);line-height:1.5">
+<div style="background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:var(--slate);line-height:1.5">
   Zusätzlich bei Auswärtsterminen: <strong>EA.05.0060 Wegzeit</strong> — Details in <a href="#positionen" style="color:var(--indigo)">Abschnitt 5</a>.
 </div>
+    </div><!-- /idt-fullview -->
 </div>
 
   </details>
@@ -3418,6 +3825,58 @@ justify-content: center;
     var timer;
     return function() { clearTimeout(timer); timer = setTimeout(setupMobileTooltips, 250); };
   })());
+
+  // ══════════════════════════════════════════════════════════
+  // INTERAKTIVER ENTSCHEIDUNGSBAUM — Psychologen
+  // ══════════════════════════════════════════════════════════
+  function idtGo(targetId) {
+    // Hide all steps
+    document.querySelectorAll('#idt-interactive .idt-step').forEach(function(el) {
+      el.classList.remove('visible');
+    });
+    // Show target step
+    var target = document.getElementById('idt-' + targetId);
+    if (target) {
+      target.classList.add('visible');
+      // Scroll target into view smoothly
+      setTimeout(function() {
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
+    }
+  }
+
+  function idtSetMode(mode) {
+    var interactive = document.getElementById('idt-interactive');
+    var fullview = document.getElementById('idt-fullview');
+    var btnInteractive = document.getElementById('idt-btn-interactive');
+    var btnFull = document.getElementById('idt-btn-full');
+
+    if (mode === 'interactive') {
+      interactive.style.display = 'flex';
+      fullview.classList.remove('visible');
+      btnInteractive.classList.add('active');
+      btnInteractive.setAttribute('aria-pressed', 'true');
+      btnFull.classList.remove('active');
+      btnFull.setAttribute('aria-pressed', 'false');
+      // Reset to step 1
+      idtGo('s1');
+    } else {
+      interactive.style.display = 'none';
+      fullview.classList.add('visible');
+      btnInteractive.classList.remove('active');
+      btnInteractive.setAttribute('aria-pressed', 'false');
+      btnFull.classList.add('active');
+      btnFull.setAttribute('aria-pressed', 'true');
+    }
+  }
+
+  // Init: show interactive mode by default
+  (function() {
+    var interactive = document.getElementById('idt-interactive');
+    var fullview = document.getElementById('idt-fullview');
+    if (interactive) interactive.style.display = 'flex';
+    if (fullview) fullview.classList.remove('visible');
+  })();
 </script>
 
 <!-- Back to Top Button -->

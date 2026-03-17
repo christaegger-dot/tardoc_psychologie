@@ -10,27 +10,27 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink:    #1A3560;
+  --ink:    #1c2b3a;
   --ind:    #4338CA;
   --ind-s:  #EEF2FF;
-  --teal:   #0A7C71;
-  --teal-s: #E0F2EF;
-  --purp:   #7C3AED;
-  --purp-s: #F3EEFF;
+  --teal:   #0d7a5f;
+  --teal-s: #e6f4f2;
+  --purp:   #4338ca;
+  --purp-s: #eef2ff;
   --amber:  #D97706;
-  --amb-s:  #FFFBEB;
-  --rose:   #BE123C;
-  --rose-s: #FFF1F3;
-  --green:  #059669;
-  --grn-s:  #ECFDF5;
+  --amb-s:  #fef3e2;
+  --rose:   #92400e;
+  --rose-s: #fef3e2;
+  --green:  #0d7a5f;
+  --grn-s:  #e6f4f2;
   --slate:  #475569;
-  --sl-l:   #94A3B8;
+  --sl-l:   #475569;
   --line:   #E2E8F0;
-  --warn:   #78350F;
-  --warn-s: #FEFCE8;
+  --warn:   #92400e;
+  --warn-s: #fef3e2;
   --white:  #FFFFFF;
   --text:   #1E293B;
-  --bg:     #F8FAFC;
+  --bg:     #eef2ff;
 }
 
 body {
@@ -70,10 +70,10 @@ body {
   font-size: 20px; font-weight: 800; color: var(--white);
   letter-spacing: -.4px; line-height: 1;
 }
-.masthead h1 em { color: #A5B4FC; font-style: normal; }
+.masthead h1 em { color: #6366f1; font-style: normal; }
 .masthead-sub { font-size: 8.5px; color: rgba(255,255,255,.80); }
 .masthead-badge {
-  font-size: 9px; font-weight: 700; color: #A5B4FC;
+  font-size: 9px; font-weight: 700; color: #eef2ff;
   background: rgba(165,180,252,.12);
   border: 1px solid rgba(165,180,252,.28);
   border-radius: 4px; padding: 3px 8px;
@@ -109,7 +109,7 @@ body {
   box-shadow: 0 2px 8px rgba(26,53,96,.2), 0 6px 20px rgba(26,53,96,.12);
   width: 100%;
 }
-.q-num  { font-size: 7.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #C7D2FE; margin-bottom: 3px; }
+.q-num  { font-size: 7.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #eef2ff; margin-bottom: 3px; }
 .q-text { font-size: 13.5px; font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 3px; }
 .q-hint { font-size: 8px; color: rgba(255,255,255,.72); }
 
@@ -147,7 +147,7 @@ body {
 .p-yes  { background: var(--grn-s); color: var(--green); }
 .p-no   { background: var(--rose-s); color: var(--rose); }
 .p-spec { background: var(--purp-s); color: var(--purp); }
-.p-norm { background: #FEE2E2; color: #DC2626; }
+.p-norm { background: #fef3e2; color: #92400e; }
 
 /* ── Result / info card ─────────────────────────────────────────── */
 .card {
@@ -214,7 +214,7 @@ body {
 /* ── Footer ─────────────────────────────────────────────────────── */
 .footer {
   background: var(--warn-s);
-  border-top: 1.5px solid #FDE68A;
+  border-top: 1.5px solid #fbbf24;
   padding: 9px 16px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -228,9 +228,9 @@ body {
 .wi strong { font-weight: 700; }
 .fc {
   grid-column: 1/-1;
-  font-size: 7px; color: #4B5563;
+  font-size: 7px; color: #475569;
   text-align: center; padding-top: 4px;
-  border-top: 1px solid #FDE68A;
+  border-top: 1px solid #fbbf24;
 }
 
 @media print {
@@ -242,8 +242,8 @@ body {
 }
 .printbar {
   width: 210mm; max-width: 100%;
-  background: #F8FAFC; border: 1px solid var(--line);
-  border-bottom: 2px solid #C7D2FE; border-radius: 10px;
+  background: #eef2ff; border: 1px solid var(--line);
+  border-bottom: 2px solid #6366f1; border-radius: 10px;
   padding: 10px 20px; display: flex; align-items: center; gap: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,.07);
 }
@@ -259,14 +259,14 @@ body {
 
   .pbtn-breadcrumb {
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: #475569;
     display: flex;
     align-items: center;
     gap: 0.25rem;
     margin-left: auto;
     padding-right: 0.5rem;
   }
-  .pbtn-breadcrumb span { color: #cbd5e1; }
+  .pbtn-breadcrumb span { color: #e2e8f0; }
   @media print { .pbtn-breadcrumb { display: none !important; } }
   .pbtn-dark  { background: var(--ink); color: white; }
 
@@ -301,16 +301,16 @@ body {
 
 
   /* axe-core contrast fixes */
-  .printbar-label { color: #374151 !important; }
+  .printbar-label { color: #475569 !important; }
   .mast-sub, .masthead-sub { color: rgba(255,255,255,.80) !important; }
-  .dt-ql { color: #374151 !important; }
+  .dt-ql { color: #475569 !important; }
   .lg-anw, .lg-diag, .lg-exp, .lg-lap, .lg-krise, .lg-tel, .lg-weg, .lg-nv { 
-    color: #1e3a5f !important; font-weight: 700 !important; 
+    color: #1c2b3a !important; font-weight: 700 !important; 
   }
   .eq-hint { color: rgba(255,255,255,.72) !important; }
-  .q-num { color: #C7D2FE !important; }
-  .cmp-yes { color: #166534 !important; }
-  .cmp-no { color: #991b1b !important; }
+  .q-num { color: #eef2ff !important; }
+  .cmp-yes { color: #0d7a5f !important; }
+  .cmp-no { color: #92400e !important; }
 
   
 /* ── MOBILE RESPONSIVE (375px) ── */
@@ -461,7 +461,7 @@ body {
                 <div class="codes">
                   <div class="cr-row"><span class="ck ka">EA.05.0080</span><span class="cd">E-Mail / asynchron · 1×/Tag · 4×/30 T</span></div>
                 </div>
-                <span class="badge" style="background:#FEF3C7;color:#92400E;">6er-Regel veraltet — nicht mehr verwenden!</span>
+                <span class="badge" style="background:#fef3e2;color:#92400E;">6er-Regel veraltet — nicht mehr verwenden!</span>
               </div>
               <div class="card ct" style="max-width:none;margin-top:6px;">
                 <div class="c-hd">LAP-Topf (altersgesteuert)</div>

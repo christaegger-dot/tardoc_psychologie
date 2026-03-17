@@ -10,25 +10,25 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink:    #1A3560;
+  --ink:    #1c2b3a;
   --ind:    #4338CA;
   --ind-s:  #EEF2FF;
-  --teal:   #0A7C71;
-  --teal-s: #E0F2EF;
-  --purp:   #7C3AED;
-  --purp-s: #F3EEFF;
+  --teal:   #0d7a5f;
+  --teal-s: #e6f4f2;
+  --purp:   #4338ca;
+  --purp-s: #eef2ff;
   --amber:  #D97706;
-  --amb-s:  #FFFBEB;
-  --rose:   #BE123C;
-  --rose-s: #FFF1F3;
-  --green:  #059669;
-  --grn-s:  #ECFDF5;
+  --amb-s:  #fef3e2;
+  --rose:   #92400e;
+  --rose-s: #fef3e2;
+  --green:  #0d7a5f;
+  --grn-s:  #e6f4f2;
   --slate:  #475569;
-  --sl-l:   #94A3B8;
+  --sl-l:   #475569;
   --line:   #E2E8F0;
   --white:  #FFFFFF;
   --text:   #1E293B;
-  --bg:     #F1F5F9;
+  --bg:     #eef2ff;
 }
 
 body {
@@ -45,8 +45,8 @@ body {
 
 .printbar {
   width: 210mm; max-width: 100%;
-  background: #F8FAFC; border: 1px solid var(--line);
-  border-bottom: 2px solid #C7D2FE; border-radius: 10px;
+  background: #eef2ff; border: 1px solid var(--line);
+  border-bottom: 2px solid #6366f1; border-radius: 10px;
   padding: 10px 20px; display: flex; align-items: center; gap: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,.07);
 }
@@ -62,14 +62,14 @@ body {
 
   .pbtn-breadcrumb {
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: #475569;
     display: flex;
     align-items: center;
     gap: 0.25rem;
     margin-left: auto;
     padding-right: 0.5rem;
   }
-  .pbtn-breadcrumb span { color: #cbd5e1; }
+  .pbtn-breadcrumb span { color: #e2e8f0; }
   @media print { .pbtn-breadcrumb { display: none !important; } }
   .pbtn-dark  { background: var(--ink); color: white; }
 
@@ -86,16 +86,16 @@ body {
   gap: 10px; flex-shrink: 0;
 }
 .mast h1 { font-size: 22px; font-weight: 800; color: white; letter-spacing: -.4px; line-height: 1; }
-.mast h1 em { color: #A5B4FC; font-style: normal; }
+.mast h1 em { color: #6366f1; font-style: normal; }
 .mast-sub { font-size: 8px; color: rgba(255,255,255,.45); margin-top: 3px; }
 .mast-badge {
-  font-size: 8.5px; font-weight: 700; color: #A5B4FC;
+  font-size: 8.5px; font-weight: 700; color: #eef2ff;
   background: rgba(165,180,252,.12); border: 1px solid rgba(165,180,252,.28);
   border-radius: 4px; padding: 3px 8px; white-space: nowrap; flex-shrink: 0;
 }
 
 .legend {
-  padding: 6px 16px 7px; background: #F8FAFC;
+  padding: 6px 16px 7px; background: #eef2ff;
   border-bottom: 1px solid var(--line);
   display: flex; flex-wrap: wrap; gap: 5px;
 }
@@ -112,7 +112,7 @@ body {
 .lg-kris { color: var(--rose);  border-color: rgba(192,16,58,.3);  } .lg-kris::before { background: var(--rose); }
 .lg-tel  { color: var(--amber); border-color: rgba(217,119,6,.3);  } .lg-tel::before  { background: var(--amber); }
 .lg-weg  { color: #92400E;      border-color: rgba(146,64,14,.3);  } .lg-weg::before  { background: #92400E; }
-.lg-no   { color: #DC2626;      border-color: rgba(220,38,38,.3);  } .lg-no::before   { background: #DC2626; }
+.lg-no   { color: #92400e;      border-color: rgba(220,38,38,.3);  } .lg-no::before   { background: #92400e; }
 
 .body { flex: 1; padding: 10px 14px 8px; display: flex; flex-direction: column; gap: 0; }
 
@@ -135,17 +135,17 @@ body {
 }
 .tbl tbody tr { border-bottom: 1px solid var(--line); }
 .tbl tbody tr:last-child { border-bottom: none; }
-.tbl tbody tr:hover { background: #F8FAFC; }
+.tbl tbody tr:hover { background: #eef2ff; }
 .tbl td { padding: 5px 8px; vertical-align: top; }
 .tbl tr.grp td {
-  background: #F1F5F9; font-size: 6.5px; font-weight: 700;
+  background: #eef2ff; font-size: 6.5px; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase; color: var(--slate);
   padding: 3px 8px; border-bottom: 1px solid var(--line);
 }
 
 .code { display: flex; flex-direction: column; gap: 1px; }
 .code-main { font-weight: 700; font-size: 8.5px; color: var(--ink); font-family: 'Courier New', monospace; }
-.code-sub  { font-size: 7px; color: #64748B; }
+.code-sub  { font-size: 7px; color: #475569; }
 .nm   { font-weight: 600; font-size: 8.5px; color: var(--text); }
 .desc { font-size: 7.5px; color: var(--slate); margin-top: 1px; line-height: 1.35; }
 .lim { font-size: 8px; color: var(--text); white-space: nowrap; }
@@ -156,21 +156,21 @@ body {
   letter-spacing: .06em; text-transform: uppercase;
   padding: 2px 6px; border-radius: 3px; white-space: nowrap;
 }
-.b-anw  { background: var(--grn-s);  color: #065F46; }
-.b-diag { background: var(--ind-s);  color: #3730A3; }
-.b-expo { background: var(--purp-s); color: #5B21B6; }
-.b-lap  { background: var(--teal-s); color: #065F55; }
-.b-kris { background: var(--rose-s); color: #9F1239; }
+.b-anw  { background: var(--grn-s);  color: #0d7a5f; }
+.b-diag { background: var(--ind-s);  color: #4338ca; }
+.b-expo { background: var(--purp-s); color: #4338ca; }
+.b-lap  { background: var(--teal-s); color: #0d7a5f; }
+.b-kris { background: var(--rose-s); color: #92400e; }
 .b-tel  { background: var(--amb-s);  color: #92400E; }
-.b-weg  { background: #FEF3C7;       color: #92400E; }
-.b-sf   { background: #FEF9C3;       color: #713F12; }
-.b-int  { background: #F0FDF4;       color: #166534; }
+.b-weg  { background: #fef3e2;       color: #92400E; }
+.b-sf   { background: #fef3e2;       color: #92400e; }
+.b-int  { background: #e6f4f2;       color: #0d7a5f; }
 
 .ft {
   border-top: 1px solid var(--line); padding: 5px 14px;
   display: flex; justify-content: space-between; flex-shrink: 0;
 }
-.ft span { font-size: 7px; color: #64748B; }
+.ft span { font-size: 7px; color: #475569; }
 
 .page-break { break-before: page; page-break-before: always; }
 .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -182,9 +182,9 @@ body {
 }
 .lap-tbl td { padding: 4px 8px; border-bottom: 1px solid var(--line); }
 .lap-tbl tr:last-child td { border-bottom: none; }
-.lap-tbl .u { color: #3730A3; font-weight: 700; }
+.lap-tbl .u { color: #4338ca; font-weight: 700; }
 .lap-tbl thead .u { color: white; }
-.lap-tbl .o { color: #065F55; font-weight: 700; }
+.lap-tbl .o { color: #0d7a5f; font-weight: 700; }
 .lap-tbl thead .o { color: white; }
 .lap-tbl .sum-row td { background: var(--teal-s); font-weight: 700; }
 
@@ -251,16 +251,16 @@ body {
 
 
   /* axe-core contrast fixes */
-  .printbar-label { color: #374151 !important; }
-  .mast-sub, .masthead-sub { color: #d1d5db !important; }
-  .dt-ql { color: #374151 !important; }
+  .printbar-label { color: #475569 !important; }
+  .mast-sub, .masthead-sub { color: #e2e8f0 !important; }
+  .dt-ql { color: #475569 !important; }
   .lg-anw, .lg-diag, .lg-exp, .lg-lap, .lg-krise, .lg-tel, .lg-weg, .lg-nv { 
-    color: #1e3a5f !important; font-weight: 700 !important; 
+    color: #1c2b3a !important; font-weight: 700 !important; 
   }
-  .eq-hint { color: #374151 !important; }
-  .q-num { color: #374151 !important; }
-  .cmp-yes { color: #166534 !important; }
-  .cmp-no { color: #991b1b !important; }
+  .eq-hint { color: #475569 !important; }
+  .q-num { color: #475569 !important; }
+  .cmp-yes { color: #0d7a5f !important; }
+  .cmp-no { color: #92400e !important; }
 
   
 /* ── MOBILE RESPONSIVE (375px) ── */
@@ -362,13 +362,13 @@ body {
 
         <tr class="grp"><td colspan="4">Krisenintervention</td></tr>
         <tr>
-          <td><div class="code"><span class="code-main" style="color:#9F1239">EA.05.0050</span><span class="code-sub">PA110 / PA111</span></div></td>
+          <td><div class="code"><span class="code-main" style="color:#92400e">EA.05.0050</span><span class="code-sub">PA110 / PA111</span></div></td>
           <td><div class="nm">Krise unter laufender PT — Anordnung A</div><div class="desc">Unvorhersehbar · bedrohlich · inkl. krisenbezogene Akteneinsicht</div></td>
           <td class="lim"><strong>180 Min</strong>/Sitzung</td>
           <td><span class="badge b-kris">Krise A</span></td>
         </tr>
         <tr>
-          <td><div class="code"><span class="code-main" style="color:#9F1239">EA.00.0090</span><span class="code-sub">Anordnung B</span></div></td>
+          <td><div class="code"><span class="code-main" style="color:#92400e">EA.00.0090</span><span class="code-sub">Anordnung B</span></div></td>
           <td><div class="nm">Krise im KANT / Nacht- / Wochenenddienst</div><div class="desc">Effektiv aufgewendete Zeit · nicht kombin. mit Konsult. am selben Tag</div></td>
           <td class="lim"><strong>Unbegrenzt</strong></td>
           <td><span class="badge b-kris">Krise B</span></td>
@@ -390,7 +390,7 @@ body {
 
         <tr class="grp"><td colspan="4">Expositionstherapie</td></tr>
         <tr>
-          <td><div class="code"><span class="code-main" style="color:#5B21B6">PA230</span><span class="code-sub">Exposition</span></div></td>
+          <td><div class="code"><span class="code-main" style="color:#4338ca">PA230</span><span class="code-sub">Exposition</span></div></td>
           <td><div class="nm">Expositionstherapie</div><div class="desc">Wegzeit intern inkludiert — nicht doppelt als EA.05.0060 buchen! + PE010</div></td>
           <td class="lim"><strong>360 Min</strong>/180 Tage</td>
           <td><span class="badge b-expo">Exposition</span></td>
@@ -420,31 +420,31 @@ body {
 
         <tr class="grp"><td colspan="4">Leistungen in Abwesenheit (LAP-Topf)</td></tr>
         <tr>
-          <td><div class="code"><span class="code-main" style="color:#065F55">EA.05.0100</span><span class="code-sub">PE045 / PE040</span></div></td>
+          <td><div class="code"><span class="code-main" style="color:#0d7a5f">EA.05.0100</span><span class="code-sub">PE045 / PE040</span></div></td>
           <td><div class="nm">Fremdaktenstudium</div><div class="desc">Nur externe Akten · PE045 &lt;18 J. / PE040 ≥18 J.</div></td>
           <td class="lim">LAP-Limit</td>
           <td><span class="badge b-lap">LAP-Topf</span></td>
         </tr>
         <tr>
-          <td><div class="code"><span class="code-main" style="color:#065F55">EA.05.0110</span><span class="code-sub">PK025 / PK020</span></div></td>
+          <td><div class="code"><span class="code-main" style="color:#0d7a5f">EA.05.0110</span><span class="code-sub">PK025 / PK020</span></div></td>
           <td><div class="nm">Auskünfte Dritte (Schule, Beistand)</div><div class="desc">PK025 &lt;18 J. / PK020 ≥18 J.</div></td>
           <td class="lim">LAP-Limit</td>
           <td><span class="badge b-lap">LAP-Topf</span></td>
         </tr>
         <tr>
-          <td><div class="code"><span class="code-main" style="color:#065F55">EA.05.0120</span></div></td>
+          <td><div class="code"><span class="code-main" style="color:#0d7a5f">EA.05.0120</span></div></td>
           <td><div class="nm">Auskünfte Angehörige (ohne Patient)</div><div class="desc">Fachlicher Inhalt · nicht Organisation · ✓ Bestätigt: zählt <strong>nicht</strong> auf LAP-Limit an</div></td>
           <td class="lim">Separat</td>
-          <td><span class="badge b-sf" style="background:#D1FAE5;color:#065F55">Separat</span></td>
+          <td><span class="badge b-sf" style="background:#e6f4f2;color:#0d7a5f">Separat</span></td>
         </tr>
         <tr>
-          <td><div class="code"><span class="code-main" style="color:#065F55">EA.05.0130</span><span class="code-sub">PK015 / PK010</span></div></td>
+          <td><div class="code"><span class="code-main" style="color:#0d7a5f">EA.05.0130</span><span class="code-sub">PK015 / PK010</span></div></td>
           <td><div class="nm">Besprechung ext. Behandler / Ärzte</div><div class="desc">PK015 &lt;18 J. / PK010 ≥18 J. · ausserhalb regulärer Rapporte</div></td>
           <td class="lim">LAP-Limit</td>
           <td><span class="badge b-lap">LAP-Topf</span></td>
         </tr>
         <tr>
-          <td><div class="code"><span class="code-main" style="color:#065F55">EA.05.0140</span><span class="code-sub">PE030</span></div></td>
+          <td><div class="code"><span class="code-main" style="color:#0d7a5f">EA.05.0140</span><span class="code-sub">PE030</span></div></td>
           <td><div class="nm">Diagnostik-/Therapieplanung</div><div class="desc">Schriftliches Ergebnis zwingend in Akte</div></td>
           <td class="lim"><strong>15 Min</strong><br>1×/90 Tage</td>
           <td><span class="badge b-lap">LAP-Topf</span></td>
@@ -488,7 +488,7 @@ body {
               <tr><td>Koord. Dritte</td><td class="u">PK025</td><td class="o">PK020</td></tr>
               <tr><td>Ext. Behandler</td><td class="u">PK015</td><td class="o">PK010</td></tr>
               <tr class="sum-row">
-                <td style="font-size:7px;text-transform:uppercase;letter-spacing:.06em;color:#374151">Gemeinsam</td>
+                <td style="font-size:7px;text-transform:uppercase;letter-spacing:.06em;color:#475569">Gemeinsam</td>
                 <td class="u">240 Min/90T</td>
                 <td class="o">180 Min/90T</td>
               </tr>
@@ -501,16 +501,16 @@ body {
           <div class="dg-grid">
             <div class="dg dg-a">
               <h3>Durchführung PA220</h3>
-              <div class="dl"><span>Limit</span><span class="dv" style="color:#3730A3">180'</span></div>
+              <div class="dl"><span>Limit</span><span class="dv" style="color:#4338ca">180'</span></div>
               <div class="dl"><span>Zeitraum</span><span class="dv">90 Tage</span></div>
               <div class="dl"><span>Richtwert</span><span class="dv">60'</span></div>
             </div>
             <div class="dg dg-b">
               <h3>Auswertung PE020</h3>
-              <div class="dl"><span>Limit</span><span class="dv" style="color:#5B21B6">240'</span></div>
+              <div class="dl"><span>Limit</span><span class="dv" style="color:#4338ca">240'</span></div>
               <div class="dl"><span>Zeitraum</span><span class="dv">90 Tage</span></div>
               <div class="dl"><span>Richtwert</span><span class="dv">80'</span></div>
-              <div class="dl"><span>Andere Tage OK</span><span style="font-weight:700;color:#065F46;font-size:8px">Ja</span></div>
+              <div class="dl"><span>Andere Tage OK</span><span style="font-weight:700;color:#0d7a5f;font-size:8px">Ja</span></div>
             </div>
           </div>
         </div>
@@ -550,7 +550,7 @@ body {
         </div>
 
         <div>
-          <div class="sh"><div class="sh-bar" style="background:#DC2626"></div><h2>Regressgefährdet / Falscherfassung</h2></div>
+          <div class="sh"><div class="sh-bar" style="background:#92400e"></div><h2>Regressgefährdet / Falscherfassung</h2></div>
           <div class="err-box" style="background:var(--rose-s);border-color:var(--rose);">
             <div class="err-list">
               <div class="err-row"><span class="err-x">✗</span><span>E-Mail-Regel veraltet — aktuell 4×/30 Tage</span></div>
@@ -565,7 +565,7 @@ body {
         <div>
           <div class="sh"><div class="sh-bar" style="background:var(--amber)"></div><h2>Kein freies Zusatzbudget</h2></div>
           <div style="background:var(--amb-s);border:1.5px solid var(--amber);border-radius:8px;padding:9px 11px;">
-            <p style="font-size:8px;color:#78350F;line-height:1.5;">
+            <p style="font-size:8px;color:#92400e;line-height:1.5;">
               Die 240 Min PE020 sind <strong>kein «Bonusbudget»</strong> zur freien Verfügung. Die Auswertungszeit ist strikt an Testdiagnostik gebunden und muss dokumentiert werden. Auswertung immer separat als PE020 erfassen — nie in die normale Sitzungszeit einrechnen.
             </p>
           </div>

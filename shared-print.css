@@ -8,32 +8,36 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ── DESIGN TOKENS ── */
+/* Palette identisch mit Hauptseite (17 Werte) */
 :root {
-  /* Markenfarben */
-  --ink:      #1a3560;
-  --ind:      #3730a3;
-  --ind-l:    #eef2ff;
-  --ind-m:    #a5b4fc;
-  --teal:     #0a7c71;
-  --teal-l:   #e6f4f2;
-  --teal-m:   #a7d9d5;
-  --purple:   #7c3aed;
-  --purple-l: #f5f3ff;
-  --purple-m: #c4b5fd;
-  --amber:    #b85c00;
-  --amber-l:  #fef3e2;
-  --amber-m:  #e8c68a;
-  --rose:     #c0103a;
-  --rose-l:   #fdf0f3;
-  --rose-m:   #f0b8c5;
-  --green:    #1a6b3a;
-  --green-l:  #ebf6ef;
-  /* Neutrals */
-  --mid:      #4a5568;
-  --soft:     #718096;
-  --line:     #dde3eb;
-  --bg:       #edf0f4;
-  --paper:    #ffffff;
+  /* 5 Kernfarben */
+  --indigo:       #4338ca;  /* Primärfarbe, Badges, Links */
+  --amber:        #d97706;  /* Achtung, Limite, Sonderfall */
+  --amber-dark:   #92400e;  /* Ernste Warnung (ersetzt Rose) */
+  --slate:        #475569;  /* Sekundärer Text */
+  --bg:           #f5f7ff;  /* Seitenhintergrund */
+  /* 1 Dunkelwert */
+  --navy:         #1c2b3a;  /* Dunkle Blöcke, Header */
+  /* 6 Ableitungen */
+  --indigo-light: #6366f1;
+  --indigo-soft:  #eef2ff;
+  --amber-light:  #fbbf24;
+  --amber-bg:     #fef3e2;
+  --green:        #0d7a5f;
+  --green-bg:     #e6f4f2;
+  /* 5 Neutrale */
+  --card:         #ffffff;
+  --border:       #e2e8f0;
+  --text:         #1e293b;
+  /* Aliase für shared-print.css-Kompatibilität */
+  --ink:          #1c2b3a;  /* = --navy */
+  --ind:          #4338ca;  /* = --indigo */
+  --ind-l:        #eef2ff;  /* = --indigo-soft */
+  --ind-m:        #6366f1;  /* = --indigo-light */
+  --mid:          #475569;  /* = --slate */
+  --soft:         #475569;  /* = --slate */
+  --line:         #e2e8f0;  /* = --border */
+  --paper:        #ffffff;  /* = --card */
   /* Typografie */
   --font-body:  'Source Sans 3', system-ui, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -66,7 +70,7 @@ body {
   max-width: 100%;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-bottom: 2px solid #c7d2fe;
+  border-bottom: 2px solid var(--indigo-light);
   border-radius: 10px;
   padding: 10px 20px;
   display: flex;
@@ -101,12 +105,12 @@ body {
 /* iOS-Hinweis (nur Mobile, nur wenn sichtbar) */
 .ios-hint {
   display: none;
-  background: #fffbeb;
-  border: 1px solid #fde68a;
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-light);
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 12px;
-  color: #78350f;
+  color: var(--amber-dark);
   line-height: 1.5;
   width: 210mm;
   max-width: 100%;
@@ -159,7 +163,7 @@ body {
   color: white;
   line-height: 1.05;
 }
-.mast h1 em { color: #a5b4fc; font-style: normal; }
+.mast h1 em { color: var(--indigo-soft); font-style: normal; }
 .mast-sub {
   font-size: 8.5pt;
   color: rgba(255,255,255,.5);
@@ -176,7 +180,7 @@ body {
   flex-shrink: 0;
 }
 .mast-meta strong {
-  color: #a5b4fc;
+  color: var(--indigo-soft);
   font-size: 8.5pt;
   display: block;
   margin-bottom: 1px;
@@ -195,11 +199,11 @@ body {
   border-radius: 2px;
   flex-shrink: 0;
 }
-.sec-bar.i { background: var(--ind); }
-.sec-bar.t { background: var(--teal); }
-.sec-bar.p { background: var(--purple); }
-.sec-bar.r { background: var(--rose); }
-.sec-bar.k { background: var(--ink); }
+.sec-bar.i { background: var(--indigo); }
+.sec-bar.t { background: var(--indigo-light); }  /* ehem. teal → indigo-light */
+.sec-bar.p { background: var(--indigo); }         /* ehem. purple → indigo */
+.sec-bar.r { background: var(--amber-dark); }     /* ehem. rose → amber-dark */
+.sec-bar.k { background: var(--navy); }
 .sec-bar.a { background: var(--amber); }
 .sec h2 {
   font-size: 6.5pt;

@@ -10,25 +10,25 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink:    #1A3560;
+  --ink:    #1c2b3a;
   --ind:    #4338CA;
   --ind-s:  #EEF2FF;
-  --teal:   #0A7C71;
-  --teal-s: #E0F2EF;
-  --purp:   #7C3AED;
-  --purp-s: #F3EEFF;
+  --teal:   #0d7a5f;
+  --teal-s: #e6f4f2;
+  --purp:   #4338ca;
+  --purp-s: #eef2ff;
   --amber:  #D97706;
-  --amb-s:  #FFFBEB;
-  --rose:   #BE123C;
-  --rose-s: #FFF1F3;
-  --green:  #059669;
-  --grn-s:  #ECFDF5;
+  --amb-s:  #fef3e2;
+  --rose:   #92400e;
+  --rose-s: #fef3e2;
+  --green:  #0d7a5f;
+  --grn-s:  #e6f4f2;
   --slate:  #475569;
-  --sl-l:   #94A3B8;
+  --sl-l:   #475569;
   --line:   #E2E8F0;
   --white:  #FFFFFF;
   --text:   #1E293B;
-  --bg:     #F1F5F9;
+  --bg:     #eef2ff;
 }
 
 body {
@@ -45,8 +45,8 @@ body {
 
 .printbar {
   width: 210mm; max-width: 100%;
-  background: #F8FAFC; border: 1px solid var(--line);
-  border-bottom: 2px solid #C7D2FE; border-radius: 10px;
+  background: #eef2ff; border: 1px solid var(--line);
+  border-bottom: 2px solid #6366f1; border-radius: 10px;
   padding: 10px 20px; display: flex; align-items: center; gap: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,.07);
 }
@@ -62,14 +62,14 @@ body {
 
   .pbtn-breadcrumb {
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: #475569;
     display: flex;
     align-items: center;
     gap: 0.25rem;
     margin-left: auto;
     padding-right: 0.5rem;
   }
-  .pbtn-breadcrumb span { color: #cbd5e1; }
+  .pbtn-breadcrumb span { color: #e2e8f0; }
   @media print { .pbtn-breadcrumb { display: none !important; } }
   .pbtn-dark  { background: var(--ink); color: white; }
 
@@ -87,12 +87,12 @@ body {
 }
 .mast-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
 .mast h1 { font-size: 20px; font-weight: 800; color: white; letter-spacing: -.4px; line-height: 1; }
-.mast h1 em { color: #A5B4FC; font-style: normal; }
+.mast h1 em { color: #6366f1; font-style: normal; }
 .mast-sub { font-size: 7.5px; color: rgba(255,255,255,.45); margin-top: 2px; }
 .mast-note { font-size: 8px; color: rgba(255,255,255,.6); margin-top: 5px; line-height: 1.4; }
-.mast-note strong { color: #FDE68A; }
+.mast-note strong { color: #fbbf24; }
 .mast-badge {
-  font-size: 8px; font-weight: 700; color: #A5B4FC;
+  font-size: 8px; font-weight: 700; color: #eef2ff;
   background: rgba(165,180,252,.12); border: 1px solid rgba(165,180,252,.28);
   border-radius: 4px; padding: 3px 8px; white-space: nowrap; flex-shrink: 0;
 }
@@ -128,7 +128,7 @@ body {
 .tc-t { background: var(--teal-s); border-color: rgba(10,124,113,.3); }
 .tc-p { background: var(--purp-s); border-color: rgba(124,58,237,.3); }
 .tc-r { background: var(--rose-s); border-color: rgba(190,18,60,.3); }
-.tc-k { background: #F0FDF4; border-color: rgba(5,150,105,.3); }
+.tc-k { background: #e6f4f2; border-color: rgba(5,150,105,.3); }
 .tc-a { background: var(--amb-s); border-color: rgba(217,119,6,.3); }
 
 .tc-head {
@@ -143,11 +143,11 @@ body {
   padding: 2px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
   background: rgba(0,0,0,.07); color: var(--slate);
 }
-.tc-i .tc-code { background: rgba(67,56,202,.12); color: #3730A3; }
-.tc-t .tc-code { background: rgba(10,124,113,.12); color: #065F55; }
-.tc-p .tc-code { background: rgba(124,58,237,.12); color: #5B21B6; }
-.tc-r .tc-code { background: rgba(190,18,60,.12); color: #9F1239; }
-.tc-k .tc-code { background: rgba(5,150,105,.12); color: #065F46; }
+.tc-i .tc-code { background: rgba(67,56,202,.12); color: #4338ca; }
+.tc-t .tc-code { background: rgba(10,124,113,.12); color: #065f46; }
+.tc-p .tc-code { background: rgba(124,58,237,.12); color: #4338ca; }
+.tc-r .tc-code { background: rgba(190,18,60,.12); color: #92400e; }
+.tc-k .tc-code { background: rgba(5,150,105,.12); color: #065f46; }
 
 .tc-body { padding: 7px 9px; flex: 1; display: flex; flex-direction: column; gap: 5px; }
 
@@ -190,7 +190,7 @@ body {
   border-top: 1px solid var(--line); padding: 5px 14px;
   display: flex; justify-content: space-between; flex-shrink: 0;
 }
-.ft span { font-size: 7px; color: #64748B; }
+.ft span { font-size: 7px; color: #475569; }
 
 /* ── Page break ── */
 .page-break { break-before: page; page-break-before: always; }
@@ -241,16 +241,16 @@ body {
 
 
   /* axe-core contrast fixes */
-  .printbar-label { color: #374151 !important; }
-  .mast-sub, .masthead-sub { color: #d1d5db !important; }
-  .dt-ql { color: #374151 !important; }
+  .printbar-label { color: #475569 !important; }
+  .mast-sub, .masthead-sub { color: #e2e8f0 !important; }
+  .dt-ql { color: #475569 !important; }
   .lg-anw, .lg-diag, .lg-exp, .lg-lap, .lg-krise, .lg-tel, .lg-weg, .lg-nv { 
-    color: #1e3a5f !important; font-weight: 700 !important; 
+    color: #1c2b3a !important; font-weight: 700 !important; 
   }
-  .eq-hint { color: #374151 !important; }
-  .q-num { color: #374151 !important; }
-  .cmp-yes { color: #166534 !important; }
-  .cmp-no { color: #991b1b !important; }
+  .eq-hint { color: #475569 !important; }
+  .q-num { color: #475569 !important; }
+  .cmp-yes { color: #0d7a5f !important; }
+  .cmp-no { color: #92400e !important; }
 
   </style>
   <noscript><style>* { opacity: 1 !important; visibility: visible !important; }</style></noscript>
@@ -384,34 +384,34 @@ body {
           <span style="font-size:7px;color:#475569">Ø täglich<br>über 90 Tage</span>
         </div>
       </div>
-      <div style="background:#E0F2EF;border:1.5px solid rgba(10,124,113,.3);border-radius:8px;padding:8px 10px">
-        <div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#065F55;margin-bottom:4px">LAP-Topf Übersicht</div>
+      <div style="background:#e6f4f2;border:1.5px solid rgba(10,124,113,.3);border-radius:8px;padding:8px 10px">
+        <div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0d7a5f;margin-bottom:4px">LAP-Topf Übersicht</div>
         <table style="width:100%;border-collapse:collapse;font-size:7.5px">
           <tr style="border-bottom:1px solid rgba(0,0,0,.08)">
             <td style="padding:2px 0;color:#475569">PE045/040 Fremdakten</td>
-            <td style="font-weight:700;color:#065F55;text-align:right">&lt;18 / ≥18</td>
+            <td style="font-weight:700;color:#0d7a5f;text-align:right">&lt;18 / ≥18</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(0,0,0,.08)">
             <td style="padding:2px 0;color:#475569">PK025/020 Auskünfte Dritte</td>
-            <td style="font-weight:700;color:#065F55;text-align:right">&lt;18 / ≥18</td>
+            <td style="font-weight:700;color:#0d7a5f;text-align:right">&lt;18 / ≥18</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(0,0,0,.08)">
             <td style="padding:2px 0;color:#475569">PK015/010 Ext. Behandler</td>
-            <td style="font-weight:700;color:#065F55;text-align:right">&lt;18 / ≥18</td>
+            <td style="font-weight:700;color:#0d7a5f;text-align:right">&lt;18 / ≥18</td>
           </tr>
           <tr>
             <td style="padding:3px 0;font-weight:700;color:#1E293B">Gemeinsam &lt;18 J.</td>
-            <td style="font-weight:800;color:#065F55;text-align:right">240 Min/90T</td>
+            <td style="font-weight:800;color:#0d7a5f;text-align:right">240 Min/90T</td>
           </tr>
           <tr>
             <td style="padding:2px 0;font-weight:700;color:#1E293B">Gemeinsam ≥18 J.</td>
-            <td style="font-weight:800;color:#065F55;text-align:right">180 Min/90T</td>
+            <td style="font-weight:800;color:#0d7a5f;text-align:right">180 Min/90T</td>
           </tr>
         </table>
       </div>
-      <div style="background:#FFFBEB;border:1.5px solid rgba(217,119,6,.3);border-radius:8px;padding:8px 10px">
+      <div style="background:#fef3e2;border:1.5px solid rgba(217,119,6,.3);border-radius:8px;padding:8px 10px">
         <div style="font-size:6.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#92400E;margin-bottom:4px">E-Mail / Zeitversetzt</div>
-        <p style="font-size:7.5px;color:#475569;line-height:1.5;margin-bottom:5px">Asynchrone Kommunikation via EA.05.0080 ist streng limitiert. Die alte 6er-Regel ist <strong style="color:#BE123C">veraltet</strong>.</p>
+        <p style="font-size:7.5px;color:#475569;line-height:1.5;margin-bottom:5px">Asynchrone Kommunikation via EA.05.0080 ist streng limitiert. Die alte 6er-Regel ist <strong style="color:#92400e">veraltet</strong>.</p>
         <div style="display:flex;gap:8px">
           <div style="text-align:center">
             <div style="font-size:20px;font-weight:800;color:#92400E;line-height:1">1×</div>
@@ -533,7 +533,7 @@ body {
                 <div class="age-ck"><div class="ck-box"></div><span>PK015 (&lt;18)</span></div>
                 <div class="age-ck"><div class="ck-box"></div><span>PK010 (≥18)</span></div>
                 <div class="age-ck"><div class="ck-box"></div><span>EA.05.0080</span></div>
-                <div class="age-ck" style="color:#1E656D"><div class="ck-box"></div><span style="color:#1E656D;font-weight:600">EA.05.0120 (Angehörige)</span></div>
+                <div class="age-ck" style="color:#0d7a5f"><div class="ck-box"></div><span style="color:#0d7a5f;font-weight:600">EA.05.0120 (Angehörige)</span></div>
               </div>
             </div>
             <div class="fl"><div class="fl-lbl">Kontaktperson / Institution</div><div class="fl-line"></div></div>
@@ -547,7 +547,7 @@ body {
               <div class="ck"><div class="ck-box"></div><span>E-Mail max. 4× pro 30 Tage!</span></div>
             </div>
           </div>
-          <div class="tip"><span class="tip-icon">💡</span><span>&lt;18 J.: PE045+PK025+PK015 gemeinsam 240 Min/90T. ≥18 J.: PE040+PK020+PK010 gemeinsam 180 Min/90T. <strong style="color:#1E656D">EA.05.0120 = separates Budget, zählt nicht auf LAP-Limit an!</strong></span></div>
+          <div class="tip"><span class="tip-icon">💡</span><span>&lt;18 J.: PE045+PK025+PK015 gemeinsam 240 Min/90T. ≥18 J.: PE040+PK020+PK010 gemeinsam 180 Min/90T. <strong style="color:#0d7a5f">EA.05.0120 = separates Budget, zählt nicht auf LAP-Limit an!</strong></span></div>
         </div>
 
       </div>

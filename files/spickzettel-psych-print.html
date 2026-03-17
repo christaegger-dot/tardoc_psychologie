@@ -10,25 +10,25 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink:    #1A3560;
+  --ink:    #1c2b3a;
   --ind:    #4338CA;
   --ind-s:  #EEF2FF;
-  --teal:   #0A7C71;
-  --teal-s: #E0F2EF;
-  --purp:   #7C3AED;
-  --purp-s: #F3EEFF;
+  --teal:   #0d7a5f;
+  --teal-s: #e6f4f2;
+  --purp:   #4338ca;
+  --purp-s: #eef2ff;
   --amber:  #D97706;
-  --amb-s:  #FFFBEB;
-  --rose:   #BE123C;
-  --rose-s: #FFF1F3;
-  --green:  #059669;
-  --grn-s:  #ECFDF5;
+  --amb-s:  #fef3e2;
+  --rose:   #92400e;
+  --rose-s: #fef3e2;
+  --green:  #0d7a5f;
+  --grn-s:  #e6f4f2;
   --slate:  #475569;
-  --sl-l:   #94A3B8;
+  --sl-l:   #475569;
   --line:   #E2E8F0;
   --white:  #FFFFFF;
   --text:   #1E293B;
-  --bg:     #F1F5F9;
+  --bg:     #eef2ff;
 }
 
 body {
@@ -45,8 +45,8 @@ body {
 
 .printbar {
   width: 210mm; max-width: 100%;
-  background: #F8FAFC; border: 1px solid var(--line);
-  border-bottom: 2px solid #C7D2FE; border-radius: 10px;
+  background: #eef2ff; border: 1px solid var(--line);
+  border-bottom: 2px solid #6366f1; border-radius: 10px;
   padding: 10px 20px; display: flex; align-items: center; gap: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,.07);
 }
@@ -62,14 +62,14 @@ body {
 
   .pbtn-breadcrumb {
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: #475569;
     display: flex;
     align-items: center;
     gap: 0.25rem;
     margin-left: auto;
     padding-right: 0.5rem;
   }
-  .pbtn-breadcrumb span { color: #cbd5e1; }
+  .pbtn-breadcrumb span { color: #e2e8f0; }
   @media print { .pbtn-breadcrumb { display: none !important; } }
   .pbtn-dark  { background: var(--ink); color: white; }
 
@@ -87,10 +87,10 @@ body {
 }
 .mast-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
 .mast h1 { font-size: 20px; font-weight: 800; color: white; letter-spacing: -.4px; line-height: 1; }
-.mast h1 em { color: #A5B4FC; font-style: normal; }
+.mast h1 em { color: #6366f1; font-style: normal; }
 .mast-sub { font-size: 7.5px; color: rgba(255,255,255,.80); margin-top: 2px; }
 .mast-badge {
-  font-size: 8px; font-weight: 700; color: #A5B4FC;
+  font-size: 8px; font-weight: 700; color: #eef2ff;
   background: rgba(165,180,252,.12); border: 1px solid rgba(165,180,252,.28);
   border-radius: 4px; padding: 3px 8px; white-space: nowrap; flex-shrink: 0;
 }
@@ -105,10 +105,10 @@ body {
 .pill-num { font-size: 14px; font-weight: 800; line-height: 1; }
 .pill-lbl { font-size: 7px; color: rgba(255,255,255,.65); line-height: 1.3; }
 .pill-lbl strong { display: block; color: white; font-size: 7.5px; }
-.p-i .pill-num { color: #A5B4FC; }
-.p-t .pill-num { color: #6EE7B7; }
-.p-p .pill-num { color: #C4B5FD; }
-.p-a .pill-num { color: #FDE68A; }
+.p-i .pill-num { color: #eef2ff; }
+.p-t .pill-num { color: #e6f4f2; }
+.p-p .pill-num { color: #eef2ff; }
+.p-a .pill-num { color: #fbbf24; }
 
 /* ── Body ── */
 .body { flex: 1; padding: 9px 14px 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -134,7 +134,7 @@ body {
   background: var(--ink); border-radius: 8px; padding: 7px 10px;
   position: relative;
 }
-.dt-ql { font-size: 6px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #C7D2FE; margin-bottom: 2px; }
+.dt-ql { font-size: 6px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #eef2ff; margin-bottom: 2px; }
 .dt-qt { font-size: 11px; font-weight: 700; color: white; line-height: 1.2; }
 .dt-qn { font-size: 7px; color: rgba(255,255,255,.75); margin-top: 2px; }
 
@@ -151,8 +151,8 @@ body {
   font-size: 7.5px; font-weight: 700;
 }
 .dt-arrow::before { content: ''; display: block; width: 1px; height: 10px; background: var(--sl-l); }
-.dt-arrow-y { color: #065F46; }
-.dt-arrow-n { color: #9F1239; }
+.dt-arrow-y { color: #0d7a5f; }
+.dt-arrow-n { color: #92400e; }
 
 /* Result leaf node */
 .dt-leaf {
@@ -165,35 +165,35 @@ body {
 
 .dt-leaf-ri { background: var(--rose-s); border-color: rgba(190,18,60,.4); }
 .dt-leaf-ri .dt-leaf-title { color: var(--rose); }
-.dt-leaf-ri .dt-leaf-sub   { color: #9F1239; }
+.dt-leaf-ri .dt-leaf-sub   { color: #92400e; }
 
 .dt-leaf-rp { background: var(--purp-s); border-color: rgba(124,58,237,.35); }
 .dt-leaf-rp .dt-leaf-title { color: var(--purp); }
-.dt-leaf-rp .dt-leaf-sub   { color: #5B21B6; }
+.dt-leaf-rp .dt-leaf-sub   { color: #4338ca; }
 
 .dt-leaf-ra { background: var(--ind-s); border-color: rgba(67,56,202,.35); }
 .dt-leaf-ra .dt-leaf-title { color: var(--ind); }
-.dt-leaf-ra .dt-leaf-sub   { color: #3730A3; }
+.dt-leaf-ra .dt-leaf-sub   { color: #4338ca; }
 
 .dt-leaf-rl { background: var(--teal-s); border-color: rgba(10,124,113,.35); }
-.dt-leaf-rl .dt-leaf-title { color: #065F55; }
-.dt-leaf-rl .dt-leaf-sub   { color: #065F46; }
+.dt-leaf-rl .dt-leaf-title { color: #0d7a5f; }
+.dt-leaf-rl .dt-leaf-sub   { color: #0d7a5f; }
 
-.dt-leaf-ra2 { background: #F0FDF4; border-color: rgba(5,150,105,.35); }
-.dt-leaf-ra2 .dt-leaf-title { color: #065F46; }
-.dt-leaf-ra2 .dt-leaf-sub   { color: #065F46; }
+.dt-leaf-ra2 { background: #e6f4f2; border-color: rgba(5,150,105,.35); }
+.dt-leaf-ra2 .dt-leaf-title { color: #0d7a5f; }
+.dt-leaf-ra2 .dt-leaf-sub   { color: #0d7a5f; }
 
 /* Sub-question (indented) */
 .dt-subq {
-  background: #2D4A7A; border-radius: 7px; padding: 6px 9px; width: 100%;
+  background: #1c2b3a; border-radius: 7px; padding: 6px 9px; width: 100%;
 }
-.dt-subq .dt-ql { color: #93C5FD; }
+.dt-subq .dt-ql { color: #eef2ff; }
 .dt-subq .dt-qt { font-size: 9.5px; }
 
 .dt-warn {
   background: var(--amb-s); border: 1px solid var(--amber);
   border-radius: 5px; padding: 4px 7px;
-  font-size: 7px; color: #78350F; line-height: 1.4;
+  font-size: 7px; color: #92400e; line-height: 1.4;
 }
 
 /* ── 4 Kontakttypen ── */
@@ -204,8 +204,8 @@ body {
 .tel-tbl tbody tr:last-child { border-bottom: none; }
 .tel-tbl td { padding: 4px 7px; vertical-align: top; }
 .tel-type { font-weight: 600; font-size: 8px; }
-.tel-sub  { font-size: 7px; color: #64748B; }
-.tel-code { font-weight: 700; font-size: 7.5px; font-family: 'Courier New', monospace; color: #3730A3; }
+.tel-sub  { font-size: 7px; color: #475569; }
+.tel-code { font-weight: 700; font-size: 7.5px; font-family: 'Courier New', monospace; color: #4338ca; }
 .tel-warn { font-size: 7px; font-weight: 700; color: #92400E; }
 .tel-note { font-size: 7.5px; color: var(--slate); }
 
@@ -268,7 +268,7 @@ body {
   border-top: 1px solid var(--line); padding: 5px 14px;
   display: flex; justify-content: space-between; flex-shrink: 0;
 }
-.ft span { font-size: 7px; color: #64748B; }
+.ft span { font-size: 7px; color: #475569; }
 
 @media print {
   body { background: white; padding: 0; display: block; }
@@ -313,16 +313,16 @@ body {
 
 
   /* axe-core contrast fixes */
-  .printbar-label { color: #374151 !important; }
+  .printbar-label { color: #475569 !important; }
   .mast-sub, .masthead-sub { color: rgba(255,255,255,.80) !important; }
-  .dt-ql { color: #C7D2FE !important; }
+  .dt-ql { color: #eef2ff !important; }
   .lg-anw, .lg-diag, .lg-exp, .lg-lap, .lg-krise, .lg-tel, .lg-weg, .lg-nv { 
-    color: #1e3a5f !important; font-weight: 700 !important; 
+    color: #1c2b3a !important; font-weight: 700 !important; 
   }
-  .eq-hint { color: #374151 !important; }
-  .q-num { color: #374151 !important; }
-  .cmp-yes { color: #166534 !important; }
-  .cmp-no { color: #991b1b !important; }
+  .eq-hint { color: #475569 !important; }
+  .q-num { color: #475569 !important; }
+  .cmp-yes { color: #0d7a5f !important; }
+  .cmp-no { color: #92400e !important; }
 
   </style>
   <noscript><style>* { opacity: 1 !important; visibility: visible !important; }</style></noscript>
@@ -397,7 +397,7 @@ body {
 
                 <!-- Branch SPEZIALBLOCK -->
                 <div class="dt-br">
-                  <div class="dt-arrow dt-arrow-y" style="color:#5B21B6">✔ JA</div>
+                  <div class="dt-arrow dt-arrow-y" style="color:#4338ca">✔ JA</div>
                   <div class="dt-leaf dt-leaf-rp" style="width:100%">
                     <div class="dt-leaf-title">Spezialblock</div>
                     <div class="dt-leaf-sub">Diagnostik · Exposition
@@ -408,7 +408,7 @@ Krise Anordnung A</div>
                 <!-- Branch NORMALKONTAKT → Q3 -->
                 <div class="dt-br">
                   <div class="dt-arrow dt-arrow-n">✘ NEIN</div>
-                  <div class="dt-subq" style="background:#1E3A5F">
+                  <div class="dt-subq" style="background:#1c2b3a">
                     <div class="dt-ql">Frage 3</div>
                     <div class="dt-qt">Patient anwesend?</div>
                   </div>
@@ -457,28 +457,28 @@ E-Mail zeitversetzt</div>
           <tbody>
             <tr>
               <td><div class="tel-type">Fernmündl. Sitzung</div><div class="tel-sub">Video/Tel. synchron mit Patient</div></td>
-              <td><span class="tel-code" style="color:#3730A3">PA011 / PA031</span></td>
+              <td><span class="tel-code" style="color:#4338ca">PA011 / PA031</span></td>
               <td><span class="tel-note">max. 75 Min + PE010</span></td>
             </tr>
             <tr>
               <td><div class="tel-type">Verlaufskonsult.</div><div class="tel-sub">Kurze Rückmeldung</div></td>
-              <td><span class="tel-code" style="color:#374151">EA.00.0110</span></td>
+              <td><span class="tel-code" style="color:#475569">EA.00.0110</span></td>
               <td><span class="tel-note">max. 20 Min</span></td>
             </tr>
-            <tr style="background:#FFFBEB">
+            <tr style="background:#fef3e2">
               <td><div class="tel-type">E-Mail / zeitversetzt</div><div class="tel-sub">Asynchron</div></td>
               <td><span class="tel-code" style="color:#92400E">EA.05.0080</span></td>
-              <td><div class="tel-warn">1×/Tag · 4×/30 Tage</div><div style="font-size:6.5px;color:#9F1239">6er-Regel veraltet!</div></td>
+              <td><div class="tel-warn">1×/Tag · 4×/30 Tage</div><div style="font-size:6.5px;color:#92400e">6er-Regel veraltet!</div></td>
             </tr>
             <tr>
               <td><div class="tel-type">LAP-Kontakt Dritte</div><div class="tel-sub">Schule/Beistand/Eltern</div></td>
-              <td><span class="tel-code" style="color:#065F55">PK025 / PK020</span></td>
+              <td><span class="tel-code" style="color:#0d7a5f">PK025 / PK020</span></td>
               <td><span class="tel-note">LAP-Topf altersgesteuert</span></td>
             </tr>
-            <tr style="background:#F0FDF4">
+            <tr style="background:#e6f4f2">
               <td><div class="tel-type">Auskünfte Angehörige</div><div class="tel-sub">Elterntelefonat ohne Patient</div></td>
-              <td><span class="tel-code" style="color:#1E656D">EA.05.0120</span></td>
-              <td><span class="tel-note" style="color:#1E656D">Separates Budget · nicht im LAP-Pool!</span></td>
+              <td><span class="tel-code" style="color:#0d7a5f">EA.05.0120</span></td>
+              <td><span class="tel-note" style="color:#0d7a5f">Separates Budget · nicht im LAP-Pool!</span></td>
             </tr>
           </tbody>
         </table>

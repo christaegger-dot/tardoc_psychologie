@@ -37,31 +37,26 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #4338ca;
-    --navy-mid: #6366f1;
-    --indigo: #4338ca;
-    --indigo-light: #6366f1;
-    --indigo-soft: #eef2ff;
+    /* ── 6 KERNFARBEN ── */
+    --indigo:      #4338ca;   /* Primärfarbe, Badges, Links, aktive Elemente */
+    --amber:       var(--amber);   /* Achtung, Limite, Sonderfall */
+    --amber-dark:  var(--amber-dark);   /* Ernste Warnung ohne Alarm (ersetzt Rose) */
+    --navy:        var(--navy);   /* Dunkle Blöcke, Header, Footer */
+    --slate:       var(--slate);   /* Sekundärer Text, Erklärungen */
+    --bg:          #f5f7ff;   /* Seitenhintergrund (leicht Indigo-getönt) */
 
+    /* ── 8 ABLEITUNGEN ── */
+    --indigo-light: var(--indigo-light);  /* Hover-States, sekundäre Akzente */
+    --indigo-soft:  var(--indigo-soft);  /* Helle Hintergründe für Indigo-Karten */
+    --amber-light:  var(--amber-light);  /* Text auf dunklem Hintergrund */
+    --amber-bg:     var(--amber-bg);  /* Helle Warnbox-Hintergründe */
+    --green:        var(--green);  /* Häkchen, Positiv-Markierungen */
+    --green-bg:     var(--green-bg);  /* Hintergrund Positiv-Karten */
 
-    --amber: #d97706;
-    --amber-light: #fbbf24;
-    --rose: #e11d48;
-    --rose-soft: #fff1f2;
-    --slate: #475569;
-    --slate-light: #4b5563;
-    --bg: #f5f7ff;
-    --card: #ffffff;
-    --border: #e2e8f0;
-    --text: #1e293b;
-    --text-soft: #4b5563;
-    --text-mid: #475569;
-    --green: #059669;
-    --green-bg: #ecfdf5;
-    --red-bg: #fff1f2;
-    --amber-bg: #fffbeb;
-
-
+    /* ── GEMEINSAME WERTE (identisch mit SA-Seite) ── */
+    --card:         #ffffff;
+    --border:       #e2e8f0;
+    --text:         var(--text);
   }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -76,7 +71,7 @@ line-height: 1.65;
 
 /* ── HEADER ── */
 .header {
-background: #4338ca;
+background: var(--indigo);
 color: white;
 padding: 48px 40px 40px;
 position: relative;
@@ -124,7 +119,7 @@ font-family: ‘DM Serif Display’, serif;
 font-size: 42px; line-height: 1.15;
 letter-spacing: -0.5px; margin-bottom: 8px;
 }
-.header h1 span { color: #c7d2fe; }
+.header h1 span { color: var(--indigo-soft); }
 .header-sub {
 font-size: 16px; color: rgba(255,255,255,0.82);
 margin-bottom: 28px; font-weight: 300;
@@ -134,7 +129,7 @@ margin-bottom: 28px; font-weight: 300;
 display: flex; align-items: center; gap: 8px;
 font-size: 13px; color: rgba(255,255,255,0.75);
 }
-.header-meta-item svg { color: #c7d2fe; }
+.header-meta-item svg { color: var(--indigo-soft); }
 
 /* Two-layer badge in header */
 .dual-layer {
@@ -146,14 +141,14 @@ padding: 7px 14px; border-radius: 8px;
 font-size: 12.5px; font-weight: 500;
 }
 .layer-pill.ext {
-background: #4f46e5;
-border: 1px solid #6366f1;
+background: var(--indigo-light);
+border: 1px solid var(--indigo-light);
 color: #ffffff;
 }
 .layer-pill.int {
-background: #3730a3;
-border: 1px solid #4338ca;
-color: #e0e7ff;
+background: var(--navy);
+border: 1px solid var(--indigo);
+color: var(--indigo-soft);
 }
 .layer-pill strong { font-weight: 700; }
 
@@ -189,7 +184,7 @@ color: #e0e7ff;
   .sidebar-nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
   .sidebar-nav .nav-title {
     font-size: 10px; font-weight: 700; letter-spacing: .12em;
-    text-transform: uppercase; color: var(--slate-light);
+    text-transform: uppercase; color: var(--slate);
     padding: 0 18px 10px;
     border-bottom: 1px solid var(--border);
     margin-bottom: 8px;
@@ -218,7 +213,7 @@ color: #e0e7ff;
   }
   .sidebar-nav .nav-link .nav-num {
     font-size: 10px; font-weight: 700;
-    color: var(--slate-light);
+    color: var(--slate);
     min-width: 14px;
     flex-shrink: 0;
   }
@@ -230,7 +225,7 @@ color: #e0e7ff;
   }
   .sidebar-nav .nav-print-title {
     font-size: 10px; font-weight: 700; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--slate-light);
+    text-transform: uppercase; color: var(--slate);
     padding: 6px 18px 4px;
   }
   .sidebar-nav .nav-print-link {
@@ -289,7 +284,7 @@ color: #e0e7ff;
 /* ── NAV ── */
 .nav-bar {
 background: white;
-border-bottom: 2px solid #c7d2fe;
+border-bottom: 2px solid var(--indigo-soft);
 position: sticky; top: 0; z-index: 100;
 box-shadow: 0 2px 12px rgba(55,48,163,0.10);
 }
@@ -394,9 +389,9 @@ cursor: pointer; transition: background .15s;
 .sr-item:last-child { border-bottom: none; }
 .sr-item:hover { background: var(--bg); }
 .sr-title { font-size: 13px; font-weight: 600; color: var(--navy); }
-.sr-context { font-size: 12px; color: var(--slate-light); margin-top: 2px; }
-.sr-empty { padding: 16px; text-align: center; font-size: 13px; color: var(--slate-light); }
-mark { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 1px; }
+.sr-context { font-size: 12px; color: var(--slate); margin-top: 2px; }
+.sr-empty { padding: 16px; text-align: center; font-size: 13px; color: var(--slate); }
+mark { background: var(--amber-bg); color: inherit; border-radius: 2px; padding: 0 1px; }
 
 /* ── SCROLL ANIMATIONS ── */
 /* Default: sichtbar (kein JS = kein Fade-in, Sektionen immer sichtbar) */
@@ -426,19 +421,19 @@ mark { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 1px; 
 .text-indigo-light { color: var(--indigo-light); }
 .text-navy { color: var(--navy); }
 .text-green-bold { font-size: 13px; font-weight: 700; color: var(--green); }
-.text-rose-bold { font-size: 13px; font-weight: 700; color: var(--rose); }
+.text-rose-bold { font-size: 13px; font-weight: 700; color: var(--amber-dark); }
 .card-section-title { font-weight: 700; font-size: 13px; color: var(--indigo); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
 .card-section-title-amber { font-weight: 700; font-size: 13px; color: var(--amber); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
 .layer-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--indigo); margin-bottom: 12px; }
 .layer-heading { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 10px; }
-.layer-card { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; border-radius: 12px; padding: 24px; }
-.layer-card-alt { background: #e8eaff; border: 1.5px solid #a5b4fc; border-radius: 12px; padding: 24px; }
+.layer-card { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); border-radius: 12px; padding: 24px; }
+.layer-card-alt { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); border-radius: 12px; padding: 24px; }
 .pos-item-accent { border-left: 3px solid var(--indigo-light); }
 .list-clean { display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; color: var(--text); list-style: none; }
-.idt-res-indigo { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; color: var(--navy); }
+.idt-res-indigo { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); color: var(--navy); }
 .idt-sublabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--indigo); padding: 6px 0 2px; border-bottom: 1.5px dashed var(--indigo-light); margin-bottom: 2px; }
-.text-blue-700 { color: #1d4ed8; }
-.idt-sublabel-blue { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #1d4ed8; padding: 8px 0 2px; border-bottom: 1.5px dashed #60a5fa; margin-bottom: 2px; }
+.text-blue-700 { color: var(--indigo); }
+.idt-sublabel-blue { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--indigo); padding: 8px 0 2px; border-bottom: 1.5px dashed var(--indigo-light); margin-bottom: 2px; }
 
 /* ── SCROLL MARGIN (verhindert Verstecken unter Sticky-Bar) ── */
 .section-accordion {
@@ -507,8 +502,8 @@ transform: translateX(-50%);
 border: 6px solid transparent; border-top-color: var(--navy);
 }
 .code-tip:hover .tip-box, .code-tip:focus .tip-box { display: block; }
-.tip-title { font-weight: 700; margin-bottom: 3px; color: #c7d2fe; }
-.tip-limit { font-weight: 600; color: #fbbf24; }
+.tip-title { font-weight: 700; margin-bottom: 3px; color: var(--indigo-soft); }
+.tip-limit { font-weight: 600; color: var(--amber-light); }
 
 /* Mobile: Tooltips hinter «mehr…»-Toggle versteckt */
 @media (max-width: 768px) {
@@ -516,7 +511,7 @@ border: 6px solid transparent; border-top-color: var(--navy);
     position: static;
     transform: none;
     width: 100%;
-    background: #f0f1ff;
+    background: var(--indigo-soft);
     color: var(--slate);
     padding: 6px 10px;
     border-radius: 6px;
@@ -540,7 +535,7 @@ border: 6px solid transparent; border-top-color: var(--navy);
     cursor: pointer;
     user-select: none;
   }
-  .tip-open .tip-toggle { color: var(--slate-light); }
+  .tip-open .tip-toggle { color: var(--slate); }
 }
 
 /* ── SECTION ── */
@@ -556,7 +551,7 @@ font-size: 22px; color: var(--navy);
 margin: 0 0 6px 0; padding: 0; font-weight: normal;
 }
 .scenario-panel-lead {
-font-size: 14px; color: var(--text-mid);
+font-size: 14px; color: var(--slate);
 margin-bottom: 16px;
 }
 .sp-grid {
@@ -644,7 +639,7 @@ font-size: 11.5px; color: var(--indigo);
 font-weight: 600;
 }
 .sp-card-hint {
-font-size: 11.5px; color: var(--text-mid);
+font-size: 11.5px; color: var(--slate);
 margin-top: 3px;
 }
 @media (max-width: 480px) {
@@ -660,8 +655,8 @@ margin-top: 3px;
 
 /* ── CODE SEARCH: instant result card ── */
 .code-result {
-background: linear-gradient(135deg, var(--indigo-soft), #e0e7ff);
-border: 1.5px solid #a5b4fc;
+background: linear-gradient(135deg, var(--indigo-soft), var(--indigo-soft));
+border: 1.5px solid var(--indigo-light);
 border-radius: 10px; padding: 14px 16px;
 margin: 0 0 6px 0; padding: 0; font-weight: normal;
 }
@@ -672,7 +667,7 @@ margin: 0 0 6px 0; padding: 0; font-weight: normal;
 .code-result-code {
 font-weight: 700; font-size: 14px; color: var(--indigo);
 background: white; padding: 3px 10px; border-radius: 6px;
-border: 1px solid #c7d2fe;
+border: 1px solid var(--indigo-soft);
 }
 .code-result-name {
 font-weight: 600; font-size: 13.5px; color: var(--navy);
@@ -710,14 +705,14 @@ user-select: none;
 }
 .sf-chip:hover { border-color: var(--indigo-light); color: var(--indigo); }
 .sf-chip.active { background: var(--indigo); border-color: var(--indigo); color: white; }
-.sf-chip.active:hover { background: #4338ca; }
-.sf-chip[data-cat="anwesenheit"].active { background: #059669; border-color: #059669; }
+.sf-chip.active:hover { background: var(--indigo); }
+.sf-chip[data-cat="anwesenheit"].active { background: var(--green); border-color: var(--green); }
 .sf-chip[data-cat="diagnostik"].active { background: var(--indigo); border-color: var(--indigo); }
-.sf-chip[data-cat="krise"].active { background: var(--rose); border-color: var(--rose); }
-.sf-chip[data-cat="exposition"].active { background: #7c3aed; border-color: #7c3aed; }
-.sf-chip[data-cat="telemedizin"].active { background: #b85c00; border-color: #b85c00; }
-.sf-chip[data-cat="lap"].active { background: #0a7c71; border-color: #0a7c71; }
-.sf-chip[data-cat="wegzeit"].active { background: #b85c00; border-color: #b85c00; }
+.sf-chip[data-cat="krise"].active { background: var(--amber-dark); border-color: var(--amber-dark); }
+.sf-chip[data-cat="exposition"].active { background: var(--indigo); border-color: var(--indigo); }
+.sf-chip[data-cat="telemedizin"].active { background: var(--amber-dark); border-color: var(--amber-dark); }
+.sf-chip[data-cat="lap"].active { background: var(--green); border-color: var(--green); }
+.sf-chip[data-cat="wegzeit"].active { background: var(--amber-dark); border-color: var(--amber-dark); }
 
 /* Category badge in search results */
 .sr-cat {
@@ -725,13 +720,13 @@ font-size: 9px; font-weight: 700; letter-spacing: .04em;
 text-transform: uppercase; padding: 1px 6px; border-radius: 8px;
 display: inline-block; margin-left: 6px; vertical-align: middle;
 }
-.sr-cat-anwesenheit { background: #dcfce7; color: #15803d; }
-.sr-cat-diagnostik { background: #eef2ff; color: #4338ca; }
-.sr-cat-krise { background: #fff1f2; color: #c0103a; }
-.sr-cat-exposition { background: #f5f3ff; color: #7c3aed; }
-.sr-cat-telemedizin { background: #fef3e2; color: #b85c00; }
-.sr-cat-lap { background: #e6f4f2; color: #0a7c71; }
-.sr-cat-wegzeit { background: #fef3e2; color: #b85c00; }
+.sr-cat-anwesenheit { background: var(--green-bg); color: var(--green); }
+.sr-cat-diagnostik { background: var(--indigo-soft); color: var(--indigo); }
+.sr-cat-krise { background: var(--amber-bg); color: var(--amber-dark); }
+.sr-cat-exposition { background: var(--indigo-soft); color: var(--indigo); }
+.sr-cat-telemedizin { background: var(--amber-bg); color: var(--amber-dark); }
+.sr-cat-lap { background: var(--green-bg); color: var(--green); }
+.sr-cat-wegzeit { background: var(--amber-bg); color: var(--amber-dark); }
 
 /* Keyboard-selected result */
 .sr-item.kb-focus, .code-result.kb-focus { background: var(--bg); outline: 2px solid var(--indigo-light); outline-offset: -2px; }
@@ -740,7 +735,7 @@ display: inline-block; margin-left: 6px; vertical-align: middle;
 .fuzzy-hl { color: var(--indigo); font-weight: 700; }
 
 /* Search result count */
-.sr-count { padding: 4px 14px; font-size: 11px; color: var(--slate-light); border-bottom: 1px solid #f1f5f9; }
+.sr-count { padding: 4px 14px; font-size: 11px; color: var(--slate); border-bottom: 1px solid #f1f5f9; }
 
 @media (max-width: 600px) {
 .sf-filters { padding: 4px 0 0; gap: 4px; }
@@ -772,7 +767,7 @@ flex-shrink: 0;
 }
 .section-title .num.teal { background: var(--indigo-light); }
 .section-lead {
-color: var(--text-soft); margin-bottom: 24px;
+color: var(--slate); margin-bottom: 24px;
 padding-left: 40px; font-size: 14.5px;
 }
 
@@ -795,7 +790,7 @@ border-radius: 10px; padding: 18px 20px;
 border-left: 4px solid var(--indigo-light);
 }
 .rule-card.amber { border-left-color: var(--amber); }
-.rule-card.rose  { border-left-color: var(--rose); }
+.rule-card.rose  { border-left-color: var(--amber-dark); }
 .rule-card.teal  { border-left-color: var(--indigo-light); }
 .rule-icon {
 width: 36px; height: 36px; border-radius: 8px;
@@ -803,8 +798,8 @@ display: flex; align-items: center; justify-content: center;
 flex-shrink: 0; font-size: 18px;
 background: var(--indigo-soft);
 }
-.rule-card.amber .rule-icon { background: #fffbeb; }
-.rule-card.rose  .rule-icon { background: #fff1f2; }
+.rule-card.amber .rule-icon { background: var(--amber-bg); }
+.rule-card.rose  .rule-icon { background: var(--amber-bg); }
 .rule-card.teal  .rule-icon { background: var(--indigo-soft); }
 .rule-card h4, .rule-card h3.rule-h3 { font-weight: 600; font-size: 14px; margin-bottom: 4px; color: var(--navy); }
 .rule-card p  { font-size: 13.5px; color: var(--slate); }
@@ -812,7 +807,7 @@ background: var(--indigo-soft);
 /* ── HIGHLIGHT BOX ── */
 .highlight {
 background: var(--indigo-soft);
-border: 1.5px solid #c7d2fe;
+border: 1.5px solid var(--indigo-soft);
 border-radius: 12px; padding: 22px 24px;
 margin-bottom: 16px;
 }
@@ -838,13 +833,13 @@ padding-right: 10px; font-size: 11px; font-weight: 700; color: white;
 transition: width 1.2s ease;
 }
 .limit-bar-fill.teal { background: linear-gradient(90deg, var(--indigo), var(--indigo-light)); }
-.limit-bar-fill.amber { background: linear-gradient(90deg, #d97706, #fbbf24); }
+.limit-bar-fill.amber { background: linear-gradient(90deg, var(--amber), var(--amber-light)); }
 .limit-num { font-size: 22px; font-weight: 700; font-family: ‘DM Serif Display’, serif; color: var(--navy); }
-.limit-note { font-size: 12.5px; color: var(--text-soft); }
+.limit-note { font-size: 12.5px; color: var(--slate); }
 .limit-exception {
 margin-top: 14px; padding: 12px 16px;
-background: var(--amber-bg); border: 1px solid #fcd34d;
-border-radius: 8px; font-size: 13px; color: #92400e;
+background: var(--amber-bg); border: 1px solid var(--amber-light);
+border-radius: 8px; font-size: 13px; color: var(--amber-dark);
 display: flex; gap: 10px; align-items: flex-start;
 }
 
@@ -863,12 +858,12 @@ color: var(--text);
 }
 .prod-row:last-child { border-bottom: none; }
 .prod-row.header {
-background: #4338ca; color: white;
+background: var(--indigo); color: white;
 font-size: 11px; font-weight: 700;
 letter-spacing: .08em; text-transform: uppercase;
 padding: 10px 20px;
 }
-.prod-role { color: #1e293b; font-weight: 500; background: white; }
+.prod-role { color: var(--text); font-weight: 500; background: white; }
 .prod-num { text-align: center; font-weight: 700; }
 .prod-num.y { color: var(--indigo-light); }
 .prod-num.m { color: var(--indigo); }
@@ -876,40 +871,40 @@ padding: 10px 20px;
 /* ── DECISION TREE ── */
 .idt { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
 .idt-title { font-family: ‘DM Serif Display’, serif; font-size: 20px; color: var(--navy); margin-bottom: 4px; }
-.idt-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 28px; }
+.idt-sub { font-size: 13px; color: var(--slate); margin-bottom: 28px; }
 .idt-node { display: flex; flex-direction: column; align-items: center; gap: 0; }
 .idt-q {
-background: #4338ca; color: white;
+background: var(--indigo); color: white;
 border-radius: 12px; padding: 16px 24px;
 font-size: 14.5px; font-weight: 500; text-align: center;
 width: 100%; max-width: 500px;
 }
-.idt-q small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #c7d2fe; margin-bottom: 4px; }
-.idt-down { height: 24px; display: flex; align-items: center; justify-content: center; color: var(--slate-light); font-size: 20px; }
+.idt-q small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--indigo-soft); margin-bottom: 4px; }
+.idt-down { height: 24px; display: flex; align-items: center; justify-content: center; color: var(--slate); font-size: 20px; }
 .idt-fork { display: flex; gap: 16px; width: 100%; }
 .idt-branch { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0; }
 .idt-branch-label {
 font-size: 11px; font-weight: 700; letter-spacing: .1em;
 text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px;
 }
-.idt-branch-label.y { background: #dcfce7; color: #16a34a; }
-.idt-branch-label.n { background: #fee2e2; color: #dc2626; }
+.idt-branch-label.y { background: var(--green-bg); color: var(--green); }
+.idt-branch-label.n { background: var(--amber-bg); color: var(--amber-dark); }
 .idt-res {
 border-radius: 10px; padding: 14px 16px;
 text-align: center; width: 100%; font-size: 13px;
 }
 .idt-res small { display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
-.idt-res.indigo { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; color: var(--navy); }
+.idt-res.indigo { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); color: var(--navy); }
 .idt-res.indigo small { color: var(--indigo-light); }
-.idt-res.teal { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; color: var(--navy); }
+.idt-res.teal { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); color: var(--navy); }
 .idt-res.teal small { color: var(--indigo-light); }
-.idt-res.blue { background: #eff6ff; border: 1.5px solid #60a5fa; color: var(--navy); }
-.idt-res.blue small { color: #1d4ed8; }
-.idt-res.amber { background: #fffbeb; border: 1.5px solid var(--amber); color: var(--navy); }
+.idt-res.blue { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); color: var(--navy); }
+.idt-res.blue small { color: var(--indigo); }
+.idt-res.amber { background: var(--amber-bg); border: 1.5px solid var(--amber); color: var(--navy); }
 .idt-res.amber small { color: var(--amber); }
-.idt-res.rose  { background: #fff1f2; border: 1.5px solid var(--rose); color: var(--navy); }
-.idt-res.rose small { color: var(--rose); }
-.idt-res.purple { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; color: var(--navy); }
+.idt-res.rose  { background: var(--amber-bg); border: 1.5px solid var(--amber-dark); color: var(--navy); }
+.idt-res.rose small { color: var(--amber-dark); }
+.idt-res.purple { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); color: var(--navy); }
 .idt-res.purple small { color: var(--indigo); }
 .idt-line { width: 1px; height: 20px; background: var(--border); }
 .idt-sub-fork { display: flex; gap: 16px; width: 100%; }
@@ -944,10 +939,10 @@ padding: 4px 8px; border-radius: 6px;
 display: inline-block; white-space: nowrap;
 }
 .pos-code.teal  { color: var(--indigo); background: var(--indigo-soft); }
-.pos-code.amber { color: var(--amber); background: #fffbeb; }
+.pos-code.amber { color: var(--amber); background: var(--amber-bg); }
 .pos-code.purple { color: var(--indigo); background: var(--indigo-soft); }
 .pos-code-sub {
-font-size: 10px; color: var(--slate-light); margin-top: 3px; display: block;
+font-size: 10px; color: var(--slate); margin-top: 3px; display: block;
 font-style: italic;
 }
 .pos-name { font-weight: 500; font-size: 14px; color: var(--navy); margin-bottom: 4px; }
@@ -960,8 +955,8 @@ padding: 3px 10px; border-radius: 20px; white-space: nowrap;
 .badge-lap   { background: var(--indigo-soft); color: var(--indigo); }
 .badge-diag  { background: var(--indigo-soft); color: var(--indigo-light); }
 .badge-expo  { background: var(--indigo-soft); color: var(--indigo); }
-.badge-weg   { background: #fef3c7; color: #b45309; }
-.badge-kris  { background: #fee2e2; color: #dc2626; }
+.badge-weg   { background: var(--amber-bg); color: var(--amber-dark); }
+.badge-kris  { background: var(--amber-bg); color: var(--amber-dark); }
 .badge-tel   { background: var(--indigo-soft); color: var(--indigo); }
 
 /* ── DIAGNOSTIK BLOCK ── */
@@ -969,8 +964,8 @@ padding: 3px 10px; border-radius: 20px; white-space: nowrap;
 .diag-box {
 border-radius: 12px; padding: 22px;
 }
-.diag-box.a { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; }
-.diag-box.b { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; }
+.diag-box.a { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); }
+.diag-box.b { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); }
 .diag-box h4 { font-weight: 700; font-size: 14px; margin-bottom: 12px; }
 .diag-box.a h4 { color: var(--indigo); }
 .diag-box.b h4 { color: var(--indigo); }
@@ -986,27 +981,27 @@ font-size: 13.5px;
 /* ── KRISE A/B ── */
 .krise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .krise-box { border-radius: 12px; padding: 22px; }
-.krise-box.a { background: #fff7ed; border: 2px solid #fdba74; }
-.krise-box.b { background: #fff1f2; border: 2px solid #fca5a5; }
+.krise-box.a { background: var(--amber-bg); border: 2px solid #fdba74; }
+.krise-box.b { background: var(--amber-bg); border: 2px solid var(--amber-bg); }
 .krise-box h3 {
 font-family: ‘DM Serif Display’, serif;
 font-size: 17px; margin-bottom: 4px;
 }
-.krise-box.a h3 { color: #c2410c; }
-.krise-box.b h3 { color: var(--rose); }
+.krise-box.a h3 { color: var(--amber-dark); }
+.krise-box.b h3 { color: var(--amber-dark); }
 .krise-sub { font-size: 12px; font-weight: 600; letter-spacing:.06em; text-transform:uppercase; margin-bottom:14px; }
-.krise-box.a .krise-sub { color: #ea580c; }
-.krise-box.b .krise-sub { color: var(--rose); }
+.krise-box.a .krise-sub { color: var(--amber-dark); }
+.krise-box.b .krise-sub { color: var(--amber-dark); }
 .krise-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .krise-list li { font-size: 13.5px; display: flex; gap: 8px; }
-.krise-list li::before { content: '\2192'; flex-shrink: 0; font-weight: 700; }.krise-box.a .krise-list li::before { color: #ea580c; }
-.krise-box.b .krise-list li::before { color: var(--rose); }
+.krise-list li::before { content: '\2192'; flex-shrink: 0; font-weight: 700; }.krise-box.a .krise-list li::before { color: var(--amber-dark); }
+.krise-box.b .krise-list li::before { color: var(--amber-dark); }
 
 /* ── LAP ALTERS GRID ── */
 .lap-age-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .lap-age-box { border-radius: 12px; padding: 22px; }
-.lap-age-box.u18 { background: var(--indigo-soft); border: 1.5px solid #a5b4fc; }
-.lap-age-box.o18 { background: #f0f0ff; border: 1.5px solid #c7d2fe; }
+.lap-age-box.u18 { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); }
+.lap-age-box.o18 { background: #f0f0ff; border: 1.5px solid var(--indigo-soft); }
 .lap-age-box h4, .lap-age-box h3.lap-h3 { font-weight: 700; font-size: 14px; margin-bottom: 14px; }
 .lap-age-box.u18 h4, .lap-age-box.u18 h3.lap-h3 { color: var(--indigo); }
 .lap-age-box.o18 h4, .lap-age-box.o18 h3.lap-h3 { color: var(--indigo); }
@@ -1028,16 +1023,16 @@ font-weight: 700; font-size: 15px;
 
 /* ── EXPO BOX ── */
 .expo-box {
-background: var(--indigo-soft); border: 1.5px solid #a5b4fc;
+background: var(--indigo-soft); border: 1.5px solid var(--indigo-light);
 border-radius: 14px; padding: 28px;
 }
 .expo-title { font-family: ‘DM Serif Display’, serif; font-size: 20px; color: var(--indigo); margin: 0 0 6px 0; padding: 0; font-weight: normal; }
-.expo-sub   { font-size: 13px; color: var(--text-soft); margin-bottom: 20px; }
+.expo-sub   { font-size: 13px; color: var(--slate); margin-bottom: 20px; }
 .expo-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.expo-stat  { background: white; border: 1px solid #c7d2fe; border-radius: 10px; padding: 14px 16px; text-align: center; }
+.expo-stat  { background: white; border: 1px solid var(--indigo-soft); border-radius: 10px; padding: 14px 16px; text-align: center; }
 .expo-stat-num { font-family: ‘DM Serif Display’, serif; font-size: 22px; color: var(--indigo); font-weight: 700; line-height: 1; margin-bottom: 3px; }
-.expo-stat-lbl { font-size: 11px; color: var(--text-soft); }
-.expo-note { margin-top: 16px; background: var(--indigo-soft); border: 1px solid #c7d2fe; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: var(--indigo); display: flex; gap: 8px; }
+.expo-stat-lbl { font-size: 11px; color: var(--slate); }
+.expo-note { margin-top: 16px; background: var(--indigo-soft); border: 1px solid var(--indigo-soft); border-radius: 8px; padding: 12px 16px; font-size: 13px; color: var(--indigo); display: flex; gap: 8px; }
 
 /* ── TELEMEDIZIN ── */
 .tel-table {
@@ -1051,23 +1046,23 @@ align-items: start; font-size: 13.5px; gap: 16px;
 }
 .tel-row:last-child { border-bottom: none; }
 .tel-row.head {
-background: #4338ca; color: white;
+background: var(--indigo); color: white;
 font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
 padding: 10px 20px; align-items: center;
 }
 .tel-type { font-weight: 600; color: var(--navy); }
 .tel-code { font-weight: 700; color: var(--indigo); font-size: 12px; text-align: center; }
 .tel-limit { color: var(--slate); }
-.tel-warn { color: var(--rose); font-size: 12px; font-weight: 700; }
+.tel-warn { color: var(--amber-dark); font-size: 12px; font-weight: 700; }
 
 /* ── DO/DONT ── */
 .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .do-box { background: var(--green-bg); border: 1px solid #a7f3d0; border-radius: 10px; padding: 20px; }
-.dont-box { background: var(--red-bg); border: 1px solid #fecdd3; border-radius: 10px; padding: 20px; }
+.dont-box { background: var(--amber-bg); border: 1px solid var(--amber-bg); border-radius: 10px; padding: 20px; }
 .do-box h4, .do-box h3.do-h3 { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-.dont-box h4, .dont-box h3.do-h3 { color: var(--rose); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+.dont-box h4, .dont-box h3.do-h3 { color: var(--amber-dark); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
 .do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }.do-box li::before { content: '\2713'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }.dont-box li::before { content: '\2715'; color: var(--rose); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }.do-box li::before { content: '\2713'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }.dont-box li::before { content: '\2715'; color: var(--amber-dark); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
 /* ── SCENARIO CARDS ── */
 .scenario-grid { display: grid; gap: 14px; }
@@ -1077,7 +1072,7 @@ border-radius: 12px; overflow: hidden;
 display: grid; grid-template-columns: 56px 1fr;
 }
 .scenario-num {
-background: var(--navy-mid); color: white;
+background: var(--indigo-light); color: white;
 display: flex; align-items: center; justify-content: center;
 font-family: ‘DM Serif Display’, serif; font-size: 22px;
 writing-mode: vertical-lr;
@@ -1087,27 +1082,27 @@ writing-mode: vertical-lr;
 .scenario-think { font-size: 13px; color: var(--slate); margin-bottom: 10px; font-style: italic; }
 .scenario-answer {
 display: inline-flex; align-items: center; gap: 8px;
-background: var(--indigo-soft); border: 1px solid #c7d2fe;
+background: var(--indigo-soft); border: 1px solid var(--indigo-soft);
 border-radius: 20px; padding: 5px 14px;
 font-size: 12.5px; font-weight: 600; color: var(--indigo);
 }
 .scenario-answer.no {
-background: #fff1f2; border-color: #fecdd3; color: var(--rose);
+background: var(--amber-bg); border-color: var(--amber-bg); color: var(--amber-dark);
 }
 .scenario-answer.teal {
-background: var(--indigo-soft); border-color: #c7d2fe; color: var(--indigo);
+background: var(--indigo-soft); border-color: var(--indigo-soft); color: var(--indigo);
 }
 .scenario-answer.purple {
-background: var(--indigo-soft); border-color: #c7d2fe; color: var(--indigo);
+background: var(--indigo-soft); border-color: var(--indigo-soft); color: var(--indigo);
 }
 .scenario-answer.orange {
-background: #fff7ed; border-color: #fed7aa; color: #c2410c;
+background: var(--amber-bg); border-color: var(--amber-light); color: var(--amber-dark);
 }
 .scenario-distinction {
 margin-top: 8px;
 padding: 10px 14px;
-background: #f0f1ff;
-border: 1.5px dashed #a5b4fc;
+background: var(--indigo-soft);
+border: 1.5px dashed var(--indigo-light);
 border-radius: 8px;
 font-size: 12px;
 color: var(--slate);
@@ -1124,40 +1119,40 @@ margin-bottom: 4px;
 
 /* ── CHEAT SHEET ── */
 .cheat-sheet {
-background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+background: linear-gradient(135deg, var(--indigo-soft) 0%, var(--indigo-soft) 100%);
 border-radius: 14px; padding: 32px;
-border: 2px solid #c7d2fe;
+border: 2px solid var(--indigo-soft);
 }
-.cheat-title { font-family: ‘DM Serif Display’, serif; font-size: 22px; margin: 0 0 6px 0; padding: 0; font-weight: normal; color: #3730a3; }
-.cheat-sub { font-size: 13px; color: var(--text-soft); margin-bottom: 24px; }
+.cheat-title { font-family: ‘DM Serif Display’, serif; font-size: 22px; margin: 0 0 6px 0; padding: 0; font-weight: normal; color: var(--navy); }
+.cheat-sub { font-size: 13px; color: var(--slate); margin-bottom: 24px; }
 .cheat-items { display: grid; gap: 10px; counter-reset: cheat; }
 .cheat-item {
 display: flex; gap: 14px; align-items: flex-start;
 background: white; border-radius: 10px;
 padding: 13px 18px; counter-increment: cheat;
-border: 1px solid #e0e7ff;
+border: 1px solid var(--indigo-soft);
 box-shadow: 0 1px 3px rgba(99,102,241,0.07);
 }
 .cheat-item::before {
 content: counter(cheat);
 min-width: 28px; height: 28px; border-radius: 50%;
-background: #6366f1; color: white;
+background: var(--indigo-light); color: white;
 display: flex; align-items: center; justify-content: center;
 font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
 }
 .cheat-item p { font-size: 14px; color: var(--text); line-height: 1.6; }
-.cheat-item strong { color: #4338ca; }
+.cheat-item strong { color: var(--indigo); }
 
 /* ── NOTE ── */
 .note {
-background: #fffbeb; border: 1px solid #fcd34d;
+background: var(--amber-bg); border: 1px solid var(--amber-light);
 border-radius: 8px; padding: 12px 16px;
-font-size: 13px; color: #78350f;
+font-size: 13px; color: var(--amber-dark);
 display: flex; gap: 10px; align-items: flex-start;
 margin-top: 16px;
 }
 .note.indigo {
-background: var(--indigo-soft); border-color: #c7d2fe; color: var(--indigo);
+background: var(--indigo-soft); border-color: var(--indigo-soft); color: var(--indigo);
 }
 .note-icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
 
@@ -1199,10 +1194,10 @@ outline: none; color: var(--text);
 transition: border-color .2s;
 }
 .qt-search-input:focus { border-color: var(--indigo-light); }
-.qt-search-input::placeholder { color: var(--slate-light); }
+.qt-search-input::placeholder { color: var(--slate); }
 .qt-search-icon {
 position: absolute; left: 9px; top: 50%; transform: translateY(-50%);
-color: var(--slate-light); pointer-events: none;
+color: var(--slate); pointer-events: none;
 display: flex; align-items: center;
 }
 .qt-search-results {
@@ -1259,7 +1254,7 @@ max-width: 1100px; margin: 0 auto;
 padding: 24px 24px 40px;
 border-top: 1px solid var(--border);
 display: flex; justify-content: space-between;
-font-size: 12px; color: var(--slate-light);
+font-size: 12px; color: var(--slate);
 flex-wrap: wrap; gap: 8px;
 }
 
@@ -1349,7 +1344,7 @@ justify-content: center;
   .qt-search-clear {
     position: absolute; right: 36px; top: 50%; transform: translateY(-50%);
     background: none; border: none; cursor: pointer;
-    color: var(--slate-light); font-size: 18px; line-height: 1;
+    color: var(--slate); font-size: 18px; line-height: 1;
     padding: 2px 5px; border-radius: 4px; display: none; z-index: 2;
   }
   .qt-search-clear:hover { color: var(--slate); }
@@ -1474,27 +1469,27 @@ justify-content: center;
       <div class="qt-search-results" id="searchResults"></div>
     </div>
     <div class="qt-links">
-      <a class='qt-link' href='/files/spickzettel-psych-print' style='background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;' target='_blank' rel='noopener noreferrer'>
+      <a class='qt-link' href='/files/spickzettel-psych-print' style='background:var(--indigo-soft);color:var(--indigo-light);border:1px solid var(--indigo-soft);' target='_blank' rel='noopener noreferrer'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Spickzettel
       </a>
-      <a class='qt-link' href='/files/positionen-psych-print' style='background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;' target='_blank' rel='noopener noreferrer'>
+      <a class='qt-link' href='/files/positionen-psych-print' style='background:var(--indigo-soft);color:var(--indigo);border:1px solid var(--indigo-soft);' target='_blank' rel='noopener noreferrer'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
         Positionen
       </a>
-      <a class='qt-link' href='/files/verlaufseintrag-psych-print' style='background:#e8eaff;color:#3730a3;border:1px solid #a5b4fc;' target='_blank' rel='noopener noreferrer'>
+      <a class='qt-link' href='/files/verlaufseintrag-psych-print' style='background:var(--indigo-soft);color:var(--navy);border:1px solid var(--indigo-light);' target='_blank' rel='noopener noreferrer'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         Verlaufseintrag
       </a>
-      <a class='qt-link' href='/files/entscheidungsbaum-psych-print' style='background:#e0f2fe;color:#0369a1;border:1px solid #7dd3fc;' target='_blank' rel='noopener noreferrer'>
+      <a class='qt-link' href='/files/entscheidungsbaum-psych-print' style='background:var(--indigo-soft);color:var(--indigo);border:1px solid var(--indigo-light);' target='_blank' rel='noopener noreferrer'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
         Entscheidungsbaum
       </a>
-      <a class='qt-link' href='/files/diagnostik-psych-print' style='background:#ede9fe;color:#6d28d9;border:1px solid #c4b5fd;' target='_blank' rel='noopener noreferrer'>
+      <a class='qt-link' href='/files/diagnostik-psych-print' style='background:var(--indigo-soft);color:var(--indigo);border:1px solid var(--indigo-light);' target='_blank' rel='noopener noreferrer'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
         Diagnostik
       </a>
-      <a class='qt-link' href='/files/krisen-leitfaden-psych-print' style='background:#fee2e2;color:#b91c1c;border:1px solid #fca5a5;' target='_blank' rel='noopener noreferrer'>
+      <a class='qt-link' href='/files/krisen-leitfaden-psych-print' style='background:var(--amber-bg);color:#b91c1c;border:1px solid var(--amber-bg);' target='_blank' rel='noopener noreferrer'>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         Krisen-Leitfaden
       </a>
@@ -1684,9 +1679,9 @@ justify-content: center;
           <div class="limit-bar-track">
             <div class="limit-bar-fill" style="width:100%">4h</div>
           </div>
-          <div class="limit-num">240<span style="font-size:14px;font-weight:400;color:#64748b"> Min / Woche</span></div>
+          <div class="limit-num">240<span style="font-size:14px;font-weight:400;color:var(--slate)"> Min / Woche</span></div>
         </div>
-        <div style="font-size:12px;color:var(--text-soft);margin-bottom:10px">Durchschnitt über 90 Tage / 7 Tage / Patient — exkl. Wegzeit</div>
+        <div style="font-size:12px;color:var(--slate);margin-bottom:10px">Durchschnitt über 90 Tage / 7 Tage / Patient — exkl. Wegzeit</div>
         <p class="limit-note">Alle Leistungsblöcke summieren sich: Sitzungen + Diagnostik + Telemedizin + Netzwerk + Krisenarbeit. Nicht nur die einzelne Ziffer muss stimmen — der Gesamtfall muss im Rahmen bleiben.</p>
         <div class="limit-exception">
           <span>⚡</span>
@@ -1792,7 +1787,7 @@ justify-content: center;
                 240 Min / 90 Tage Limit
               </div>
               <div class="idt-res" style="background:#faf5ff;border:1.5px solid #e9d5ff;color:var(--navy)">
-                <small style="color:#6b21a8">PA230 · Exposition</small>
+                <small style="color:var(--indigo)">PA230 · Exposition</small>
                 <strong>Expositionstherapie</strong>
                 360 Min / 180 Tage · Wegzeit inkl.
               </div>
@@ -1838,7 +1833,7 @@ justify-content: center;
                     <div style="font-weight:700;color:var(--indigo);margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.06em">↕ Abgrenzung beachten!</div>
                     Vollständiges therapeutisches Telefongespräch → <strong>PA011</strong> (75 Min).<br>
                     Kurze Rückmeldung / Instruktion → <strong>EA.00.0110</strong> (20 Min).<br>
-                    <span style="color:var(--slate-light);font-style:italic">Im Zweifel: War es eine echte Sitzung oder nur ein kurzer Check-in?</span>
+                    <span style="color:var(--slate);font-style:italic">Im Zweifel: War es eine echte Sitzung oder nur ein kurzer Check-in?</span>
                   </div>
                   <div class="idt-res" class="idt-res-indigo">
                     <small class="text-indigo-light">EA.00.0110 · Nicht-EA.05</small>
@@ -1849,7 +1844,7 @@ justify-content: center;
                     <small>EA.05.0050 / PA110</small>
                     <strong>Krise (unter lfd. PT)</strong>
                     max. 180 Min
-                    <a href="#krise" style="display:block;font-size:11px;color:#94a3b8;margin-top:3px;text-decoration:none">→ Details s. Abschnitt 8</a>
+                    <a href="#krise" style="display:block;font-size:11px;color:var(--slate);margin-top:3px;text-decoration:none">→ Details s. Abschnitt 8</a>
                   </div>
                 </div>
               </div>
@@ -1862,7 +1857,7 @@ justify-content: center;
                     <strong>E-Mail / asynchron</strong>
                     max. 1×/Tag · 4×/30 Tage
                   </div>
-                  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#1d4ed8;padding:8px 0 2px;border-bottom:1.5px dashed #60a5fa;margin-bottom:2px">LAP-Topf (Kontakte über Patient, ohne Patient)</div>
+                  <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);padding:8px 0 2px;border-bottom:1.5px dashed var(--indigo-light);margin-bottom:2px">LAP-Topf (Kontakte über Patient, ohne Patient)</div>
                   <div class="idt-res blue">
                     <small>PE045/PE040 · EA.05.0100</small>
                     <strong>Fremdaktenstudium</strong>
@@ -1893,8 +1888,8 @@ justify-content: center;
     </div>
   </div>
 </div>
-<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:#64748b;line-height:1.5">
-  Zusätzlich bei Auswärtsterminen: <strong>EA.05.0060 Wegzeit</strong> — Details in <a href="#positionen" style="color:#4338ca">Abschnitt 5</a>.
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:var(--slate);line-height:1.5">
+  Zusätzlich bei Auswärtsterminen: <strong>EA.05.0060 Wegzeit</strong> — Details in <a href="#positionen" style="color:var(--indigo)">Abschnitt 5</a>.
 </div>
 </div>
 
@@ -2133,21 +2128,21 @@ justify-content: center;
     </summary>
     <div class="section-content">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
-      <div style="background:#eef2ff;border:2px solid #6366f1;border-radius:12px;padding:16px">
-        <div style="font-size:11px;font-weight:700;color:#4338ca;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Durchführung · PA220</div>
-        <div style="font-size:22px;font-weight:800;color:#4338ca">180 Min</div>
-        <div style="font-size:12px;color:#475569">/ 90 Tage · Richtwert 60 Min</div>
-        <div style="font-size:12px;color:#e11d48;font-weight:600;margin-top:6px">✕ Nicht mit 0010/0030 am selben Tag</div>
+      <div style="background:var(--indigo-soft);border:2px solid var(--indigo-light);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Durchführung · PA220</div>
+        <div style="font-size:22px;font-weight:800;color:var(--indigo)">180 Min</div>
+        <div style="font-size:12px;color:var(--slate)">/ 90 Tage · Richtwert 60 Min</div>
+        <div style="font-size:12px;color:var(--amber-dark);font-weight:600;margin-top:6px">✕ Nicht mit 0010/0030 am selben Tag</div>
       </div>
-      <div style="background:#f0fdf4;border:2px solid #6ee7b7;border-radius:12px;padding:16px">
-        <div style="font-size:11px;font-weight:700;color:#065f46;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Auswertung · PE020</div>
-        <div style="font-size:22px;font-weight:800;color:#065f46">240 Min</div>
-        <div style="font-size:12px;color:#475569">/ 90 Tage · Richtwert 80 Min</div>
-        <div style="font-size:12px;color:#059669;font-weight:600;margin-top:6px">✓ Andere Tage möglich</div>
+      <div style="background:var(--green-bg);border:2px solid var(--green);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Auswertung · PE020</div>
+        <div style="font-size:22px;font-weight:800;color:var(--green)">240 Min</div>
+        <div style="font-size:12px;color:var(--slate)">/ 90 Tage · Richtwert 80 Min</div>
+        <div style="font-size:12px;color:var(--green);font-weight:600;margin-top:6px">✓ Andere Tage möglich</div>
       </div>
     </div>
-    <div style="font-size:13.5px;color:#475569;margin-bottom:16px">Kleindiagnostik unter 20 Min → intern über PA010 + PE010 (kein separater Diagnostikblock). Rückmeldegespräch = reguläre Sitzung PA010/030.</div>
-    <a href="/diagnostik-detail" style="display:inline-flex;align-items:center;gap:8px;background:#4338ca;color:white;padding:10px 18px;border-radius:8px;font-size:13.5px;font-weight:600;text-decoration:none;margin-bottom:4px">
+    <div style="font-size:13.5px;color:var(--slate);margin-bottom:16px">Kleindiagnostik unter 20 Min → intern über PA010 + PE010 (kein separater Diagnostikblock). Rückmeldegespräch = reguläre Sitzung PA010/030.</div>
+    <a href="/diagnostik-detail" style="display:inline-flex;align-items:center;gap:8px;background:var(--indigo);color:white;padding:10px 18px;border-radius:8px;font-size:13.5px;font-weight:600;text-decoration:none;margin-bottom:4px">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
       Vollversion: Diagnostik-Detail →
     </a>
@@ -2188,7 +2183,7 @@ justify-content: center;
         <div class="tel-code">EA.00.0110</div>
         <div class="tel-limit">Max. 20 Min · andere Logik als fernmündliche Sitzung</div>
       </div>
-      <div class="tel-row" style="background:#fffbeb">
+      <div class="tel-row" style="background:var(--amber-bg)">
         <div>
           <div class="tel-type">Zeitversetzte Telemedizin / E-Mail</div>
           <div class="fs-12-slate">Asynchrone Kommunikation, E-Mail, Nachrichten</div>
@@ -2234,19 +2229,19 @@ justify-content: center;
     </summary>
     <div class="section-content">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
-      <div style="background:#fff7ed;border:2px solid #fed7aa;border-radius:12px;padding:16px">
-        <div style="font-size:11px;font-weight:700;color:#c2410c;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Anordnung A</div>
-        <div style="font-size:14px;font-weight:700;color:#7c2d12;margin-bottom:6px">Laufende Psychotherapie</div>
-        <div style="font-size:13px;color:#92400e">PA110 / PA111 · max. <strong>180 Min</strong></div>
+      <div style="background:var(--amber-bg);border:2px solid var(--amber-light);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--amber-dark);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Anordnung A</div>
+        <div style="font-size:14px;font-weight:700;color:var(--amber-dark);margin-bottom:6px">Laufende Psychotherapie</div>
+        <div style="font-size:13px;color:var(--amber-dark)">PA110 / PA111 · max. <strong>180 Min</strong></div>
       </div>
-      <div style="background:#fff1f2;border:2px solid #fda4af;border-radius:12px;padding:16px">
-        <div style="font-size:11px;font-weight:700;color:#9f1239;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Anordnung B</div>
-        <div style="font-size:14px;font-weight:700;color:#881337;margin-bottom:6px">KANT / Nacht- / Wochenenddienst</div>
-        <div style="font-size:13px;color:#9f1239">EA.00.0090 / EA.00.0130 · <strong>unbegrenzt</strong></div>
+      <div style="background:var(--amber-bg);border:2px solid var(--amber-bg);border-radius:12px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--amber-dark);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Anordnung B</div>
+        <div style="font-size:14px;font-weight:700;color:var(--amber-dark);margin-bottom:6px">KANT / Nacht- / Wochenenddienst</div>
+        <div style="font-size:13px;color:var(--amber-dark)">EA.00.0090 / EA.00.0130 · <strong>unbegrenzt</strong></div>
       </div>
     </div>
-    <div style="font-size:13.5px;color:#475569;margin-bottom:16px">Dokumentationspflicht: Auslöser, Bedrohungscharakter, Massnahmen, Mehraufwand. Psy/Psy-Doppelkonsultationen: Fallführende rechnet ab, zweite Person als LUF.</div>
-    <a href="/krise-detail" style="display:inline-flex;align-items:center;gap:8px;background:#9f1239;color:white;padding:10px 18px;border-radius:8px;font-size:13.5px;font-weight:600;text-decoration:none;margin-bottom:4px">
+    <div style="font-size:13.5px;color:var(--slate);margin-bottom:16px">Dokumentationspflicht: Auslöser, Bedrohungscharakter, Massnahmen, Mehraufwand. Psy/Psy-Doppelkonsultationen: Fallführende rechnet ab, zweite Person als LUF.</div>
+    <a href="/krise-detail" style="display:inline-flex;align-items:center;gap:8px;background:var(--amber-dark);color:white;padding:10px 18px;border-radius:8px;font-size:13.5px;font-weight:600;text-decoration:none;margin-bottom:4px">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       Vollversion: Krisenintervention A/B →
     </a>
@@ -2338,7 +2333,7 @@ justify-content: center;
     <div style="display:flex;gap:12px;align-items:center;font-size:13.5px">
       <span style="font-weight:700;color:var(--indigo);min-width:80px">PE030</span>
       <span class="text-navy">Diagnostik-/Therapieplanung</span>
-      <span style="color:var(--rose);font-weight:600;margin-left:auto">15 Min · max. 1× / 90 Tage</span>
+      <span style="color:var(--amber-dark);font-weight:600;margin-left:auto">15 Min · max. 1× / 90 Tage</span>
     </div>
     <div style="display:flex;gap:12px;align-items:center;font-size:13.5px;flex-wrap:wrap">
       <span style="font-weight:700;color:var(--indigo);min-width:80px">EA.05.0120</span>
@@ -2387,7 +2382,7 @@ justify-content: center;
       <p class="section-lead">Eigener Berichts-Block — nicht frei schätzbar, sondern nach effektivem Zeitaufwand.</p>
     </summary>
     <div class="section-content">
-    <div class="expo-box" style="border-color:#c7d2fe">
+    <div class="expo-box" style="border-color:var(--indigo-soft)">
       <div class="expo-title" class="text-indigo">Berichtsblock · Ambulante Struktur</div>
       <div class="expo-sub">Nach effektivem Zeitaufwand · Drei Teilberichte</div>
       <div class="expo-stats" style="grid-template-columns:repeat(3,1fr)">
@@ -2417,7 +2412,7 @@ justify-content: center;
   </ul>
 </div>
 
-<div class="card" style="margin-top:0;margin-bottom:16px;border-color:#c7d2fe">
+<div class="card" style="margin-top:0;margin-bottom:16px;border-color:var(--indigo-soft)">
   <div class="card-section-title" style="color:var(--indigo)">Die drei Teilberichte (ambulante Struktur)</div>
   <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
     <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
@@ -2543,7 +2538,7 @@ justify-content: center;
     <div class="scenario-body">
       <div class="scenario-q">⚡ Krise mitten in laufender Therapiestunde — unerwartet eskaliert</div>
       <div class="scenario-think">Laufende PT · Anordnung A · max. 180 Min · Dokumentation: Auslöser, Bedrohungscharakter, Massnahmen</div>
-      <span class="scenario-answer" style="background:#fff7ed;border-color:#fed7aa;color:#c2410c">→ PA110 Anordnung A (max. 180 Min)</span>
+      <span class="scenario-answer" style="background:var(--amber-bg);border-color:var(--amber-light);color:var(--amber-dark)">→ PA110 Anordnung A (max. 180 Min)</span>
     </div>
   </div>
 
@@ -2662,35 +2657,35 @@ justify-content: center;
 <footer class="footer">
   <span>Tarif-Kompass 2026 · Psychologinnen mit Psychotherapieausbildung · KJPP-Tagesklinik</span>
   <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026 · Stand Website: <span id="footer-date">16.03.2026</span> · Basierend auf Quelldokument vom 12.03.2026</span>
-  <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:12px;color:var(--slate-light)">
-    Sozialarbeiter-Version: <a href="https://tardoc.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--slate-light);text-decoration:underline">tardoc.netlify.app</a>
+  <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:12px;color:var(--slate)">
+    Sozialarbeiter-Version: <a href="https://tardoc.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--slate);text-decoration:underline">tardoc.netlify.app</a>
   </div>
   <a id="backToTop" href="#" aria-label="Zurück nach oben" title="Zurück nach oben">↑</a>
 </footer>
 <!-- BUTTON BAR -->
 
 <div class="btn-bar">
-  <a class='dl-btn' href='/files/spickzettel-psych-print' style='background:#4f46e5;color:white;' target='_blank' rel='noopener noreferrer'>
+  <a class='dl-btn' href='/files/spickzettel-psych-print' style='background:var(--indigo-light);color:white;' target='_blank' rel='noopener noreferrer'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
     Spickzettel
   </a>
-  <a class='dl-btn' href='/files/positionen-psych-print' style='background:#4f46e5;color:white;' target='_blank' rel='noopener noreferrer'>
+  <a class='dl-btn' href='/files/positionen-psych-print' style='background:var(--indigo-light);color:white;' target='_blank' rel='noopener noreferrer'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
     Positionen
   </a>
-  <a class='dl-btn' href='/files/verlaufseintrag-psych-print' style='background:#4338ca;color:white;' target='_blank' rel='noopener noreferrer'>
+  <a class='dl-btn' href='/files/verlaufseintrag-psych-print' style='background:var(--indigo);color:white;' target='_blank' rel='noopener noreferrer'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
     Verlaufseintrag
   </a>
-  <a class='dl-btn' href='/files/entscheidungsbaum-psych-print' style='background:#0369a1;color:white;' target='_blank' rel='noopener noreferrer'>
+  <a class='dl-btn' href='/files/entscheidungsbaum-psych-print' style='background:var(--indigo);color:white;' target='_blank' rel='noopener noreferrer'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
     Entscheidungsbaum
   </a>
-  <a class='dl-btn' href='/files/diagnostik-psych-print' style='background:#6d28d9;color:white;' target='_blank' rel='noopener noreferrer'>
+  <a class='dl-btn' href='/files/diagnostik-psych-print' style='background:var(--indigo);color:white;' target='_blank' rel='noopener noreferrer'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
     Diagnostik
   </a>
-  <a class='dl-btn' href='/files/krisen-leitfaden-psych-print' style='background:#b91c1c;color:white;' target='_blank' rel='noopener noreferrer'>
+  <a class='dl-btn' href='/files/krisen-leitfaden-psych-print' style='background:var(--amber-dark);color:white;' target='_blank' rel='noopener noreferrer'>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
     Krisen-Leitfaden
   </a>

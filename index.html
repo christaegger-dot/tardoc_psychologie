@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="theme-color" content="#1e3a5f">
+    <meta name="theme-color" content="#1c2b3a">
     <link rel="manifest" href="/manifest.json">
   <link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect rx='18' width='100' height='100' fill='%234338ca'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'%3ET%3C/text%3E%3C/svg%3E">
@@ -37,23 +37,25 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* ── 6 KERNFARBEN ── */
-    --indigo:      #4338ca;   /* Primärfarbe, Badges, Links, aktive Elemente */
-    --amber:       #d97706;   /* Achtung, Limite, Sonderfall */
-    --amber-dark:  #92400e;   /* Ernste Warnung (ersetzt Rose — Option B) */
-    --navy:        #1c2b3a;   /* Dunkle Blöcke, Header, Footer (angeglichen SA-Seite) */
-    --slate:       #475569;   /* Sekundärer Text, Erklärungen */
-    --bg:          #f5f7ff;   /* Seitenhintergrund (leicht Indigo-getönt) */
+    /* ── 5 KERNFARBEN ── */
+    --indigo:       #4338ca;  /* Primärfarbe, Badges, Links, aktive Elemente */
+    --amber:        #d97706;  /* Achtung, Limite, Sonderfall */
+    --amber-dark:   #92400e;  /* Ernste Warnung — ersetzt alle Rose-Stellen */
+    --bg:           #f5f7ff;  /* Seitenhintergrund (leicht Indigo-getönt) */
+    --slate:        #475569;  /* Sekundärer Text, Erklärungen */
 
-    /* ── 8 ABLEITUNGEN ── */
+    /* ── 1 GEMEINSAMER DUNKELWERT (identisch SA-Seite) ── */
+    --navy:         #1c2b3a;  /* Dunkle Blöcke, Header, Footer */
+
+    /* ── 6 ABLEITUNGEN ── */
     --indigo-light: #6366f1;  /* Hover-States, sekundäre Akzente */
-    --indigo-soft:  #eef2ff;  /* Helle Hintergründe für Indigo-Karten */
+    --indigo-soft:  #eef2ff;  /* Helle Hintergründe Indigo-Karten */
     --amber-light:  #fbbf24;  /* Text auf dunklem Hintergrund */
     --amber-bg:     #fef3e2;  /* Helle Warnbox-Hintergründe */
     --green:        #0d7a5f;  /* Häkchen, Positiv-Markierungen */
     --green-bg:     #e6f4f2;  /* Hintergrund Positiv-Karten */
 
-    /* ── GEMEINSAME WERTE (identisch mit SA-Seite) ── */
+    /* ── 5 NEUTRALE WERTE (identisch SA-Seite) ── */
     --card:         #ffffff;
     --border:       #e2e8f0;
     --text:         #1e293b;  /* Haupttext */
@@ -1064,7 +1066,7 @@ font-size: 13.5px;
 /* ── KRISE A/B ── */
 .krise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .krise-box { border-radius: 12px; padding: 22px; }
-.krise-box.a { background: var(--amber-bg); border: 2px solid #fdba74; }
+.krise-box.a { background: var(--amber-bg); border: 2px solid var(--amber-light); }
 .krise-box.b { background: var(--amber-bg); border: 2px solid var(--amber-bg); }
 .krise-box h3 {
 font-family: ‘DM Serif Display’, serif;
@@ -1084,7 +1086,7 @@ font-size: 17px; margin-bottom: 4px;
 .lap-age-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .lap-age-box { border-radius: 12px; padding: 22px; }
 .lap-age-box.u18 { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); }
-.lap-age-box.o18 { background: #f0f0ff; border: 1.5px solid var(--indigo-soft); }
+.lap-age-box.o18 { background: var(--indigo-soft); border: 1.5px solid var(--indigo-soft); }
 .lap-age-box h4, .lap-age-box h3.lap-h3 { font-weight: 700; font-size: 14px; margin-bottom: 14px; }
 .lap-age-box.u18 h4, .lap-age-box.u18 h3.lap-h3 { color: var(--indigo); }
 .lap-age-box.o18 h4, .lap-age-box.o18 h3.lap-h3 { color: var(--indigo); }
@@ -1140,7 +1142,7 @@ padding: 10px 20px; align-items: center;
 
 /* ── DO/DONT ── */
 .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.do-box { background: var(--green-bg); border: 1px solid #a7f3d0; border-radius: 10px; padding: 20px; }
+.do-box { background: var(--green-bg); border: 1px solid var(--green-bg); border-radius: 10px; padding: 20px; }
 .dont-box { background: var(--amber-bg); border: 1px solid var(--amber-bg); border-radius: 10px; padding: 20px; }
 .do-box h4, .do-box h3.do-h3 { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
 .dont-box h4, .dont-box h3.do-h3 { color: var(--amber-dark); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }

@@ -54,7 +54,8 @@
     --amber-bg:     #fef3e2;  /* Helle Warnbox-Hintergründe */
     --green:        #0d7a5f;  /* Häkchen, Positiv-Markierungen */
     --green-bg:     #e6f4f2;  /* Hintergrund Positiv-Karten */
-
+    --green-dark:   var(--green-dark);  /* Dunkles Grün — WCAG-konformer Text auf --green-bg */
+    --bg-subtle:    var(--bg-subtle);  /* Subtile Hintergrundstufe — Divider, Progress-Track, Karte-in-Karte */
     /* ── 5 NEUTRALE WERTE (identisch SA-Seite) ── */
     --card:         #ffffff;
     --border:       #e2e8f0;
@@ -365,7 +366,7 @@ display: none;
     padding: 14px 16px;
     font-size: 16px;
     white-space: normal;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--bg-subtle);
     border-left: none;
     min-height: 44px;
     display: flex;
@@ -373,19 +374,19 @@ display: none;
   }
   .nav-inner .nav-link:hover {
     background: var(--indigo-soft);
-    border-bottom-color: #f1f5f9;
+    border-bottom-color: var(--bg-subtle);
   }
   .nav-inner .nav-link.active {
     background: var(--indigo-soft);
     color: var(--indigo);
-    border-bottom-color: #f1f5f9;
+    border-bottom-color: var(--bg-subtle);
     font-weight: 600;
   }
 }
 
 /* Old search styles removed — now in quick-tools bar */
 .sr-item {
-padding: 10px 14px; border-bottom: 1px solid #f1f5f9;
+padding: 10px 14px; border-bottom: 1px solid var(--bg-subtle);
 cursor: pointer; transition: background .15s;
 }
 .sr-item:last-child { border-bottom: none; }
@@ -737,7 +738,7 @@ display: inline-block; margin-left: 6px; vertical-align: middle;
 .fuzzy-hl { color: var(--indigo); font-weight: 700; }
 
 /* Search result count */
-.sr-count { padding: 4px 14px; font-size: 11px; color: var(--slate); border-bottom: 1px solid #f1f5f9; }
+.sr-count { padding: 4px 14px; font-size: 11px; color: var(--slate); border-bottom: 1px solid var(--bg-subtle); }
 
 @media (max-width: 600px) {
 .sf-filters { padding: 4px 0 0; gap: 4px; }
@@ -824,7 +825,7 @@ border-radius: 12px; padding: 24px;
 .limit-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 16px; }
 .limit-visual { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .limit-bar-track {
-flex: 1; height: 20px; background: #f1f5f9;
+flex: 1; height: 20px; background: var(--bg-subtle);
 border-radius: 10px; overflow: hidden;
 }
 .limit-bar-fill {
@@ -1973,7 +1974,7 @@ justify-content: center;
     </div>
   </div>
 </div>
-<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:var(--slate);line-height:1.5">
+<div style="background:var(--bg-subtle);border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:var(--slate);line-height:1.5">
   Zusätzlich bei Auswärtsterminen: <strong>EA.05.0060 Wegzeit</strong> — Details in <a href="#positionen" style="color:var(--indigo)">Abschnitt 5</a>.
 </div>
 </div>
@@ -1991,7 +1992,7 @@ justify-content: center;
       <p class="section-lead">Öffentliche Tarifziffern und interne KJPP-Psychologen-Codes im Überblick.</p>
     </summary>
     <div class="section-content">
-    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px;padding:10px 16px;background:#f8fafc;border-radius:10px;font-size:12px;color:var(--slate)">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px;padding:10px 16px;background:var(--bg-subtle);border-radius:10px;font-size:12px;color:var(--slate)">
       <span style="font-weight:600;color:var(--text);margin-right:4px">Legende:</span>
       <span class="pos-badge badge-anw" class="fs-11">Anwesenheit</span>
       <span class="pos-badge badge-kris" class="fs-11">Krise</span>

@@ -59,11 +59,11 @@
   .diag-box.a { border-color: #6366f1; }
   .diag-box.b { border-color: #818cf8; }
   .diag-box h4 { font-size: 13px; font-weight: 700; color: var(--indigo); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-  .diag-stat { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px; }
+  .diag-stat { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--bg-subtle); font-size: 13px; }
   .diag-stat:last-child { border-bottom: none; }
   .diag-stat-lbl { color: var(--slate); }
   .diag-stat-val { font-weight: 700; color: var(--indigo); }
-  .text-green-bold { color: #065f46; font-weight: 700; }
+  .text-green-bold { color: var(--green-dark); font-weight: 700; }
   .text-rose-bold { color: var(--rose); font-weight: 700; }
 
   /* DO/DONT */
@@ -71,7 +71,7 @@
   @media (max-width: 600px) { .do-dont { grid-template-columns: 1fr; } }
   .do-box { background: var(--green-bg); border: 1.5px solid #6ee7b7; border-radius: 12px; padding: 18px 20px; }
   .dont-box { background: var(--red-bg); border: 1.5px solid #fda4af; border-radius: 12px; padding: 18px 20px; }
-  .do-box h4 { color: #065f46; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+  .do-box h4 { color: var(--green-dark); font-size: 13px; font-weight: 700; margin-bottom: 10px; }
   .dont-box h4 { color: #9f1239; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
   .do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
   .do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; line-height: 1.45; }
@@ -230,7 +230,7 @@
     <div class="card-section-title" style="color:var(--indigo)">Entscheidungsregel</div>
     <div style="display:flex;flex-direction:column;gap:10px">
       <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
-        <span style="color:#065f46;font-weight:700;min-width:80px">≥ 20 Min</span>
+        <span style="color:var(--green-dark);font-weight:700;min-width:80px">≥ 20 Min</span>
         <div>Eigenständiger Diagnostikblock → PA220 + PE020</div>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
@@ -247,7 +247,7 @@
 
   <div class="do-dont">
     <div class="do-box">
-      <p style="color:#065f46;font-size:13px;font-weight:700;margin-bottom:10px">✓ So funktioniert Diagnostik korrekt</p>
+      <p style="color:var(--green-dark);font-size:13px;font-weight:700;margin-bottom:10px">✓ So funktioniert Diagnostik korrekt</p>
       <ul>
         <li>Durchführung und Auswertung an verschiedenen Tagen möglich</li>
         <li>Bei typisch 3 Abklärungssitzungen: Durchführung nach 60-Min-Richtwert, Auswertung nach 80-Min-Richtwert (TtT S.10)</li>

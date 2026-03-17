@@ -219,7 +219,7 @@ color: var(--indigo-soft);
     min-width: 14px;
     flex-shrink: 0;
   }
-  .sidebar-nav .nav-link.active .nav-num { color: var(--indigo-light); }
+  .sidebar-nav .nav-link.active .nav-num { color: var(--indigo); }  /* WCAG-Fix */
   /* Sidebar-Divider vor Druckdateien */
   .sidebar-nav .nav-divider {
     margin: 10px 18px;
@@ -315,7 +315,7 @@ text-decoration: none; white-space: nowrap;
 border-bottom: 2px solid transparent;
 transition: all .2s;
 }
-.nav-link:hover { color: var(--indigo-light); border-bottom-color: var(--indigo-light); }
+.nav-link:hover { color: var(--indigo); border-bottom-color: var(--indigo); }  /* WCAG-Fix: indigo-light 4.18:1 → indigo 7.9:1 */
 .nav-link.active { color: var(--indigo); border-bottom-color: var(--indigo); font-weight: 600; }
 
 /* ── HAMBURGER TOGGLE (nur Mobile <768px) ── */
@@ -420,7 +420,7 @@ mark { background: var(--amber-bg); color: inherit; border-radius: 2px; padding:
 .pill-indigo { color: var(--indigo); font-weight: 700; flex-shrink: 0; }
 .pill-amber { color: var(--amber); font-weight: 700; flex-shrink: 0; }
 .text-indigo { color: var(--indigo); }
-.text-indigo-light { color: var(--indigo-light); }
+.text-indigo-light { color: var(--indigo); }  /* WCAG-Fix: indigo-light 4.47:1 → indigo 7.9:1 */
 .text-navy { color: var(--navy); }
 .text-green-bold { font-size: 13px; font-weight: 700; color: var(--green); }
 .text-rose-bold { font-size: 13px; font-weight: 700; color: var(--amber-dark); }
@@ -532,7 +532,7 @@ border: 6px solid transparent; border-top-color: var(--navy);
     display: inline-block;
     font-size: 10px;
     font-weight: 600;
-    color: var(--indigo-light);
+    color: var(--indigo);  /* WCAG-Fix */
     margin-left: 6px;
     cursor: pointer;
     user-select: none;
@@ -688,7 +688,7 @@ letter-spacing: .04em;
 .code-result-jump {
 display: inline-flex; align-items: center; gap: 4px;
 margin-top: 8px; font-size: 12px; font-weight: 600;
-color: var(--indigo-light); cursor: pointer;
+color: var(--indigo); cursor: pointer;  /* WCAG-Fix */
 text-decoration: none;
 }
 .code-result-jump:hover { color: var(--indigo); }
@@ -867,7 +867,7 @@ padding: 10px 20px;
 }
 .prod-role { color: var(--text); font-weight: 500; background: white; }
 .prod-num { text-align: center; font-weight: 700; }
-.prod-num.y { color: var(--indigo-light); }
+.prod-num.y { color: var(--indigo); }
 .prod-num.m { color: var(--indigo); }
 
 /* ── DECISION TREE ── */
@@ -897,9 +897,9 @@ text-align: center; width: 100%; font-size: 13px;
 }
 .idt-res small { display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
 .idt-res.indigo { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); color: var(--navy); }
-.idt-res.indigo small { color: var(--indigo-light); }
+.idt-res.indigo small { color: var(--indigo); }
 .idt-res.teal { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); color: var(--navy); }
-.idt-res.teal small { color: var(--indigo-light); }
+.idt-res.teal small { color: var(--indigo); }
 .idt-res.blue { background: var(--indigo-soft); border: 1.5px solid var(--indigo-light); color: var(--navy); }
 .idt-res.blue small { color: var(--indigo); }
 .idt-res.amber { background: var(--amber-bg); border: 1.5px solid var(--amber); color: var(--navy); }
@@ -1198,7 +1198,7 @@ font-size: 10px;
 font-weight: 700;
 text-transform: uppercase;
 letter-spacing: .08em;
-color: var(--indigo-light);
+color: var(--indigo);  /* WCAG-Fix */
 margin-bottom: 4px;
 }
 
@@ -2071,7 +2071,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Telefonische Verlaufskonsultation</div>
-      <div class="pos-desc">Kurze telefonische Verlaufskonsultation oder Instruktion. Max. <strong>20 Min.</strong> Nicht mit PA011 (75 Min Sitzung) verwechseln. <span style="color:var(--amber);font-weight:600">⚠ Ziffer aus EA00, nicht EA.05.</span> <a href="#telefon" style="color:var(--indigo-light);font-size:12px">→ Abgrenzung s. Abschnitt 7</a></div>
+      <div class="pos-desc">Kurze telefonische Verlaufskonsultation oder Instruktion. Max. <strong>20 Min.</strong> Nicht mit PA011 (75 Min Sitzung) verwechseln. <span style="color:var(--amber);font-weight:600">⚠ Ziffer aus EA00, nicht EA.05.</span> <a href="#telefon" style="color:var(--indigo);font-size:12px">→ Abgrenzung s. Abschnitt 7</a></div>
     </div>
     <span class="pos-badge badge-tel">Telefon / Verlauf</span>
   </div>
@@ -2095,7 +2095,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Testdiagnostik / Testdurchführung</div>
-      <div class="pos-desc">Durchführung von Tests. Max. <strong>180 Min / 90 Tage.</strong> Richtwert 60 Min. <a href="#diagnostik" style="color:var(--indigo-light);font-size:12px">→ Details s. Abschnitt 6</a></div>
+      <div class="pos-desc">Durchführung von Tests. Max. <strong>180 Min / 90 Tage.</strong> Richtwert 60 Min. <a href="#diagnostik" style="color:var(--indigo);font-size:12px">→ Details s. Abschnitt 6</a></div>
     </div>
     <span class="pos-badge badge-diag">Diagnostik</span>
   </div>
@@ -2107,7 +2107,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Test-Auswertung, Interpretation und Bericht</div>
-      <div class="pos-desc">Auswertung in Abwesenheit des Patienten. Max. <strong>240 Min / 90 Tage.</strong> Richtwert 80 Min. <a href="#diagnostik" style="color:var(--indigo-light);font-size:12px">→ Details s. Abschnitt 6</a></div>
+      <div class="pos-desc">Auswertung in Abwesenheit des Patienten. Max. <strong>240 Min / 90 Tage.</strong> Richtwert 80 Min. <a href="#diagnostik" style="color:var(--indigo);font-size:12px">→ Details s. Abschnitt 6</a></div>
     </div>
     <span class="pos-badge badge-diag">Diagnostik</span>
   </div>
@@ -2119,7 +2119,7 @@ justify-content: center;
     </div>
     <div>
       <div class="pos-name">Expositionstherapie</div>
-      <div class="pos-desc">Eigene psychologenspezifische Ziffer. Max. <strong>360 Min / 180 Tage.</strong> Wegzeit intern inkludiert. <a href="#exposition" style="color:var(--indigo-light);font-size:12px">→ Details s. Abschnitt 9</a></div>
+      <div class="pos-desc">Eigene psychologenspezifische Ziffer. Max. <strong>360 Min / 180 Tage.</strong> Wegzeit intern inkludiert. <a href="#exposition" style="color:var(--indigo);font-size:12px">→ Details s. Abschnitt 9</a></div>
     </div>
     <span class="pos-badge badge-expo">Exposition</span>
   </div>

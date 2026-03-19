@@ -11,7 +11,7 @@
 /* Palette identisch mit Hauptseite (17 Werte) */
 :root {
   /* 5 Kernfarben */
-  --indigo:       #4338ca;  /* Primärfarbe, Badges, Links */
+  --indigo:       #2463eb;  /* Primärfarbe, Badges, Links */
   --amber:        #d97706;  /* Achtung, Limite, Sonderfall */
   --amber-dark:   #92400e;  /* Ernste Warnung (ersetzt Rose) */
   --slate:        #475569;  /* Sekundärer Text */
@@ -19,8 +19,8 @@
   /* 1 Dunkelwert */
   --navy:         #1c2b3a;  /* Dunkle Blöcke, Header */
   /* 6 Ableitungen */
-  --indigo-light: #6366f1;
-  --indigo-soft:  #eef2ff;
+  --indigo-light: #5e8ff7;
+  --indigo-soft:  #f0f6ff;
   --amber-light:  #fbbf24;
   --amber-bg:     #fef3e2;
   --green:        #0d7a5f;
@@ -33,9 +33,9 @@
   --text:         #1e293b;
   /* Aliase für shared-print.css-Kompatibilität */
   --ink:          #1c2b3a;  /* = --navy */
-  --ind:          #4338ca;  /* = --indigo */
-  --ind-l:        #eef2ff;  /* = --indigo-soft */
-  --ind-m:        #6366f1;  /* = --indigo-light */
+  --ind:          #2463eb;  /* = --indigo */
+  --ind-l:        #f0f6ff;  /* = --indigo-soft */
+  --ind-m:        #5e8ff7;  /* = --indigo-light */
   --mid:          #475569;  /* = --slate */
   --soft:         #475569;  /* = --slate */
   --line:         #e2e8f0;  /* = --border */
@@ -150,7 +150,7 @@ body {
   position: absolute;
   right: 0; top: 0; bottom: 0;
   width: 50mm;
-  background: linear-gradient(90deg, transparent, rgba(99,102,241,.18));
+  background: linear-gradient(90deg, transparent, rgba(94,143,247,.18));
   pointer-events: none;
 }
 .mast-top {

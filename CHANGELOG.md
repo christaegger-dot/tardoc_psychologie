@@ -1,4 +1,43 @@
 # Tarif-Kompass 2026 — Audit-Fixes Changelog
+
+## Version 1.4.0 · 19.03.2026
+
+### Color-Swap: Violett → Blau + Navy-Header
+
+**Farbmapping (vollständig):**
+
+| Alt (Indigo/Violett)       | Neu (Blau)                 | Verwendung                    |
+|----------------------------|----------------------------|-------------------------------|
+| `#4338ca`                  | `#2463eb`                  | --indigo (Primärfarbe)        |
+| `#6366f1`                  | `#5e8ff7`                  | --indigo-light (Akzent)       |
+| `#eef2ff`                  | `#f0f6ff`                  | --indigo-soft (Hintergrund)   |
+| `#818cf8`                  | `#82a8f9`                  | Header-Gradient (abgeleitet)  |
+| `#c7d2fe`                  | `#bfdbfe`                  | Border-Akzent (abgeleitet)    |
+| `rgba(67,56,202,...)`      | `rgba(36,99,235,...)`      | Back-to-Top-Button            |
+| `rgba(99,102,241,...)`     | `rgba(94,143,247,...)`     | Hover-Schatten                |
+| `rgba(55,48,163,...)`      | `rgba(22,74,187,...)`      | Section-Highlight             |
+| `%234338ca`                | `%232463eb`                | URL-encoded Favicon           |
+
+**Header:** `var(--indigo)` → `var(--navy)` auf allen 3 Seiten.
+
+**Rose-Reste bereinigt (krise-detail.html):**
+
+| Alt (Rose)     | Neu (Amber)            |
+|----------------|------------------------|
+| `#9f1239`      | `var(--amber-dark)`    |
+| `#fff1f2`      | `var(--amber-bg)`      |
+| `#fda4af`      | `#fbbf24`              |
+| `#ffe4e6`      | `#fef3e2`              |
+
+### Geänderte Dateien (13)
+- `index.html`, `diagnostik-detail.html`, `krise-detail.html`
+- `404.html`, `shared-print.css`
+- 6 × `files/*.html`
+- `sitemap.xml` (lastmod → 2026-03-19)
+- `CHANGELOG.md`
+
+---
+
 ## Version 1.3.0 · 16.03.2026
 
 ### Geänderte Dateien

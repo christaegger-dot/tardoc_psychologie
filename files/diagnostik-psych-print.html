@@ -11,15 +11,15 @@
 
 :root {
   --ink:    #1c2b3a;
-  --ind:    #4338CA;
-  --ind-s:  #EEF2FF;
-  --ind-m:  #6366f1;
+  --ind:    #2463eb;
+  --ind-s:  #f0f6ff;
+  --ind-m:  #5e8ff7;
   --teal:   #0d7a5f;
   --teal-s: #e6f4f2;
   --teal-m: #e6f4f2;
-  --purp:   #4338ca;
-  --purp-s: #eef2ff;
-  --purp-m: #eef2ff;
+  --purp:   #2463eb;
+  --purp-s: #f0f6ff;
+  --purp-m: #f0f6ff;
   --amber:  #D97706;
   --amb-s:  #fef3e2;
   --amb-m:  #fbbf24;
@@ -33,7 +33,7 @@
   --sl-l:   #475569;
   --line:   #E2E8F0;
   --text:   #1E293B;
-  --bg:     #eef2ff;
+  --bg:     #f0f6ff;
 }
 
 body {
@@ -64,15 +64,15 @@ body {
 }
 .mast::after {
   content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 50mm;
-  background: linear-gradient(90deg, transparent, rgba(99,102,241,.18));
+  background: linear-gradient(90deg, transparent, rgba(94,143,247,.18));
   pointer-events: none;
 }
 .mast-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3mm; }
 .mast h1 { font-family: 'Playfair Display', serif; font-size: 26pt; color: white; line-height: 1.05; }
-.mast h1 em { color: #6366f1; font-style: normal; }
+.mast h1 em { color: #5e8ff7; font-style: normal; }
 .mast-sub { font-size: 8.5pt; color: rgba(255,255,255,.5); font-weight: 300; margin-top: 3px; }
 .mast-meta { text-align: right; font-size: 7.5pt; color: rgba(255,255,255,.4); line-height: 1.6; position: relative; z-index: 1; flex-shrink: 0; }
-.mast-meta strong { color: #6366f1; font-size: 8.5pt; display: block; margin-bottom: 1px; }
+.mast-meta strong { color: #5e8ff7; font-size: 8.5pt; display: block; margin-bottom: 1px; }
 
 /* ── Body layout: 2 columns ── */
 .body { flex: 1; padding: 6mm 14mm 5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
@@ -101,7 +101,7 @@ body {
 .cmp-head { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--ink); color: white; padding: 6px 11px; font-size: 6.5pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; gap: 6px; }
 .cmp-row { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 6px 11px; border-bottom: 1px solid var(--line); font-size: 8pt; gap: 6px; align-items: center; }
 .cmp-row:last-child { border-bottom: none; }
-.cmp-row:nth-child(even) { background: #eef2ff; }
+.cmp-row:nth-child(even) { background: #f0f6ff; }
 .cmp-lbl { font-weight: 600; color: var(--ink); }
 .cmp-val { font-weight: 700; }
 .cmp-val.i { color: var(--ind); }
@@ -110,7 +110,7 @@ body {
 .cmp-no  { color: var(--rose);  font-weight: 700; }
 
 /* ── Info box (Kleindiagnostik) ── */
-.info-box { background: #eef2ff; border: 1.5px solid var(--line); border-left: 4px solid var(--teal); border-radius: 8px; padding: 9px 12px; }
+.info-box { background: #f0f6ff; border: 1.5px solid var(--line); border-left: 4px solid var(--teal); border-radius: 8px; padding: 9px 12px; }
 .info-box h4 { font-size: 9pt; font-weight: 700; color: var(--teal); margin-bottom: 4px; }
 .info-box p { font-size: 8pt; color: var(--slate); line-height: 1.5; }
 
@@ -127,8 +127,8 @@ body {
 .tl-content h4 { font-size: 9pt; font-weight: 700; color: var(--ink); margin-bottom: 2px; line-height: 1.3; }
 .tl-content p { font-size: 7.5pt; color: var(--slate); line-height: 1.45; }
 .tl-code { font-size: 7pt; font-weight: 700; display: inline-block; padding: 2px 8px; border-radius: 8px; margin-bottom: 3px; }
-.tl-code.i { background: var(--ind-s); color: #4338ca; }
-.tl-code.p { background: var(--purp-s); color: #4338ca; }
+.tl-code.i { background: var(--ind-s); color: #2463eb; }
+.tl-code.p { background: var(--purp-s); color: #2463eb; }
 .tl-code.t { background: var(--teal-s); color: #0d7a5f; }
 
 /* ── Do / Don't ── */
@@ -162,8 +162,8 @@ body {
 }
 .printbar {
   width: 210mm; max-width: 100%;
-  background: #eef2ff; border: 1px solid var(--line);
-  border-bottom: 2px solid #6366f1; border-radius: 10px;
+  background: #f0f6ff; border: 1px solid var(--line);
+  border-bottom: 2px solid #5e8ff7; border-radius: 10px;
   padding: 10px 20px; display: flex; align-items: center; gap: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,.07);
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- ============================================================
      Tarif-Kompass 2026 · Psychologinnen KJPP
-     Version: 1.3.0 · Stand: 16.03.2026
+     Version: 1.4.0 · Stand: 19.03.2026
      Gültig ab: 01.01.2026 (TARDOC EA.05)
      Repository: https://github.com/christaegger-dot/tardoc_psychologie
      Live: https://tardoc-psychologiekjpp.netlify.app/
@@ -31,14 +31,14 @@
     <meta name="theme-color" content="#1c2b3a">
     <link rel="manifest" href="/manifest.json">
   <link rel="canonical" href="https://tardoc-psychologiekjpp.netlify.app/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect rx='18' width='100' height='100' fill='%234338ca'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect rx='18' width='100' height='100' fill='%232463eb'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'%3ET%3C/text%3E%3C/svg%3E">
 <title>Tarif-Kompass 2026 · Psychologinnen KJPP</title>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" as="style">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     /* ── 5 KERNFARBEN ── */
-    --indigo:       #4338ca;  /* Primärfarbe, Badges, Links, aktive Elemente */
+    --indigo:       #2463eb;  /* Primärfarbe, Badges, Links, aktive Elemente */
     --amber:        #d97706;  /* Achtung, Limite, Sonderfall */
     --amber-dark:   #92400e;  /* Ernste Warnung — ersetzt alle Rose-Stellen */
     --bg:           #f5f7ff;  /* Seitenhintergrund (leicht Indigo-getönt) */
@@ -48,8 +48,8 @@
     --navy:         #1c2b3a;  /* Dunkle Blöcke, Header, Footer */
 
     /* ── 6 ABLEITUNGEN ── */
-    --indigo-light: #6366f1;  /* Hover-States, sekundäre Akzente */
-    --indigo-soft:  #eef2ff;  /* Helle Hintergründe Indigo-Karten */
+    --indigo-light: #5e8ff7;  /* Hover-States, sekundäre Akzente */
+    --indigo-soft:  #f0f6ff;  /* Helle Hintergründe Indigo-Karten */
     --amber-light:  #fbbf24;  /* Text auf dunklem Hintergrund */
     --amber-bg:     #fef3e2;  /* Helle Warnbox-Hintergründe */
     --green:        #0d7a5f;  /* Häkchen, Positiv-Markierungen */
@@ -74,7 +74,7 @@ line-height: 1.65;
 
 /* ── HEADER ── */
 .header {
-background: var(--indigo);
+background: var(--navy);
 color: white;
 padding: 48px 40px 40px;
 position: relative;
@@ -94,7 +94,7 @@ position: absolute;
 bottom: -40px; left: 30%;
 width: 200px; height: 200px;
 border-radius: 50%;
-background: rgba(99,102,241,0.12);
+background: rgba(94,143,247,0.12);
 }
 .header-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
 .header-badge {
@@ -289,7 +289,7 @@ color: var(--indigo-soft);
 background: white;
 border-bottom: 2px solid var(--indigo-soft);
 position: sticky; top: 0; z-index: 100;
-box-shadow: 0 2px 12px rgba(55,48,163,0.10);
+box-shadow: 0 2px 12px rgba(22,74,187,0.10);
 }
 .nav-inner {
 max-width: 1100px; margin: 0 auto;
@@ -566,7 +566,7 @@ width: 100%;
 }
 .sp-card:hover {
 border-color: var(--indigo-light);
-box-shadow: 0 6px 24px rgba(99,102,241,0.22);
+box-shadow: 0 6px 24px rgba(94,143,247,0.22);
 transform: translateY(-3px);
 background: var(--indigo-soft);
 }
@@ -747,7 +747,7 @@ display: inline-block; margin-left: 6px; vertical-align: middle;
 animation: posHighlight 2s ease;
 }
 @keyframes posHighlight {
-0%   { box-shadow: 0 0 0 3px rgba(99,102,241,0.5); }
+0%   { box-shadow: 0 0 0 3px rgba(94,143,247,0.5); }
 100% { box-shadow: none; }
 }
 .section-title {
@@ -1214,7 +1214,7 @@ display: flex; gap: 14px; align-items: flex-start;
 background: white; border-radius: 10px;
 padding: 13px 18px; counter-increment: cheat;
 border: 1px solid var(--indigo-soft);
-box-shadow: 0 1px 3px rgba(99,102,241,0.07);
+box-shadow: 0 1px 3px rgba(94,143,247,0.07);
 }
 .cheat-item::before {
 content: counter(cheat);
@@ -1244,7 +1244,7 @@ background: var(--indigo-soft); border-color: var(--indigo-soft); color: var(--i
 background: white;
 border-bottom: 1px solid var(--border);
 position: sticky; top: 50px; z-index: 99;
-box-shadow: 0 1px 6px rgba(55,48,163,0.06);
+box-shadow: 0 1px 6px rgba(22,74,187,0.06);
 }
 .quick-tools-inner {
 max-width: 1100px; margin: 0 auto;

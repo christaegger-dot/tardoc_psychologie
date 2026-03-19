@@ -11,12 +11,12 @@
 
 :root {
   --ink:    #1c2b3a;
-  --ind:    #4338CA;
-  --ind-s:  #EEF2FF;
+  --ind:    #2463eb;
+  --ind-s:  #f0f6ff;
   --teal:   #0d7a5f;
   --teal-s: #e6f4f2;
-  --purp:   #4338ca;
-  --purp-s: #eef2ff;
+  --purp:   #2463eb;
+  --purp-s: #f0f6ff;
   --amber:  #D97706;
   --amb-s:  #fef3e2;
   --rose:   #92400e;
@@ -28,7 +28,7 @@
   --line:   #E2E8F0;
   --white:  #FFFFFF;
   --text:   #1E293B;
-  --bg:     #eef2ff;
+  --bg:     #f0f6ff;
 }
 
 body {
@@ -45,8 +45,8 @@ body {
 
 .printbar {
   width: 210mm; max-width: 100%;
-  background: #eef2ff; border: 1px solid var(--line);
-  border-bottom: 2px solid #6366f1; border-radius: 10px;
+  background: #f0f6ff; border: 1px solid var(--line);
+  border-bottom: 2px solid #5e8ff7; border-radius: 10px;
   padding: 10px 20px; display: flex; align-items: center; gap: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,.07);
 }
@@ -86,16 +86,16 @@ body {
   gap: 10px; flex-shrink: 0;
 }
 .mast h1 { font-size: 22px; font-weight: 800; color: white; letter-spacing: -.4px; line-height: 1; }
-.mast h1 em { color: #6366f1; font-style: normal; }
+.mast h1 em { color: #5e8ff7; font-style: normal; }
 .mast-sub { font-size: 8px; color: rgba(255,255,255,.45); margin-top: 3px; }
 .mast-badge {
-  font-size: 8.5px; font-weight: 700; color: #eef2ff;
+  font-size: 8.5px; font-weight: 700; color: #f0f6ff;
   background: rgba(165,180,252,.12); border: 1px solid rgba(165,180,252,.28);
   border-radius: 4px; padding: 3px 8px; white-space: nowrap; flex-shrink: 0;
 }
 
 .legend {
-  padding: 6px 16px 7px; background: #eef2ff;
+  padding: 6px 16px 7px; background: #f0f6ff;
   border-bottom: 1px solid var(--line);
   display: flex; flex-wrap: wrap; gap: 5px;
 }
@@ -106,7 +106,7 @@ body {
 }
 .lg::before { content: ''; width: 5px; height: 5px; border-radius: 1px; display: inline-block; }
 .lg-anw  { color: var(--green); border-color: rgba(5,150,105,.3);  } .lg-anw::before  { background: var(--green); }
-.lg-diag { color: var(--ind);   border-color: rgba(67,56,202,.3);  } .lg-diag::before { background: var(--ind); }
+.lg-diag { color: var(--ind);   border-color: rgba(36,99,235,.3);  } .lg-diag::before { background: var(--ind); }
 .lg-expo { color: var(--purp);  border-color: rgba(124,58,237,.3); } .lg-expo::before { background: var(--purp); }
 .lg-lap  { color: var(--teal);  border-color: rgba(10,124,113,.3); } .lg-lap::before  { background: var(--teal); }
 .lg-kris { color: var(--rose);  border-color: rgba(192,16,58,.3);  } .lg-kris::before { background: var(--rose); }
@@ -135,10 +135,10 @@ body {
 }
 .tbl tbody tr { border-bottom: 1px solid var(--line); }
 .tbl tbody tr:last-child { border-bottom: none; }
-.tbl tbody tr:hover { background: #eef2ff; }
+.tbl tbody tr:hover { background: #f0f6ff; }
 .tbl td { padding: 5px 8px; vertical-align: top; }
 .tbl tr.grp td {
-  background: #eef2ff; font-size: 6.5px; font-weight: 700;
+  background: #f0f6ff; font-size: 6.5px; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase; color: var(--slate);
   padding: 3px 8px; border-bottom: 1px solid var(--line);
 }
@@ -157,8 +157,8 @@ body {
   padding: 2px 6px; border-radius: 3px; white-space: nowrap;
 }
 .b-anw  { background: var(--grn-s);  color: #0d7a5f; }
-.b-diag { background: var(--ind-s);  color: #4338ca; }
-.b-expo { background: var(--purp-s); color: #4338ca; }
+.b-diag { background: var(--ind-s);  color: #2463eb; }
+.b-expo { background: var(--purp-s); color: #2463eb; }
 .b-lap  { background: var(--teal-s); color: #0d7a5f; }
 .b-kris { background: var(--rose-s); color: #92400e; }
 .b-tel  { background: var(--amb-s);  color: #92400E; }
@@ -182,7 +182,7 @@ body {
 }
 .lap-tbl td { padding: 4px 8px; border-bottom: 1px solid var(--line); }
 .lap-tbl tr:last-child td { border-bottom: none; }
-.lap-tbl .u { color: #4338ca; font-weight: 700; }
+.lap-tbl .u { color: #2463eb; font-weight: 700; }
 .lap-tbl thead .u { color: white; }
 .lap-tbl .o { color: #0d7a5f; font-weight: 700; }
 .lap-tbl thead .o { color: white; }
@@ -390,7 +390,7 @@ body {
 
         <tr class="grp"><td colspan="4">Expositionstherapie</td></tr>
         <tr>
-          <td><div class="code"><span class="code-main" style="color:#4338ca">PA230</span><span class="code-sub">Exposition</span></div></td>
+          <td><div class="code"><span class="code-main" style="color:#2463eb">PA230</span><span class="code-sub">Exposition</span></div></td>
           <td><div class="nm">Expositionstherapie</div><div class="desc">Wegzeit intern inkludiert — nicht doppelt als EA.05.0060 buchen! + PE010</div></td>
           <td class="lim"><strong>360 Min</strong>/180 Tage</td>
           <td><span class="badge b-expo">Exposition</span></td>
@@ -501,13 +501,13 @@ body {
           <div class="dg-grid">
             <div class="dg dg-a">
               <h3>Durchführung PA220</h3>
-              <div class="dl"><span>Limit</span><span class="dv" style="color:#4338ca">180'</span></div>
+              <div class="dl"><span>Limit</span><span class="dv" style="color:#2463eb">180'</span></div>
               <div class="dl"><span>Zeitraum</span><span class="dv">90 Tage</span></div>
               <div class="dl"><span>Richtwert</span><span class="dv">60'</span></div>
             </div>
             <div class="dg dg-b">
               <h3>Auswertung PE020</h3>
-              <div class="dl"><span>Limit</span><span class="dv" style="color:#4338ca">240'</span></div>
+              <div class="dl"><span>Limit</span><span class="dv" style="color:#2463eb">240'</span></div>
               <div class="dl"><span>Zeitraum</span><span class="dv">90 Tage</span></div>
               <div class="dl"><span>Richtwert</span><span class="dv">80'</span></div>
               <div class="dl"><span>Andere Tage OK</span><span style="font-weight:700;color:#0d7a5f;font-size:8px">Ja</span></div>

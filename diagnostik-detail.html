@@ -18,16 +18,16 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect rx='18' width='100' height='100' fill='%234338ca'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect rx='18' width='100' height='100' fill='%232463eb'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-size='58' font-family='serif' fill='white'%3ET%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #1c2b3a;
-    --indigo: #4338ca;
-    --indigo-light: #6366f1;
-    --indigo-soft: #eef2ff;
+    --indigo: #2463eb;
+    --indigo-light: #5e8ff7;
+    --indigo-soft: #f0f6ff;
     --amber: #d97706;
     --amber-dark: #92400e;
     --amber-bg: #fffbeb;
@@ -47,14 +47,14 @@
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.65; }
 
   /* HEADER */
-  .header { background: linear-gradient(135deg, #4338ca 0%, #6366f1 60%, #818cf8 100%); color: white; padding: 40px 40px 36px; position: relative; overflow: hidden; }
+  .header { background: var(--navy); color: white; padding: 40px 40px 36px; position: relative; overflow: hidden; }
   .header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.08); }
   .header-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
   .header-badge { display: inline-block; background: rgba(255,255,255,0.22); color: white; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.3); }
   .back-link { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.8); font-size: 13px; text-decoration: none; margin-bottom: 16px; transition: color .15s; }
   .back-link:hover { color: white; }
   .header h1 { font-family: 'DM Serif Display', serif; font-size: 34px; line-height: 1.2; margin-bottom: 6px; }
-  .header h1 span { color: #c7d2fe; }
+  .header h1 span { color: #bfdbfe; }
   .header-sub { font-size: 15px; color: rgba(255,255,255,0.82); font-weight: 300; }
 
   /* MAIN */
@@ -68,8 +68,8 @@
   .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
   @media (max-width: 600px) { .diag-grid { grid-template-columns: 1fr; } }
   .diag-box { background: var(--card); border: 2px solid var(--border); border-radius: 14px; padding: 20px; }
-  .diag-box.a { border-color: #6366f1; }
-  .diag-box.b { border-color: #818cf8; }
+  .diag-box.a { border-color: #5e8ff7; }
+  .diag-box.b { border-color: #82a8f9; }
   .diag-box h4 { font-size: 13px; font-weight: 700; color: var(--indigo); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
   .diag-stat { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--bg-subtle); font-size: 13px; }
   .diag-stat:last-child { border-bottom: none; }
@@ -84,7 +84,7 @@
   .do-box { background: var(--green-bg); border: 1.5px solid #6ee7b7; border-radius: 12px; padding: 18px 20px; }
   .dont-box { background: var(--amber-bg); border: 1.5px solid #fcd34d; border-radius: 12px; padding: 18px 20px; }
   .do-box h4 { color: var(--green-dark); font-size: 13px; font-weight: 700; margin-bottom: 10px; }
-  .dont-box h4 { color: #9f1239; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+  .dont-box h4 { color: var(--amber-dark); font-size: 13px; font-weight: 700; margin-bottom: 10px; }
   .do-box ul, .dont-box ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
   .do-box li, .dont-box li { font-size: 13.5px; display: flex; gap: 8px; line-height: 1.45; }
   .do-box li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
@@ -99,7 +99,7 @@
   .scenario-num { background: var(--indigo-soft); color: var(--indigo); font-weight: 700; font-size: 15px; min-width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .scenario-q { font-weight: 600; font-size: 14px; margin-bottom: 6px; }
   .scenario-think { font-size: 12.5px; color: var(--slate); margin-bottom: 8px; }
-  .scenario-answer { display: inline-block; background: var(--indigo-soft); color: var(--indigo); font-weight: 700; font-size: 13px; padding: 5px 12px; border-radius: 6px; border: 1px solid #c7d2fe; }
+  .scenario-answer { display: inline-block; background: var(--indigo-soft); color: var(--indigo); font-weight: 700; font-size: 13px; padding: 5px 12px; border-radius: 6px; border: 1px solid #bfdbfe; }
 
   /* SECTION TITLE */
   .section-title-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
@@ -113,7 +113,7 @@
 
   /* PRINT */
   @media print {
-    .header { background: #4338ca !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .header { background: #1c2b3a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .back-link { display: none; }
   }
 
@@ -238,7 +238,7 @@
   </div>
   <p class="section-lead">Nicht jede diagnostische Tätigkeit gehört in den Diagnostikblock.</p>
 
-  <div class="card" style="border-color:#c7d2fe">
+  <div class="card" style="border-color:#bfdbfe">
     <div class="card-section-title" style="color:var(--indigo)">Entscheidungsregel</div>
     <div style="display:flex;flex-direction:column;gap:10px">
       <div style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px">
@@ -270,7 +270,7 @@
       </ul>
     </div>
     <div class="dont-box">
-      <p style="color:#9f1239;font-size:13px;font-weight:700;margin-bottom:10px">✕ Häufige Fehler</p>
+      <p style="color:var(--amber-dark);font-size:13px;font-weight:700;margin-bottom:10px">✕ Häufige Fehler</p>
       <ul>
         <li>Grosse Testabklärung einfach «in eine normale Sitzung hineinrechnen»</li>
         <li>EA.05.0150 zusammen mit EA.05.0010/0030 am selben Tag buchen</li>
@@ -314,7 +314,7 @@
     </div>
   </div>
 
-  <div style="margin-top:32px;padding:16px 20px;background:var(--indigo-soft);border-radius:12px;border:1px solid #c7d2fe">
+  <div style="margin-top:32px;padding:16px 20px;background:var(--indigo-soft);border-radius:12px;border:1px solid #bfdbfe">
     <div style="font-size:12px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Print-Version</div>
     <p style="font-size:13.5px;color:var(--text)">Die kompakte Druckversion mit allen Diagnostik-Regeln ist als separates Blatt verfügbar:</p>
     <a href="/files/diagnostik-psych-print" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:var(--indigo);color:white;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">

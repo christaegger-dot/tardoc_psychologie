@@ -11,12 +11,12 @@
 
 :root {
   --ink:    #1c2b3a;
-  --ind:    #4338CA;
-  --ind-s:  #EEF2FF;
+  --ind:    #2463eb;
+  --ind-s:  #f0f6ff;
   --teal:   #0d7a5f;
   --teal-s: #e6f4f2;
-  --purp:   #4338ca;
-  --purp-s: #eef2ff;
+  --purp:   #2463eb;
+  --purp-s: #f0f6ff;
   --amber:  #D97706;
   --amb-s:  #fef3e2;
   --rose:   #92400e;
@@ -28,7 +28,7 @@
   --line:   #E2E8F0;
   --white:  #FFFFFF;
   --text:   #1E293B;
-  --bg:     #eef2ff;
+  --bg:     #f0f6ff;
 }
 
 body {
@@ -45,8 +45,8 @@ body {
 
 .printbar {
   width: 210mm; max-width: 100%;
-  background: #eef2ff; border: 1px solid var(--line);
-  border-bottom: 2px solid #6366f1; border-radius: 10px;
+  background: #f0f6ff; border: 1px solid var(--line);
+  border-bottom: 2px solid #5e8ff7; border-radius: 10px;
   padding: 10px 20px; display: flex; align-items: center; gap: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,.07);
 }
@@ -87,10 +87,10 @@ body {
 }
 .mast-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
 .mast h1 { font-size: 20px; font-weight: 800; color: white; letter-spacing: -.4px; line-height: 1; }
-.mast h1 em { color: #6366f1; font-style: normal; }
+.mast h1 em { color: #5e8ff7; font-style: normal; }
 .mast-sub { font-size: 7.5px; color: rgba(255,255,255,.80); margin-top: 2px; }
 .mast-badge {
-  font-size: 8px; font-weight: 700; color: #eef2ff;
+  font-size: 8px; font-weight: 700; color: #f0f6ff;
   background: rgba(165,180,252,.12); border: 1px solid rgba(165,180,252,.28);
   border-radius: 4px; padding: 3px 8px; white-space: nowrap; flex-shrink: 0;
 }
@@ -105,9 +105,9 @@ body {
 .pill-num { font-size: 14px; font-weight: 800; line-height: 1; }
 .pill-lbl { font-size: 7px; color: rgba(255,255,255,.65); line-height: 1.3; }
 .pill-lbl strong { display: block; color: white; font-size: 7.5px; }
-.p-i .pill-num { color: #eef2ff; }
+.p-i .pill-num { color: #f0f6ff; }
 .p-t .pill-num { color: #e6f4f2; }
-.p-p .pill-num { color: #eef2ff; }
+.p-p .pill-num { color: #f0f6ff; }
 .p-a .pill-num { color: #fbbf24; }
 
 /* ── Body ── */
@@ -134,7 +134,7 @@ body {
   background: var(--ink); border-radius: 8px; padding: 7px 10px;
   position: relative;
 }
-.dt-ql { font-size: 6px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #eef2ff; margin-bottom: 2px; }
+.dt-ql { font-size: 6px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #f0f6ff; margin-bottom: 2px; }
 .dt-qt { font-size: 11px; font-weight: 700; color: white; line-height: 1.2; }
 .dt-qn { font-size: 7px; color: rgba(255,255,255,.75); margin-top: 2px; }
 
@@ -169,11 +169,11 @@ body {
 
 .dt-leaf-rp { background: var(--purp-s); border-color: rgba(124,58,237,.35); }
 .dt-leaf-rp .dt-leaf-title { color: var(--purp); }
-.dt-leaf-rp .dt-leaf-sub   { color: #4338ca; }
+.dt-leaf-rp .dt-leaf-sub   { color: #2463eb; }
 
-.dt-leaf-ra { background: var(--ind-s); border-color: rgba(67,56,202,.35); }
+.dt-leaf-ra { background: var(--ind-s); border-color: rgba(36,99,235,.35); }
 .dt-leaf-ra .dt-leaf-title { color: var(--ind); }
-.dt-leaf-ra .dt-leaf-sub   { color: #4338ca; }
+.dt-leaf-ra .dt-leaf-sub   { color: #2463eb; }
 
 .dt-leaf-rl { background: var(--teal-s); border-color: rgba(10,124,113,.35); }
 .dt-leaf-rl .dt-leaf-title { color: #0d7a5f; }
@@ -187,7 +187,7 @@ body {
 .dt-subq {
   background: #1c2b3a; border-radius: 7px; padding: 6px 9px; width: 100%;
 }
-.dt-subq .dt-ql { color: #eef2ff; }
+.dt-subq .dt-ql { color: #f0f6ff; }
 .dt-subq .dt-qt { font-size: 9.5px; }
 
 .dt-warn {
@@ -205,7 +205,7 @@ body {
 .tel-tbl td { padding: 4px 7px; vertical-align: top; }
 .tel-type { font-weight: 600; font-size: 8px; }
 .tel-sub  { font-size: 7px; color: #475569; }
-.tel-code { font-weight: 700; font-size: 7.5px; font-family: 'Courier New', monospace; color: #4338ca; }
+.tel-code { font-weight: 700; font-size: 7.5px; font-family: 'Courier New', monospace; color: #2463eb; }
 .tel-warn { font-size: 7px; font-weight: 700; color: #92400E; }
 .tel-note { font-size: 7.5px; color: var(--slate); }
 
@@ -240,7 +240,7 @@ body {
   display: flex; align-items: center; justify-content: space-between;
   border-radius: 6px; padding: 6px 9px; border: 1.5px solid;
 }
-.lim-i { background: var(--ind-s); border-color: rgba(67,56,202,.25); }
+.lim-i { background: var(--ind-s); border-color: rgba(36,99,235,.25); }
 .lim-p { background: var(--purp-s); border-color: rgba(124,58,237,.25); }
 .lim-t { background: var(--teal-s); border-color: rgba(10,124,113,.25); }
 .lim-txt h4 { font-size: 8px; font-weight: 700; color: var(--ink); }
@@ -315,7 +315,7 @@ body {
   /* axe-core contrast fixes */
   .printbar-label { color: #475569 !important; }
   .mast-sub, .masthead-sub { color: rgba(255,255,255,.80) !important; }
-  .dt-ql { color: #eef2ff !important; }
+  .dt-ql { color: #f0f6ff !important; }
   .lg-anw, .lg-diag, .lg-exp, .lg-lap, .lg-krise, .lg-tel, .lg-weg, .lg-nv { 
     color: #1c2b3a !important; font-weight: 700 !important; 
   }
@@ -397,7 +397,7 @@ body {
 
                 <!-- Branch SPEZIALBLOCK -->
                 <div class="dt-br">
-                  <div class="dt-arrow dt-arrow-y" style="color:#4338ca">✔ JA</div>
+                  <div class="dt-arrow dt-arrow-y" style="color:#2463eb">✔ JA</div>
                   <div class="dt-leaf dt-leaf-rp" style="width:100%">
                     <div class="dt-leaf-title">Spezialblock</div>
                     <div class="dt-leaf-sub">Diagnostik · Exposition
@@ -457,7 +457,7 @@ E-Mail zeitversetzt</div>
           <tbody>
             <tr>
               <td><div class="tel-type">Fernmündl. Sitzung</div><div class="tel-sub">Video/Tel. synchron mit Patient</div></td>
-              <td><span class="tel-code" style="color:#4338ca">PA011 / PA031</span></td>
+              <td><span class="tel-code" style="color:#2463eb">PA011 / PA031</span></td>
               <td><span class="tel-note">max. 75 Min + PE010</span></td>
             </tr>
             <tr>

@@ -21,7 +21,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Tarif-Kompass 2026 · Psychologinnen KJPP · TARDOC EA.05">
 <meta property="og:locale" content="de_CH">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tarif-Kompass 2026 · Psychologinnen KJPP">
 <meta name="twitter:description" content="TARDOC EA.05 Referenz: 75+15-Logik, Diagnostik, Exposition, Krise A/B, LAP-Topf.">
 <meta name="robots" content="index, follow">
@@ -439,14 +439,6 @@ mark { background: var(--amber-bg); color: inherit; border-radius: 2px; padding:
 .idt-sublabel-blue { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--indigo); padding: 8px 0 2px; border-bottom: 1.5px dashed var(--indigo-light); margin-bottom: 2px; }
 
 /* ── SCROLL MARGIN (verhindert Verstecken unter Sticky-Bar) ── */
-.section-accordion {
-  scroll-margin-top: 56px;
-}
-@media (min-width: 1024px) {
-  .section-accordion {
-    scroll-margin-top: 46px;
-  }
-}
 
 /* ── SECTION HIGHLIGHT ANIMATION ── */
 @keyframes sectionHighlight {
@@ -542,7 +534,10 @@ border: 6px solid transparent; border-top-color: var(--navy);
 }
 
 /* ── SECTION ── */
-.section, .section-accordion { margin-bottom: 52px; scroll-margin-top: 100px; }
+.section, .section-accordion { margin-bottom: 52px; scroll-margin-top: 56px; }
+@media (min-width: 1024px) {
+  .section, .section-accordion { scroll-margin-top: 46px; }
+}
 
 /* ── “WAS WILL ICH TUN?” PANEL ── */
 .scenario-panel {
@@ -566,6 +561,8 @@ background: white; border: 1.5px solid var(--border);
 border-radius: 10px; padding: 14px 16px;
 cursor: pointer; transition: all .2s;
 text-decoration: none; display: block;
+text-align: left; font-family: inherit; font-size: inherit; color: inherit;
+width: 100%;
 }
 .sp-card:hover {
 border-color: var(--indigo-light);
@@ -645,12 +642,12 @@ font-weight: 600;
 font-size: 11.5px; color: var(--slate);
 margin-top: 3px;
 }
-@media (max-width: 480px) {
-.sp-grid { grid-template-columns: 1fr; }
-}
 @media (max-width: 600px) {
 .sp-grid { grid-template-columns: 1fr 1fr; }
 .qt-nav { flex-wrap: wrap; gap: 4px; }
+}
+@media (max-width: 480px) {
+.sp-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 380px) {
 .sp-grid { grid-template-columns: 1fr; }
@@ -1372,8 +1369,8 @@ max-width: none !important;
 margin-left: 0 !important;
 margin-right: 0 !important;
 }
-/* Seitenumbrüche vor grossen Abschnitten */
-.section { page-break-inside: avoid; }
+/* Seitenumbrüche nur bei kleinen Elementen */
+.pos-item, .scenario-card, .card, .note, .do-box, .dont-box { page-break-inside: avoid; }
 * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 @page { size: A4; margin: 15mm; }
 /* Entscheidungsbaum: Toggle ausblenden, statischen Vollbaum erzwingen */
@@ -1390,7 +1387,6 @@ html, body { overflow-x: hidden; max-width: 100vw; }
 
 @media (max-width: 768px) {
 .header h1 { font-size: 28px; }
-.section, .section-accordion { scroll-margin-top: 56px; }
 .card-grid-2, .card-grid-3, .do-dont, .diag-grid, .krise-grid, .lap-age-grid { grid-template-columns: 1fr; }
 .pos-item { grid-template-columns: 1fr; }
 .scenario-card { grid-template-columns: 1fr; }
@@ -1484,7 +1480,7 @@ justify-content: center;
 </header>
 <!-- NAV (horizontal, Mobile/Tablet) -->
 
-<nav class="nav-bar">
+<nav class="nav-bar" aria-label="Hauptnavigation">
   <div class="nav-bar-mobile-header">
     <span class="nav-bar-mobile-title">☰ Navigation</span>
     <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
@@ -1599,68 +1595,68 @@ justify-content: center;
     <p class="scenario-panel-lead">Klicke auf deine Situation — du landest direkt bei der richtigen Ziffer.</p>
     <div class="sp-grid">
 
-  <a href="#" class="sp-card sp-card-highlight" data-sp-target="entscheidung">
+  <button type="button" class="sp-card sp-card-highlight" data-sp-target="entscheidung">
     <div class="sp-card-icon">🌳</div>
     <div class="sp-card-label">Ich bin unsicher — Entscheidungsbaum</div>
     <div class="sp-card-codes">3 Fragen · 5 Pfade</div>
     <div class="sp-card-hint">Schritt für Schritt zur richtigen Ziffer</div>
-  </a>
+  </button>
 
-  <a href="#" class="sp-card" data-sp-target="positionen" data-sp-code="PA010">
+  <button type="button" class="sp-card" data-sp-target="positionen" data-sp-code="PA010">
     <div class="sp-card-icon">🧠</div>
     <div class="sp-card-label">Therapiesitzung erfassen</div>
     <div class="sp-card-codes">PA010 + PE010</div>
     <div class="sp-card-hint">Einzel oder Familie, 75+15 Min</div>
-  </a>
+  </button>
 
-  <a href="#" class="sp-card" data-sp-target="telefon" data-sp-code="PA011">
+  <button type="button" class="sp-card" data-sp-target="telefon" data-sp-code="PA011">
     <div class="sp-card-icon">📱</div>
     <div class="sp-card-label">Telefonat / E-Mail abrechnen</div>
     <div class="sp-card-codes">PA011 · EA.00.0110 · EA.05.0080</div>
     <div class="sp-card-hint">Vier verschiedene Kontakttypen</div>
-  </a>
+  </button>
 
-  <a href="#" class="sp-card" data-sp-target="diagnostik" data-sp-code="PA220">
+  <button type="button" class="sp-card" data-sp-target="diagnostik" data-sp-code="PA220">
     <div class="sp-card-icon">🔬</div>
     <div class="sp-card-label">Test durchgeführt / ausgewertet</div>
     <div class="sp-card-codes">PA220 + PE020</div>
     <div class="sp-card-hint">Eigener Block, 180+240 Min / 90 T</div>
-  </a>
+  </button>
 
-  <a href="#" class="sp-card" data-sp-target="krise" data-sp-code="PA110">
+  <button type="button" class="sp-card" data-sp-target="krise" data-sp-code="PA110">
     <div class="sp-card-icon">⚡</div>
     <div class="sp-card-label">Krise — A oder B?</div>
     <div class="sp-card-codes">PA110 · EA.00.0090</div>
     <div class="sp-card-hint">Laufende PT vs. KANT/Nachtdienst</div>
-  </a>
+  </button>
 
-  <a href="#" class="sp-card" data-sp-target="exposition" data-sp-code="PA230">
+  <button type="button" class="sp-card" data-sp-target="exposition" data-sp-code="PA230">
     <div class="sp-card-icon">🚶</div>
     <div class="sp-card-label">Exposition ausserhalb Klinik</div>
     <div class="sp-card-codes">PA230</div>
     <div class="sp-card-hint">360 Min / 180 T, Wegzeit inkl.</div>
-  </a>
+  </button>
 
-  <a href="#" class="sp-card" data-sp-target="lap-topf" data-sp-code="PE045">
+  <button type="button" class="sp-card" data-sp-target="lap-topf" data-sp-code="PE045">
     <div class="sp-card-icon">📋</div>
     <div class="sp-card-label">Akten, Schule, Dritte kontaktiert</div>
     <div class="sp-card-codes">PE045 · PK025 · PK015</div>
     <div class="sp-card-hint">LAP-Topf, altersgesteuert</div>
-  </a>
+  </button>
 
-  <a href="#" class="sp-card" data-sp-target="telefon" data-sp-code="EA.05.0080">
+  <button type="button" class="sp-card" data-sp-target="telefon" data-sp-code="EA.05.0080">
     <div class="sp-card-icon">✉️</div>
     <div class="sp-card-label">Patient-E-Mail beantwortet</div>
     <div class="sp-card-codes">EA.05.0080</div>
     <div class="sp-card-hint">Max. 1×/Tag, 4×/30 Tage</div>
-  </a>
+  </button>
 
-  <a href="#" class="sp-card" data-sp-target="berichte" data-sp-code="PE030">
+  <button type="button" class="sp-card" data-sp-target="berichte" data-sp-code="PE030">
     <div class="sp-card-icon">📝</div>
     <div class="sp-card-label">Therapie-/Diagnostikplanung</div>
     <div class="sp-card-codes">PE030</div>
     <div class="sp-card-hint">15 Min, 1×/90 T, schriftlich!</div>
-  </a>
+  </button>
 
 </div>
 
@@ -1672,7 +1668,7 @@ justify-content: center;
   </div>
   <!-- ─── ZWEI EBENEN ─── -->
 
-  <details class="section section-accordion" id="zweischicht">
+  <details class="section section-accordion" id="zweischicht" open>
     <summary>
       <h2 class="section-title">
       <span class="num">1</span>
@@ -1704,7 +1700,7 @@ justify-content: center;
 
   <!-- ─── GRUNDREGELN ─── -->
 
-  <details class="section section-accordion" id="grundregeln">
+  <details class="section section-accordion" id="grundregeln" open>
     <summary>
       <h2 class="section-title">
       <span class="num">2</span>
@@ -1755,7 +1751,7 @@ justify-content: center;
 
   <!-- ─── LIMITS ─── -->
 
-  <details class="section section-accordion" id="limits">
+  <details class="section section-accordion" id="limits" open>
     <summary>
       <h2 class="section-title">
       <span class="num">3</span>
@@ -1827,7 +1823,7 @@ justify-content: center;
 
   <!-- ─── ENTSCHEIDUNGSBAUM ─── -->
 
-  <details class="section section-accordion" id="entscheidung">
+  <details class="section section-accordion" id="entscheidung" open>
     <summary>
       <h2 class="section-title">
       <span class="num teal">4</span>
@@ -1839,8 +1835,8 @@ justify-content: center;
 
     <!-- ── MODUS-TOGGLE ── -->
     <div class="idt-toggle">
-      <button class="idt-toggle-btn active" id="idt-btn-interactive" onclick="idtSetMode('interactive')" aria-pressed="true">&#9654; Schritt für Schritt</button>
-      <button class="idt-toggle-btn" id="idt-btn-full" onclick="idtSetMode('full')" aria-pressed="false">Alles anzeigen</button>
+      <button class="idt-toggle-btn active" id="idt-btn-interactive" data-idt-mode="interactive" aria-pressed="true">&#9654; Schritt für Schritt</button>
+      <button class="idt-toggle-btn" id="idt-btn-full" data-idt-mode="full" aria-pressed="false">Alles anzeigen</button>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════
@@ -1856,88 +1852,88 @@ justify-content: center;
           <div class="q-sub">Rapport · Supervision · Intervision · Terminvereinbarung · Leistungserfassung · LUF</div>
         </div>
         <div class="idt-choices">
-          <button class="idt-choice yes-btn" onclick="idtGo('r-intern')">&#10003; Ja</button>
-          <button class="idt-choice no-btn" onclick="idtGo('s2')">&#10007; Nein</button>
+          <button class="idt-choice yes-btn" data-idt-go="r-intern">&#10003; Ja</button>
+          <button class="idt-choice no-btn" data-idt-go="s2">&#10007; Nein</button>
         </div>
       </div>
 
       <!-- SCHRITT 2: Spezialblock? -->
       <div class="idt-step" id="idt-s2">
-        <button class="idt-back" onclick="idtGo('s1')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s1">&#8592; Zurück</button>
         <div class="idt-q-box">
           <small>Frage 2 von 3</small>
           Handelt es sich um einen <strong>spezifischen Leistungsblock</strong>?
           <div class="q-sub">Diagnostik · Exposition · Krise — oder normaler Kontakt?</div>
         </div>
         <div class="idt-choices">
-          <button class="idt-choice" onclick="idtGo('r-diagnostik')" style="border-color:var(--indigo);color:var(--indigo)">&#128203; Diagnostik</button>
-          <button class="idt-choice" onclick="idtGo('r-exposition')" style="border-color:var(--green);color:var(--green-dark)">&#127939; Exposition</button>
-          <button class="idt-choice" onclick="idtGo('s2b')" style="border-color:var(--amber);color:var(--amber-dark)">&#9888; Krise</button>
-          <button class="idt-choice no-btn" onclick="idtGo('s3')">&#8594; Normaler Kontakt</button>
+          <button class="idt-choice" data-idt-go="r-diagnostik" style="border-color:var(--indigo);color:var(--indigo)">&#128203; Diagnostik</button>
+          <button class="idt-choice" data-idt-go="r-exposition" style="border-color:var(--green);color:var(--green-dark)">&#127939; Exposition</button>
+          <button class="idt-choice" data-idt-go="s2b" style="border-color:var(--amber);color:var(--amber-dark)">&#9888; Krise</button>
+          <button class="idt-choice no-btn" data-idt-go="s3">&#8594; Normaler Kontakt</button>
         </div>
       </div>
 
       <!-- SCHRITT 2b: Krise — A oder B? -->
       <div class="idt-step" id="idt-s2b">
-        <button class="idt-back" onclick="idtGo('s2')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s2">&#8592; Zurück</button>
         <div class="idt-q-box" style="background:var(--amber-dark)">
           <small>Krise — Unterfrage</small>
           Laufende Psychotherapie oder KANT / Nacht- / Wochenenddienst?
           <div class="q-sub">Anordnung A = lfd. PT · Anordnung B = KANT/Dienst</div>
         </div>
         <div class="idt-choices">
-          <button class="idt-choice" onclick="idtGo('r-krise-a')" style="border-color:var(--amber);color:var(--amber-dark)">&#128308; Laufende PT (Anordnung A)</button>
-          <button class="idt-choice" onclick="idtGo('r-krise-b')" style="border-color:var(--amber-dark);color:white;background:var(--amber-dark)">&#9899; KANT / Nacht / WE (Anordnung B)</button>  <!-- WCAG-Fix: amber-light 4.25:1 → white 7.09:1 -->
+          <button class="idt-choice" data-idt-go="r-krise-a" style="border-color:var(--amber);color:var(--amber-dark)">&#128308; Laufende PT (Anordnung A)</button>
+          <button class="idt-choice" data-idt-go="r-krise-b" style="border-color:var(--amber-dark);color:white;background:var(--amber-dark)">&#9899; KANT / Nacht / WE (Anordnung B)</button>  <!-- WCAG-Fix: amber-light 4.25:1 → white 7.09:1 -->
         </div>
       </div>
 
       <!-- SCHRITT 3: Patient anwesend? -->
       <div class="idt-step" id="idt-s3">
-        <button class="idt-back" onclick="idtGo('s2')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s2">&#8592; Zurück</button>
         <div class="idt-q-box">
           <small>Frage 3 von 3</small>
           Patient / Familie <strong>anwesend</strong>?
           <div class="q-sub">Synchron (live / Tel. / Video) = anwesend</div>
         </div>
         <div class="idt-choices">
-          <button class="idt-choice yes-btn" onclick="idtGo('s3a')">&#10003; Ja — anwesend</button>
-          <button class="idt-choice no-btn" onclick="idtGo('s3b')">&#10007; Nein — nicht anwesend</button>
+          <button class="idt-choice yes-btn" data-idt-go="s3a">&#10003; Ja — anwesend</button>
+          <button class="idt-choice no-btn" data-idt-go="s3b">&#10007; Nein — nicht anwesend</button>
         </div>
       </div>
 
       <!-- SCHRITT 3a: Anwesend — welches Setting? -->
       <div class="idt-step" id="idt-s3a">
-        <button class="idt-back" onclick="idtGo('s3')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3">&#8592; Zurück</button>
         <div class="idt-q-box">
           <small>Anwesenheitsleistung — Setting?</small>
           Welches Setting liegt vor?
           <div class="q-sub">Einzeln · Familie · Telefon/Video · Kurze Rückmeldung · Krise</div>
         </div>
         <div class="idt-choices" style="flex-wrap:wrap">
-          <button class="idt-choice" onclick="idtGo('r-einzel')" style="min-width:140px">&#128100; Einzelsetting</button>
-          <button class="idt-choice" onclick="idtGo('r-familie')" style="min-width:140px">&#128106; Familiensetting</button>
-          <button class="idt-choice" onclick="idtGo('r-telefon-sitzung')" style="min-width:140px">&#128222; Telefon/Video (echte Sitzung)</button>
-          <button class="idt-choice" onclick="idtGo('r-verlaufskonsult')" style="min-width:140px">&#128172; Kurze Verlaufskonsultation</button>
-          <button class="idt-choice" onclick="idtGo('r-krise-lfd')" style="min-width:140px;border-color:var(--amber);color:var(--amber-dark)">&#9888; Krise (unter lfd. PT)</button>
+          <button class="idt-choice" data-idt-go="r-einzel" style="min-width:140px">&#128100; Einzelsetting</button>
+          <button class="idt-choice" data-idt-go="r-familie" style="min-width:140px">&#128106; Familiensetting</button>
+          <button class="idt-choice" data-idt-go="r-telefon-sitzung" style="min-width:140px">&#128222; Telefon/Video (echte Sitzung)</button>
+          <button class="idt-choice" data-idt-go="r-verlaufskonsult" style="min-width:140px">&#128172; Kurze Verlaufskonsultation</button>
+          <button class="idt-choice" data-idt-go="r-krise-lfd" style="min-width:140px;border-color:var(--amber);color:var(--amber-dark)">&#9888; Krise (unter lfd. PT)</button>
         </div>
       </div>
 
       <!-- SCHRITT 3b: Nicht anwesend — welche Abwesenheitsleistung? -->
       <div class="idt-step" id="idt-s3b">
-        <button class="idt-back" onclick="idtGo('s3')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3">&#8592; Zurück</button>
         <div class="idt-q-box">
           <small>Abwesenheitsleistung — Art?</small>
           Was für eine Leistung ohne Patientenanwesenheit?
           <div class="q-sub">LAP-Topf · E-Mail · Wegzeit</div>
         </div>
         <div class="idt-choices" style="flex-wrap:wrap">
-          <button class="idt-choice" onclick="idtGo('r-akten')" style="min-width:140px">&#128196; Akten lesen</button>
-          <button class="idt-choice" onclick="idtGo('r-dritte')" style="min-width:140px">&#127981; Kontakt Dritte (Schule, Beistand)</button>
-          <button class="idt-choice" onclick="idtGo('r-angehoerige')" style="min-width:140px">&#128106; Elterntelefonat ohne Patient</button>
-          <button class="idt-choice" onclick="idtGo('r-behandler')" style="min-width:140px">&#129657; Externe Behandler</button>
-          <button class="idt-choice" onclick="idtGo('r-therapieplanung')" style="min-width:140px">&#128221; Hilfe-/Therapieplanung</button>
-          <button class="idt-choice" onclick="idtGo('r-email')" style="min-width:140px">&#128140; E-Mail / zeitversetzt</button>
-          <button class="idt-choice" onclick="idtGo('r-wegzeit')" style="min-width:140px">&#128663; Wegzeit</button>
+          <button class="idt-choice" data-idt-go="r-akten" style="min-width:140px">&#128196; Akten lesen</button>
+          <button class="idt-choice" data-idt-go="r-dritte" style="min-width:140px">&#127981; Kontakt Dritte (Schule, Beistand)</button>
+          <button class="idt-choice" data-idt-go="r-angehoerige" style="min-width:140px">&#128106; Elterntelefonat ohne Patient</button>
+          <button class="idt-choice" data-idt-go="r-behandler" style="min-width:140px">&#129657; Externe Behandler</button>
+          <button class="idt-choice" data-idt-go="r-therapieplanung" style="min-width:140px">&#128221; Hilfe-/Therapieplanung</button>
+          <button class="idt-choice" data-idt-go="r-email" style="min-width:140px">&#128140; E-Mail / zeitversetzt</button>
+          <button class="idt-choice" data-idt-go="r-wegzeit" style="min-width:140px">&#128663; Wegzeit</button>
         </div>
       </div>
 
@@ -1945,18 +1941,18 @@ justify-content: center;
 
       <!-- R: Intern / LUF -->
       <div class="idt-step" id="idt-r-intern">
-        <button class="idt-back" onclick="idtGo('s1')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s1">&#8592; Zurück</button>
         <div class="idt-result-box intern">
           <small>Ergebnis — Interne Tätigkeit</small>
           <strong>Nicht verrechenbar — LUF</strong>
           <p>Intern erfassen, kein Patientenbudget. Rapport, Supervision, Intervision, Terminvereinbarung und Leistungserfassung gehen zu Lasten des Leistungsführers (LUF).</p>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Diagnostik -->
       <div class="idt-step" id="idt-r-diagnostik">
-        <button class="idt-back" onclick="idtGo('s2')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s2">&#8592; Zurück</button>
         <div class="idt-result-box diag">
           <small>Ergebnis — Diagnostik</small>
           <strong>PA220 / EA.05.0150 + PE020</strong>
@@ -1973,12 +1969,12 @@ justify-content: center;
           <p>PA220 und PE020 dürfen nicht zusammen mit Einzel- oder Familiensetting am gleichen Tag abgerechnet werden.</p>
           <ul><li><a href="#diagnostik" style="color:var(--amber-dark)">&#8594; Details s. Abschnitt 6</a></li></ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Exposition -->
       <div class="idt-step" id="idt-r-exposition">
-        <button class="idt-back" onclick="idtGo('s2')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s2">&#8592; Zurück</button>
         <div class="idt-result-box anw" style="border-color:var(--green);background:var(--green-bg)">
           <small style="color:var(--green-dark)">Ergebnis — Exposition</small>
           <strong>PA230 / Expositionstherapie</strong>
@@ -1994,12 +1990,12 @@ justify-content: center;
           <p>Bei PA230 ist die Wegzeit bereits im Limit enthalten. EA.05.0060 darf nicht zusätzlich erfasst werden.</p>
           <ul><li><a href="#exposition" style="color:var(--amber-dark)">&#8594; Details s. Abschnitt 9</a></li></ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Krise A -->
       <div class="idt-step" id="idt-r-krise-a">
-        <button class="idt-back" onclick="idtGo('s2b')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s2b">&#8592; Zurück</button>
         <div class="idt-result-box warn">
           <small>Ergebnis — Krise Anordnung A</small>
           <strong>PA110 / PA111 — Krisenintervention lfd. PT</strong>
@@ -2016,12 +2012,12 @@ justify-content: center;
           <p>Unvorhersehbar, als bedrohlich erlebt, nicht allein bewältigbar. Konkrete Massnahmen und weiteres Vorgehen dokumentieren.</p>
           <ul><li><a href="#krise" style="color:var(--amber-dark)">&#8594; Details s. Abschnitt 8</a></li></ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Krise B -->
       <div class="idt-step" id="idt-r-krise-b">
-        <button class="idt-back" onclick="idtGo('s2b')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s2b">&#8592; Zurück</button>
         <div class="idt-result-box warn">
           <small>Ergebnis — Krise Anordnung B</small>
           <strong>EA.00.0090 — Psychiatrische Krisenintervention</strong>
@@ -2038,12 +2034,12 @@ justify-content: center;
           <p>Anordnung A = laufende PT, max. 180 Min. Anordnung B = KANT/Dienst, unbegrenzt. KANT-Krise nie als PA110 erfassen!</p>
           <ul><li><a href="#krise" style="color:var(--amber-dark)">&#8594; Details s. Abschnitt 8</a></li></ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Einzelsetting -->
       <div class="idt-step" id="idt-r-einzel">
-        <button class="idt-back" onclick="idtGo('s3a')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3a">&#8592; Zurück</button>
         <div class="idt-result-box anw">
           <small>Ergebnis — Einzelsetting</small>
           <strong>PA010 / EA.05.0010</strong>
@@ -2054,12 +2050,12 @@ justify-content: center;
             <li>+ PE010 (15 Min VN)</li>
           </ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Familiensetting -->
       <div class="idt-step" id="idt-r-familie">
-        <button class="idt-back" onclick="idtGo('s3a')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3a">&#8592; Zurück</button>
         <div class="idt-result-box anw">
           <small>Ergebnis — Familiensetting</small>
           <strong>PA030 / EA.05.0030</strong>
@@ -2070,12 +2066,12 @@ justify-content: center;
             <li>+ PE010 (15 Min VN)</li>
           </ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Telefon/Video echte Sitzung -->
       <div class="idt-step" id="idt-r-telefon-sitzung">
-        <button class="idt-back" onclick="idtGo('s3a')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3a">&#8592; Zurück</button>
         <div class="idt-result-box anw">
           <small>Ergebnis — Telefonische / Videogestützte Sitzung</small>
           <strong>PA011 / PA031 (intern) · EA.05.0070 (öffentlich)</strong>
@@ -2091,12 +2087,12 @@ justify-content: center;
           <strong>Echte Sitzung vs. kurzer Check-in</strong>
           <p>War es ein vollständiges therapeutisches Gespräch? → PA011 (75 Min). Nur eine kurze Rückmeldung / Instruktion? → EA.00.0110 (20 Min).</p>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Verlaufskonsultation -->
       <div class="idt-step" id="idt-r-verlaufskonsult">
-        <button class="idt-back" onclick="idtGo('s3a')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3a">&#8592; Zurück</button>
         <div class="idt-result-box anw">
           <small>Ergebnis — Telefonische Verlaufskonsultation</small>
           <strong>EA.00.0110</strong>
@@ -2111,12 +2107,12 @@ justify-content: center;
           <strong>War es wirklich nur ein kurzer Check-in?</strong>
           <p>Wenn das Gespräch therapeutischen Charakter hatte → PA011 verwenden, nicht EA.00.0110.</p>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Krise unter lfd. PT (anwesend) -->
       <div class="idt-step" id="idt-r-krise-lfd">
-        <button class="idt-back" onclick="idtGo('s3a')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3a">&#8592; Zurück</button>
         <div class="idt-result-box warn">
           <small>Ergebnis — Krise unter laufender PT</small>
           <strong>EA.05.0050 / PA110 — Krisenintervention</strong>
@@ -2127,12 +2123,12 @@ justify-content: center;
           </ul>
           <ul><li><a href="#krise" style="color:var(--amber-dark)">&#8594; Details s. Abschnitt 8</a></li></ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Akten lesen -->
       <div class="idt-step" id="idt-r-akten">
-        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3b">&#8592; Zurück</button>
         <div class="idt-result-box lap">
           <small>Ergebnis — LAP-Topf</small>
           <strong>PE045 / PE040 · EA.05.0100 — Fremdaktenstudium</strong>
@@ -2142,12 +2138,12 @@ justify-content: center;
             <li>≥18 J.: max. 180 Min / 90 Tage</li>
           </ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Dritte -->
       <div class="idt-step" id="idt-r-dritte">
-        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3b">&#8592; Zurück</button>
         <div class="idt-result-box lap">
           <small>Ergebnis — LAP-Topf</small>
           <strong>PK025 / PK020 · EA.05.0110 — Auskünfte Dritte</strong>
@@ -2158,12 +2154,12 @@ justify-content: center;
             <li>Fachlicher Austausch — nicht Elterntelefonat</li>
           </ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Angehörige -->
       <div class="idt-step" id="idt-r-angehoerige">
-        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3b">&#8592; Zurück</button>
         <div class="idt-result-box lap">
           <small>Ergebnis — Separates Budget</small>
           <strong>EA.05.0120 — Auскünfte Angehörige</strong>
@@ -2173,12 +2169,12 @@ justify-content: center;
             <li>Separates Budget — nicht im LAP-Topf</li>
           </ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Externe Behandler -->
       <div class="idt-step" id="idt-r-behandler">
-        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3b">&#8592; Zurück</button>
         <div class="idt-result-box lap">
           <small>Ergebnis — LAP-Topf</small>
           <strong>PK015 / PK010 · EA.05.0130 — Externe Behandler-Besprechung</strong>
@@ -2189,12 +2185,12 @@ justify-content: center;
             <li>Nicht kombinierbar mit regulären Rapportleistungen</li>
           </ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Therapieplanung -->
       <div class="idt-step" id="idt-r-therapieplanung">
-        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3b">&#8592; Zurück</button>
         <div class="idt-result-box lap">
           <small>Ergebnis — LAP-Topf</small>
           <strong>PE030 · EA.05.0140 — Diagnostik-/Therapieplanung</strong>
@@ -2204,12 +2200,12 @@ justify-content: center;
             <li>Max. 1× / 90 Tage</li>
           </ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: E-Mail -->
       <div class="idt-step" id="idt-r-email">
-        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3b">&#8592; Zurück</button>
         <div class="idt-result-box anw">
           <small>Ergebnis — Zeitversetzte Kommunikation</small>
           <strong>EA.05.0080 — E-Mail / asynchron</strong>
@@ -2220,12 +2216,12 @@ justify-content: center;
             <li>6er-Regel veraltet!</li>
           </ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
       <!-- R: Wegzeit -->
       <div class="idt-step" id="idt-r-wegzeit">
-        <button class="idt-back" onclick="idtGo('s3b')">&#8592; Zurück</button>
+        <button class="idt-back" data-idt-go="s3b">&#8592; Zurück</button>
         <div class="idt-result-box anw">
           <small>Ergebnis — Wegzeit</small>
           <strong>EA.05.0060 — Wegzeit</strong>
@@ -2235,7 +2231,7 @@ justify-content: center;
             <li>Nicht doppelt erfassen</li>
           </ul>
         </div>
-        <button class="idt-restart" onclick="idtGo('s1')">&#8635; Neue Leistung prüfen</button>
+        <button class="idt-restart" data-idt-go="s1">&#8635; Neue Leistung prüfen</button>
       </div>
 
     </div><!-- /idt-interactive -->
@@ -2398,7 +2394,7 @@ justify-content: center;
 
   <!-- ─── POSITIONEN ─── -->
 
-  <details class="section section-accordion" id="positionen">
+  <details class="section section-accordion" id="positionen" open>
     <summary>
       <h2 class="section-title">
       <span class="num">5</span>
@@ -2619,7 +2615,7 @@ justify-content: center;
 
   <!-- ─── DIAGNOSTIK ─── -->
 
-  <details class="section section-accordion" id="diagnostik">
+  <details class="section section-accordion" id="diagnostik" open>
     <summary>
       <h2 class="section-title">
       <span class="num">6</span>
@@ -2653,7 +2649,7 @@ justify-content: center;
 
   <!-- ─── TELEFON/TELEMEDIZIN ─── -->
 
-  <details class="section section-accordion" id="telefon">
+  <details class="section section-accordion" id="telefon" open>
     <summary>
       <h2 class="section-title">
       <span class="num">7</span>
@@ -2720,7 +2716,7 @@ justify-content: center;
 
   <!-- ─── KRISE A/B ─── -->
 
-  <details class="section section-accordion" id="krise">
+  <details class="section section-accordion" id="krise" open>
     <summary>
       <h2 class="section-title">
       <span class="num">8</span>
@@ -2752,7 +2748,7 @@ justify-content: center;
 
   <!-- ─── EXPOSITION ─── -->
 
-  <details class="section section-accordion" id="exposition">
+  <details class="section section-accordion" id="exposition" open>
     <summary>
       <h2 class="section-title">
       <span class="num">9</span>
@@ -2792,7 +2788,7 @@ justify-content: center;
 
   <!-- ─── LAP-TOPF ─── -->
 
-  <details class="section section-accordion" id="lap-topf">
+  <details class="section section-accordion" id="lap-topf" open>
     <summary>
       <h2 class="section-title">
       <span class="num teal">10</span>
@@ -2874,7 +2870,7 @@ justify-content: center;
 
   <!-- ─── BERICHTE / IV ─── -->
 
-  <details class="section section-accordion" id="berichte">
+  <details class="section section-accordion" id="berichte" open>
     <summary>
       <h2 class="section-title">
       <span class="num">11</span>
@@ -2960,7 +2956,7 @@ justify-content: center;
 
   <!-- ─── SZENARIEN ─── -->
 
-  <details class="section section-accordion" id="szenarien">
+  <details class="section section-accordion" id="szenarien" open>
     <summary>
       <h2 class="section-title">
       <span class="num">12</span>
@@ -3097,7 +3093,7 @@ justify-content: center;
 
   <!-- ─── KURZFASSUNG ─── -->
 
-  <details class="section section-accordion" id="kurzfassung">
+  <details class="section section-accordion" id="kurzfassung" open>
     <summary>
       <h2 class="section-title">
       <span class="num">13</span>
@@ -3158,10 +3154,10 @@ justify-content: center;
 <footer class="footer">
   <span>Tarif-Kompass 2026 · Psychologinnen mit Psychotherapieausbildung · KJPP-Tagesklinik</span>
   <span>Referenz: TARDOC Kapitel EA.05 · Gültig ab 01.01.2026 · Stand Website: <span id="footer-date">16.03.2026</span> · Basierend auf Quelldokument vom 12.03.2026</span>
-  <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:12px;color:var(--slate)">
+  <div style="width:100%;margin-top:8px;padding-top:8px;border-top:1px solid var(--slate);font-size:12px;color:var(--slate)">
     Sozialarbeiter-Version: <a href="https://tardoc.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--slate);text-decoration:underline">tardoc.netlify.app</a>
   </div>
-  <a id="backToTop" href="#" aria-label="Zurück nach oben" title="Zurück nach oben">↑</a>
+  <a id="footerTopLink" href="#" aria-label="Zurück nach oben" title="Zurück nach oben">↑</a>
 </footer>
 <!-- BUTTON BAR -->
 
@@ -3877,6 +3873,14 @@ justify-content: center;
       btnFull.setAttribute('aria-pressed', 'true');
     }
   }
+
+  // Event delegation for decision tree buttons (replaces inline onclick handlers)
+  document.getElementById('entscheidung').addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-idt-go]');
+    if (btn) { idtGo(btn.getAttribute('data-idt-go')); return; }
+    var modeBtn = e.target.closest('[data-idt-mode]');
+    if (modeBtn) { idtSetMode(modeBtn.getAttribute('data-idt-mode')); }
+  });
 
   // Init: show interactive mode by default
   (function() {
